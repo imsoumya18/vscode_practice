@@ -9,7 +9,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    // test
+    int t;
+    cin >> t;
+
+    cout << t + 2;
 
     return 0;
 }
