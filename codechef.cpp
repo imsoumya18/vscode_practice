@@ -9,19 +9,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int t, n;
+    int t;
     cin >> t;
 
-    while (t--)
-    {
-        cin >> n;
-        if (n % 4 == 2 || n % 4 == 3)
-            cout << 3 << endl;
-        else if (n % 4 == 0)
-            cout << n + 3 << endl;
-        else if (n % 4 == 1)
-            cout << n << endl;
-    }
+    cout << t + 2;
 
     return 0;
 }
