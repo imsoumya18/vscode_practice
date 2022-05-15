@@ -5,24 +5,6 @@
 #include <algorithm>
 using namespace std;
 
-int solve(vector<int> &A)
-{
-    int arr[100000] = {0}, i, min = A.size();
-
-    for (i = A.size() - 1; i >= 0; i--)
-    {
-        if (arr[A[i]] == 0)
-            arr[A[i]] = 1;
-        else if (i < min)
-            min = i;
-    }
-
-    if (min == A.size())
-        return -1;
-    else
-        return A[min];
-}
-
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -30,9 +12,31 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> A{10, 5, 3, 4, 3, 5, 6};
+    int i = 1, j, res, flag, cnt = 0, A = 4, B = 7;
+    for (i = 1; i <= A; i++)
+    {
+        res = 1;
+        j = i;
+        while (j > 0)
+        {
+            res *= j;
+            j--;
+        }
+        res += B;
+        flag = 0;
+        for (j = 2; j <= res / 2; j++)
+        {
+            if (res % j == 0)
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0)
+            cnt++;
+    }
 
-    cout << solve(A);
+    cout << cnt << endl;
 
     return 0;
 }
