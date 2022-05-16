@@ -15,7 +15,7 @@ void rev_string(string s)
             word += s[i];
             i++;
         }
-        st.push(word);
+        st.push(word)test;
     }
 
     while (!st.empty())
