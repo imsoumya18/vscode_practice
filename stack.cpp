@@ -3,25 +3,26 @@
 #include <stack>
 using namespace std;
 
-void rev_string(string s)
+void rev_stack(stack<int> &st)
 {
-    stack<string> st;
+    stack<int> temp;
+    int tp;
 
-    for (int i = 0; i < s.length(); i++)
+    while (!st.size() !=0)
     {
-        string word = "";
-        while (s[i] != ' ' && i < s.length())
-        {
-            word += s[i];
-            i++;
-        }
-        st.push(word);
-    }
-
-    while (!st.empty())
-    {
-        cout << st.top() << " ";
+        tp = st.top();
         st.pop();
+        while (!st.empty())
+        {
+            temp.push(st.top());
+            st.pop();
+        }
+        while (!temp.empty())
+        {
+            st.push(temp.top());
+            temp.pop();
+        }
+        st.push(tp);
     }
 }
 
@@ -32,10 +33,21 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s;
-    getline(cin, s);
+    stack<int> st;
 
-    rev_string(s);
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    st.push(5);
+
+    rev_stack(st);
+
+    while (!st.empty())
+    {
+        cout << st.top() << endl;
+        st.pop();
+    }
 
     return 0;
 }
