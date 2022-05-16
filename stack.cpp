@@ -5,23 +5,21 @@ using namespace std;
 
 void insert_bottom(stack<int> &st, int top_ele)
 {
-    stack<int> temp;
-    while (!st.empty())
+    if (st.empty())
     {
-        temp.push(st.top());
-        st.pop();
+        st.push(top_ele);
+        return;
     }
-    st.push(top_ele);
-    while (!temp.empty())
-    {
-        st.push(temp.top());
-        temp.pop();
-    }
+
+    int ele = st.top();
+    st.pop();
+    insert_bottom(st, top_ele);
+    st.push(ele);
 }
 
 void rev_stack(stack<int> &st)
 {
-    if (st.size() == 1)
+    if (st.empty())
         return;
 
     int top_ele = st.top();
