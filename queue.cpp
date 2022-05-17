@@ -78,13 +78,13 @@ int main()
     q.enqueue(4);
     q.enqueue(5);
 
-    cout<<q.peek();
+    cout << q.peek() << endl;
 
-    // while (!q.empty())
-    // {
-    //     cout << q.peek() << endl;
-    //     q.dequeue();
-    // }
+    while (!q.empty())
+    {
+        cout << q.peek() << endl;
+        q.dequeue();
+    }
 
     return 0;
 }
