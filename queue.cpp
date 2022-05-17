@@ -4,63 +4,38 @@ using namespace std;
 
 #define n 20
 
+class node
+{
+public:
+    int data;
+    node *next;
+
+    node(int val)
+    {
+        data = val;
+        next = NULL;
+    }
+};
+
 class queue
 {
-    int *arr;
-    int front, back;
+    node *front;
+    node *back;
 
 public:
     queue()
     {
-        arr = new int[n];
-        front = -1;
-        back = -1;
+        front = NULL;
+        back = NULL;
     }
 
-    void enqueue(int x)
-    {
-        if (back = n - 1)
-        {
-            cout << "Queue overflow!!" << endl;
-            return;
-        }
+    void enqueue(int x){}
 
-        back++;
-        arr[back] = x;
+    void dequeue(){}
 
-        if (front == -1)
-            front++;
-    }
+    int peek(){}
 
-    void dequeue()
-    {
-        if (front == -1 || front > back)
-        {
-            cout << "NO element in queue!!" << endl;
-            return;
-        }
-        front++;
-    }
-
-    int peek()
-    {
-        if (front == -1 || front > back)
-        {
-            cout << "NO element in queue!!" << endl;
-            return -1;
-        }
-        return arr[front];
-    }
-
-    bool empty()
-    {
-        if (front == -1 || front > back)
-        {
-            cout << "NO element in queue!!" << endl;
-            return true;
-        }
-        return false;
-    }
+    bool empty(){}
 };
 
 int main()
@@ -79,12 +54,21 @@ int main()
     q.enqueue(5);
 
     cout << q.peek() << endl;
+    q.dequeue();
 
-    while (!q.empty())
-    {
-        cout << q.peek() << endl;
-        q.dequeue();
-    }
+    cout << q.peek() << endl;
+    q.dequeue();
+
+    cout << q.peek() << endl;
+    q.dequeue();
+
+    cout << q.peek() << endl;
+    q.dequeue();
+
+    cout << q.peek() << endl;
+    q.dequeue();
+
+    cout << q.empty() << endl;
 
     return 0;
 }
