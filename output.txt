@@ -1,7 +1,0 @@
-Queue overflow!!
-Queue overflow!!
-Queue overflow!!
-Queue overflow!!
-Queue overflow!!
-NO element in queue!!
--1
