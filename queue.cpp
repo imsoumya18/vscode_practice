@@ -29,13 +29,50 @@ public:
         back = NULL;
     }
 
-    void enqueue(int x){}
+    void enqueue(int x)
+    {
+        node *nd = new node(x);
+        if (front == NULL)
+        {
+            front = nd;
+            back = nd;
+            return;
+        }
+        back->next = nd;
+        back = nd;
+    }
 
-    void dequeue(){}
+    void dequeue()
+    {
+        if (front == NULL)
+        {
+            cout << "Queue underflow!!" << endl;
+            return;
+        }
 
-    int peek(){}
+        node *todelete = front;
+        front = front->next;
 
-    bool empty(){}
+        delete todelete;
+    }
+
+    int peek()
+    {
+        if (front == NULL)
+        {
+            cout << "NO element in queue!!" << endl;
+            return -1;
+        }
+
+        return front->data;
+    }
+
+    bool empty()
+    {
+        if (front == NULL)
+            return true;
+        return false;
+    }
 };
 
 int main()
