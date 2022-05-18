@@ -1,26 +1,28 @@
 // @author Soumya
 #include <iostream>
-#include <set>
+#include <vector>
 using namespace std;
 
-int lengthOfLongestSubstring(string s)
+vector<vector<int>> subsets(vector<int> &nums)
 {
-    int n = s.size(), maxi = 1;
-    for (int i = 0; i < n - 1; i++)
-        for (int j = i; j < n; j++)
-        {
-            set<char> box;
-            for (int k = i; k <= j; k++)
-            {
-                box.insert(s[k]);
-                if (box.size() < k - i + 1)
-                    break;
-            }
-            if (box.size() > maxi)
-                maxi = box.size();
-        }
+    vector<vector<int>> subs;
+    vector<vector<int>> subs2;
+    vector<int> temp;
+    subs.push_back(temp);
 
-    return maxi;
+    for (auto i : nums)
+    {
+        for (auto j : subs)
+        {
+            subs2.push_back(j);
+            j.push_back(i);
+            subs2.push_back(j);
+        }
+        subs = subs2;
+        subs2.clear();
+    }
+
+    return subs;
 }
 
 int main()
@@ -30,15 +32,12 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int n;
-    cin >> n;
+    vector<int> nums{1, 2, 3};
 
-    int arr[n][n] = {0};
-
-    for (int i = 0; i < n; i++)
+    for (auto i : subsets(nums))
     {
-        for (int j = 0; j < n; j++)
-            cout << arr[i][j] << " ";
+        for (auto j : i)
+            cout << j << " ";
         cout << endl;
     }
 
