@@ -16,37 +16,47 @@ struct Node
     }
 };
 
-// preoreder traversal (node-left-right)
-void preorder(struct Node *root)
+// search function
+int search(int inorder[], int start, int end, int curr)
 {
-    if (root == NULL)
-        return;
+    for (int i = start; i <= end; i++)
+        if (inorder[i] == curr)
+            return i;
 
-    cout << root->data << " ";
-    preorder(root->left);
-    preorder(root->right);
-};
-
-// inorder traversal (left-node-right)
-void inorder(struct Node *root)
-{
-    if (root == NULL)
-        return;
-
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
+    return -1;
 }
 
-// postorder traversal (left-right-node)
-void postorder(struct Node *root)
+// build a tree using preorder & inorder
+Node *buildTree(int preorder[], int inorder[], int start, int end)
+{
+    static int idx = 0;
+
+    if (start > end)
+        return NULL;
+
+    int curr = preorder[idx];
+    idx++;
+    Node *node = new Node(curr);
+
+    if (start == end)
+        return node;
+
+    int pos = search(inorder, start, end, curr);
+    node->left = buildTree(preorder, inorder, start, pos - 1);
+    node->right = buildTree(preorder, inorder, pos + 1, end);
+
+    return node;
+}
+
+// print inorder for verification
+void inorderPrint(Node *root)
 {
     if (root == NULL)
         return;
 
-    postorder(root->left);
-    postorder(root->right);
+    inorderPrint(root->left);
     cout << root->data << " ";
+    inorderPrint(root->right);
 }
 
 int main()
@@ -56,29 +66,12 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    struct Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
-    /*
-         1
-       /   \
-      2     3
-     / \   / \
-    4   5 6   7
-    */
+    int preorder[] = {1, 2, 4, 3, 5};
+    int inorder[] = {4, 2, 1, 5, 3};
 
-    preorder(root);
-    cout << endl;
+    Node *node = buildTree(preorder, inorder, 0, 4);
 
-    inorder(root);
-    cout << endl;
-
-    postorder(root);
-    cout << endl;
+    inorderPrint(node);
 
     return 0;
 }
