@@ -1,32 +1,65 @@
 // @author Soumya
 #include <iostream>
-#include <stack>
 using namespace std;
 
-void insert_bottom(stack<int> &st, int top_ele)
+class node
 {
-    if (st.empty())
+public:
+    int data;
+    node *next;
+
+    node(int val)
     {
-        st.push(top_ele);
-        return;
+        data = val;
+        next = NULL;
+    }
+};
+
+class stack
+{
+    node *head;
+
+public:
+    stack()
+    {
+        head = NULL;
     }
 
-    int ele = st.top();
-    st.pop();
-    insert_bottom(st, top_ele);
-    st.push(ele);
-}
+    void push(int x)
+    {
+        node *nd = new node(x);
 
-void rev_stack(stack<int> &st)
-{
-    if (st.empty())
-        return;
+        nd->next = head;
+        head = nd;
+    }
 
-    int top_ele = st.top();
-    st.pop();
-    rev_stack(st);
-    insert_bottom(st, top_ele);
-}
+    void pop()
+    {
+        if (head == NULL)
+        {
+            cout << "Stack is empty!!" << endl;
+            return;
+        }
+
+        head = head->next;
+    }
+
+    int peek()
+    {
+        if (head == NULL)
+        {
+            cout << "Stack is empty!!" << endl;
+            return -1;
+        }
+
+        return head->data;
+    }
+
+    bool empty()
+    {
+        return head == NULL;
+    }
+};
 
 int main()
 {
@@ -35,21 +68,24 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    stack<int> st;
+    stack st;
 
     st.push(1);
     st.push(2);
     st.push(3);
-    st.push(4);
-    st.push(5);
 
-    rev_stack(st);
+    cout << st.peek() << endl;
+    st.pop();
 
-    while (!st.empty())
-    {
-        cout << st.top() << endl;
-        st.pop();
-    }
+    cout << st.peek() << endl;
+    st.pop();
+
+    cout << st.peek() << endl;
+    st.pop();
+
+    st.pop();
+
+    cout << st.empty() << endl;
 
     return 0;
 }
