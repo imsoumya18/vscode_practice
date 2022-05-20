@@ -1,35 +1,19 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <queue>
 using namespace std;
 
-vector<int> bfs_graph(int v, vector<int> adj[])
+// bubble sort algorithm
+
+/*Repeatedly swap two adjacent elements
+if they are in wrong order*/
+
+void selection_sort(vector<int> &vct)
 {
-    vector<int> bfs;
-    vector<int> vis(v + 1, 0);
-    for (int i = 1; i <= v; i++)
-        if (!vis[i])
-        {
-            queue<int> q;
-            q.push(i);
-            vis[i] = 1;
-
-            while (!q.empty())
-            {
-                int node = q.front();
-                q.pop();
-                bfs.push_back(node);
-
-                for (auto it : adj[node])
-                    if (!vis[it])
-                    {
-                        q.push(it);
-                        vis[it] = 1;
-                    }
-            }
-        }
-    return bfs;
+    for (int i = 0; i < vct.size() - 1; i++)
+        for (int j = 0; j < vct.size() - i - 1; j++)
+            if (vct[j + 1] < vct[j])
+                swap(vct[j], vct[j + 1]);
 }
 
 int main()
@@ -39,30 +23,12 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int n, m, i;
-    cin >> n >> m;
+    vector<int> vct{12, 45, 23, 51, 19, 8};
 
-    vector<int> adj[n + 1];
+    selection_sort(vct);
 
-    for (i = 0; i < m; i++)
-    {
-        int u, v;
-        cin >> u >> v;
-
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-
-    for (i = 1; i <= n; i++)
-    {
-        cout << i << "-->   ";
-        for (auto j : adj[i])
-            cout << j << " ";
-        cout << endl;
-    }
-
-    for (auto p : bfs_graph(n, adj))
-        cout << p << " ";
+    for (auto i : vct)
+        cout << i << " ";
 
     return 0;
 }

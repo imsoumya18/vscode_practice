@@ -7,6 +7,7 @@ using namespace std;
 vector<vector<int>> kClosest(vector<vector<int>> &points, int k)
 {
     vector<vector<float>> val;
+    vector<vector<int>> res;
 
     for (int i = 0; i < points.size(); i++)
     {
@@ -16,9 +17,15 @@ vector<vector<int>> kClosest(vector<vector<int>> &points, int k)
         val.push_back(temp);
     }
 
-    for(i=0; i<val.size();i++)
+    for (int i = 0; i < val.size() - 1; i++)
+        for (int j = 0; j < val.size() - i - 1; j++)
+            if (val[j + 1][1] < val[j][1])
+                swap(val[j], val[j + 1]);
 
-    return points;
+    for (int i = 0; i < k; i++)
+        res.push_back(points[val[i][0]]);
+
+    return res;
 }
 
 int main()
@@ -32,6 +39,13 @@ int main()
     int k = 2;
 
     clop = kClosest(points, k);
+
+    for (auto i : clop)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 
     return 0;
 }
