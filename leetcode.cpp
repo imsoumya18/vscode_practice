@@ -1,32 +1,57 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <cmath>
 using namespace std;
 
 vector<vector<int>> kClosest(vector<vector<int>> &points, int k)
 {
-    vector<vector<float>> val;
+    vector<pair<int, pair<int, int>>> v;
     vector<vector<int>> res;
 
-    for (int i = 0; i < points.size(); i++)
+    for (auto i : points)
     {
-        vector<float> temp;
-        temp.push_back(i);
-        temp.push_back(sqrt(points[i][0] * points[i][0] + points[i][1] * points[i][1]));
-        val.push_back(temp);
+        int x = i[0] * i[0] + i[1] * i[1];
+        v.push_back({x, {i[0], i[1]}});
     }
 
-    for (int i = 0; i < val.size() - 1; i++)
-        for (int j = 0; j < val.size() - i - 1; j++)
-            if (val[j + 1][1] < val[j][1])
-                swap(val[j], val[j + 1]);
-
-    for (int i = 0; i < k; i++)
-        res.push_back(points[val[i][0]]);
+    for (int i = 0; i < v.size() - 1; i++)
+        for (int j = 0; j < v.size() - i - 1; j++)
+            if (v[j + 1].first < v[j].first)
+                swap(v[j], v[j + 1]);
+    
+    for(int i=0; i<k;i++){
+        vector<int> temp;
+        temp.push_back(v[i].second.first);
+        temp.push_back(v[i].second.second);
+        res.push_back(temp);
+        temp.clear();
+    }
 
     return res;
 }
+
+// vector<vector<int>> kClosest(vector<vector<int>> &points, int k)
+// {
+//     vector<vector<int>> val;
+//     vector<vector<int>> res;
+
+//     for (int i = 0; i < points.size(); i++)
+//     {
+//         vector<int> temp;
+//         temp.push_back(i);
+//         temp.push_back(points[i][0] * points[i][0] + points[i][1] * points[i][1]);
+//         val.push_back(temp);
+//     }
+
+//     for (int i = 0; i < val.size() - 1; i++)
+//         for (int j = 0; j < val.size() - i - 1; j++)
+//             if (val[j + 1][1] < val[j][1])
+//                 swap(val[j], val[j + 1]);
+
+//     val.erase(1, 2);
+
+//     return val;
+// }
 
 int main()
 {
