@@ -1,5 +1,6 @@
 // @author Soumya
 #include <iostream>
+#include <queue>
 using namespace std;
 
 struct Node
@@ -16,47 +17,34 @@ struct Node
     }
 };
 
-// search function
-int search(int inorder[], int start, int end, int curr)
-{
-    for (int i = start; i <= end; i++)
-        if (inorder[i] == curr)
-            return i;
-
-    return -1;
-}
-
-// build a tree using postorder & inorder
-Node *buildTree(int postorder[], int inorder[], int start, int end)
-{
-    static int idx = 4;
-
-    if (start > end)
-        return NULL;
-
-    int curr = postorder[idx];
-    idx--;
-    Node *node = new Node(curr);
-
-    if (start == end)
-        return node;
-
-    int pos = search(inorder, start, end, curr);
-    node->right = buildTree(postorder, inorder, pos + 1, end);
-    node->left = buildTree(postorder, inorder, start, pos - 1);
-
-    return node;
-}
-
-// print inorder for verification
-void inorderPrint(Node *root)
+// level order traversal
+void printLevelOrder(Node *root)
 {
     if (root == NULL)
         return;
 
-    inorderPrint(root->left);
-    cout << root->data << " ";
-    inorderPrint(root->right);
+    queue<Node *> q;
+    q.push(root);
+    q.push(NULL);
+
+    while (!q.empty())
+    {
+        Node *node = q.front();
+        q.pop();
+        if (node != NULL)
+        {
+            cout << node->data << " ";
+            if (node->left)
+                q.push(node->left);
+            if (node->right)
+                q.push(node->right);
+        }
+        else if (!q.empty())
+        {
+            cout << endl;
+            q.push(NULL);
+        }
+    }
 }
 
 int main()
@@ -66,12 +54,22 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int postorder[] = {4, 2, 5, 3, 1};
-    int inorder[] = {4, 2, 1, 5, 3};
+    struct Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+    /*
+         1
+       /   \
+      2     3
+     / \   / \
+    4   5 6   7
+    */
 
-    Node *node = buildTree(postorder, inorder, 0, 4);
-
-    inorderPrint(node);
+    printLevelOrder(root);
 
     return 0;
 }
