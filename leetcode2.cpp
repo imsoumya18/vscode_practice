@@ -1,19 +1,12 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include<stack>
 using namespace std;
 
-// bubble sort algorithm
-
-/*Repeatedly swap two adjacent elements
-if they are in wrong order*/
-
-void selection_sort(vector<int> &vct)
+vector<string> generateParenthesis(int n)
 {
-    for (int i = 0; i < vct.size() - 1; i++)
-        for (int j = 0; j < vct.size() - i - 1; j++)
-            if (vct[j + 1] < vct[j])
-                swap(vct[j], vct[j + 1]);
+    stack<int> st1, st2;
 }
 
 int main()
@@ -23,12 +16,11 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> vct{12, 45, 23, 51, 19, 8};
+    int n;
+    cin >> n;
 
-    selection_sort(vct);
-
-    for (auto i : vct)
-        cout << i << " ";
+    for (auto i : generateParenthesis(n))
+        cout << i << endl;
 
     return 0;
 }
