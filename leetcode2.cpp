@@ -1,12 +1,28 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
-#include<stack>
 using namespace std;
 
-vector<string> generateParenthesis(int n)
+double myPow(double x, int n)
 {
-    stack<int> st1, st2;
+    if (x == 1)
+        return 1;
+
+    int cnt = 0;
+    double res = 1;
+
+    if (n < 0)
+    {
+        x = 1 / x;
+        n = -n;
+    }
+
+    while (cnt != n)
+    {
+        res *= x;
+        cnt++;
+    }
+
+    return res;
 }
 
 int main()
@@ -16,11 +32,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int n;
-    cin >> n;
+    double x = -2;
+    int n = -2;
 
-    for (auto i : generateParenthesis(n))
-        cout << i << endl;
+    cout << myPow(x, n);
 
     return 0;
 }
