@@ -26,24 +26,24 @@ int search(int inorder[], int start, int end, int curr)
     return -1;
 }
 
-// build a tree using preorder & inorder
-Node *buildTree(int preorder[], int inorder[], int start, int end)
+// build a tree using postorder & inorder
+Node *buildTree(int postorder[], int inorder[], int start, int end)
 {
-    static int idx = 0;
+    static int idx = 4;
 
     if (start > end)
         return NULL;
 
-    int curr = preorder[idx];
-    idx++;
+    int curr = postorder[idx];
+    idx--;
     Node *node = new Node(curr);
 
     if (start == end)
         return node;
 
     int pos = search(inorder, start, end, curr);
-    node->left = buildTree(preorder, inorder, start, pos - 1);
-    node->right = buildTree(preorder, inorder, pos + 1, end);
+    node->right = buildTree(postorder, inorder, pos + 1, end);
+    node->left = buildTree(postorder, inorder, start, pos - 1);
 
     return node;
 }
@@ -66,10 +66,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int preorder[] = {1, 2, 4, 3, 5};
+    int postorder[] = {4, 2, 5, 3, 1};
     int inorder[] = {4, 2, 1, 5, 3};
 
-    Node *node = buildTree(preorder, inorder, 0, 4);
+    Node *node = buildTree(postorder, inorder, 0, 4);
 
     inorderPrint(node);
 
