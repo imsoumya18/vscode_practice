@@ -42,7 +42,7 @@ int count_nodes(Node *root)
                 q.push(node->right);
             cnt++;
         }
-        else if (node == NULL)
+        else if (q.empty())
             q.push(NULL);
     }
 
