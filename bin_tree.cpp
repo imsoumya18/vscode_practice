@@ -18,33 +18,35 @@ struct Node
 };
 
 // level order traversal
-void printLevelOrder(Node *root)
+int count_nodes(Node *root)
 {
     if (root == NULL)
-        return;
+        return 0;
 
     queue<Node *> q;
     q.push(root);
     q.push(NULL);
 
+    int cnt = 0;
+
     while (!q.empty())
     {
         Node *node = q.front();
         q.pop();
+
         if (node != NULL)
         {
-            cout << node->data << " ";
             if (node->left)
                 q.push(node->left);
             if (node->right)
                 q.push(node->right);
+            cnt++;
         }
-        else if (!q.empty())
-        {
-            cout << endl;
+        else if (node == NULL)
             q.push(NULL);
-        }
     }
+
+    return cnt;
 }
 
 int main()
@@ -69,7 +71,7 @@ int main()
     4   5 6   7
     */
 
-    printLevelOrder(root);
+    cout << count_nodes(root);
 
     return 0;
 }

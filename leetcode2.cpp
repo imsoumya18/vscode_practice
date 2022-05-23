@@ -4,25 +4,27 @@ using namespace std;
 
 double myPow(double x, int n)
 {
-    if (x == 1)
+    if (n == 0)
         return 1;
 
-    int cnt = 0;
-    double res = 1;
+    long long nn = n;
 
-    if (n < 0)
+    if (nn < 0)
     {
         x = 1 / x;
-        n = -n;
+        nn = nn * (-1);
     }
 
-    while (cnt != n)
+    if (nn % 2 == 0)
     {
-        res *= x;
-        cnt++;
+        double temp = myPow(x, nn / 2);
+        return temp * temp;
     }
-
-    return res;
+    else
+    {
+        double temp = myPow(x, nn - 1);
+        return x * temp;
+    }
 }
 
 int main()
@@ -33,7 +35,7 @@ int main()
 #endif
 
     double x = -2;
-    int n = -2;
+    int n = 5;
 
     cout << myPow(x, n);
 
