@@ -17,13 +17,32 @@ struct Node
     }
 };
 
-// level order traversal
-int count_nodes(Node *root)
+// height of a binary tree (no of nodes in the longest path)
+int calcHeight(Node *root)
 {
     if (root == NULL)
         return 0;
 
-    return count_nodes(root->left) + count_nodes(root->right) + root->data;
+    int lHeight = calcHeight(root->left);
+    int rHeight = calcHeight(root->right);
+
+    return max(lHeight, rHeight) + 1;
+}
+
+// diameter of a binary tree (no of nodes in the longest path between any 2 leaves)
+int calcDiameter(Node *root)
+{
+    if (root == NULL)
+        return 0;
+
+    int lHeight = calcHeight(root->left);
+    int rHeight = calcHeight(root->right);
+    int currDiameter = lHeight + rHeight + 1;
+
+    int lDiameter = calcDiameter(root->left);
+    int rDiameter = calcDiameter(root->right);
+
+    return max(currDiameter, max(lDiameter, rDiameter));
 }
 
 int main()
@@ -48,7 +67,7 @@ int main()
     4   5 6   7
     */
 
-    cout << count_nodes(root);
+    cout << calcDiameter(root) << endl;
 
     return 0;
 }
