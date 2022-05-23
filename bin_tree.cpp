@@ -23,30 +23,7 @@ int count_nodes(Node *root)
     if (root == NULL)
         return 0;
 
-    queue<Node *> q;
-    q.push(root);
-    q.push(NULL);
-
-    int cnt = 0;
-
-    while (!q.empty())
-    {
-        Node *node = q.front();
-        q.pop();
-
-        if (node != NULL)
-        {
-            if (node->left)
-                q.push(node->left);
-            if (node->right)
-                q.push(node->right);
-            cnt++;
-        }
-        else if (q.empty())
-            q.push(NULL);
-    }
-
-    return cnt;
+    return count_nodes(root->left) + count_nodes(root->right) + root->data;
 }
 
 int main()
