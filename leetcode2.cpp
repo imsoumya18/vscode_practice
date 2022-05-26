@@ -84,7 +84,107 @@ vector<int> rightSideView(TreeNode *root)
 
 vector<int> productExceptSelf(vector<int> &nums)
 {
-    vector<int> vct;
+    vector<int> vct(nums.size());
+    int pre = 1, post = 1;
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        vct[i] = pre;
+        pre *= nums[i];
+    }
+
+    for (int i = nums.size() - 1; i >= 0; i--)
+    {
+        vct[i] *= post;
+        post *= nums[i];
+    }
+
+    return vct;
+}
+
+string intToRoman(int num)
+{
+    string s = "";
+
+    while (num >= 1000)
+    {
+        s += "M";
+        num -= 1000;
+    }
+
+    while (num >= 900)
+    {
+        s += "CM";
+        num -= 900;
+    }
+
+    while (num >= 500)
+    {
+        s += "D";
+        num -= 500;
+    }
+
+    while (num >= 400)
+    {
+        s += "CD";
+        num -= 400;
+    }
+
+    while (num >= 100)
+    {
+        s += "C";
+        num -= 100;
+    }
+
+    while (num >= 90)
+    {
+        s += "XC";
+        num -= 90;
+    }
+
+    while (num >= 50)
+    {
+        s += "L";
+        num -= 50;
+    }
+
+    while (num >= 40)
+    {
+        s += "XL";
+        num -= 40;
+    }
+
+    while (num >= 10)
+    {
+        s += "X";
+        num -= 10;
+    }
+
+    while (num >= 9)
+    {
+        s += "IX";
+        num -= 9;
+    }
+
+    while (num >= 5)
+    {
+        s += "V";
+        num -= 5;
+    }
+
+    while (num >= 4)
+    {
+        s += "IV";
+        num -= 4;
+    }
+
+    while (num >= 1)
+    {
+        s += "I";
+        num -= 1;
+    }
+
+    return s;
 }
 
 int main()
@@ -96,8 +196,8 @@ int main()
 
     vector<int> nums{1, 2, 3, 4};
 
-    for (auto i : productExceptSelf(nums))
-        cout << i << " ";
+    // for (auto i : productExceptSelf(nums))
+    //     cout << i << " ";
 
     struct TreeNode *root = new TreeNode(1);
     root->left = new TreeNode(2);
@@ -109,6 +209,10 @@ int main()
 
     // for (auto i : rightSideView(root))
     //     cout << i << " ";
+
+    int num = 9;
+
+    cout << intToRoman(num) << endl;
 
     return 0;
 }
