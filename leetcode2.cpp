@@ -18,42 +18,6 @@ struct TreeNode
     }
 };
 
-int search(int curr, vector<int> &inorder, int start, int end)
-{
-    int i;
-    for (i = start; i <= end; i++)
-        if (curr == inorder[i])
-            return i;
-
-    return -1;
-}
-
-TreeNode *proper(vector<int> &preorder, vector<int> &inorder, int start, int end)
-{
-    int idx = 0;
-
-    if (start > end)
-        return NULL;
-
-    int curr = preorder[idx];
-    idx++;
-    TreeNode *node = new TreeNode(curr);
-
-    if (start == end)
-        return node;
-
-    int pos = search(curr, inorder, start, end);
-    node->left = proper(preorder, inorder, start, pos - 1);
-    node->right = proper(preorder, inorder, pos + 1, end);
-
-    return node;
-}
-
-TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
-{
-    return proper(preorder, inorder, 0, inorder.size() - 1);
-}
-
 void printLevelOrder(TreeNode *root)
 {
     if (root == NULL)
@@ -83,6 +47,46 @@ void printLevelOrder(TreeNode *root)
     }
 }
 
+vector<int> rightSideView(TreeNode *root)
+{
+    int i;
+    vector<int> vct;
+    if (root == NULL)
+        return vct;
+
+    queue<TreeNode *> q;
+    q.push(root);
+    q.push(NULL);
+
+    while (!q.empty())
+    {
+        TreeNode *node = q.front();
+        q.pop();
+
+        if (node != NULL)
+        {
+            i = node->val;
+            if (node->left)
+                q.push(node->left);
+            if (node->right)
+                q.push(node->right);
+        }
+        else if (!q.empty())
+        {
+            vct.push_back(i);
+            q.push(NULL);
+        }
+    }
+    vct.push_back(i);
+
+    return vct;
+}
+
+vector<int> productExceptSelf(vector<int> &nums)
+{
+    vector<int> vct;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -90,18 +94,21 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    struct TreeNode *root = new TreeNode(1);
+    vector<int> nums{1, 2, 3, 4};
 
+    for (auto i : productExceptSelf(nums))
+        cout << i << " ";
+
+    struct TreeNode *root = new TreeNode(1);
     root->left = new TreeNode(2);
     root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
     root->left->right = new TreeNode(5);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
+    root->right->right = new TreeNode(4);
 
-    vector<int> preorder{3, 9, 20, 15, 7};
-    vector<int> inorder{9, 3, 15, 20, 7};
-    printLevelOrder(buildTree(preorder, inorder));
+    // printLevelOrder(root);
+
+    // for (auto i : rightSideView(root))
+    //     cout << i << " ";
 
     return 0;
 }
