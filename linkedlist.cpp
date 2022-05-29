@@ -38,12 +38,14 @@ void insertAtEnd(node *&head, int val)
 // print elements of linked list
 void display(node *head)
 {
-    while (head != NULL)
+    node *temp = head;
+
+    while (temp != NULL)
     {
-        cout << head->data << " ";
-        head = head->next;
+        cout << temp->data << "->";
+        temp = temp->next;
     }
-    cout << endl;
+    cout << "NULL" << endl;
 }
 
 int main()
