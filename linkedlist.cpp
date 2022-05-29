@@ -1,55 +1,48 @@
-// { Driver Code Starts
-#include <bits/stdc++.h>
+// @author Soumya
+#include <iostream>
 using namespace std;
 
-/* a Node of the doubly linked list */
-struct Node
+// linked list implementation
+class node
 {
+public:
     int data;
-    struct Node *next;
-    struct Node *prev;
-    Node(int x)
+    node *next;
+
+    node(int val)
     {
-        data = x;
-        next = prev = NULL;
+        data = val;
+        next = NULL;
     }
 };
 
-void addNode(Node *head, int pos, int data);
-
-Node *insert(Node *head, int x)
+// insert node at end
+void insertAtEnd(node *&head, int val)
 {
+    node *n = new node(val);
+
     if (head == NULL)
     {
-        return new Node(x);
+        head = n;
+        return;
     }
-    Node *n = new Node(x);
+
+    node *temp = head;
+
+    while (temp->next != NULL)
+        temp = temp->next;
 
     head->next = n;
-    n->prev = head;
-    head = n;
-    return head;
 }
 
-void printList(Node *head)
+// print elements of linked list
+void display(node *head)
 {
-    // The purpose of below two loops is
-    // to test the created DLL
-    Node *temp = head;
-    if (temp != NULL)
+    while (head != NULL)
     {
-
-        while (temp->next != NULL)
-            temp = temp->next;
-        while (temp->prev != NULL)
-            temp = temp->prev;
+        cout << head->data << " ";
+        head = head->next;
     }
-    while (temp != NULL)
-    {
-        printf("%d ", temp->data);
-        temp = temp->next;
-    }
-
     cout << endl;
 }
 
@@ -59,56 +52,14 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int t;
-    scanf("%d", &t);
-    while (t--)
-    {
-        Node *head = NULL;
-        Node *root = NULL;
-        int n;
-        scanf("%d", &n);
-        for (int i = 0; i < n; i++)
-        {
-            int x;
-            scanf("%d", &x);
-            head = insert(head, x);
-            if (root == NULL)
-                root = head;
-        }
-        head = root;
-        int pos, data;
-        cin >> pos >> data;
-        addNode(head, pos, data);
-        printList(head);
-    }
+
+    node *head = NULL;
+    insertAtEnd(head, 1);
+    insertAtEnd(head, 2);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 4);
+
+    display(head);
+
     return 0;
-} // } Driver Code Ends
-
-/* a Node of the doubly linked list
-struct Node
-{
-  int data;
-  struct Node *next;
-  struct Node *prev;
-  Node(int x) { data = x; next = prev = NULL; }
-}; */
-
-// Function to insert a new node at given position in doubly linked list.
-void addNode(Node *head, int pos, int data)
-{
-    int i = 0;
-    while (i != pos)
-    {
-        head = head->next;
-        i++;
-    }
-    struct Node *new_node;
-
-    new_node->data = data;
-    if (head->next != NULL)
-        head->next->prev = new_node;
-    new_node->next = head->next;
-    new_node->prev = head;
-    head->next = new_node;
-    // Your code here
 }
