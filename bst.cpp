@@ -30,14 +30,18 @@ Node *insertBST(Node *root, int val)
 }
 
 // inorder traversal (left-node-right)
-void inorder(struct Node *root)
+Node *searchInBST(Node *root, int key)
 {
     if (root == NULL)
-        return;
+        return NULL;
 
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
+    if (key == root->data)
+        return root;
+
+    if (key < root->data)
+        return searchInBST(root->left, key);
+
+    return searchInBST(root->right, key);
 }
 
 int main()
@@ -55,8 +59,10 @@ int main()
     insertBST(root, 2);
     insertBST(root, 7);
 
-    inorder(root);
-    // inorder of BST is always sorted
+    if (searchInBST(root, 3) == NULL)
+        cout << "Key doesn't exist" << endl;
+    else
+        cout << "Key exists" << endl;
 
     return 0;
 }
