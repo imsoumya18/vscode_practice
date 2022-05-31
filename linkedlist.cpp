@@ -32,7 +32,7 @@ void insertAtEnd(node *&head, int val)
     while (temp->next != NULL)
         temp = temp->next;
 
-    head->next = n;
+    temp->next = n;
 }
 
 // print elements of linked list
@@ -60,6 +60,7 @@ int main()
     insertAtEnd(head, 2);
     insertAtEnd(head, 3);
     insertAtEnd(head, 4);
+    insertAtEnd(head, 5);
 
     display(head);
 
