@@ -18,10 +18,11 @@ struct TreeNode
     }
 };
 
-void printLevelOrder(TreeNode *root)
+vector<vector<int>> printLevelOrder(TreeNode *root)
 {
+    vector<vector<int>> vct;
     if (root == NULL)
-        return;
+        return vct;
 
     queue<TreeNode *> q;
     q.push(root);
@@ -29,11 +30,13 @@ void printLevelOrder(TreeNode *root)
 
     while (!q.empty())
     {
+        vector<int> temp;
         TreeNode *node = q.front();
         q.pop();
         if (node != NULL)
         {
             cout << node->val << " ";
+            temp.push_back(node->val);
             if (node->left)
                 q.push(node->left);
             if (node->right)
@@ -41,25 +44,13 @@ void printLevelOrder(TreeNode *root)
         }
         else if (!q.empty())
         {
+            vct.push_back(temp);
             cout << endl;
             q.push(NULL);
         }
+
+        return vct;
     }
-}
-
-bool exist(vector<vector<char>> &board, string word)
-{
-    int i = 0, j = 0, k, p, q;
-
-    for (i = 0; i < board.size(); i++)
-        for (j = 0; j < board[0].size(); j++)
-            if (board[i][j] == word[0])
-            {
-                p=i;
-                q=j;
-                k=0;
-                while(p<board.size() && q<board[0].size()){}
-            }
 }
 
 int main()
@@ -69,14 +60,22 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<char>> board{
-        {'A', 'B', 'C', 'E'},
-        {'S', 'F', 'C', 'S'},
-        {'A', 'D', 'E', 'E'}};
+    vector<vector<int>> vct;
 
-    string word = "ABCCED";
+    TreeNode *root = new TreeNode(3);
+    root->left = new TreeNode(9);
+    root->right = new TreeNode(20);
+    root->right->left = new TreeNode(15);
+    root->right->right = new TreeNode(7);
 
-    cout << exist(board, word) << endl;
+    vct = printLevelOrder(root);
+
+    for (auto i : vct)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 
     return 0;
 }
