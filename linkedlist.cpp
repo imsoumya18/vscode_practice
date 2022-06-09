@@ -3,23 +3,29 @@
 using namespace std;
 
 // linked list implementation
-class node
+class ListNode
 {
 public:
-    int data;
-    node *next;
+    int val;
+    ListNode *next;
 
-    node(int val)
+    ListNode()
     {
-        data = val;
+        val = 0;
+        next = NULL;
+    }
+
+    ListNode(int data)
+    {
+        val = data;
         next = NULL;
     }
 };
 
 // insert node at end
-void insertAtEnd(node *&head, int val)
+void insertAtEnd(ListNode *&head, int val)
 {
-    node *n = new node(val);
+    ListNode *n = new ListNode(val);
 
     if (head == NULL)
     {
@@ -27,7 +33,7 @@ void insertAtEnd(node *&head, int val)
         return;
     }
 
-    node *temp = head;
+    ListNode *temp = head;
 
     while (temp->next != NULL)
         temp = temp->next;
@@ -36,16 +42,67 @@ void insertAtEnd(node *&head, int val)
 }
 
 // print elements of linked list
-void display(node *head)
+void display(ListNode *head)
 {
-    node *temp = head;
+    ListNode *temp = head;
 
     while (temp != NULL)
     {
-        cout << temp->data << "->";
+        cout << temp->val << "->";
         temp = temp->next;
     }
     cout << "NULL" << endl;
+}
+
+ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
+{
+    ListNode *lst = new ListNode();
+    ListNode *temp = lst;
+
+    while (list1 != NULL && list2 != NULL)
+    {
+        if (list1->val < list2->val)
+        {
+            temp->next = new ListNode(list1->val);
+            temp = temp->next;
+            list1 = list1->next;
+        }
+        else
+        {
+            temp->next = new ListNode(list2->val);
+            temp = temp->next;
+            list2 = list2->next;
+        }
+    }
+
+    while (list1 != NULL)
+    {
+        temp->next = new ListNode(list1->val);
+        temp = temp->next;
+        list1 = list1->next;
+    }
+
+    while (list2 != NULL)
+    {
+        temp->next = new ListNode(list2->val);
+        temp = temp->next;
+        list2 = list2->next;
+    }
+
+    return lst->next;
+}
+
+ListNode *reverseList(ListNode *head)
+{
+    ListNode *prev = NULL, *nxt = NULL;
+    while (head != NULL)
+    {
+        nxt = head->next;
+        head->next = prev;
+        prev = head;
+        head = nxt;
+    }
+    return prev;
 }
 
 int main()
@@ -55,14 +112,17 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    node *head = NULL;
-    insertAtEnd(head, 1);
-    insertAtEnd(head, 2);
-    insertAtEnd(head, 3);
-    insertAtEnd(head, 4);
-    insertAtEnd(head, 5);
+    ListNode *list1 = new ListNode(1);
+    insertAtEnd(list1, 2);
+    insertAtEnd(list1, 3);
+    insertAtEnd(list1, 4);
+    insertAtEnd(list1, 5);
 
-    display(head);
+    ListNode *list2 = new ListNode(1);
+    insertAtEnd(list2, 3);
+    insertAtEnd(list2, 4);
+
+    display(reverseList(list1));
 
     return 0;
 }

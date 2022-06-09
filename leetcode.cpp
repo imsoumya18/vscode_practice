@@ -1,12 +1,24 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <string>
+#include <cstring>
 using namespace std;
 
-void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
+vector<vector<string>> groupAnagrams(vector<string> &strs)
 {
-    vector<>
+    vector<vector<string>> vct;
+    for (auto p : strs)
+    {
+        for (int i = 0; i < p.size() - 1; i++)
+            for (int j = 0; j < p.size() - i - 1; j++)
+                if (p[j + 1] < p[j])
+                    swap(p[j + 1], p[j]);
+    }
+
+    for (auto i : strs)
+        cout << i << endl;
+
+    return vct;
 }
 
 int main()
@@ -16,13 +28,15 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums1{1, 2, 3, 0, 0, 0}, nums2{2, 5, 6};
-    int m = 3, n = 3;
+    vector<string> strs{"eat", "tea", "tan", "ate", "nat", "bat"};
+    groupAnagrams(strs);
 
-    merge(nums1, m, nums2, n);
-
-    for (auto i : nums1)
-        cout << i << " ";
+    // for (auto i : groupAnagrams(strs))
+    // {
+    //     for (auto j : i)
+    //         cout << j << " ";
+    //     cout << endl;
+    // }
 
     return 0;
 }
