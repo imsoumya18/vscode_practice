@@ -105,6 +105,26 @@ ListNode *reverseList(ListNode *head)
     return prev;
 }
 
+ListNode *swapPairs(ListNode *head)
+{
+    ListNode *temp = head;
+
+    while (head->next->next != NULL)
+    {
+        ListNode *t = head->next;
+        head->next = head->next->next;
+        t->next = head;
+        head = head->next->next;
+    }
+
+    ListNode *t = head->next;
+    head->next = head->next->next;
+    t->next = head;
+    head = head->next->next;
+
+    return temp->next;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -117,12 +137,13 @@ int main()
     insertAtEnd(list1, 3);
     insertAtEnd(list1, 4);
     insertAtEnd(list1, 5);
+    insertAtEnd(list1, 6);
 
     ListNode *list2 = new ListNode(1);
     insertAtEnd(list2, 3);
     insertAtEnd(list2, 4);
 
-    display(reverseList(list1));
+    display(swapPairs(list1));
 
     return 0;
 }

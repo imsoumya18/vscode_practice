@@ -3,20 +3,22 @@
 #include <vector>
 using namespace std;
 
+// min heap insertion
 void insert(vector<int> &harr, int p)
 {
     harr.push_back(p);
 
-    int n = harr.size() - 1, flag = 1;
+    int n = harr.size() - 1, flag = 0;
 
-    while (flag != 0)
+    while (flag != 1)
     {
         if (harr[(n - 1) / 2] > harr[n])
             swap(harr[(n - 1) / 2], harr[n]);
 
         n = (n - 1) / 2;
+
         if (n == 0)
-            flag = 0;
+            flag++;
     }
 }
 
@@ -29,7 +31,7 @@ int main()
 
     vector<int> harr{1, 8, 5, 17, 18, 12};
 
-    insert(harr, 4);
+    insert(harr, 0);
 
     for (auto i : harr)
         cout << i << " ";

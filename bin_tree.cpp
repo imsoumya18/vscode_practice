@@ -16,6 +16,17 @@ struct Node
     }
 };
 
+void deepestLeavesSum(Node *root)
+{
+    if (root == NULL)
+    {
+        cout << root->data << endl;
+        return;
+    }
+    deepestLeavesSum(root->left);
+    deepestLeavesSum(root->right);
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -41,6 +52,8 @@ int main()
      / \
     4   5
     */
+
+    deepestLeavesSum(root);
 
     return 0;
 }
