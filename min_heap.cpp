@@ -29,9 +29,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> harr{1, 8, 5, 17, 18, 12};
+    vector<int> harr{0, 8, 1, 17, 18, 12, 5};
 
-    insert(harr, 0);
+    insert(harr, 15);
 
     for (auto i : harr)
         cout << i << " ";
