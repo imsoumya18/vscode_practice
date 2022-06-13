@@ -34,32 +34,20 @@ void deletion(vector<int> &harr)
 {
     harr[0] = harr[harr.size() - 1];
     harr.pop_back();
-    int i = 0, n = harr.size();
+    int i = 0;
 
-    while (i < n)
+    while (i < harr.size())
     {
-        int lc = (i + 1) * 2, rc = (i + 1) * 2 + 1;
+        int lc = i * 2 + 1, rc = i * 2 + 2;
+        int larger = harr[lc] > harr[rc] ? i * 2 + 1 : i * 2 + 2;
 
-        if (harr[lc] > harr[rc])
+        if (harr[larger] > harr[i])
         {
-            if (harr[lc] > harr[i])
-            {
-                swap(harr[lc], harr[i]);
-                i = lc;
-            }
-            else
-                break;
+            swap(harr[i], harr[larger]);
+            i = larger;
         }
         else
-        {
-            if (harr[rc] > harr[i])
-            {
-                swap(harr[rc], harr[i]);
-                i = rc;
-            }
-            else
-                break;
-        }
+            return;
     }
 }
 
