@@ -16,42 +16,38 @@ struct Node
     }
 };
 
-int cal_height(Node *root)
+class Solution
 {
-    int lc = 0, rc = 0;
+    int sum = 0;
 
-    if (root->left != NULL)
-        lc = cal_height(root->left);
-
-    if (root->right != NULL)
-        rc = cal_height(root->right);
-
-    return max(lc, rc) + 1;
-}
-
-int deepestLeavesSum(Node *root)
-{
-    int ht = cal_height(root), ls = 0, rs = 0, i = 1;
-
-    while (root->left != NULL)
+public:
+    int deepestLeavesSum(Node *root)
     {
-        root = root->left;
-        i++;
+        int ht = cal_height(root);
+        get_sum(root, 1, ht);
+        return sum;
     }
-    if (i == ht)
-        ls = root->data;
 
-    i = 1;
-    while (root->right != NULL)
+    int cal_height(Node *root)
     {
-        root = root->right;
-        i++;
-    }
-    if (i == ht)
-        rs = root->data;
+        if (root == NULL)
+            return 0;
 
-    return ls + rs;
-}
+        return max(cal_height(root->left), cal_height(root->right)) + 1;
+    }
+
+    int get_sum(Node *root, int curr, int ht)
+    {
+        if (root != NULL)
+        {
+            if (curr == ht)
+                sum += root->data;
+
+            get_sum(root->left, curr + 1, ht);
+            get_sum(root->right, curr + 1, ht);
+        }
+    }
+};
 
 int main()
 {
@@ -81,7 +77,8 @@ int main()
     4   5
     */
 
-    cout << deepestLeavesSum(root);
+    Solution test;
+    cout << test.deepestLeavesSum(root) << endl;
 
     return 0;
 }
