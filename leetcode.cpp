@@ -4,21 +4,16 @@
 #include <cstring>
 using namespace std;
 
-vector<vector<string>> groupAnagrams(vector<string> &strs)
+int minPartitions(string n)
 {
-    vector<vector<string>> vct;
-    for (auto p : strs)
+    int maxi = 0;
+    for (auto i : n)
     {
-        for (int i = 0; i < p.size() - 1; i++)
-            for (int j = 0; j < p.size() - i - 1; j++)
-                if (p[j + 1] < p[j])
-                    swap(p[j + 1], p[j]);
+        if (i - '0' > maxi)
+            maxi = i - '0';
     }
 
-    for (auto i : strs)
-        cout << i << endl;
-
-    return vct;
+    return maxi;
 }
 
 int main()
@@ -28,15 +23,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<string> strs{"eat", "tea", "tan", "ate", "nat", "bat"};
-    groupAnagrams(strs);
+    string s = "27346209830709182346";
 
-    // for (auto i : groupAnagrams(strs))
-    // {
-    //     for (auto j : i)
-    //         cout << j << " ";
-    //     cout << endl;
-    // }
+    cout << minPartitions(s) << endl;
 
     return 0;
 }

@@ -16,15 +16,17 @@ struct Node
     }
 };
 
-void deepestLeavesSum(Node *root)
+int deepestLeavesSum(Node *root)
 {
-    if (root == NULL)
-    {
-        cout << root->data << endl;
-        return;
-    }
-    deepestLeavesSum(root->left);
-    deepestLeavesSum(root->right);
+    int lc = 0, rc = 0;
+
+    if (root->left != NULL)
+        lc = deepestLeavesSum(root->left);
+
+    if (root->right != NULL)
+        rc = deepestLeavesSum(root->right);
+
+    return max(lc, rc) + 1;
 }
 
 int main()
@@ -45,6 +47,8 @@ int main()
 
     root->left->left = new Node(4);
     root->left->right = new Node(5);
+    root->left->right->left = new Node(10);
+    root->left->right->left->right = new Node(12);
     /*
         1
        / \
@@ -53,7 +57,7 @@ int main()
     4   5
     */
 
-    deepestLeavesSum(root);
+    cout << deepestLeavesSum(root);
 
     return 0;
 }
