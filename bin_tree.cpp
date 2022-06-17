@@ -16,17 +16,41 @@ struct Node
     }
 };
 
-int deepestLeavesSum(Node *root)
+int cal_height(Node *root)
 {
     int lc = 0, rc = 0;
 
     if (root->left != NULL)
-        lc = deepestLeavesSum(root->left);
+        lc = cal_height(root->left);
 
     if (root->right != NULL)
-        rc = deepestLeavesSum(root->right);
+        rc = cal_height(root->right);
 
     return max(lc, rc) + 1;
+}
+
+int deepestLeavesSum(Node *root)
+{
+    int ht = cal_height(root), ls = 0, rs = 0, i = 1;
+
+    while (root->left != NULL)
+    {
+        root = root->left;
+        i++;
+    }
+    if (i == ht)
+        ls = root->data;
+
+    i = 1;
+    while (root->right != NULL)
+    {
+        root = root->right;
+        i++;
+    }
+    if (i == ht)
+        rs = root->data;
+
+    return ls + rs;
 }
 
 int main()
