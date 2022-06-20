@@ -1,19 +1,24 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <cstring>
+#include <string>
 using namespace std;
 
-int minPartitions(string n)
+vector<string> letterCombinations(string digits)
 {
-    int maxi = 0;
-    for (auto i : n)
+    vector<string> vct;
+
+    string keys[10] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+    for (auto i : digits)
     {
-        if (i - '0' > maxi)
-            maxi = i - '0';
+        string st = "";
+        for (auto j : keys[i - '0'])
+            st.push_back(j);
+        cout << st << endl;
     }
 
-    return maxi;
+    return vct;
 }
 
 int main()
@@ -23,9 +28,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "27346209830709182346";
+    string s = "2";
 
-    cout << minPartitions(s) << endl;
+    letterCombinations(s);
 
     return 0;
 }
