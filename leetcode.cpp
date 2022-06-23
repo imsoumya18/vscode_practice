@@ -6,16 +6,23 @@ using namespace std;
 
 vector<string> letterCombinations(string digits)
 {
-    vector<string> vct;
+    if (digits.size() == 0)
+    {
+        vector<string> vct;
+        return vct;
+    }
+
+    vector<string> vct{""};
 
     string keys[10] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     for (auto i : digits)
     {
-        string st = "";
-        for (auto j : keys[i - '0'])
-            st.push_back(j);
-        cout << st << endl;
+        vector<string> temp = vct;
+        vct.clear();
+        for (auto j : temp)
+            for (auto k : keys[i - '0'])
+                vct.push_back(j + k);
     }
 
     return vct;
@@ -30,7 +37,8 @@ int main()
 
     string s = "2";
 
-    letterCombinations(s);
+    for (auto i : letterCombinations(s))
+        cout << i << endl;
 
     return 0;
 }
