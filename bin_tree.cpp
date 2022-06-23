@@ -51,28 +51,27 @@ class Solution
 public:
     bool isSame(Node *root1, Node *root2)
     {
-        if (root1 == NULL)
+        if (root1 == NULL && root2 == NULL)
             return true;
-        else if (root1->data == root2->data)
-        {
 
-            isSame(root1->left, root2->left);
-            isSame(root1->right, root2->right);
-        }
+        else if (root1 == NULL && root2 != NULL)
+            return false;
 
-        return false;
+        else if (root1 != NULL && root2 == NULL)
+            return false;
+
+        return ((root1->data == root2->data) && isSame(root1->left, root2->left) && isSame(root1->right, root2->right));
     }
 
     bool isSubtree(Node *root, Node *subRoot)
     {
         if (root == NULL)
             return false;
-        else if (root->data == subRoot->data)
-            if (isSame(root, subRoot))
-                return true;
+        
+        if (isSame(root, subRoot))
+            return true;
 
-        isSubtree(root->left, subRoot);
-        isSubtree(root->right, subRoot);
+        return (isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot));
     }
 };
 
@@ -88,6 +87,7 @@ int main()
     root->right = new Node(5);
     root->left->left = new Node(1);
     root->left->right = new Node(2);
+    root->left->right->left = new Node(0);
 
     /*
     3
@@ -100,6 +100,11 @@ int main()
     struct Node *subRoot = new Node(4);
     subRoot->left = new Node(1);
     subRoot->right = new Node(2);
+    subRoot->right->left = new Node(0);
+
+    struct Node *temp = new Node(4);
+    temp->left = new Node(1);
+    temp->right = new Node(2);
 
     Solution test;
     cout << test.isSubtree(root, subRoot) << endl;
