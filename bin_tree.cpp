@@ -1,5 +1,6 @@
 // @author Soumya
 #include <iostream>
+#include <queue>
 using namespace std;
 
 struct Node
@@ -16,10 +17,63 @@ struct Node
     }
 };
 
+void printLevelOrder(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    queue<Node *> q;
+    q.push(root);
+    q.push(NULL);
+
+    while (!q.empty())
+    {
+        Node *node = q.front();
+        q.pop();
+        if (node != NULL)
+        {
+            cout << node->data << " ";
+            if (node->left)
+                q.push(node->left);
+            if (node->right)
+                q.push(node->right);
+        }
+        else if (!q.empty())
+        {
+            cout << endl;
+            q.push(NULL);
+        }
+    }
+}
+
 class Solution
 {
 public:
-    bool isSubtree(Node *root, Node *subRoot) {}
+    bool isSame(Node *root1, Node *root2)
+    {
+        if (root1 == NULL)
+            return true;
+        else if (root1->data == root2->data)
+        {
+
+            isSame(root1->left, root2->left);
+            isSame(root1->right, root2->right);
+        }
+
+        return false;
+    }
+
+    bool isSubtree(Node *root, Node *subRoot)
+    {
+        if (root == NULL)
+            return false;
+        else if (root->data == subRoot->data)
+            if (isSame(root, subRoot))
+                return true;
+
+        isSubtree(root->left, subRoot);
+        isSubtree(root->right, subRoot);
+    }
 };
 
 int main()
