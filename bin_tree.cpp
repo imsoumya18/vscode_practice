@@ -67,7 +67,7 @@ public:
     {
         if (root == NULL)
             return false;
-        
+
         if (isSame(root, subRoot))
             return true;
 
@@ -87,7 +87,6 @@ int main()
     root->right = new Node(5);
     root->left->left = new Node(1);
     root->left->right = new Node(2);
-    root->left->right->left = new Node(0);
 
     /*
     3
@@ -100,7 +99,6 @@ int main()
     struct Node *subRoot = new Node(4);
     subRoot->left = new Node(1);
     subRoot->right = new Node(2);
-    subRoot->right->left = new Node(0);
 
     struct Node *temp = new Node(4);
     temp->left = new Node(1);

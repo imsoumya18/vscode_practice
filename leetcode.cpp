@@ -2,30 +2,26 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 using namespace std;
 
-vector<string> letterCombinations(string digits)
+vector<vector<string>> groupAnagrams(vector<string> &strs)
 {
-    if (digits.size() == 0)
+    vector<vector<string>> vct;
+    vector<string> temp = strs;
+    set<string> s;
+
+    for (auto p : temp)
     {
-        vector<string> vct;
-        return vct;
+        for (int i = 0; i < p.size() - 1; i++)
+            for (int j = i + 1; j < p.size(); j++)
+                if (p[j] < p[i])
+                    swap(p[i], p[j]);
+        s.insert(p);
     }
 
-    vector<string> vct{""};
-
-    string keys[10] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-
-    for (auto i : digits)
-    {
-        vector<string> temp = vct;
-        vct.clear();
-        for (auto j : temp)
-            for (auto k : keys[i - '0'])
-                vct.push_back(j + k);
-    }
-
-    return vct;
+    for (auto i : s)
+        cout << i << endl;
 }
 
 int main()
@@ -35,10 +31,16 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "2";
+    vector<string> strs{"eat", "tea", "tan", "ate", "nat", "bat"};
 
-    for (auto i : letterCombinations(s))
-        cout << i << endl;
+    groupAnagrams(strs);
+
+    // for (auto i : groupAnagrams(strs))
+    // {
+    //     for (auto j : i)
+    //         cout << j << " ";
+    //     cout << endl;
+    // }
 
     return 0;
 }
