@@ -8,20 +8,18 @@ using namespace std;
 vector<vector<string>> groupAnagrams(vector<string> &strs)
 {
     vector<vector<string>> vct;
-    vector<string> temp = strs;
     set<string> s;
 
-    for (auto p : temp)
+    for (auto p : strs)
     {
         for (int i = 0; i < p.size() - 1; i++)
             for (int j = i + 1; j < p.size(); j++)
                 if (p[j] < p[i])
                     swap(p[i], p[j]);
-        s.insert(p);
     }
 
-    for (auto i : s)
-        cout << i << endl;
+    for (int i = 0; i < s.size(); i++)
+        cout << s[i] << endl;
 }
 
 int main()
