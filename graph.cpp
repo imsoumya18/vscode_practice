@@ -1,17 +1,20 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
 #include <queue>
+#include <vector>
 using namespace std;
 
-vector<int> bfs_graph(int v, vector<int> adj[])
+// BFS Traversal
+vector<int> bfs_traversal(int v, vector<int> adj[])
 {
     vector<int> bfs;
     vector<int> vis(v + 1, 0);
 
     for (int i = 1; i <= v; i++)
+    {
         if (!vis[i])
         {
+            // bfs of the node
             queue<int> q;
             q.push(i);
             vis[i] = 1;
@@ -21,17 +24,41 @@ vector<int> bfs_graph(int v, vector<int> adj[])
                 q.pop();
                 bfs.push_back(node);
 
-                for (auto it : adj[node])
-                {
-                    if (!vis[it])
+                for (auto j : adj[node])
+                    if (!vis[j])
                     {
-                        q.push(it);
-                        vis[it] = 1;
+                        q.push(j);
+                        vis[j] = 1;
                     }
-                }
             }
         }
+    }
+
     return bfs;
+}
+
+// DFS Recursive Function
+void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &dfs_store)
+{
+    dfs_store.push_back(node);
+    vis[node] = 1;
+
+    for (auto it : adj[node])
+        if (!vis[it])
+            dfs(it, vis, adj, dfs_store);
+}
+
+// DFS Traversal
+vector<int> dfs_traversal(int v, vector<int> adj[])
+{
+    vector<int> dfs_store;
+    vector<int> vis(v + 1, 0);
+
+    for (int i = 1; i <= v; i++)
+        if (!vis[i])
+            dfs(i, vis, adj, dfs_store);
+
+    return dfs_store;
 }
 
 int main()
@@ -62,9 +89,10 @@ int main()
             cout << j << " ";
         cout << endl;
     }
+    cout << endl;
 
-    for (auto p : bfs_graph(n, adj))
-        cout << p << " ";
-    
+    for (auto i : dfs_traversal(n, adj))
+        cout << i << " ";
+
     return 0;
 }
