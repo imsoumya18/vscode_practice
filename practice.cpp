@@ -36,6 +36,28 @@ vector<int> bfs_graph(int n, vector<int> adj[])
     return bfs;
 }
 
+void dfs(int node, vector<int> adj[], vector<int> &dfs_store, vector<int> &vis)
+{
+    dfs_store.push_back(node);
+    vis[node] = 1;
+
+    for (auto i : adj[node])
+        if (!vis[i])
+            dfs(i, adj, dfs_store, vis);
+}
+
+vector<int> dfs_graph(int n, vector<int> adj[])
+{
+    vector<int> dfs_store;
+    vector<int> vis(n + 1, 0);
+
+    for (int i = 1; i <= n; i++)
+        if (!vis[i])
+            dfs(i, adj, dfs_store, vis);
+
+    return dfs_store;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -66,6 +88,11 @@ int main()
     }
 
     for (auto i : bfs_graph(n, adj))
+        cout << i << " ";
+
+    cout << endl;
+
+    for (auto i : dfs_graph(n, adj))
         cout << i << " ";
 
     return 0;
