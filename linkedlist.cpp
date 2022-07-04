@@ -107,19 +107,23 @@ ListNode *reverseList(ListNode *head)
 
 ListNode *swapPairs(ListNode *head)
 {
-    ListNode *temp = head;
+    if (head == NULL || head->next == NULL)
+        return head;
 
-    while (head->next != NULL)
+    ListNode *temp = head, *temp2 = head->next;
+
+    while (head != NULL && head->next != NULL)
     {
-        ListNode *t = head->next, *prev = head;
+        ListNode *t = head->next, *prev;
         head->next = t->next;
         t->next = head;
         if (temp != head)
             prev->next = t;
+        prev = head;
         head = head->next;
     }
 
-    return temp->next;
+    return temp2;
 }
 
 int main()
@@ -134,7 +138,6 @@ int main()
     insertAtEnd(list1, 3);
     insertAtEnd(list1, 4);
     insertAtEnd(list1, 5);
-    insertAtEnd(list1, 6);
 
     ListNode *list2 = new ListNode(1);
     insertAtEnd(list2, 3);
