@@ -1,19 +1,39 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
-void insertion_sort(vector<int> &vct)
+vector<int> bfs_graph(int n, vector<int> adj[])
 {
-    for (int i = 1; i < vct.size(); i++)
-        for (int j = 0; j < i; j++)
-            if (vct[j] > vct[i])
+    vector<int> bfs;
+    vector<int> vis(n + 1, 0);
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!vis[i])
+        {
+            queue<int> q;
+            q.push(i);
+            vis[i] = 1;
+
+            while (!q.empty())
             {
-                int temp = vct[i];
-                for (int k = i; k > j; k--)
-                    vct[k] = vct[k - 1];
-                vct[j] = temp;
+                int node = q.front();
+                q.pop();
+                bfs.push_back(node);
+
+                for (auto j : adj[node])
+                    if (!vis[j])
+                    {
+                        q.push(j);
+                        vis[j] = 1;
+                    }
             }
+        }
+    }
+
+    return bfs;
 }
 
 int main()
@@ -23,15 +43,29 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> vct{12, 45, 23, 51, 19, 8};
+    int n, m;
+    cin >> n >> m;
 
-    for (auto i : vct)
-        cout << i << " ";
-    cout << endl;
+    vector<int> adj[n + 1];
 
-    insertion_sort(vct);
+    for (int i = 0; i < m; i++)
+    {
+        int u, v;
+        cin >> u >> v;
 
-    for (auto i : vct)
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        cout << i << "-->    ";
+        for (auto j : adj[i])
+            cout << j << " ";
+        cout << endl;
+    }
+
+    for (auto i : bfs_graph(n, adj))
         cout << i << " ";
 
     return 0;
