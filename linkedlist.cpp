@@ -48,7 +48,7 @@ void display(ListNode *head)
 
     while (temp != NULL)
     {
-        cout << temp->val << "->";
+        cout << temp->val << "-->";
         temp = temp->next;
     }
     cout << "NULL" << endl;
@@ -109,18 +109,15 @@ ListNode *swapPairs(ListNode *head)
 {
     ListNode *temp = head;
 
-    while (head->next->next != NULL)
+    while (head->next != NULL)
     {
-        ListNode *t = head->next;
-        head->next = head->next->next;
+        ListNode *t = head->next, *prev = head;
+        head->next = t->next;
         t->next = head;
-        head = head->next->next;
+        if (temp != head)
+            prev->next = t;
+        head = head->next;
     }
-
-    ListNode *t = head->next;
-    head->next = head->next->next;
-    t->next = head;
-    head = head->next->next;
 
     return temp->next;
 }
