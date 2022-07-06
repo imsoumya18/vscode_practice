@@ -5,7 +5,22 @@
 #include <set>
 using namespace std;
 
-vector<vector<int>> groupThePeople(vector<int> &groupSizes) {}
+vector<int> findingUsersActiveMinutes(vector<vector<int>> &logs, int k)
+{
+    vector<int> vct;
+    set<int> id;
+    pair<int, set<int>> pr;
+
+    for (auto i : logs)
+    {
+        id.insert(i[0]);
+    }
+
+    for (auto i : id)
+        cout << i << " ";
+
+    return vct;
+}
 
 int main()
 {
@@ -14,7 +29,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> groupSizes{3, 3, 3, 3, 3, 1, 3};
+    vector<vector<int>> logs{{0, 5}, {1, 2}, {0, 2}, {0, 5}, {1, 3}};
+    int k = 5;
+
+    findingUsersActiveMinutes(logs, k);
 
     return 0;
 }
