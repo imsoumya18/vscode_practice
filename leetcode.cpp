@@ -12,19 +12,20 @@ vector<int> executeInstructions(int n, vector<int> &startPos, string s)
     for (int i = 0; i < s.size(); i++)
     {
         int cnt = 0;
+        vector<int> sp = startPos;
 
         for (int j = i; j < s.size(); j++)
         {
             if (s[j] == 'R')
-                startPos[1]++;
+                sp[1]++;
             else if (s[j] == 'L')
-                startPos[1]--;
+                sp[1]--;
             else if (s[j] == 'U')
-                startPos[0]--;
+                sp[0]--;
             else
-                startPos[0]++;
+                sp[0]++;
 
-            if (startPos[0] < 0 || startPos[0] >= n || startPos[1] < 0 || startPos[1] >= n)
+            if (sp[0] < 0 || sp[0] >= n || sp[1] < 0 || sp[1] >= n)
                 break;
 
             cnt++;
