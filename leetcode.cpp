@@ -5,21 +5,28 @@
 #include <set>
 using namespace std;
 
-vector<int> findingUsersActiveMinutes(vector<vector<int>> &logs, int k)
+int numUniqueEmails(vector<string> &emails)
 {
-    vector<int> vct;
-    set<int> id;
-    pair<int, set<int>> pr;
+    set<string> s;
 
-    for (auto i : logs)
+    for (auto i : emails)
     {
-        id.insert(i[0]);
+        string dom = i.substr(i.find('@') + 1);
+        string local_name = i.substr(0, i.find('@'));
+        string nlocal_name = "";
+
+        for (auto j : local_name)
+            if (j == '+')
+                break;
+            else if (j == '.')
+                continue;
+            else
+                nlocal_name.push_back(j);
+
+        s.insert(nlocal_name + "@" + dom);
     }
 
-    for (auto i : id)
-        cout << i << " ";
-
-    return vct;
+    return s.size();
 }
 
 int main()
@@ -29,10 +36,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> logs{{0, 5}, {1, 2}, {0, 2}, {0, 5}, {1, 3}};
-    int k = 5;
+    vector<string> emails{"test.email+alex@leetcode.com", "test.email.leet+alex@code.com"};
 
-    findingUsersActiveMinutes(logs, k);
+    cout << numUniqueEmails(emails) << endl;
 
     return 0;
 }
