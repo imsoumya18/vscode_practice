@@ -3,30 +3,21 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <unordered_map>
 using namespace std;
 
-int numUniqueEmails(vector<string> &emails)
+string decodeString(string s)
 {
-    set<string> s;
+    string ans = "";
+    int n;
 
-    for (auto i : emails)
+    for (auto i : s)
     {
-        string dom = i.substr(i.find('@') + 1);
-        string local_name = i.substr(0, i.find('@'));
-        string nlocal_name = "";
-
-        for (auto j : local_name)
-            if (j == '+')
-                break;
-            else if (j == '.')
-                continue;
-            else
-                nlocal_name.push_back(j);
-
-        s.insert(nlocal_name + "@" + dom);
+        if (isdigit(i))
+        {
+            n=stoi()
+        }
     }
-
-    return s.size();
 }
 
 int main()
@@ -36,9 +27,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<string> emails{"test.email+alex@leetcode.com", "test.email.leet+alex@code.com"};
+    string s = "3[a]2[bc]";
 
-    cout << numUniqueEmails(emails) << endl;
+    cout << decodeString(s) << endl;
 
     return 0;
 }
