@@ -15,7 +15,7 @@ string decodeString(string s)
         ans = "";
         if (i == ']')
         {
-            while (!st.empty() && st.top() != '[')
+            while (st.top() != '[')
             {
                 ans = st.top() + ans;
                 st.pop();
@@ -28,7 +28,7 @@ string decodeString(string s)
                 mult *= 10;
                 st.pop();
             }
-            for (int j = 1; j <= n; j++)
+            while (n--)
                 for (auto k : ans)
                     st.push(k);
         }
@@ -54,7 +54,7 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "100[leetcode]";
+    string s = "3[a2[c]]";
 
     cout << decodeString(s) << endl;
 
