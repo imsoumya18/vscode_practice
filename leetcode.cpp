@@ -5,46 +5,23 @@
 #include <stack>
 using namespace std;
 
-string decodeString(string s)
+int shipWithinDays(vector<int> &weights, int days)
 {
-    stack<char> st;
-    string ans;
+    int max = 0, min = 0;
 
-    for (auto i : s)
+    for (int i = 0; i < weights.size(); i++)
     {
-        ans = "";
-        if (i == ']')
-        {
-            while (st.top() != '[')
-            {
-                ans = st.top() + ans;
-                st.pop();
-            }
-            st.pop();
-            int n = 0, mult = 1;
-            while (!st.empty() && isdigit(st.top()))
-            {
-                n += mult * (st.top() - '0');
-                mult *= 10;
-                st.pop();
-            }
-            while (n--)
-                for (auto k : ans)
-                    st.push(k);
-        }
-        else
-            st.push(i);
+        if (weights[i] > min)
+            min = weights[i];
+        max += weights[i];
     }
 
-    ans = "";
+    if (max / days < min)
+        return min;
+    else if (max % days == 0)
+        return max / days;
 
-    while (!st.empty())
-    {
-        ans = st.top() + ans;
-        st.pop();
-    }
-
-    return ans;
+    return max / days + 1;
 }
 
 int main()
@@ -54,9 +31,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "3[a2[c]]";
+    vector<int> weights{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int days = 5;
 
-    cout << decodeString(s) << endl;
+    cout << shipWithinDays(weights, days) << endl;
 
     return 0;
 }
