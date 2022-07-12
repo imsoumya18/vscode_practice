@@ -2,22 +2,49 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <set>
-#include <unordered_map>
+#include <stack>
 using namespace std;
 
 string decodeString(string s)
 {
-    string ans = "";
-    int n;
+    stack<char> st;
+    string ans;
 
     for (auto i : s)
     {
-        if (isdigit(i))
+        ans = "";
+        if (i == ']')
         {
-            n=stoi()
+            while (!st.empty() && st.top() != '[')
+            {
+                ans = st.top() + ans;
+                st.pop();
+            }
+            st.pop();
+            int n = 0, mult = 1;
+            while (!st.empty() && isdigit(st.top()))
+            {
+                n += mult * (st.top() - '0');
+                mult *= 10;
+                st.pop();
+            }
+            for (int j = 1; j <= n; j++)
+                for (auto k : ans)
+                    st.push(k);
         }
+        else
+            st.push(i);
     }
+
+    ans = "";
+
+    while (!st.empty())
+    {
+        ans = st.top() + ans;
+        st.pop();
+    }
+
+    return ans;
 }
 
 int main()
@@ -27,7 +54,7 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "3[a]2[bc]";
+    string s = "100[leetcode]";
 
     cout << decodeString(s) << endl;
 
