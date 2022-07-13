@@ -7,7 +7,7 @@ using namespace std;
 
 int shipWithinDays(vector<int> &weights, int days)
 {
-    int max = 0, min = 0;
+    int max = 0, min = 0, cap, d, curr, ans;
 
     for (int i = 0; i < weights.size(); i++)
     {
@@ -15,13 +15,51 @@ int shipWithinDays(vector<int> &weights, int days)
             min = weights[i];
         max += weights[i];
     }
+    ans = max;
 
-    if (max / days < min)
-        return min;
-    else if (max % days == 0)
-        return max / days;
+    while (min < max)
+    {
+        cap = min + (max - min) / 2;
+        d = 0;
+        curr = 0;
 
-    return max / days + 1;
+        for (int i = 0; i < weights.size(); i++)
+        {
+            if (curr + weights[i] > cap)
+            {
+                i--;
+                d++;
+                curr = 0;
+            }
+            else
+            {
+                curr += weights[i];
+            }
+        }
+        d++;
+
+        cout << cap << " " << d << endl;
+
+        if (d < days)
+        {
+            max = cap;
+        }
+        else if (d > days)
+        {
+            min = cap;
+        }
+        else
+        {
+            if (cap < ans)
+            {
+                ans = cap;
+            }
+            else
+                return ans;
+        }
+    }
+
+    return ans;
 }
 
 int main()
@@ -31,8 +69,8 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> weights{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int days = 5;
+    vector<int> weights{3, 2, 2, 4, 1, 4};
+    int days = 3;
 
     cout << shipWithinDays(weights, days) << endl;
 
