@@ -5,60 +5,23 @@
 #include <stack>
 using namespace std;
 
-int shipWithinDays(vector<int> &weights, int days)
+string getHint(string secret, string guess)
 {
-    int max = 0, min = 0, cap, d, curr, ans;
+    int bulls = 0, cows = 0, s[10] = {0}, g[10] = {0};
 
-    for (int i = 0; i < weights.size(); i++)
-    {
-        if (weights[i] > min)
-            min = weights[i];
-        max += weights[i];
-    }
-    ans = max;
-
-    while (min < max)
-    {
-        cap = min + (max - min) / 2;
-        d = 0;
-        curr = 0;
-
-        for (int i = 0; i < weights.size(); i++)
-        {
-            if (curr + weights[i] > cap)
-            {
-                i--;
-                d++;
-                curr = 0;
-            }
-            else
-            {
-                curr += weights[i];
-            }
-        }
-        d++;
-
-        if (d < days)
-        {
-            max = cap;
-        }
-        else if (d > days)
-        {
-            min = cap;
-        }
+    for (int i = 0; i < secret.length(); i++)
+        if (secret[i] == guess[i])
+            bulls++;
         else
         {
-            if (cap < ans)
-            {
-                ans = cap;
-                max--;
-            }
-            else
-                return ans;
+            s[secret[i] - '0']++;
+            g[guess[i] - '0']++;
         }
-    }
 
-    return ans;
+    for (int i = 0; i < 10; i++)
+        cows += min(s[i], g[i]);
+
+    return to_string(bulls) + "A" + to_string(cows) + "B";
 }
 
 int main()
@@ -68,10 +31,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> weights{1, 2, 3, 1, 1};
-    int days = 4;
+    string secret = "1123", guess = "0111";
 
-    cout << shipWithinDays(weights, days) << endl;
+    cout << getHint(secret, guess) << endl;
 
     return 0;
 }
