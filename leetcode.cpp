@@ -38,8 +38,6 @@ int shipWithinDays(vector<int> &weights, int days)
         }
         d++;
 
-        cout << cap << " " << d << endl;
-
         if (d < days)
         {
             max = cap;
@@ -53,6 +51,7 @@ int shipWithinDays(vector<int> &weights, int days)
             if (cap < ans)
             {
                 ans = cap;
+                max--;
             }
             else
                 return ans;
@@ -69,8 +68,8 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> weights{3, 2, 2, 4, 1, 4};
-    int days = 3;
+    vector<int> weights{1, 2, 3, 1, 1};
+    int days = 4;
 
     cout << shipWithinDays(weights, days) << endl;
 
