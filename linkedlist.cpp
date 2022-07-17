@@ -105,25 +105,60 @@ ListNode *reverseList(ListNode *head)
     return prev;
 }
 
-ListNode *swapPairs(ListNode *head)
+ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
 {
-    if (head == NULL || head->next == NULL)
-        return head;
+    int n1 = 0, n2 = 0, sum, carry = 0;
 
-    ListNode *temp = head, *temp2 = head->next;
+    n1 = l1->val;
+    n2 = l2->val;
 
-    while (head != NULL && head->next != NULL)
+    sum = n1 + n2 + carry;
+    if (sum > 9)
     {
-        ListNode *t = head->next, *prev;
-        head->next = t->next;
-        t->next = head;
-        if (temp != head)
-            prev->next = t;
-        prev = head;
-        head = head->next;
+        carry = sum / 10;
+        sum %= 10;
+    }
+    ListNode *list = new ListNode(sum);
+    ListNode *curr = list;
+    l1 = l1->next;
+    l2 = l2->next;
+
+    while (l1 != NULL || l2 != NULL)
+    {
+        if (l1 == NULL)
+            n1 = 0;
+        else
+            n1 = l1->val;
+
+        if (l2 == NULL)
+            n2 = 0;
+        else
+            n2 = l2->val;
+
+        sum = n1 + n2 + carry;
+        if (sum > 9)
+        {
+            carry = sum / 10;
+            sum %= 10;
+        }
+        else
+            carry = 0;
+
+        ListNode *temp = new ListNode(sum);
+        curr->next = temp;
+        curr = curr->next;
+        if (l1 != NULL)
+            l1 = l1->next;
+        if (l2 != NULL)
+            l2 = l2->next;
+    }
+    if (carry > 0)
+    {
+        ListNode *temp = new ListNode(carry);
+        curr->next = temp;
     }
 
-    return temp2;
+    return list;
 }
 
 int main()
@@ -133,17 +168,20 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *list1 = new ListNode(1);
-    insertAtEnd(list1, 2);
-    insertAtEnd(list1, 3);
-    insertAtEnd(list1, 4);
-    insertAtEnd(list1, 5);
+    ListNode *list1 = new ListNode(9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
 
-    ListNode *list2 = new ListNode(1);
-    insertAtEnd(list2, 3);
-    insertAtEnd(list2, 4);
+    ListNode *list2 = new ListNode(9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
+    insertAtEnd(list1, 9);
 
-    display(swapPairs(list1));
+    display(addTwoNumbers(list1, list2));
 
     return 0;
 }

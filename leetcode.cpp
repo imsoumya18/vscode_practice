@@ -5,23 +5,48 @@
 #include <stack>
 using namespace std;
 
-string getHint(string secret, string guess)
+double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
 {
-    int bulls = 0, cows = 0, s[10] = {0}, g[10] = {0};
+    vector<int> vct;
+    int i = 0, j = 0, tot = nums1.size() + nums2.size();
 
-    for (int i = 0; i < secret.length(); i++)
-        if (secret[i] == guess[i])
-            bulls++;
+    while (i < nums1.size() || j < nums2.size())
+    {
+        if (nums1[i] < nums2[j])
+        {
+            vct.push_back(nums1[i]);
+            i++;
+        }
         else
         {
-            s[secret[i] - '0']++;
-            g[guess[i] - '0']++;
+            vct.push_back(nums2[j]);
+            j++;
         }
+        if (i == nums1.size())
+        {
+            vct.push_back(nums2[j]);
+            j++;
+        }
+        if (j == nums2.size())
+        {
+            vct.push_back(nums1[i]);
+            i++;
+        }
+    }
 
-    for (int i = 0; i < 10; i++)
-        cows += min(s[i], g[i]);
+    for (auto i : vct)
+        cout << i << endl;
 
-    return to_string(bulls) + "A" + to_string(cows) + "B";
+    if (tot % 2 == 0)
+    {
+        double ans = (vct[tot / 2] + vct[tot / 2 - 1]) / tot;
+        return ans;
+    }
+    else
+    {
+        double ans = vct[tot / 2] / tot;
+        return double(ans);
+    }
 }
 
 int main()
@@ -31,9 +56,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string secret = "1123", guess = "0111";
+    vector<int> nums1{1, 3}, nums2{2, 4, 5, 6};
 
-    cout << getHint(secret, guess) << endl;
+    cout << findMedianSortedArrays(nums1, nums2) << endl;
 
     return 0;
 }
