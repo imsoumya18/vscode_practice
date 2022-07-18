@@ -46,14 +46,26 @@ void printLevelOrder(Node *root)
     }
 }
 
-bool flipEquiv(Node *root1, Node *root2)
+vector<Node *> delNodes(Node *root, vector<int> &to_delete)
 {
-    if (root1 == root2)
-        return true;
+    vector<Node *> vct;
 
-    if (root1 == NULL || root2 == NULL || root1->data != root2->data)
-        return false;
-    return ((flipEquiv(root1->left, root2->left) && flipEquiv(root1->right, root2->right)) || (flipEquiv(root1->left, root2->right) && flipEquiv(root1->right, root2->left)));
+    if (root == NULL)
+        return vct;
+
+    delNodes(root->left, to_delete);
+    delNodes(root->right, to_delete);
+
+    for (auto i : to_delete)
+        if (i == root->data)
+        {
+            vct.push_back(root->left);
+            vct.push_back(root->right);
+            root = NULL;
+            break;
+        }
+
+    return vct;
 }
 
 int main()
@@ -63,25 +75,23 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    struct Node *root1 = new Node(1);
-    root1->left = new Node(2);
-    root1->right = new Node(3);
-    root1->left->left = new Node(4);
-    root1->left->right = new Node(5);
-    root1->left->right->left = new Node(7);
-    root1->left->right->right = new Node(8);
-    root1->right->left = new Node(6);
+    struct Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
 
-    struct Node *root2 = new Node(1);
-    root2->left = new Node(3);
-    root2->right = new Node(2);
-    root2->left->right = new Node(6);
-    root2->right->left = new Node(4);
-    root2->right->right = new Node(5);
-    root2->right->right->left = new Node(8);
-    root2->right->right->right = new Node(7);
+    vector<int> to_delete{3, 5};
 
-    cout << flipEquiv(root1, root2) << endl;
+    for (auto i : delNodes(root, to_delete))
+    {
+        printLevelOrder(i);
+        cout << endl
+             << endl
+             << endl;
+    }
 
     return 0;
 }
