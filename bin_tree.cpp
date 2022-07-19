@@ -46,20 +46,26 @@ void printLevelOrder(Node *root)
     }
 }
 
-void help(Node *root, vector<int> &to_delete, vector<Node *> &vct)
+Node *help(Node *root, vector<int> &to_delete, vector<Node *> &vct)
 {
+    if (root == NULL)
+        return NULL;
+
+    root->left = help(root->left, to_delete, vct);
+    root->right = help(root->right, to_delete, vct);
+
     for (auto i : to_delete)
     {
         if (i == root->data)
         {
-            vct.push_back(root->left);
-            vct.push_back(root->right);
+            if (root->left != NULL)
+                vct.push_back(root->left);
+            if (root->right != NULL)
+                vct.push_back(root->right);
+            return NULL;
         }
-        if (i == root->left->data)
-            root->left = NULL;
-        if (i == root->right->data)
-            root->right = NULL;
     }
+    return root;
 }
 
 vector<Node *> delNodes(Node *root, vector<int> &to_delete)
@@ -71,8 +77,7 @@ vector<Node *> delNodes(Node *root, vector<int> &to_delete)
     else
         vct.push_back(root);
 
-    help(root->left, to_delete, vct);
-    help(root->right, to_delete, vct);
+    help(root, to_delete, vct);
 
     return vct;
 }

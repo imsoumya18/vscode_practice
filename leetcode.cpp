@@ -5,50 +5,28 @@
 #include <stack>
 using namespace std;
 
-double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
+int trap(vector<int> &height)
 {
-    vector<int> vct;
-    int i = 0, j = 0, tot = nums1.size() + nums2.size();
+    int tot = 0, curr = 0, i = 0, begin;
 
-    while (i < nums1.size() && j < nums2.size())
+    while (height[i] == 0)
+        i++;
+
+    begin = i;
+
+    for (++i; i < height.size(); i++)
     {
-        if (nums1[i] < nums2[j])
-        {
-            vct.push_back(nums1[i]);
-            i++;
-        }
+        if (height[i] < begin)
+            curr += (begin - height[i]);
         else
         {
-            vct.push_back(nums2[j]);
-            j++;
+            tot += curr;
+            curr = 0;
+            begin = height[i];
         }
     }
 
-    while (i < nums1.size())
-    {
-        vct.push_back(nums1[i]);
-        i++;
-    }
-    while (j < nums2.size())
-    {
-        vct.push_back(nums2[j]);
-        j++;
-    }
-
-    for (auto i : vct)
-        cout << i << endl;
-    cout << endl;
-
-    if (tot % 2 == 0)
-    {
-        double ans = (vct[tot / 2] + vct[tot / 2 - 1]) / 2.0;
-        return ans;
-    }
-    else
-    {
-        double ans = vct[tot / 2.0];
-        return double(ans);
-    }
+    return tot;
 }
 
 int main()
@@ -58,9 +36,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums1{1, 3}, nums2{2, 4, 5, 6};
+    vector<int> height{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 
-    cout << findMedianSortedArrays(nums1, nums2) << endl;
+    cout << trap(height) << endl;
 
     return 0;
 }
