@@ -7,24 +7,29 @@ using namespace std;
 
 int trap(vector<int> &height)
 {
-    int tot = 0, curr = 0, i = 0, begin;
+    int left[height.size()], right[height.size()];
+    int tot = 0, max = -1;
 
-    while (height[i] == 0)
-        i++;
-
-    begin = i;
-
-    for (++i; i < height.size(); i++)
+    for (int i = 0; i < height.size(); i++)
     {
-        if (height[i] < begin)
-            curr += (begin - height[i]);
-        else
-        {
-            tot += curr;
-            curr = 0;
-            begin = height[i];
-        }
+        if (height[i] > max)
+            max = height[i];
+        left[i] = max;
     }
+    max = -1;
+
+    for (int i = height.size() - 1; i >= 0; i--)
+    {
+        if (height[i] > max)
+            max = height[i];
+        right[i] = max;
+    }
+
+    for (int i = 0; i < height.size(); i++)
+        if (left[i] < right[i])
+            tot += (left[i] - height[i]);
+        else
+            tot += (right[i] - height[i]);
 
     return tot;
 }
