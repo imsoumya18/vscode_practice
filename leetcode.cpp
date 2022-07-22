@@ -5,33 +5,21 @@
 #include <stack>
 using namespace std;
 
-int trap(vector<int> &height)
+vector<string> braceExpansionII(string expression)
 {
-    int left[height.size()], right[height.size()];
-    int tot = 0, max = -1;
+    vector<string> vct;
+    int j = 0;
 
-    for (int i = 0; i < height.size(); i++)
-    {
-        if (height[i] > max)
-            max = height[i];
-        left[i] = max;
-    }
-    max = -1;
-
-    for (int i = height.size() - 1; i >= 0; i--)
-    {
-        if (height[i] > max)
-            max = height[i];
-        right[i] = max;
-    }
-
-    for (int i = 0; i < height.size(); i++)
-        if (left[i] < right[i])
-            tot += (left[i] - height[i]);
-        else
-            tot += (right[i] - height[i]);
-
-    return tot;
+    for (int i = 0; i < expression.size(); i++)
+        if (expression[i] != ',' && (expression[i + 1] == '{') || i + 1 == expression.size())
+        {
+            string temp = "";
+            for (++j; j < i; j++)
+                temp += expression[j];
+            vct.push_back(temp);
+            j++;
+        }
+    return vct;
 }
 
 int main()
@@ -41,9 +29,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> height{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+    string expression = "{a,b}{c,{d,e}}";
 
-    cout << trap(height) << endl;
+    for (auto i : braceExpansionII(expression))
+        cout << i << endl;
 
     return 0;
 }
