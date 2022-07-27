@@ -5,20 +5,38 @@
 #include <stack>
 using namespace std;
 
-vector<string> braceExpansionII(string expression)
+bool if_palindrome(string s)
 {
-    vector<string> vct;
-    int j = 0;
-
-    for (int i = 0; i < expression.size(); i++)
-        if (expression[i] != ',' && (expression[i + 1] == '{') || i + 1 == expression.size())
+    int flag = 0;
+    for (int i = 0; i < s.size() / 2; i++)
+        if (s[i] != s[s.size() - i - 1])
         {
-            string temp = "";
-            for (++j; j < i; j++)
-                temp += expression[j];
-            vct.push_back(temp);
-            j++;
+            flag++;
+            break;
         }
+
+    if (flag == 0)
+        return true;
+
+    return false;
+}
+
+vector<vector<string>> partition(string s)
+{
+    vector<vector<string>> vct;
+    for (int i = 0; i < s.size(); i++)
+    {
+        vector<string> curr;
+        string sub1 = s.substr(0, i), sub2 = s.substr(i, s.size());
+
+        if (if_palindrome(sub1))
+            curr.push_back(sub1);
+        else
+            continue;
+
+        cout << sub1 << " " << sub2 << endl;
+    }
+
     return vct;
 }
 
@@ -29,10 +47,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string expression = "{a,b}{c,{d,e}}";
+    string s = "aab";
 
-    for (auto i : braceExpansionII(expression))
-        cout << i << endl;
+    partition(s);
 
     return 0;
 }
