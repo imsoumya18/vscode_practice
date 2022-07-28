@@ -5,39 +5,9 @@
 #include <stack>
 using namespace std;
 
-bool if_palindrome(string s)
+int minDominoRotations(vector<int> &tops, vector<int> &bottoms)
 {
-    int flag = 0;
-    for (int i = 0; i < s.size() / 2; i++)
-        if (s[i] != s[s.size() - i - 1])
-        {
-            flag = 1;
-            break;
-        }
-
-    if (flag == 0)
-        return true;
-
-    return false;
-}
-
-vector<vector<string>> partition(string s)
-{
-    vector<vector<string>> vct;
-    for (int i = 0; i < s.size(); i++)
-    {
-        vector<string> curr;
-        string sub1 = s.substr(0, i), sub2 = s.substr(i, s.size());
-
-        if (if_palindrome(sub1))
-            curr.push_back(sub1);
-        else
-            continue;
-
-        cout << sub1 << " " << sub2 << endl;
-    }
-
-    return vct;
+    int com;
 }
 
 int main()
@@ -47,9 +17,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "aab";
+    vector<int> tops{2, 1, 2, 4, 2, 2}, bottoms{5, 2, 6, 2, 3, 2};
 
-    partition(s);
+    cout << minDominoRotations(tops, bottoms) << endl;
 
     return 0;
 }
