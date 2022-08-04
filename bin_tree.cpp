@@ -46,40 +46,22 @@ void printLevelOrder(Node *root)
     }
 }
 
-Node *help(Node *root, vector<int> &to_delete, vector<Node *> &vct)
+void insert(vector<int> &vct, Node *root)
 {
     if (root == NULL)
-        return NULL;
+        return;
 
-    root->left = help(root->left, to_delete, vct);
-    root->right = help(root->right, to_delete, vct);
+    int i;
+    for (i = 0; i < vct.size(); i++)
+        if (vct[i] > root->data)
+            break;
 
-    for (auto i : to_delete)
-    {
-        if (i == root->data)
-        {
-            if (root->left != NULL)
-                vct.push_back(root->left);
-            if (root->right != NULL)
-                vct.push_back(root->right);
-            return NULL;
-        }
-    }
-    return root;
-}
+    vct.insert(vct.begin() + i, root->data);
 
-vector<Node *> delNodes(Node *root, vector<int> &to_delete)
-{
-    vector<Node *> vct;
-
-    if (root == NULL)
-        return vct;
-    else
-        vct.push_back(root);
-
-    help(root, to_delete, vct);
-
-    return vct;
+    if (root->left != NULL)
+        insert(vct, root->left);
+    if (root->right != NULL)
+        insert(vct, root->right);
 }
 
 int main()
@@ -89,23 +71,12 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    struct Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
-
-    vector<int> to_delete{3, 5};
-
-    for (auto i : delNodes(root, to_delete))
-    {
-        printLevelOrder(i);
-        cout << endl
-             << endl
-             << endl;
-    }
+    struct Node *root = new Node(5);
+    root->left = new Node(3);
+    root->right = new Node(6);
+    root->left->left = new Node(2);
+    root->left->right = new Node(4);
+    root->left->left->left = new Node(1);
 
     return 0;
 }
