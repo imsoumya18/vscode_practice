@@ -4,58 +4,21 @@
 #include <queue>
 using namespace std;
 
-vector<int> bfs_graph(int n, vector<int> adj[])
+bool canBeIncreasing(vector<int> &nums)
 {
-    vector<int> bfs;
-    vector<int> vis(n + 1, 0);
+    int flag = 0;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < nums.size() - 1; i++)
     {
-        if (!vis[i])
-        {
-            queue<int> q;
-            q.push(i);
-            vis[i] = 1;
-
-            while (!q.empty())
-            {
-                int node = q.front();
-                q.pop();
-                bfs.push_back(node);
-
-                for (auto j : adj[node])
-                    if (!vis[j])
-                    {
-                        q.push(j);
-                        vis[j] = 1;
-                    }
-            }
-        }
+        if (nums[i + 1] <= nums[i])
+            if (nums[i + 1] >= nums[i - 1])
+                flag++;
     }
 
-    return bfs;
-}
+    if (flag == 0 || flag == 1)
+        return true;
 
-void dfs(int node, vector<int> adj[], vector<int> &dfs_store, vector<int> &vis)
-{
-    dfs_store.push_back(node);
-    vis[node] = 1;
-
-    for (auto i : adj[node])
-        if (!vis[i])
-            dfs(i, adj, dfs_store, vis);
-}
-
-vector<int> dfs_graph(int n, vector<int> adj[])
-{
-    vector<int> dfs_store;
-    vector<int> vis(n + 1, 0);
-
-    for (int i = 1; i <= n; i++)
-        if (!vis[i])
-            dfs(i, adj, dfs_store, vis);
-
-    return dfs_store;
+    return false;
 }
 
 int main()
@@ -65,35 +28,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int n, m;
-    cin >> n >> m;
+    vector<int> nums{2, 3, 1, 2};
 
-    vector<int> adj[n + 1];
-
-    for (int i = 0; i < m; i++)
-    {
-        int u, v;
-        cin >> u >> v;
-
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-
-    for (int i = 1; i <= n; i++)
-    {
-        cout << i << "-->    ";
-        for (auto j : adj[i])
-            cout << j << " ";
-        cout << endl;
-    }
-
-    for (auto i : bfs_graph(n, adj))
-        cout << i << " ";
-
-    cout << endl;
-
-    for (auto i : dfs_graph(n, adj))
-        cout << i << " ";
+    cout << canBeIncreasing(nums) << endl;
 
     return 0;
 }

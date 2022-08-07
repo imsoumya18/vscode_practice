@@ -5,58 +5,30 @@
 #include <stack>
 using namespace std;
 
-void merge(vector<int> &nums, int l, int mid, int r)
+int partition(vector<int> &nums, int l, int r)
 {
-    vector<int> v1, v2;
+    int pivot = nums[r];
+    int i = l - 1;
 
-    for (int i = l; i <= mid; i++)
-        v1.push_back(nums[i]);
-
-    for (int i = mid + 1; i <= r; i++)
-        v2.push_back(nums[i]);
-
-    int i = l, j = 0, k = 0;
-
-    while (j < v1.size() && k < v2.size())
-    {
-        if (v1[j] < v2[k])
+    for (int j = l; j < r; j++)
+        if (nums[j] < pivot)
         {
-            nums[i] = v1[j];
-            j++;
+            i++;
+            swap(nums[i], nums[j]);
         }
-        else
-        {
-            nums[i] = v2[k];
-            k++;
-        }
-        i++;
-    }
 
-    while (j < v1.size())
-    {
-        nums[i] = v1[j];
-        i++;
-        j++;
-    }
-
-    while (k < v2.size())
-    {
-        nums[i] = v2[k];
-        i++;
-        k++;
-    }
+    swap(nums[i + 1], nums[r]);
+    return i + 1;
 }
 
-void merge_sort(vector<int> &nums, int l, int r)
+void quick_sort(vector<int> &nums, int l, int r)
 {
     if (l < r)
     {
-        int mid = (l + r) / 2;
+        int pi = partition(nums, l, r);
 
-        merge_sort(nums, l, mid);
-        merge_sort(nums, mid + 1, r);
-
-        merge(nums, l, mid, r);
+        quick_sort(nums, l, pi - 1);
+        quick_sort(nums, pi + 1, r);
     }
 }
 
@@ -69,12 +41,14 @@ int main()
 
     vector<int> nums{9, 8, 7, 6, 5, 4, 3, 2, 1};
 
+    cout << "Unsorted Array: ";
     for (auto i : nums)
         cout << i << " ";
 
-    cout << endl;
+    cout << endl
+         << "Sorted Array:   ";
 
-    merge_sort(nums, 0, nums.size() - 1);
+    quick_sort(nums, 0, nums.size() - 1);
 
     for (auto i : nums)
         cout << i << " ";
