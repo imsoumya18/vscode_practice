@@ -4,21 +4,22 @@
 #include <queue>
 using namespace std;
 
-bool canBeIncreasing(vector<int> &nums)
+vector<string> fizzBuzz(int n)
 {
-    int flag = 0;
+    vector<string> vct;
 
-    for (int i = 0; i < nums.size() - 1; i++)
-    {
-        if (nums[i + 1] <= nums[i])
-            if (nums[i + 1] >= nums[i - 1])
-                flag++;
-    }
+    for (int i = 1; i <= n; i++)
+        if (i % 3 == 0)
+            if (i % 5 == 0)
+                vct.push_back("FizzBuzz");
+            else
+                vct.push_back("Fizz");
+        else if (i % 5 == 0)
+            vct.push_back("Buzz");
+        else
+            vct.push_back(to_string(i));
 
-    if (flag == 0 || flag == 1)
-        return true;
-
-    return false;
+    return vct;
 }
 
 int main()
@@ -28,9 +29,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{2, 3, 1, 2};
+    int n = 3;
 
-    cout << canBeIncreasing(nums) << endl;
+    for (auto i : fizzBuzz(n))
+        cout << i << endl;
 
     return 0;
 }
