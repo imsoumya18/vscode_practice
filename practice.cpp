@@ -1,26 +1,8 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <string>
 using namespace std;
-
-vector<string> fizzBuzz(int n)
-{
-    vector<string> vct;
-
-    for (int i = 1; i <= n; i++)
-        if (i % 3 == 0)
-            if (i % 5 == 0)
-                vct.push_back("FizzBuzz");
-            else
-                vct.push_back("Fizz");
-        else if (i % 5 == 0)
-            vct.push_back("Buzz");
-        else
-            vct.push_back(to_string(i));
-
-    return vct;
-}
 
 int main()
 {
@@ -29,10 +11,13 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int n = 3;
+    string st = "abcdef", temp = "";
 
-    for (auto i : fizzBuzz(n))
-        cout << i << endl;
+    for (int i = 0; i < st.size(); i++)
+    {
+        temp += st[i];
+        cout << i << " " << temp << " " << st.substr(i + 1) << endl;
+    }
 
     return 0;
 }

@@ -1,5 +1,6 @@
 // @author Soumya
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // linked list implementation
@@ -105,60 +106,18 @@ ListNode *reverseList(ListNode *head)
     return prev;
 }
 
-ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+ListNode *mergeKLists(vector<ListNode *> &lists)
 {
-    int n1 = 0, n2 = 0, sum, carry = 0;
+    ListNode *list = new ListNode(0);
 
-    n1 = l1->val;
-    n2 = l2->val;
+    int max
 
-    sum = n1 + n2 + carry;
-    if (sum > 9)
+    for (auto i : lists)
     {
-        carry = sum / 10;
-        sum %= 10;
+        int mx = lists[0]->val;
+
+        for
     }
-    ListNode *list = new ListNode(sum);
-    ListNode *curr = list;
-    l1 = l1->next;
-    l2 = l2->next;
-
-    while (l1 != NULL || l2 != NULL)
-    {
-        if (l1 == NULL)
-            n1 = 0;
-        else
-            n1 = l1->val;
-
-        if (l2 == NULL)
-            n2 = 0;
-        else
-            n2 = l2->val;
-
-        sum = n1 + n2 + carry;
-        if (sum > 9)
-        {
-            carry = sum / 10;
-            sum %= 10;
-        }
-        else
-            carry = 0;
-
-        ListNode *temp = new ListNode(sum);
-        curr->next = temp;
-        curr = curr->next;
-        if (l1 != NULL)
-            l1 = l1->next;
-        if (l2 != NULL)
-            l2 = l2->next;
-    }
-    if (carry > 0)
-    {
-        ListNode *temp = new ListNode(carry);
-        curr->next = temp;
-    }
-
-    return list;
 }
 
 int main()
@@ -168,20 +127,20 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *list1 = new ListNode(9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
+    ListNode *list1 = new ListNode(1);
+    insertAtEnd(list1, 4);
+    insertAtEnd(list1, 5);
 
-    ListNode *list2 = new ListNode(9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
-    insertAtEnd(list1, 9);
+    ListNode *list2 = new ListNode(1);
+    insertAtEnd(list2, 3);
+    insertAtEnd(list2, 4);
 
-    display(addTwoNumbers(list1, list2));
+    ListNode *list3 = new ListNode(2);
+    insertAtEnd(list3, 6);
+
+    display(list1);
+    display(list2);
+    display(list3);
 
     return 0;
 }

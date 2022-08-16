@@ -1,35 +1,50 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <string>
-#include <stack>
 using namespace std;
 
-int partition(vector<int> &nums, int l, int r)
+bool canPlaceFlowers(vector<int> &flowerbed, int n)
 {
-    int pivot = nums[r];
-    int i = l - 1;
+    if (n == 0)
+        return true;
 
-    for (int j = l; j < r; j++)
-        if (nums[j] < pivot)
-        {
-            i++;
-            swap(nums[i], nums[j]);
-        }
-
-    swap(nums[i + 1], nums[r]);
-    return i + 1;
-}
-
-void quick_sort(vector<int> &nums, int l, int r)
-{
-    if (l < r)
+    if (flowerbed.size() == 1)
     {
-        int pi = partition(nums, l, r);
-
-        quick_sort(nums, l, pi - 1);
-        quick_sort(nums, pi + 1, r);
+        if (n == 1)
+        {
+            if (flowerbed[0] == 0)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
     }
+
+    for (int i = 0; i < flowerbed.size() && n > 0; i++)
+    {
+        if (flowerbed[i] == 0)
+            if (i == 0 && flowerbed[i + 1] == 0)
+            {
+                flowerbed[i] = 1;
+                n--;
+            }
+            else if (i == flowerbed.size() - 1 && flowerbed[i - 1] == 0)
+            {
+                flowerbed[i] = 1;
+                n--;
+            }
+            else if (i != 0 && i != flowerbed.size() - 1 && flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0)
+            {
+                flowerbed[i] = 1;
+                n--;
+            }
+    }
+
+    if (n <= 0)
+        return true;
+
+    return false;
 }
 
 int main()
@@ -39,19 +54,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{9, 8, 7, 6, 5, 4, 3, 2, 1};
+    vector<int> flowerbed{0, 1, 0};
+    int n = 1;
 
-    cout << "Unsorted Array: ";
-    for (auto i : nums)
-        cout << i << " ";
-
-    cout << endl
-         << "Sorted Array:   ";
-
-    quick_sort(nums, 0, nums.size() - 1);
-
-    for (auto i : nums)
-        cout << i << " ";
+    cout << canPlaceFlowers(flowerbed, n) << endl;
 
     return 0;
 }
