@@ -1,51 +1,30 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
-bool canPlaceFlowers(vector<int> &flowerbed, int n)
+class Solution
 {
-    if (n == 0)
-        return true;
-
-    if (flowerbed.size() == 1)
+public:
+    vector<int> vct;
+    Solution(vector<int> &nums)
     {
-        if (n == 1)
-        {
-            if (flowerbed[0] == 0)
-                return true;
-            else
-                return false;
-        }
-        else
-            return false;
+        vct = nums;
     }
 
-    for (int i = 0; i < flowerbed.size() && n > 0; i++)
+    int pick(int target)
     {
-        if (flowerbed[i] == 0)
-            if (i == 0 && flowerbed[i + 1] == 0)
-            {
-                flowerbed[i] = 1;
-                n--;
-            }
-            else if (i == flowerbed.size() - 1 && flowerbed[i - 1] == 0)
-            {
-                flowerbed[i] = 1;
-                n--;
-            }
-            else if (i != 0 && i != flowerbed.size() - 1 && flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0)
-            {
-                flowerbed[i] = 1;
-                n--;
-            }
+        vector<int> temp;
+
+        for (int i = 0; i < vct.size(); i++)
+            if (vct[i] == target)
+                cout << "test" << " ";
+        // temp.push_back(i);
+
+        return rand() % temp.size();
     }
-
-    if (n <= 0)
-        return true;
-
-    return false;
-}
+};
 
 int main()
 {
@@ -54,10 +33,11 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> flowerbed{0, 1, 0};
-    int n = 1;
+    vector<int> nums{1, 1, 1, 2, 2, 3};
+    int k = 2;
 
-    cout << canPlaceFlowers(flowerbed, n) << endl;
+    Solution *obj = new Solution(nums);
+    obj->pick(1);
 
     return 0;
 }

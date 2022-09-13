@@ -1,6 +1,7 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <set>
 using namespace std;
 
 // linked list implementation
@@ -55,69 +56,17 @@ void display(ListNode *head)
     cout << "NULL" << endl;
 }
 
-ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
+ListNode *removeElements(ListNode *head, int val)
 {
-    ListNode *lst = new ListNode();
-    ListNode *temp = lst;
+    if (head == NULL)
+        return NULL;
 
-    while (list1 != NULL && list2 != NULL)
-    {
-        if (list1->val < list2->val)
-        {
-            temp->next = new ListNode(list1->val);
-            temp = temp->next;
-            list1 = list1->next;
-        }
-        else
-        {
-            temp->next = new ListNode(list2->val);
-            temp = temp->next;
-            list2 = list2->next;
-        }
-    }
+    head->next = removeElements(head->next, val);
 
-    while (list1 != NULL)
-    {
-        temp->next = new ListNode(list1->val);
-        temp = temp->next;
-        list1 = list1->next;
-    }
+    if (head->val == val)
+        return head->next;
 
-    while (list2 != NULL)
-    {
-        temp->next = new ListNode(list2->val);
-        temp = temp->next;
-        list2 = list2->next;
-    }
-
-    return lst->next;
-}
-
-ListNode *reverseList(ListNode *head)
-{
-    ListNode *prev = NULL, *nxt = NULL;
-    while (head != NULL)
-    {
-        nxt = head->next;
-        head->next = prev;
-        prev = head;
-        head = nxt;
-    }
-    return prev;
-}
-
-ListNode *mergeKLists(vector<ListNode *> &lists)
-{
-    ListNode *list = new ListNode(0);
-
-    int max
-
-    for (auto i : lists)
-    {
-        int mx = lists[0]->val;
-
-        for
-    }
+    return head;
 }
 
 int main()
@@ -127,20 +76,15 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *list1 = new ListNode(1);
-    insertAtEnd(list1, 4);
-    insertAtEnd(list1, 5);
+    ListNode *list = new ListNode(7);
+    insertAtEnd(list, 7);
+    insertAtEnd(list, 7);
+    insertAtEnd(list, 7);
 
-    ListNode *list2 = new ListNode(1);
-    insertAtEnd(list2, 3);
-    insertAtEnd(list2, 4);
+    int val = 7;
 
-    ListNode *list3 = new ListNode(2);
-    insertAtEnd(list3, 6);
-
-    display(list1);
-    display(list2);
-    display(list3);
+    display(list);
+    display(removeElements(list, val));
 
     return 0;
 }
