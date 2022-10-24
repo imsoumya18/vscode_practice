@@ -4,27 +4,20 @@
 #include <map>
 using namespace std;
 
-class Solution
+vector<int> mergeKArrays(vector<vector<int>> arr, int K)
 {
-public:
-    vector<int> vct;
-    Solution(vector<int> &nums)
-    {
-        vct = nums;
-    }
+    vector<int> idx(K, 0), vct, mx, curr_idx;
 
-    int pick(int target)
-    {
-        vector<int> temp;
+    for (auto i : idx)
+        cout << i << endl;
 
-        for (int i = 0; i < vct.size(); i++)
-            if (vct[i] == target)
-                cout << "test" << " ";
-        // temp.push_back(i);
+    while (vct.size() != K * K)
+    mx = arr[0]
+        for (int i = 0; i < K; i++)
+        
 
-        return rand() % temp.size();
-    }
-};
+            return idx;
+}
 
 int main()
 {
@@ -33,11 +26,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{1, 1, 1, 2, 2, 3};
-    int k = 2;
+    vector<vector<int>> arr{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-    Solution *obj = new Solution(nums);
-    obj->pick(1);
+    mergeKArrays(arr, 3);
 
     return 0;
 }
