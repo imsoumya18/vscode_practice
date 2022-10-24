@@ -4,21 +4,6 @@
 #include <map>
 using namespace std;
 
-vector<int> mergeKArrays(vector<vector<int>> arr, int K)
-{
-    vector<int> idx(K, 0), vct, mx, curr_idx;
-
-    for (auto i : idx)
-        cout << i << endl;
-
-    while (vct.size() != K * K)
-    mx = arr[0]
-        for (int i = 0; i < K; i++)
-        
-
-            return idx;
-}
-
 int main()
 {
 #ifndef ONLINE_JUDGE
