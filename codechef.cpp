@@ -1,24 +1,7 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
+#include <stack>
 using namespace std;
-
-vector<string> reorderLogFiles(vector<string> &logs)
-{
-    int start = 0;
-    for (int i = 0; i < logs.size(); i++)
-    {
-        int j = 0;
-        while (logs[i][j] != ' ')
-            j++;
-        if (!isdigit(logs[i][j + 1]))
-        {
-            swap(logs[i], logs[start]);
-            start++;
-        }
-    }
-    return logs;
-}
 
 int main()
 {
@@ -27,16 +10,47 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<string> logs;
+    int t;
+    cin >> t;
 
-    logs.push_back("dig1 8 1 5 1");
-    logs.push_back("let1 art can");
-    logs.push_back("dig2 3 6");
-    logs.push_back("let2 own kit dig");
-    logs.push_back("let3 art zero");
+    while (t--)
+    {
+        int n;
+        cin >> n;
 
-    for (auto i : reorderLogFiles(logs))
-        cout << i << endl;
+        string str;
+        cin >> str;
+
+        stack<int> st;
+        st.push(str[0]);
+
+        for (int i = 1; i < n; i++)
+        {
+            if (st.top() == str[i])
+            {
+                st.pop();
+                st.push(0);
+            }
+            else
+                st.push(str[i]);
+        }
+
+        if (st.size() == 1)
+            cout << "YES" << endl;
+        else
+        {
+            char c = st.top();
+            st.pop();
+
+            while (!st.empty() && st.top() == c)
+                st.pop();
+
+            if (st.empty())
+                cout << 'YES' << endl;
+            else
+                cout << 'NO' << endl;
+        }
+    }
 
     return 0;
 }
