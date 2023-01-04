@@ -1,38 +1,33 @@
-// @author Soumya
 #include <iostream>
-#include <vector>
+#include <string>
 using namespace std;
 
-int func(int num)
+void solve()
 {
-    int i = 0, j = num, poss = 0;
-    while (i <= j)
+    int d, f;
+    cin >> d >> f;
+    int h = 1;
+    cout << h << " ";
+    for (int i = 1; i < d; i++)
     {
-        if (to_string(i) == to_string(j)[-1])
+        if (f - h - i + 1 >= d - i)
         {
-            poss = 1;
-            break;
+            h += i;
         }
-        i += 1;
-        j -= 1;
+        else
+            h++;
+        cout << h << " ";
     }
-    if (poss)
-        cout << "yes" << endl;
-    else
-        cout << "no" << endl;
+    cout << endl;
 }
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
-
-    vector<int> parcels{6, 5, 4, 1, 3};
-    int k = 7;
-
-    cout << getMinimumCost(parcels, k) << endl;
-
-    return 0;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return (0);
 }

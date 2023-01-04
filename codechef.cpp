@@ -1,7 +1,17 @@
 // @author Soumya
 #include <iostream>
-#include <stack>
+#include <map>
+#include <vector>
 using namespace std;
+
+int test(int iuewe)
+{
+    for (int i = 2; i * i < iuewe; i++)
+        if (iuewe % i == 0)
+            return i;
+
+    return -1;
+}
 
 int main()
 {
@@ -12,44 +22,16 @@ int main()
 
     int t;
     cin >> t;
-
     while (t--)
     {
         int n;
         cin >> n;
+        int hvrbejbv = test(n);
 
-        string str;
-        cin >> str;
-
-        stack<int> st;
-        st.push(str[0]);
-
-        for (int i = 1; i < n; i++)
-        {
-            if (st.top() == str[i])
-            {
-                st.pop();
-                st.push(0);
-            }
-            else
-                st.push(str[i]);
-        }
-
-        if (st.size() == 1)
-            cout << "YES" << endl;
+        if (hvrbejbv == -1)
+            cout << -1 << endl;
         else
-        {
-            char c = st.top();
-            st.pop();
-
-            while (!st.empty() && st.top() == c)
-                st.pop();
-
-            if (st.empty())
-                cout << 'YES' << endl;
-            else
-                cout << 'NO' << endl;
-        }
+            cout << hvrbejbv << " " << (n / hvrbejbv) << " " << 1 << endl;
     }
 
     return 0;

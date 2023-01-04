@@ -1,8 +1,11 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <map>
 using namespace std;
+
+void setZeroes(vector<vector<int>> &matrix)
+{
+}
 
 int main()
 {
@@ -11,9 +14,19 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> arr{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    vector<vector<int>> matrix{
+        {1, 1, 1},
+        {1, 0, 1},
+        {1, 1, 1}};
 
-    mergeKArrays(arr, 3);
+    setZeroes(matrix);
+
+    for (auto i : matrix)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 
     return 0;
 }
