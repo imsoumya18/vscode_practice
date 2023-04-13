@@ -15,7 +15,7 @@ class student
 
 int main()
 {
-    student *s1 = new student();
+    student s1;
 
     cout << s1.add(4, 3) << endl;
 
