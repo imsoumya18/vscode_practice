@@ -2,32 +2,22 @@
 #include <string>
 using namespace std;
 
-void solve()
+class student
 {
-    int d, f;
-    cin >> d >> f;
-    int h = 1;
-    cout << h << " ";
-    for (int i = 1; i < d; i++)
+    int roll;
+    char name[];
+
+    int add(int x, int y)
     {
-        if (f - h - i + 1 >= d - i)
-        {
-            h += i;
-        }
-        else
-            h++;
-        cout << h << " ";
+        return x + y;
     }
-    cout << endl;
-}
+};
 
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
-    }
+    student *s1 = new student();
+
+    cout << s1.add(4, 3) << endl;
+
     return (0);
 }
