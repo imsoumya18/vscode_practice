@@ -74,6 +74,40 @@ Node *revll_rec(Node *&head)
     return newhead;
 }
 
+int sumll(Node *head, int k)
+{
+    Node *fast = head, *slow = head;
+    int sum = 0;
+
+    for (int i = 1; i < k; i++)
+        fast = fast->next;
+
+    sum += fast->data;
+
+    while (fast->next != NULL)
+    {
+        fast = fast->next;
+        slow = slow->next;
+    }
+
+    sum += slow->data;
+
+    return sum;
+}
+
+int mid(Node *head)
+{
+    Node *fast = head, *slow = head;
+
+    while (fast && fast->next)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+
+    return slow->data;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -86,12 +120,16 @@ int main()
     insertAtEnd(head, 3);
     insertAtEnd(head, 4);
     insertAtEnd(head, 5);
+    insertAtEnd(head, 6);
+    // insertAtEnd(head, 7);
 
     display(head);
     cout << endl;
-    display(revll(head));
-    cout << endl;
+    // display(revll(head));
+    // cout << endl;
     // display(revll_rec(head));
+
+    cout << mid(head) << endl;
 
     return (0);
 }
