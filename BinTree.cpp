@@ -16,7 +16,7 @@ struct Node
     }
 };
 
-void preorder(struct Node *root)
+void preorder(Node *root)
 {
     if (root == NULL)
         return;
@@ -26,7 +26,7 @@ void preorder(struct Node *root)
     preorder(root->right);
 }
 
-void inorder(struct Node *root)
+void inorder(Node *root)
 {
     if (root == NULL)
         return;
@@ -36,7 +36,7 @@ void inorder(struct Node *root)
     inorder(root->right);
 }
 
-void postorder(struct Node *root)
+void postorder(Node *root)
 {
     if (root == NULL)
         return;
@@ -44,6 +44,32 @@ void postorder(struct Node *root)
     postorder(root->left);
     postorder(root->right);
     cout << root->data << " ";
+}
+
+int calHeight(Node *root)
+{
+    if (root == NULL)
+        return 0;
+
+    int lHeight = calHeight(root->left);
+    int rHeight = calHeight(root->right);
+
+    return max(lHeight, rHeight) + 1;
+}
+
+int calDiameter(Node *root)
+{
+    if (root == NULL)
+        return 0;
+
+    int lHeight = calHeight(root->left);
+    int rHeight = calHeight(root->right);
+    int currDiameter = lHeight + rHeight + 1;
+
+    int lDiameter = calDiameter(root->left);
+    int rDiameter = calDiameter(root->right);
+
+    return max(currDiameter, max(lDiameter, rDiameter));
 }
 
 int main()
@@ -67,6 +93,9 @@ int main()
     cout << endl;
     postorder(root);
     cout << endl;
+
+    cout << "Height of the tree: " << calHeight(root) << endl;
+    cout << "Diameter of the tree: " << calDiameter(root) << endl;
 
     return 0;
 }
