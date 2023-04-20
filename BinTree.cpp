@@ -1,5 +1,6 @@
 // @author Soumya
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Node
@@ -70,6 +71,57 @@ int calDiameter(Node *root)
     int rDiameter = calDiameter(root->right);
 
     return max(currDiameter, max(lDiameter, rDiameter));
+}
+
+int search(vector<int> inorder, int start, int end, int curr)
+{
+    for (int i = start; i <= end; i++)
+        if (inorder[i] == curr)
+            return i;
+
+    return -1;
+}
+
+Node *buildTree(vector<int> preorder, vector<int> inorder, int start, int end)
+{
+    static int idx = 0;
+
+    if (start > end)
+        return NULL;
+
+    int curr = preorder[idx];
+    idx++;
+    Node *node = new Node(curr);
+
+    if (start == end)
+        return node;
+
+    int pos = search(inorder, start, end, curr);
+    node->left = buildTree(preorder, inorder, start, pos - 1);
+    node->right = buildTree(preorder, inorder, pos + 1, end);
+
+    return node;
+}
+
+Node *buildTree2(vector<int> postorder, vector<int> inorder, int start, int end)
+{
+    static int idx = postorder.size() - 1;
+
+    if (start > end)
+        return NULL;
+
+    int curr = postorder[idx];
+    idx--;
+    Node *node = new Node(curr);
+
+    if (start == end)
+        return node;
+
+    int pos = search(inorder, start, end, curr);
+    node->right = buildTree2(postorder, inorder, pos + 1, end);
+    node->left = buildTree2(postorder, inorder, start, pos - 1);
+
+    return node;
 }
 
 int main()
