@@ -88,6 +88,20 @@ void midLL(Node *head)
     cout << slow->data << endl;
 }
 
+void del_mid(Node *&head)
+{
+    Node *fast = head, *dummy = new Node(-1), *slow = dummy;
+    dummy->next = head;
+
+    while (fast && fast->next)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+
+    slow->next = slow->next->next;
+}
+
 void kth_end(Node *head, int k)
 {
     Node *fast = head, *slow = head;
@@ -104,6 +118,23 @@ void kth_end(Node *head, int k)
     cout << slow->data << endl;
 }
 
+void remove_kth_end(Node *&head, int k)
+{
+    Node *fast = head, *dummy = new Node(-1), *slow = dummy;
+    dummy->next = head;
+
+    for (int i = 1; i < k; i++)
+        fast = fast->next;
+
+    while (fast->next)
+    {
+        fast = fast->next;
+        slow = slow->next;
+    }
+
+    slow->next = slow->next->next;
+}
+
 void remove_duplicates(Node *&head)
 {
     Node *temp = head;
@@ -117,6 +148,27 @@ void remove_duplicates(Node *&head)
     }
 }
 
+Node *swap_in_pairs(Node *&head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+
+    Node *curr = head, *t = head->next, *prev;
+
+    while (curr && curr->next)
+    {
+        Node *temp = curr->next;
+        curr->next = temp->next;
+        temp->next = curr;
+        if (curr != head)
+            prev->next = temp;
+        prev = curr;
+        curr = curr->next;
+    }
+
+    return t;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -126,18 +178,34 @@ int main()
 
     Node *head = new Node(1);
     addNode(head, 2);
-    addNode(head, 2);
+    addNode(head, 3);
     addNode(head, 4);
-    addNode(head, 4);
-    addNode(head, 4);
+    addNode(head, 5);
+    addNode(head, 6);
 
     display(head);
+
     // display(revLL_iter(head));
+
     // display(revLL_recur(head));
+
     // midLL(head);
+
+    // del_mid(head);
+    // display(head);
+
     // kth_end(head, 5);
-    remove_duplicates(head);
-    display(head);
+
+    // remove_kth_end(head, 5);
+    // display(head);
+
+    // remove_duplicates(head);
+    // display(head);
+
+    // swap_in_pairs(head);
+    // display(head);
+
+    // display(swap_in_pairs(head));
 
     return 0;
 }
