@@ -167,7 +167,7 @@ Node *swap_in_pairs(Node *&head)
     }
 
     return t;
-}test
+}
 
 int main()
 {
