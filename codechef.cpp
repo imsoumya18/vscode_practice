@@ -1,17 +1,7 @@
 // @author Soumya
 #include <iostream>
 #include <map>
-#include <vector>
 using namespace std;
-
-int test(int iuewe)
-{
-    for (int i = 2; i * i < iuewe; i++)
-        if (iuewe % i == 0)
-            return i;
-
-    return -1;
-}
 
 int main()
 {
@@ -20,18 +10,34 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-        int hvrbejbv = test(n);
+    int n, i = 1, j;
+    cin >> n;
 
-        if (hvrbejbv == -1)
-            cout << -1 << endl;
-        else
-            cout << hvrbejbv << " " << (n / hvrbejbv) << " " << 1 << endl;
+    while (i <= n)
+    {
+        j = 1;
+        while (j <= n - i)
+        {
+            cout << "  ";
+            j += 1;
+        }
+
+        j = 1;
+        while (j <= i)
+        {
+            cout << j << " ";
+            j += 1;
+        }
+
+        j = j - 2;
+        while (j >= 1)
+        {
+            cout << j << " ";
+            j -= 1;
+        }
+
+        cout << endl;
+        i += 1;
     }
 
     return 0;
