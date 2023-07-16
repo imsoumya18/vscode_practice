@@ -1,7 +1,21 @@
 // @author Soumya
 #include <iostream>
-#include <map>
+#include <vector>
 using namespace std;
+
+int hammingWeight(uint32_t n)
+{
+    int ans = 0;
+
+    while (n != 0)
+    {
+        cout << n << "    " << (n & 1) << endl;
+        ans += n & 1;
+        n = n >> 1;
+    }
+    cout << endl;
+    return ans;
+}
 
 int main()
 {
@@ -9,36 +23,9 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    uint32_t n = 111;
 
-    int n, i = 1, j;
-    cin >> n;
-
-    while (i <= n)
-    {
-        j = 1;
-        while (j <= n - i)
-        {
-            cout << "  ";
-            j += 1;
-        }
-
-        j = 1;
-        while (j <= i)
-        {
-            cout << j << " ";
-            j += 1;
-        }
-
-        j = j - 2;
-        while (j >= 1)
-        {
-            cout << j << " ";
-            j -= 1;
-        }
-
-        cout << endl;
-        i += 1;
-    }
+    cout << hammingWeight(n) << endl;
 
     return 0;
 }
