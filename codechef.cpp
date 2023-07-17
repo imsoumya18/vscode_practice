@@ -3,17 +3,31 @@
 #include <vector>
 using namespace std;
 
-int hammingWeight(uint32_t n)
+int setBits(int a, int b)
 {
     int ans = 0;
 
-    while (n != 0)
+    while (a != 0 && b != 0)
     {
-        cout << n << "    " << (n & 1) << endl;
-        ans += n & 1;
-        n = n >> 1;
+        ans += (a & 1);
+        a = a >> 1;
+
+        ans += (b & 1);
+        b = b >> 1;
     }
-    cout << endl;
+
+    while (a != 0)
+    {
+        ans += (a & 1);
+        a = a >> 1;
+    }
+
+    while (b != 0)
+    {
+        ans += (b & 1);
+        b = b >> 1;
+    }
+
     return ans;
 }
 
@@ -23,9 +37,9 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    uint32_t n = 111;
+    int a = 5, b = 11;
 
-    cout << hammingWeight(n) << endl;
+    cout << setBits(a, b) << endl;
 
     return 0;
 }
