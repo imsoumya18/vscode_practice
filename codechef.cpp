@@ -1,34 +1,27 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
-int setBits(int a, int b)
+vector<int> twoSum(vector<int> &numbers, int target)
 {
-    int ans = 0;
+    vector<int> vct;
 
-    while (a != 0 && b != 0)
-    {
-        ans += (a & 1);
-        a = a >> 1;
+    int lo = 0, hi = numbers.size() - 1;
+    while (lo < hi)
+        if (numbers[lo] + numbers[hi] == target)
+        {
+            vct.push_back(lo + 1);
+            vct.push_back(hi + 1);
+            break;
+        }
+        else if (numbers[lo] + numbers[hi] < target)
+            lo++;
+        else
+            hi--;
 
-        ans += (b & 1);
-        b = b >> 1;
-    }
-
-    while (a != 0)
-    {
-        ans += (a & 1);
-        a = a >> 1;
-    }
-
-    while (b != 0)
-    {
-        ans += (b & 1);
-        b = b >> 1;
-    }
-
-    return ans;
+    return vct;
 }
 
 int main()
@@ -37,9 +30,11 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int a = 5, b = 11;
+    vector<int> nums{2, 7, 11, 15};
+    int target = 9;
 
-    cout << setBits(a, b) << endl;
+    for (auto i : twoSum(nums, target))
+        cout << i << " ";
 
     return 0;
 }
