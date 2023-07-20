@@ -9,17 +9,17 @@ int getPairsCount(int arr[], int n, int k)
     map<int, int> mp;
 
     for (int i = 0; i < n; i++)
+        mp[arr[i]]++;
+
+    for (int i = 0; i < n; i++)
     {
-        if (mp.find(k - arr[i]) == mp.end())
-            mp[arr[i]] = 1;
-        else
-        {
-            cnt += mp[k - arr[i]];
-            mp[arr[i]]++;
-        }
+        cnt += mp[k - arr[i]];
+
+        if (k - arr[i] == arr[i])
+            cnt--;
     }
 
-    return cnt;
+    return cnt/2;
 }
 
 int main()
@@ -28,7 +28,7 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int arr[] = {1, 5, 5, 5, 5, 5, 7};
+    int arr[] = {1, 5, 5, 5, 5, 7};
     int n = 6, k = 10;
 
     cout << getPairsCount(arr, n, k) << endl;
