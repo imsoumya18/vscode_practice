@@ -1,25 +1,20 @@
 // @author Soumya
 #include <iostream>
-#include <map>
 using namespace std;
 
-int getPairsCount(int arr[], int n, int k)
+void segregate0and1(int arr[], int n)
 {
-    int cnt = 0;
-    map<int, int> mp;
+    int lo = 0, it = 0;
 
-    for (int i = 0; i < n; i++)
-        mp[arr[i]]++;
-
-    for (int i = 0; i < n; i++)
+    while (it < n)
     {
-        cnt += mp[k - arr[i]];
-
-        if (k - arr[i] == arr[i])
-            cnt--;
+        if (arr[it] == 0)
+        {
+            swap(arr[lo], arr[it]);
+            lo++;
+        }
+        it++;
     }
-
-    return cnt/2;
 }
 
 int main()
@@ -28,10 +23,13 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int arr[] = {1, 5, 5, 5, 5, 7};
-    int n = 6, k = 10;
+    int arr[] = {0, 0, 1, 1, 0};
+    int n = 5;
 
-    cout << getPairsCount(arr, n, k) << endl;
+    segregate0and1(arr, n);
+
+    for (auto i : arr)
+        cout << i << " ";
 
     return 0;
 }

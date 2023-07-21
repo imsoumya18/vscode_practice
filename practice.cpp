@@ -3,27 +3,24 @@
 #include <vector>
 using namespace std;
 
-int peakIndexInMountainArray(vector<int> &arr)
+class Hero
 {
-    int lo = 0, hi = arr.size() - 1;
-    int mid = (lo + hi) / 2;
+private:
+    int point;
 
-    while (lo < hi)
+public:
+    int life;
+
+    Hero()
     {
-        if (arr[mid] < arr[mid + 1])
-        {
-            lo = mid + 1;
-        }
-        else
-        {
-            hi = mid;
-        }
-
-        mid = (lo + hi) / 2;
+        cout << "no parameter constructor" << endl;
     }
 
-    return mid;
-}
+    Hero(int x)
+    {
+        cout << "parameterised constructor: " << x << endl;
+    }
+};
 
 int main()
 {
@@ -32,9 +29,7 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> vct{0, 10, 5, 2};
-
-    cout << peakIndexInMountainArray(vct) << endl;
+    Hero h1(4);
 
     return 0;
 }
