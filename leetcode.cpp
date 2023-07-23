@@ -1,10 +1,21 @@
 // @author Soumya
 #include <iostream>
+#include <bits/stdc++.h>
 #include <vector>
 using namespace std;
 
-void setZeroes(vector<vector<int>> &matrix)
+int maxIncreasingGroups(vector<int> &usageLimits)
 {
+    int ans = 1;
+    sort(usageLimits.begin(), usageLimits.end());
+
+    for (int i = 0; i < usageLimits.size() - 1; i++)
+        if (usageLimits[i] < usageLimits[i + 1])
+            ans++;
+        else
+            break;
+
+    return ans;
 }
 
 int main()
@@ -14,19 +25,8 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> matrix{
-        {1, 1, 1},
-        {1, 0, 1},
-        {1, 1, 1}};
+    vector<int> usageLimits{1,1};
 
-    setZeroes(matrix);
-
-    for (auto i : matrix)
-    {
-        for (auto j : i)
-            cout << j << " ";
-        cout << endl;
-    }
-
+    cout << maxIncreasingGroups(usageLimits) << endl;
     return 0;
 }
