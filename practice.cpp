@@ -1,5 +1,6 @@
 // @author Soumya
 #include <iostream>
+#include <set>
 using namespace std;
 
 // linked list implementation
@@ -45,7 +46,7 @@ void insertAtEnd(ListNode *&head, int val)
 }
 
 // print elements of linked list
-void display(ListNode *head)
+void display(ListNode *&head)
 {
     ListNode *temp = head;
 
@@ -58,6 +59,32 @@ void display(ListNode *head)
     cout << "NULL" << endl;
 }
 
+ListNode *deleteDuplicates(ListNode *head)
+{
+    ListNode *curr = head, *prev = new ListNode(-1);
+    prev->next = curr;
+    set<int> s;
+
+    while (curr != nullptr)
+    {
+        if (s.find(curr->val) == s.end())
+        {
+            s.insert(curr->val);
+            prev = curr;
+            curr = curr->next;
+        }
+        else
+        {
+            if (curr == head)
+                head = curr->next;
+            curr = curr->next;
+            prev->next = curr;
+        }
+    }
+
+    return head;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -66,13 +93,19 @@ int main()
 #endif
 
     ListNode *head = new ListNode(2);
-    insertAtEnd(head, 4);
+    insertAtEnd(head, 9);
+    insertAtEnd(head, 2);
     insertAtEnd(head, 6);
     insertAtEnd(head, 8);
-    insertAtHead(head, 10);
-    insertAtHead(head, 12);
+    insertAtEnd(head, 9);
+    insertAtEnd(head, 10);
+    insertAtEnd(head, 9);
+    insertAtEnd(head, 10);
 
     display(head);
+    cout << endl;
+    ListNode *n = deleteDuplicates(head);
+    display(n);
 
     return 0;
 }
