@@ -4,18 +4,25 @@
 #include <vector>
 using namespace std;
 
-int maxIncreasingGroups(vector<int> &usageLimits)
+int findMin(vector<int> &nums)
 {
-    int ans = 1;
-    sort(usageLimits.begin(), usageLimits.end());
+    int l = 0, h = nums.size() - 1;
+    int mid = (l + h) / 2;
 
-    for (int i = 0; i < usageLimits.size() - 1; i++)
-        if (usageLimits[i] < usageLimits[i + 1])
-            ans++;
+    while (l < h)
+    {
+        if (nums[mid] >= nums[0])
+            l = mid + 1;
         else
-            break;
+            h = mid;
 
-    return ans;
+        mid = (l + h) / 2;
+    }
+
+    if (l == nums.size() - 1 && nums[l] > nums[l - 1])
+        l = 0;
+
+    return nums[l];
 }
 
 int main()
@@ -25,8 +32,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> usageLimits{1,1};
+    vector<int> nums{1};
 
-    cout << maxIncreasingGroups(usageLimits) << endl;
+    cout << findMin(nums) << endl;
+
     return 0;
 }

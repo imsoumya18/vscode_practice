@@ -1,26 +1,62 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class Hero
+// linked list implementation
+class ListNode
 {
-private:
-    int point;
-
 public:
-    int life;
+    int val;
+    ListNode *next;
 
-    Hero()
+    ListNode(int x)
     {
-        cout << "no parameter constructor" << endl;
-    }
-
-    Hero(int x)
-    {
-        cout << "parameterised constructor: " << x << endl;
+        val = x;
+        next = nullptr;
     }
 };
+
+// insert node at head
+void insertAtHead(ListNode *&head, int val)
+{
+    ListNode *temp = head;
+
+    head = new ListNode(val);
+    head->next = temp;
+}
+
+// insert node at end
+void insertAtEnd(ListNode *&head, int val)
+{
+    ListNode *n = new ListNode(val);
+
+    if (head == nullptr)
+    {
+        head = n;
+        return;
+    }
+
+    ListNode *temp = head;
+
+    while (temp->next != nullptr)
+        temp = temp->next;
+
+    temp->next = n;
+}
+
+// print elements of linked list
+void display(ListNode *head)
+{
+    ListNode *temp = head;
+
+    while (temp != nullptr)
+    {
+        cout << temp->val << "-->";
+        temp = temp->next;
+    }
+
+    cout << "NULL" << endl;
+}
 
 int main()
 {
@@ -29,7 +65,14 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    Hero h1(4);
+    ListNode *head = new ListNode(2);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 6);
+    insertAtEnd(head, 8);
+    insertAtHead(head, 10);
+    insertAtHead(head, 12);
+
+    display(head);
 
     return 0;
 }
