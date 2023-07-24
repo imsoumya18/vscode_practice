@@ -59,30 +59,21 @@ void display(ListNode *&head)
     cout << "NULL" << endl;
 }
 
-ListNode *deleteDuplicates(ListNode *head)
+ListNode *middleNode(ListNode *head)
 {
-    ListNode *curr = head, *prev = new ListNode(-1);
-    prev->next = curr;
-    set<int> s;
+    ListNode *slow = new ListNode(-1), *fast = head;
+    slow->next = head;
 
-    while (curr != nullptr)
+    while (fast != nullptr && fast->next != nullptr)
     {
-        if (s.find(curr->val) == s.end())
-        {
-            s.insert(curr->val);
-            prev = curr;
-            curr = curr->next;
-        }
-        else
-        {
-            if (curr == head)
-                head = curr->next;
-            curr = curr->next;
-            prev->next = curr;
-        }
+        fast = fast->next->next;
+        slow = slow->next;
     }
 
-    return head;
+    // cout << "slow = " << slow->val << endl;
+    // cout << "fast = " << fast->val << endl;
+
+    return slow->next;
 }
 
 int main()
@@ -92,19 +83,19 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *head = new ListNode(2);
-    insertAtEnd(head, 9);
+    ListNode *head = new ListNode(1);
     insertAtEnd(head, 2);
-    insertAtEnd(head, 6);
-    insertAtEnd(head, 8);
-    insertAtEnd(head, 9);
-    insertAtEnd(head, 10);
-    insertAtEnd(head, 9);
-    insertAtEnd(head, 10);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 5);
+    // insertAtEnd(head, 6);
+    // insertAtEnd(head, 7);
+    // insertAtEnd(head, 8);
+    // insertAtEnd(head, 9);
 
     display(head);
     cout << endl;
-    ListNode *n = deleteDuplicates(head);
+    ListNode *n = middleNode(head);
     display(n);
 
     return 0;
