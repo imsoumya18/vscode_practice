@@ -59,21 +59,40 @@ void display(ListNode *&head)
     cout << "NULL" << endl;
 }
 
-ListNode *middleNode(ListNode *head)
+ListNode *detectCycle(ListNode *head)
 {
-    ListNode *slow = new ListNode(-1), *fast = head;
-    slow->next = head;
+    if (head == nullptr || head->next == nullptr)
+        return nullptr;
 
-    while (fast != nullptr && fast->next != nullptr)
+    ListNode *slow = head, *fast = head;
+
+    while (slow != nullptr && fast != nullptr)
     {
-        fast = fast->next->next;
+        fast = fast->next;
+        if (fast != nullptr)
+            fast = fast->next;
+
         slow = slow->next;
+
+        if (slow == fast)
+            break;
     }
 
-    // cout << "slow = " << slow->val << endl;
-    // cout << "fast = " << fast->val << endl;
+    if (slow != fast)
+        return nullptr;
 
-    return slow->next;
+    slow = head;
+
+    while (slow != fast)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    while (slow->next != fast)
+        slow = slow->next;
+
+    slow->next = nullptr;
 }
 
 int main()
@@ -88,15 +107,13 @@ int main()
     insertAtEnd(head, 3);
     insertAtEnd(head, 4);
     insertAtEnd(head, 5);
-    // insertAtEnd(head, 6);
-    // insertAtEnd(head, 7);
-    // insertAtEnd(head, 8);
-    // insertAtEnd(head, 9);
+    insertAtEnd(head, 6);
+    insertAtEnd(head, 7);
+    insertAtEnd(head, 8);
+    insertAtEnd(head, 9);
 
     display(head);
-    cout << endl;
-    ListNode *n = middleNode(head);
-    display(n);
+    cout << detectCycle(head)->val << endl;
 
     return 0;
 }
