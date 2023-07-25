@@ -59,40 +59,37 @@ void display(ListNode *&head)
     cout << "NULL" << endl;
 }
 
-ListNode *detectCycle(ListNode *head)
+ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
 {
-    if (head == nullptr || head->next == nullptr)
-        return nullptr;
+    ListNode *ans = nullptr, *it = nullptr;
 
-    ListNode *slow = head, *fast = head;
-
-    while (slow != nullptr && fast != nullptr)
+    while (list1 != nullptr && list2 != nullptr)
     {
-        fast = fast->next;
-        if (fast != nullptr)
-            fast = fast->next;
-
-        slow = slow->next;
-
-        if (slow == fast)
-            break;
+        if (list1->val < list2->val)
+        {
+            insertAtEnd(ans, list1->val);
+            list1 = list1->next;
+        }
+        else
+        {
+            insertAtEnd(ans, list2->val);
+            list2 = list2->next;
+        }
     }
 
-    if (slow != fast)
-        return nullptr;
-
-    slow = head;
-
-    while (slow != fast)
+    while (list1 != nullptr)
     {
-        slow = slow->next;
-        fast = fast->next;
+        insertAtEnd(ans, list1->val);
+        list1 = list1->next;
     }
 
-    while (slow->next != fast)
-        slow = slow->next;
+    while (list2 != nullptr)
+    {
+        insertAtEnd(ans, list2->val);
+        list2 = list2->next;
+    }
 
-    slow->next = nullptr;
+    return ans;
 }
 
 int main()
@@ -103,17 +100,19 @@ int main()
 #endif
 
     ListNode *head = new ListNode(1);
-    insertAtEnd(head, 2);
     insertAtEnd(head, 3);
-    insertAtEnd(head, 4);
     insertAtEnd(head, 5);
-    insertAtEnd(head, 6);
     insertAtEnd(head, 7);
-    insertAtEnd(head, 8);
-    insertAtEnd(head, 9);
+
+    ListNode *head2 = new ListNode(5);
+    insertAtEnd(head2, 6);
+    insertAtEnd(head2, 8);
 
     display(head);
-    cout << detectCycle(head)->val << endl;
+    cout << endl;
+    ListNode *n = mergeTwoLists(head, head2);
+    display(n);
+    cout << endl;
 
     return 0;
 }
