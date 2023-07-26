@@ -1,6 +1,6 @@
 // @author Soumya
 #include <iostream>
-#include <set>
+#include <vector>
 using namespace std;
 
 // linked list implementation
@@ -59,51 +59,21 @@ void display(ListNode *&head)
     cout << "NULL" << endl;
 }
 
-ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
+bool isPalindrome(ListNode *head)
 {
-    if (list1 == nullptr)
-        return list2;
+    int flag = 0;
+    vector<int> vct;
+    ListNode *slow = head, *fast = head;
 
-    if (list2 == nullptr)
-        return list1;
-
-    ListNode *ans = nullptr, *it1 = nullptr, *it2 = nullptr;
-
-    if (list1->val <= list2->val)
+    while (fast != nullptr && fast->next != nullptr)
     {
-        ans = list1;
-        it1 = list1;
-        it2 = list2;
-    }
-    else
-    {
-        ans = list2;
-        it1 = list2;
-        it2 = list1;
+        slow = slow->next;
+        fast = fast->next->next;
     }
 
-    while (it2 != nullptr)
-    {
-        if (it1->next == nullptr)
-        {
-            it1->next = it2;
-            break;
-        }
+    display(slow);
 
-        if (it1->next->val >= it2->val)
-        {
-            ListNode *temp = it2;
-            it2 = it2->next;
-            ListNode *temp2 = it1->next;
-            it1->next = temp;
-            temp->next = temp2;
-            it1 = it1->next;
-        }
-        else
-            it1 = it1->next;
-    }
-
-    return ans;
+    return true;
 }
 
 int main()
@@ -114,22 +84,15 @@ int main()
 #endif
 
     ListNode *head = new ListNode(1);
-    // insertAtEnd(head, 3);
-    // insertAtEnd(head, 5);
-
-    ListNode *head2 = new ListNode(2);
-    // insertAtEnd(head2, 4);
-    // insertAtEnd(head2, 5);
+    insertAtEnd(head, 2);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 5);
 
     display(head);
     cout << endl;
 
-    display(head2);
-    cout << endl;
-
-    ListNode *n = mergeTwoLists(head, head2);
-    display(n);
-    cout << endl;
+    cout << isPalindrome(head) << endl;
 
     return 0;
 }
