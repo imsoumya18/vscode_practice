@@ -61,32 +61,46 @@ void display(ListNode *&head)
 
 ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
 {
-    ListNode *ans = nullptr, *it = nullptr;
+    if (list1 == nullptr)
+        return list2;
 
-    while (list1 != nullptr && list2 != nullptr)
+    if (list2 == nullptr)
+        return list1;
+
+    ListNode *ans = nullptr, *it1 = nullptr, *it2 = nullptr;
+
+    if (list1->val <= list2->val)
     {
-        if (list1->val < list2->val)
+        ans = list1;
+        it1 = list1;
+        it2 = list2;
+    }
+    else
+    {
+        ans = list2;
+        it1 = list2;
+        it2 = list1;
+    }
+
+    while (it2 != nullptr)
+    {
+        if (it1->next == nullptr)
         {
-            insertAtEnd(ans, list1->val);
-            list1 = list1->next;
+            it1->next = it2;
+            break;
+        }
+
+        if (it1->next->val >= it2->val)
+        {
+            ListNode *temp = it2;
+            it2 = it2->next;
+            ListNode *temp2 = it1->next;
+            it1->next = temp;
+            temp->next = temp2;
+            it1 = it1->next;
         }
         else
-        {
-            insertAtEnd(ans, list2->val);
-            list2 = list2->next;
-        }
-    }
-
-    while (list1 != nullptr)
-    {
-        insertAtEnd(ans, list1->val);
-        list1 = list1->next;
-    }
-
-    while (list2 != nullptr)
-    {
-        insertAtEnd(ans, list2->val);
-        list2 = list2->next;
+            it1 = it1->next;
     }
 
     return ans;
@@ -100,16 +114,19 @@ int main()
 #endif
 
     ListNode *head = new ListNode(1);
-    insertAtEnd(head, 3);
-    insertAtEnd(head, 5);
-    insertAtEnd(head, 7);
+    // insertAtEnd(head, 3);
+    // insertAtEnd(head, 5);
 
-    ListNode *head2 = new ListNode(5);
-    insertAtEnd(head2, 6);
-    insertAtEnd(head2, 8);
+    ListNode *head2 = new ListNode(2);
+    // insertAtEnd(head2, 4);
+    // insertAtEnd(head2, 5);
 
     display(head);
     cout << endl;
+
+    display(head2);
+    cout << endl;
+
     ListNode *n = mergeTwoLists(head, head2);
     display(n);
     cout << endl;
