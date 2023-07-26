@@ -1,6 +1,6 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
+#include <stack>
 using namespace std;
 
 // linked list implementation
@@ -59,21 +59,91 @@ void display(ListNode *&head)
     cout << "NULL" << endl;
 }
 
-bool isPalindrome(ListNode *head)
+ListNode *reverseLL(ListNode *head)
 {
-    int flag = 0;
-    vector<int> vct;
-    ListNode *slow = head, *fast = head;
+    if (head == nullptr || head->next == nullptr)
+        return head;
 
-    while (fast != nullptr && fast->next != nullptr)
+    ListNode *prev = nullptr, *curr = head, *nxt;
+
+    while (curr != nullptr)
     {
-        slow = slow->next;
-        fast = fast->next->next;
+        nxt = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nxt;
     }
 
-    display(slow);
+    return prev;
+}
 
-    return true;
+ListNode *addTwoNumbers(ListNode *l1)
+{
+    l1 = reverseLL(l1);
+    ListNode *it = l1;
+    int sum = 0, carry = 1;
+
+    while (carry != 0)
+    {
+        sum = l1->val + carry;
+        carry = sum / 10;
+        sum = sum % 10;
+        l1->val = sum;
+
+        if (l1->next == nullptr)
+        {
+            l1->next = new ListNode(carry);
+            carry = 0;
+        }
+        else
+            l1 = l1->next;
+    }
+
+    return reverseLL(it);
+
+    // l1 = reverseLL(l1);
+    // int sum = l1->val + 1, carry = 0;
+    // carry = sum / 10;
+    // sum = sum % 10;
+    // l1->val = sum;
+
+    // if (carry != 0)
+    //     if (l1->next == nullptr)
+    //         l1->next = new ListNode(carry);
+    //     else
+    //         l1->next->val += carry;
+
+    // return reverseLL(l1);
+
+    // ListNode *ans = nullptr;
+
+    // while (l1 || l2)
+    // {
+    //     int sum = 0;
+
+    //     if (l1 != nullptr)
+    //     {
+    //         sum += l1->val;
+    //         l1 = l1->next;
+    //     }
+
+    //     if (l2 != nullptr)
+    //     {
+    //         sum += l2->val;
+    //         l2 = l2->next;
+    //     }
+
+    //     sum += carry;
+    //     carry = sum / 10;
+    //     sum = sum % 10;
+
+    //     insertAtEnd(ans, sum);
+    // }
+
+    // if (carry != 0)
+    //     insertAtEnd(ans, carry);
+
+    // return reverseLL(ans);
 }
 
 int main()
@@ -83,16 +153,21 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *head = new ListNode(1);
-    insertAtEnd(head, 2);
-    insertAtEnd(head, 3);
-    insertAtEnd(head, 4);
-    insertAtEnd(head, 5);
+    ListNode *head = new ListNode(4);
+    insertAtEnd(head, 9);
+    // insertAtEnd(head, 6);
+    // insertAtEnd(head, 9);
+
+    ListNode *head2 = new ListNode(5);
+    insertAtEnd(head2, 6);
+    insertAtEnd(head2, 4);
 
     display(head);
     cout << endl;
-
-    cout << isPalindrome(head) << endl;
+    // display(head2);
+    cout << endl;
+    ListNode *n = addTwoNumbers(head);
+    display(n);
 
     return 0;
 }
