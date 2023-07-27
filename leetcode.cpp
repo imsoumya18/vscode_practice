@@ -1,28 +1,50 @@
 // @author Soumya
 #include <iostream>
-#include <bits/stdc++.h>
 #include <vector>
 using namespace std;
 
-int findMin(vector<int> &nums)
+void reverse(vector<int> &vct, int l, int r)
 {
-    int l = 0, h = nums.size() - 1;
-    int mid = (l + h) / 2;
-
-    while (l < h)
+    while (l < r)
     {
-        if (nums[mid] >= nums[0])
-            l = mid + 1;
-        else
-            h = mid;
+        swap(vct[l], vct[r]);
+        l++;
+        r--;
+    }
+}
 
-        mid = (l + h) / 2;
+bool check(vector<int> &nums)
+{
+    int n = nums.size();
+
+    if (n == 1)
+        return true;
+
+    int it = 0;
+
+    while (it < n - 1)
+    {
+        if (nums[it] > nums[it + 1])
+            break;
+        it++;
     }
 
-    if (l == nums.size() - 1 && nums[l] > nums[l - 1])
-        l = 0;
+    if (it == n - 1)
+        return true;
 
-    return nums[l];
+    it++;
+
+    while (it < n - 1)
+    {
+        if (nums[it] > nums[it + 1])
+            return false;
+        it++;
+    }
+
+    if (nums[n - 1] > nums[0])
+        return false;
+
+    return true;
 }
 
 int main()
@@ -32,9 +54,14 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{1};
+    vector<int> nums{1, 3, 2};
 
-    cout << findMin(nums) << endl;
+    for (auto i : nums)
+        cout << i << " ";
+
+    cout << endl;
+
+    cout << check(nums) << endl;
 
     return 0;
 }
