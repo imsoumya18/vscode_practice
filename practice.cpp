@@ -19,6 +19,21 @@ void bubble_sort(vector<int> &vct)
                 swap(vct[j], vct[j + 1]);
 }
 
+void insertion_sort(vector<int> &vct)
+{
+    for (int i = 1; i < vct.size(); i++)
+    {
+        int j = i - 1, temp = vct[i];
+
+        while (j >= 0 && vct[j] > temp)
+        {
+            vct[j + 1] = vct[j];
+            j--;
+        }
+        vct[j + 1] = temp;
+    }
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -33,7 +48,7 @@ int main()
 
     cout << endl;
 
-    bubble_sort(vct);
+    insertion_sort(vct);
 
     for (auto i : vct)
         cout << i << " ";
