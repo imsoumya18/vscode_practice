@@ -1,50 +1,88 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
 using namespace std;
 
-void reverse(vector<int> &vct, int l, int r)
+// linked list implementation
+class ListNode
 {
-    while (l < r)
+public:
+    int val;
+    ListNode *next;
+
+    ListNode(int x)
     {
-        swap(vct[l], vct[r]);
-        l++;
-        r--;
+        val = x;
+        next = nullptr;
     }
+};
+
+// insert node at head
+void insertAtHead(ListNode *&head, int val)
+{
+    ListNode *temp = head;
+
+    head = new ListNode(val);
+    head->next = temp;
 }
 
-bool check(vector<int> &nums)
+// insert node at end
+void insertAtEnd(ListNode *&head, int val)
 {
-    int n = nums.size();
+    ListNode *n = new ListNode(val);
 
-    if (n == 1)
-        return true;
-
-    int it = 0;
-
-    while (it < n - 1)
+    if (head == nullptr)
     {
-        if (nums[it] > nums[it + 1])
-            break;
-        it++;
+        head = n;
+        return;
     }
 
-    if (it == n - 1)
-        return true;
+    ListNode *temp = head;
 
-    it++;
+    while (temp->next != nullptr)
+        temp = temp->next;
 
-    while (it < n - 1)
+    temp->next = n;
+}
+
+// print elements of linked list
+void display(ListNode *&head)
+{
+    ListNode *temp = head;
+
+    while (temp != nullptr)
     {
-        if (nums[it] > nums[it + 1])
-            return false;
-        it++;
+        cout << temp->val << "-->";
+        temp = temp->next;
     }
 
-    if (nums[n - 1] > nums[0])
-        return false;
+    cout << "NULL" << endl;
+}
+ListNode *reverseBetween(ListNode *head, int left, int right)
+{
+    if (left == right)
+        return head;
 
-    return true;
+    ListNode *curr = head, *prev = new ListNode(-1), *nxt;
+    prev->next = curr;
+    int cnt = 1;
+
+    while (cnt != left)
+    {
+        prev = curr;
+        curr = curr->next;
+        cnt++;
+    }
+
+    while (cnt != right)
+    {
+        nxt = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nxt;
+        cnt++;
+    }
+
+    return head;
 }
 
 int main()
@@ -54,14 +92,19 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{1, 3, 2};
+    ListNode *head = new ListNode(1);
+    insertAtEnd(head, 2);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 5);
 
-    for (auto i : nums)
-        cout << i << " ";
-
+    display(head);
     cout << endl;
 
-    cout << check(nums) << endl;
+    ListNode *n = reverseBetween(head, 2, 4);
+
+    display(n);
+    cout << endl;
 
     return 0;
 }
