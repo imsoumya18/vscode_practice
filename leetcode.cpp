@@ -3,15 +3,37 @@
 #include <vector>
 using namespace std;
 
-void nextPermutation(vector<int> &nums)
+vector<int> spiralOrder(vector<vector<int>> &matrix)
 {
-    int n = nums.size();
-    int i = n;
+    vector<int> res;
+    int it, rowMin = 0, colMin = 0, rowMax = matrix.size() - 1, colMax = matrix[0].size() - 1;
 
-    while (nums[i] > nums[i - 1])
-        i--;
+    while (rowMin <= rowMax && colMin <= colMax)
+    {
+        for (it = colMin; it <= colMax; it++)
+            res.push_back(matrix[rowMin][it]);
+        rowMin++;
 
-    swap(nums[i], nums[i - 1]);
+        for (it = rowMin; it <= rowMax; it++)
+            res.push_back(matrix[it][colMax]);
+        colMax--;
+
+        if (rowMin <= rowMax)
+        {
+            for (it = colMax; it >= colMin; it--)
+                res.push_back(matrix[rowMax][it]);
+            rowMax--;
+        }
+
+        if (colMin <= colMax)
+        {
+            for (it = rowMax; it >= rowMin; it--)
+                res.push_back(matrix[it][colMin]);
+            colMin++;
+        }
+    }
+
+    return res;
 }
 
 int main()
@@ -21,7 +43,19 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{1, 2, 3};
+    vector<vector<int>> nums{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}};
+
+    for (auto i : nums)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
+
+    vector<int> ans = spiralOrder(nums);
+
+    for (auto i : ans)
+        cout << i << " ";
 
     return 0;
 }
