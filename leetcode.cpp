@@ -6,22 +6,24 @@
 #include <algorithm>
 using namespace std;
 
-vector<vector<int>> transpose(vector<vector<int>> &matrix)
+int longestConsecutive(vector<int> &nums)
 {
-    int ro = matrix.size(), col = matrix[0].size();
-    vector<vector<int>> ans;
+    if (nums.size() == 0)
+        return 0;
 
-    for (int i = 0; i < col; i++)
-    {
-        vector<int> row;
+    sort(nums.begin(), nums.end());
+    int ans = 1, currlen = 1;
 
-        for (int j = 0; j < ro; j++)
+    for (int i = 1; i < nums.size(); i++)
+        if (nums[i] == nums[i - 1])
+            continue;
+        else if (nums[i] == nums[i - 1] + 1)
         {
-            row.push_back(matrix[j][i]);
+            currlen++;
+            ans = max(ans, currlen);
         }
-
-        ans.push_back(row);
-    }
+        else
+            currlen = 1;
 
     return ans;
 }
@@ -33,25 +35,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> matrix{
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9},
-        {10, 11, 12}};
+    vector<int> nums{1, 0, 2, 1};
 
-    for (auto i : matrix)
-    {
-        for (auto j : i)
-            cout << j << "  ";
-        cout << endl;
-    }
-
-    for (auto i : transpose(matrix))
-    {
-        for (auto j : i)
-            cout << j << "  ";
-        cout << endl;
-    }
+    cout << longestConsecutive(nums) << endl;
 
     return 0;
 }
