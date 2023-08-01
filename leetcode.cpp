@@ -6,26 +6,26 @@
 #include <algorithm>
 using namespace std;
 
-int longestConsecutive(vector<int> &nums)
+void segregateElements(int arr[], int n)
 {
-    if (nums.size() == 0)
-        return 0;
+    int lo = 0, hi = n - 1;
 
-    sort(nums.begin(), nums.end());
-    int ans = 1, currlen = 1;
-
-    for (int i = 1; i < nums.size(); i++)
-        if (nums[i] == nums[i - 1])
-            continue;
-        else if (nums[i] == nums[i - 1] + 1)
+    while (lo < hi)
+        if (arr[lo] < 0 && arr[hi] >= 0)
         {
-            currlen++;
-            ans = max(ans, currlen);
+            swap(arr[lo], arr[hi]);
+            lo++;
+            hi--;
         }
+        else if (arr[lo] >= 0 && arr[hi] < 0)
+        {
+            lo++;
+            hi--;
+        }
+        else if (arr[lo] >= 0 && arr[hi] >= 0)
+            lo++;
         else
-            currlen = 1;
-
-    return ans;
+            hi--;
 }
 
 int main()
@@ -35,9 +35,12 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{1, 0, 2, 1};
+    int arr[] = {1, -1, 3, 2, -7, -5, 11, 6}, n = 8;
 
-    cout << longestConsecutive(nums) << endl;
+    segregateElements(arr, n);
+
+    for (auto i : arr)
+        cout << i << " ";
 
     return 0;
 }
