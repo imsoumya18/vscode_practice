@@ -6,88 +6,21 @@
 #include <algorithm>
 using namespace std;
 
-bool checkInclusion(string s1, string s2)
+vector<int> intersection(vector<int> &nums1, vector<int> &nums2)
 {
-    int n1 = s1.size(), n2 = s2.size();
+    set<int> s, ans;
 
-    if (n2 < n1)
-        return false;
+    for (auto i : nums1)
+        s.insert(i);
 
-    vector<char> st1, st2;
+    for (auto j : nums2)
+        if (s.find(j) != s.end())
+            ans.insert(j);
 
-    for (auto i : s1)
-        st1.push_back(i);
+    vector<int> vct(ans.begin(), ans.end());
 
-    sort(st1.begin(), st1.end());
-
-    int right = n1 - 1;
-
-    for (int i = 0; i <= right; i++)
-        st2.push_back(s2[i]);
-
-    vector<char> temp(n1);
-    partial_sort_copy(begin(st2), end(st2), begin(temp), end(temp));
-
-    if (st1 == temp)
-        return true;
-
-    while (right < n2)
-    {
-        st2.erase(st2.begin());
-        right++;
-        st2.push_back(s2[right]);
-
-        vector<char> temp(n1);
-        partial_sort_copy(begin(st2), end(st2), begin(temp), end(temp));
-
-        if (st1 == temp)
-            return true;
-    }
-
-    return false;
+    return vct;
 }
-
-// bool checkInclusion(string s1, string s2)
-// {
-//     if (s2.size() < s1.size())
-//         return false;
-
-//     bool flag = false;
-
-//     vector<int> vct(26, 0);
-//     int n = s1.size();
-
-//     for (auto i : s1)
-//         vct[i - 'a']++;
-
-//     vector<int> test(26, 0);
-//     int left = 0, right = n - 1;
-
-//     for (int i = left; i <= right; i++)
-//         test[s2[i] - 'a']++;
-
-//     if (test == vct)
-//         return true;
-
-//     while (right < s2.size())
-//     {
-//         test[vct[left] - 'a']--;
-//         left++;
-//         right++;
-//         test[vct[right] - 'a']++;
-
-//         for (auto p : vct)
-//             cout << p << " ";
-//         cout << endl;
-//         for (auto p : test)
-//             cout << p << " ";
-
-//         if (test == vct)
-//             return true;
-//     }
-
-//     return false;
-// }
 
 int main()
 {
@@ -96,9 +29,12 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s1 = "ab", s2 = "ba";
+    vector<int> nums1{1, 2, 2, 1}, nums2{2, 2};
 
-    cout << checkInclusion(s1, s2) << endl;
+    vector<int> vct = intersection(nums1, nums2);
+
+    for (auto i : vct)
+        cout << i << endl;
 
     return 0;
 }
