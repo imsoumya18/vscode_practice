@@ -1,14 +1,20 @@
-class MyClass
+// @author Soumya
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
 {
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
-public:
-    // Copy constructor
+    vector<int> vct{1, 2, 3, 4, 5};
 
-    MyClass(const MyClass &other)
-    {
+    for (auto i : vector<int>(vct.begin(), vct.end() - 2))
+        cout << i << " ";
+    cout << endl;
 
-        // Perform a deep copy of data members
-    }
-
-    // Rest of the class definition
-};
+    return 0;
+}
