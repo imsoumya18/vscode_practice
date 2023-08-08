@@ -4,20 +4,30 @@
 #include <map>
 using namespace std;
 
-bool canSplitArray(vector<int> &nums, int m)
+int uniquePaths(int m, int n)
 {
-    int n = nums.size();
+    vector<vector<int>> vct(m, vector<int>(n, 0));
 
-    if (n == 1 || n == 2)
-        return true;
+    vct[m - 1][n - 1] = 1;
 
-    bool ans = false;
+    for (int i = 0; i < m - 1; i++)
+        vct[i][n - 1] = 1;
 
-    for (int i = 0; i < n - 1; i++)
-        if (nums[i] + nums[i + 1] >= m)
-            ans = true;
+    for (int j = 0; j < n - 1; j++)
+        vct[m - 1][j] = 1;
 
-    return ans;
+    for (int i = m - 2; i >= 0; i--)
+        for (int j = n - 2; j >= 0; j--)
+            vct[i][j] = vct[i][j + 1] + vct[i + 1][j];
+
+    // for (auto i : vct)
+    // {
+    //     for (auto j : i)
+    //         cout << j << " ";
+    //     cout << endl;
+    // }
+
+    return vct[0][0];
 }
 
 int main()
@@ -26,10 +36,9 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    vector<int> nums{2, 1, 1, 3};
-    int m = 4;
+    int m = 1, n = 1;
 
-    cout << canSplitArray(nums, m) << endl;
+    cout << uniquePaths(m, n) << endl;
 
     return 0;
 }
