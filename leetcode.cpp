@@ -1,33 +1,37 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <map>
 using namespace std;
 
-int uniquePaths(int m, int n)
+void nextPermutation(vector<int> &nums)
 {
-    vector<vector<int>> vct(m, vector<int>(n, 0));
+    int n = nums.size();
+    int lo = -1, hi = n - 1;
 
-    vct[m - 1][n - 1] = 1;
+    for (int i = n - 2; i >= 0; i--)
+        if (nums[i] < nums[i + 1])
+        {
+            lo = i;
+            break;
+        }
 
-    for (int i = 0; i < m - 1; i++)
-        vct[i][n - 1] = 1;
+    if (lo != -1)
+    {
+        while (nums[hi] < nums[lo])
+            hi--;
 
-    for (int j = 0; j < n - 1; j++)
-        vct[m - 1][j] = 1;
+        swap(nums[lo], nums[hi]);
+    }
 
-    for (int i = m - 2; i >= 0; i--)
-        for (int j = n - 2; j >= 0; j--)
-            vct[i][j] = vct[i][j + 1] + vct[i + 1][j];
+    lo++;
+    hi = n - 1;
 
-    // for (auto i : vct)
-    // {
-    //     for (auto j : i)
-    //         cout << j << " ";
-    //     cout << endl;
-    // }
-
-    return vct[0][0];
+    while (lo < hi)
+    {
+        swap(nums[lo], nums[hi]);
+        lo++;
+        hi--;
+    }
 }
 
 int main()
@@ -36,9 +40,18 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int m = 1, n = 1;
 
-    cout << uniquePaths(m, n) << endl;
+    vector<int> nums{3, 2, 1};
+
+    for (auto i : nums)
+        cout << i << " ";
+    cout << endl;
+
+    nextPermutation(nums);
+
+    for (auto i : nums)
+        cout << i << " ";
+    cout << endl;
 
     return 0;
 }
