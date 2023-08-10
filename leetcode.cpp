@@ -3,34 +3,24 @@
 #include <vector>
 using namespace std;
 
-void nextPermutation(vector<int> &nums)
+void segregateElements(int arr[], int n)
 {
-    int n = nums.size();
-    int lo = -1, hi = n - 1;
+    vector<int> temp;
+    int start = 0;
 
-    for (int i = n - 2; i >= 0; i--)
-        if (nums[i] < nums[i + 1])
+    for (int i = 0; i < n; i++)
+        if (arr[i] < 0)
+            temp.push_back(arr[i]);
+        else
         {
-            lo = i;
-            break;
+            arr[start] = arr[i];
+            start++;
         }
 
-    if (lo != -1)
+    for (auto i : temp)
     {
-        while (nums[hi] < nums[lo])
-            hi--;
-
-        swap(nums[lo], nums[hi]);
-    }
-
-    lo++;
-    hi = n - 1;
-
-    while (lo < hi)
-    {
-        swap(nums[lo], nums[hi]);
-        lo++;
-        hi--;
+        arr[start] = i;
+        start++;
     }
 }
 
@@ -41,15 +31,15 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{3, 2, 1};
+    int arr[] = {1, -1, 3, 2, -7, -5, 11, 6}, n = 8;
 
-    for (auto i : nums)
+    for (auto i : arr)
         cout << i << " ";
     cout << endl;
 
-    nextPermutation(nums);
+    segregateElements(arr, n);
 
-    for (auto i : nums)
+    for (auto i : arr)
         cout << i << " ";
     cout << endl;
 
