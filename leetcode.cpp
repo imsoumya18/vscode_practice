@@ -3,25 +3,28 @@
 #include <vector>
 using namespace std;
 
-void segregateElements(int arr[], int n)
+vector<vector<int>> merge(vector<vector<int>> &intervals)
 {
-    vector<int> temp;
-    int start = 0;
+    vector<vector<int>> merged;
 
-    for (int i = 0; i < n; i++)
-        if (arr[i] < 0)
-            temp.push_back(arr[i]);
-        else
+    for (int i = 0; i < intervals.size() - 1; i++)
+        for (int j = i + 1; j < intervals.size(); j++)
+            if (intervals[j][0] < intervals[i][0])
+                swap(intervals[i], intervals[j]);
+
+    for (auto i : intervals)
+        if (merged.size() == 0)
+            merged.push_back(i);
+        else if (i[0] <= merged.back()[1])
         {
-            arr[start] = arr[i];
-            start++;
+            vector<int> temp{merged.back()[0], max(merged.back()[1], i[1])};
+            merged.pop_back();
+            merged.push_back(temp);
         }
+        else
+            merged.push_back(i);
 
-    for (auto i : temp)
-    {
-        arr[start] = i;
-        start++;
-    }
+    return merged;
 }
 
 int main()
@@ -31,17 +34,26 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int arr[] = {1, -1, 3, 2, -7, -5, 11, 6}, n = 8;
+    vector<vector<int>> intervals{{1, 4}, {4, 5}};
 
-    for (auto i : arr)
-        cout << i << " ";
-    cout << endl;
+    for (auto i : intervals)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 
-    segregateElements(arr, n);
+    cout << "----END----" << endl;
 
-    for (auto i : arr)
-        cout << i << " ";
-    cout << endl;
+    vector<vector<int>>
+        ans = merge(intervals);
+
+    for (auto i : ans)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 
     return 0;
 }
