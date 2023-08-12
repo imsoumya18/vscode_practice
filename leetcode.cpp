@@ -3,23 +3,29 @@
 #include <vector>
 using namespace std;
 
-int minJumps(int arr[], int n)
+vector<vector<int>> sortedMatrix(int N, vector<vector<int>> Mat)
 {
-    int cnt = 0, i = 0;
+    vector<int> vct;
 
-    while (i < n - 1)
-    {
-        if (i + arr[i] > n - 1)
-            i = n - 1;
-        else if (arr[i] == 0)
-            return -1;
-        else
-            i += arr[i];
+    for (auto i : Mat)
+        for (auto j : i)
+            vct.push_back(j);
 
-        cnt++;
-    }
+    for (int i = 0; i < N * N - 1; i++)
+        for (int j = i + 1; j < N * N; j++)
+            if (vct[j] < vct[i])
+                swap(vct[i], vct[j]);
 
-    return cnt;
+    int idx = 0;
+
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+        {
+            Mat[i][j] = vct[idx];
+            idx++;
+        }
+
+    return Mat;
 }
 
 int main()
@@ -29,9 +35,26 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int arr[] = {2, 3, 1, 1, 2, 4, 2, 0, 1, 1}, n = 10;
+    vector<vector<int>> Mat{{10, 20, 30, 40},
+                            {15, 25, 35, 45},
+                            {27, 29, 37, 48},
+                            {32, 33, 39, 50}};
 
-    cout << minJumps(arr, n) << endl;
+    for (auto i : Mat)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
+
+    cout << "---END---" << endl;
+
+    for (auto i : sortedMatrix(4, Mat))
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 
     return 0;
 }
