@@ -58,8 +58,57 @@ void display(ListNode *&head)
     cout << "NULL" << endl;
 }
 
+ListNode *revList(ListNode *head)
+{
+    if (head == nullptr || head->next == nullptr)
+        return head;
+
+    ListNode *curr = head, *prev = nullptr, *nxt;
+
+    while (curr != nullptr)
+    {
+        nxt = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nxt;
+    }
+
+    return prev;
+}
+
 ListNode *doubleIt(ListNode *head)
 {
+    ListNode *n = revList(head);
+    // display(n);
+
+    int dbl = 0, carry = 0;
+
+    ListNode *curr = n;
+
+    while (curr != nullptr)
+    {
+        dbl = 2 * curr->val + carry;
+
+        if (dbl >= 10)
+        {
+            carry = dbl / 10;
+            curr->val = dbl % 10;
+        }
+        else
+        {
+            curr->val = dbl;
+            carry = 0;
+        }
+
+        curr = curr->next;
+    }
+
+    if (carry != 0)
+        insertAtEnd(n, carry);
+
+    // display(n);
+
+    return revList(n);
 }
 
 int main()
@@ -74,6 +123,10 @@ int main()
     insertAtEnd(head, 9);
 
     display(head);
+
+    ListNode *n = doubleIt(head);
+
+    display(n);
 
     return 0;
 }
