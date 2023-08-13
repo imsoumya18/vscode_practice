@@ -1,31 +1,65 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
 using namespace std;
 
-vector<vector<int>> sortedMatrix(int N, vector<vector<int>> Mat)
+// linked list implementation
+class ListNode
 {
-    vector<int> vct;
+public:
+    int val;
+    ListNode *next;
 
-    for (auto i : Mat)
-        for (auto j : i)
-            vct.push_back(j);
+    ListNode(int x)
+    {
+        val = x;
+        next = nullptr;
+    }
+};
 
-    for (int i = 0; i < N * N - 1; i++)
-        for (int j = i + 1; j < N * N; j++)
-            if (vct[j] < vct[i])
-                swap(vct[i], vct[j]);
+// insert node at head
+void insertAtHead(ListNode *&head, int val)
+{
+    ListNode *temp = head;
 
-    int idx = 0;
+    head = new ListNode(val);
+    head->next = temp;
+}
 
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
-        {
-            Mat[i][j] = vct[idx];
-            idx++;
-        }
+// insert node at end
+void insertAtEnd(ListNode *&head, int val)
+{
+    ListNode *n = new ListNode(val);
 
-    return Mat;
+    if (head == nullptr)
+    {
+        head = n;
+        return;
+    }
+
+    ListNode *temp = head;
+
+    while (temp->next != nullptr)
+        temp = temp->next;
+
+    temp->next = n;
+}
+
+// print elements of linked list
+void display(ListNode *&head)
+{
+    ListNode *temp = head;
+
+    while (temp != nullptr)
+    {
+        cout << temp->val << "-->";
+        temp = temp->next;
+    }
+
+    cout << "NULL" << endl;
+}
+
+ListNode *doubleIt(ListNode *head)
+{
 }
 
 int main()
@@ -35,26 +69,11 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> Mat{{10, 20, 30, 40},
-                            {15, 25, 35, 45},
-                            {27, 29, 37, 48},
-                            {32, 33, 39, 50}};
+    ListNode *head = new ListNode(9);
+    insertAtEnd(head, 9);
+    insertAtEnd(head, 9);
 
-    for (auto i : Mat)
-    {
-        for (auto j : i)
-            cout << j << " ";
-        cout << endl;
-    }
-
-    cout << "---END---" << endl;
-
-    for (auto i : sortedMatrix(4, Mat))
-    {
-        for (auto j : i)
-            cout << j << " ";
-        cout << endl;
-    }
+    display(head);
 
     return 0;
 }
