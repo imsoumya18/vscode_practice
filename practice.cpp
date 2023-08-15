@@ -3,21 +3,60 @@
 #include <vector>
 using namespace std;
 
-void merge(vector<int> &vct, int lo, int mid, int hi)
+void selection_sort(vector<int> &vct)
+{
+    int n = vct.size();
+
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i + 1; j < n; j++)
+            if (vct[j] < vct[i])
+                swap(vct[i], vct[j]);
+}
+
+void bubble_sort(vector<int> &vct)
+{
+    int n = vct.size();
+
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (vct[j + 1] < vct[j])
+                swap(vct[j], vct[j + 1]);
+}
+
+void insertion_sort(vector<int> &vct)
+{
+    int n = vct.size();
+
+    for (int i = 1; i < n; i++)
+    {
+        int temp = vct[i];
+        int j = i - 1;
+
+        while (vct[j] > temp && j >= 0)
+        {
+            vct[j + 1] = vct[j];
+            j--;
+        }
+
+        vct[j + 1] = temp;
+    }
+}
+
+void merge(vector<int> &vct, int l, int mid, int r)
 {
     vector<int> vct1, vct2;
 
-    for (int i = lo; i <= mid; i++)
+    for (int i = l; i <= mid; i++)
         vct1.push_back(vct[i]);
 
-    for (int i = mid + 1; i <= hi; i++)
+    for (int i = mid + 1; i <= r; i++)
         vct2.push_back(vct[i]);
 
-    int i = lo, j = 0, k = 0;
+    int i = l, j = 0, k = 0;
 
     while (j < vct1.size() && k < vct2.size())
     {
-        if (vct1[j] <= vct2[k])
+        if (vct1[j] < vct2[k])
         {
             vct[i] = vct1[j];
             i++;
@@ -46,16 +85,16 @@ void merge(vector<int> &vct, int lo, int mid, int hi)
     }
 }
 
-void merge_sort(vector<int> &vct, int lo, int hi)
+void merge_sort(vector<int> &vct, int l, int r)
 {
-    if (lo < hi)
+    if (l < r)
     {
-        int mid = (lo + hi) / 2;
+        int mid = (l + r) / 2;
 
-        merge_sort(vct, lo, mid);
-        merge_sort(vct, mid + 1, hi);
+        merge_sort(vct, l, mid);
+        merge_sort(vct, mid + 1, r);
 
-        merge(vct, lo, mid, hi);
+        merge(vct, l, mid, r);
     }
 }
 
@@ -65,7 +104,6 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-
     vector<int> vct{9, 8, 7, 6, 5, 4, 3, 2, 1};
 
     for (auto i : vct)
