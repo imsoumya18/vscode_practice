@@ -98,6 +98,34 @@ void merge_sort(vector<int> &vct, int l, int r)
     }
 }
 
+int partition(vector<int> &vct, int l, int r)
+{
+    int pivot = vct[r];
+    int i = l - 1;
+
+    for (int j = l; j < r; j++)
+        if (vct[j] < pivot)
+        {
+            i++;
+            swap(vct[i], vct[j]);
+        }
+
+    i++;
+    swap(vct[i], vct[r]);
+    return i;
+}
+
+void quick_sort(vector<int> &vct, int l, int r)
+{
+    if (l < r)
+    {
+        int pi = partition(vct, l, r);
+
+        quick_sort(vct, l, pi - 1);
+        quick_sort(vct, pi + 1, r);
+    }
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -110,7 +138,7 @@ int main()
         cout << i << " ";
     cout << endl;
 
-    merge_sort(vct, 0, vct.size() - 1);
+    quick_sort(vct, 0, vct.size() - 1);
 
     for (auto i : vct)
         cout << i << " ";
