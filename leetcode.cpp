@@ -1,47 +1,73 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <set>
+#include <algorithm>
 using namespace std;
 
-void solve(string digits, string output, vector<string> &ans, int idx, vector<string> keypad)
+bool isSafe(int x, int y, vector<vector<int>> &m, int n, vector<vector<int>> visited)
 {
-    if (idx >= digits.size())
+    if (x >= 0 && x < n && y >= 0 && y < n && visited[x][y] == 0 && m[x][y] == 1)
+        return true;
+
+    return false;
+}
+
+void solve(vector<vector<int>> &m, int n, vector<vector<int>> visited, vector<string> &ans, int x, int y, string path)
+{
+    if (x == n - 1 && y == n - 1)
     {
-        if (output != "")
-            ans.push_back(output);
+        ans.push_back(path);
         return;
     }
 
-    int number = digits[idx] - '0';
-    string value = keypad[number];
+    visited[x][y] = 1;
 
-    for (auto i : value)
+    if (isSafe(x - 1, y, m, n, visited))
     {
-        output.push_back(i);
-        solve(digits, output, ans, idx + 1, keypad);
-        output.pop_back();
+        path.append("U");
+        solve(m, n, visited, ans, x - 1, y, path);
+        path.pop_back();
     }
+
+    if (isSafe(x + 1, y, m, n, visited))
+    {
+        path.append("D");
+        solve(m, n, visited, ans, x + 1, y, path);
+        path.pop_back();
+    }
+
+    if (isSafe(x, y - 1, m, n, visited))
+    {
+        path.append("L");
+        solve(m, n, visited, ans, x, y - 1, path);
+        path.pop_back();
+    }
+
+    if (isSafe(x, y + 1, m, n, visited))
+    {
+        path.append("R");
+        solve(m, n, visited, ans, x, y + 1, path);
+        path.pop_back();
+    }
+
+    visited[x][y] = 0;
 }
 
-vector<string> letterCombinations(string digits)
+vector<string> findPath(vector<vector<int>> &m, int n)
 {
     vector<string> ans;
-    string output;
 
-    int idx = 0;
+    if (m[0][0] == 0)
+        return ans;
 
-    vector<string> keypad = {"",
-                             "",
-                             "abc",
-                             "def",
-                             "ghi",
-                             "jkl",
-                             "mno",
-                             "pqrs",
-                             "tuv",
-                             "wxyz"};
+    vector<vector<int>> visited(n, vector<int>(n, 0));
+    string path = "";
 
-    solve(digits, output, ans, idx, keypad);
+    int x = 0, y = 0;
+    solve(m, n, visited, ans, x, y, path);
+    sort(ans.begin(), ans.end());
+
     return ans;
 }
 
@@ -52,11 +78,16 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string digits = "";
+    vector<vector<int>> m{{1, 0, 0, 0},
+                          {1, 1, 0, 1},
+                          {1, 1, 0, 0},
+                          {0, 1, 1, 1}};
 
-    vector<string> ans = letterCombinations(digits);
+    int n = 4;
 
-    for (auto i : ans)
+    vector<string> vct = findPath(m, n);
+
+    for (auto i : vct)
         cout << i << endl;
 
     return 0;
