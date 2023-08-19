@@ -2,24 +2,48 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <map>
 #include <algorithm>
 using namespace std;
 
-int maxSubStr(string str)
+bool test(int n)
 {
-    int ans = 0;
-    int curr1 = 0, curr2 = 0;
+    int evenDigit = 0, oddDigit = 0;
 
-    for (int i = 0; i < str.size(); i++)
-        if (i > 0 && str[i] == str[0] && str[i - 1] != str[0])
-        {
-            ans++;
+    while (n != 0)
+    {
+        int rem = n % 10;
+        n /= 10;
 
-            if (curr2 > curr1)
-                curr2 -= curr1;
-        }
+        if (rem % 2 == 0)
+            evenDigit++;
+        else
+            oddDigit++;
+    }
 
-    return -1;
+    if (evenDigit == oddDigit)
+        return true;
+
+    return false;
+}
+
+int numberOfBeautifulIntegers(int low, int high, int k)
+{
+    vector<int> vct;
+    int cnt = 0, first = low;
+
+    if (low % k != 0)
+        first = low + (k - low % k);
+
+    while (first <= high)
+    {
+        if (test(first))
+            cnt++;
+
+        first += k;
+    }
+
+    return cnt;
 }
 
 int main()
@@ -29,9 +53,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string str = "0100110101";
+    int low = 36, high = 60, k = 3;
 
-    cout << maxSubStr(str) << endl;
+    cout << numberOfBeautifulIntegers(low, high, k) << endl;
 
     return 0;
 }
