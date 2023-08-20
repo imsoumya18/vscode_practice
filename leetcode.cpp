@@ -6,44 +6,22 @@
 #include <algorithm>
 using namespace std;
 
-bool test(int n)
+int minimumSum(int n, int k)
 {
-    int evenDigit = 0, oddDigit = 0;
+    set<int> s;
+    int i = 1, ans = 0;
 
-    while (n != 0)
+    while (s.size() != n)
     {
-        int rem = n % 10;
-        n /= 10;
-
-        if (rem % 2 == 0)
-            evenDigit++;
-        else
-            oddDigit++;
+        if (s.find(k - i) == s.end())
+        {
+            s.insert(i);
+            ans += i;
+        }
+        i++;
     }
 
-    if (evenDigit == oddDigit)
-        return true;
-
-    return false;
-}
-
-int numberOfBeautifulIntegers(int low, int high, int k)
-{
-    vector<int> vct;
-    int cnt = 0, first = low;
-
-    if (low % k != 0)
-        first = low + (k - low % k);
-
-    while (first <= high)
-    {
-        if (test(first))
-            cnt++;
-
-        first += k;
-    }
-
-    return cnt;
+    return ans;
 }
 
 int main()
@@ -53,9 +31,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int low = 36, high = 60, k = 3;
+    int n = 5, k = 4;
 
-    cout << numberOfBeautifulIntegers(low, high, k) << endl;
+    cout << minimumSum(n, k) << endl;
 
     return 0;
 }
