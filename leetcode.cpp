@@ -1,27 +1,91 @@
 // @author Soumya
 #include <iostream>
-#include <vector>
-#include <set>
-#include <map>
-#include <algorithm>
+#include <cmath>
 using namespace std;
 
-int minimumSum(int n, int k)
+// linked list implementation
+class ListNode
 {
-    set<int> s;
-    int i = 1, ans = 0;
+public:
+    int val;
+    ListNode *next;
 
-    while (s.size() != n)
+    ListNode(int x)
     {
-        if (s.find(k - i) == s.end())
-        {
-            s.insert(i);
-            ans += i;
-        }
-        i++;
+        val = x;
+        next = nullptr;
+    }
+};
+
+// insert node at head
+void insertAtHead(ListNode *&head, int val)
+{
+    ListNode *temp = head;
+
+    head = new ListNode(val);
+    head->next = temp;
+}
+
+// insert node at end
+void insertAtEnd(ListNode *&head, int val)
+{
+    ListNode *n = new ListNode(val);
+
+    if (head == nullptr)
+    {
+        head = n;
+        return;
     }
 
-    return ans;
+    ListNode *temp = head;
+
+    while (temp->next != nullptr)
+        temp = temp->next;
+
+    temp->next = n;
+}
+
+// print elements of linked list
+void display(ListNode *&head)
+{
+    ListNode *temp = head;
+
+    while (temp != nullptr)
+    {
+        cout << temp->val << "-->";
+        temp = temp->next;
+    }
+
+    cout << "NULL" << endl;
+}
+
+long long multiplyTwoLists(ListNode *l1, ListNode *l2)
+{
+    long long n1 = 0, n2 = 0;
+
+    ListNode *temp;
+
+    temp = l1;
+
+    while (temp != nullptr)
+    {
+        n1 *= 10;
+        n1 += temp->val;
+
+        temp = temp->next;
+    }
+
+    temp = l2;
+
+    while (temp != nullptr)
+    {
+        n2 *= 10;
+        n2 += temp->val;
+
+        temp = temp->next;
+    }
+
+    return (n1 * n2);
 }
 
 int main()
@@ -31,9 +95,21 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    int n = 5, k = 4;
+    ListNode *head = new ListNode(2);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 6);
+    insertAtEnd(head, 8);
 
-    cout << minimumSum(n, k) << endl;
+    display(head);
+
+    ListNode *head2 = new ListNode(4);
+    insertAtEnd(head2, 5);
+
+    display(head2);
+    long long int x = pow(10, 9) + 7;
+
+    cout << typeof(x) << endl;
+    // cout << multiplyTwoLists(head, head2) << endl;
 
     return 0;
 }
