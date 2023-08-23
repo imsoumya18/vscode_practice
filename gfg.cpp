@@ -3,21 +3,22 @@
 #include <stack>
 using namespace std;
 
-char *reverse(char *S, int len)
+void deleteMid(stack<int> &s, int sizeOfStack)
 {
-    char ans[len];
-    stack<char> st;
+    stack<int> s2;
 
-    for (int i = 0; i < len; i++)
-        st.push(i);
-
-    int i = 0;
-
-    while (!st.empty())
+    while ((s2.size()) < sizeOfStack / 2)
     {
-        ans[i] = st.top();
-        st.pop();
-        i++;
+        s2.push(s.top());
+        s.pop();
+    }
+
+    s.pop();
+
+    while (!s2.empty())
+    {
+        s.push(s2.top());
+        s2.pop();
     }
 }
 
@@ -27,7 +28,22 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    char S[] = "GeeksForGeeks";
+    stack<int> s;
+
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.push(40);
+    // s.push(50);
+
+    deleteMid(s, s.size());
+
+    while (!s.empty())
+    {
+        cout << s.top() << " ";
+        s.pop();
+    }
+    cout << endl;
 
     return 0;
 }
