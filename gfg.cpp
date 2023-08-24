@@ -3,23 +3,45 @@
 #include <stack>
 using namespace std;
 
-void deleteMid(stack<int> &s, int sizeOfStack)
+int checkRedundancy(string s)
 {
-    stack<int> s2;
+    stack<char> st;
+    int cntbraces = 0;
+    int cntvars = 0;
 
-    while ((s2.size()) < sizeOfStack / 2)
+    for (int i = 0; i < s.size(); i++)
     {
-        s2.push(s.top());
-        s.pop();
+        if (s[i] != ')' && s[i] != '}' && s[i] != ']')
+            st.push(s[i]);
+        else
+        {
+            while (st.top() != '(' && st.top() != '{' && st.top() != '[')
+            {
+                // cout << "test" << endl;
+                st.pop();
+
+                cntbraces = 0;
+                cntvars++;
+
+                // cntbraces--;
+            }
+
+            if ((s[i] == ')' && st.top() == '(') || (s[i] == '}' && st.top() == '{') || (s[i] == ']' && st.top() == '['))
+            {
+                if (cntvars == 1)
+                    return 1;
+
+                st.pop();
+                cntbraces++;
+                cntvars = 0;
+
+                if (cntbraces > 1)
+                    return 1;
+            }
+        }
     }
 
-    s.pop();
-
-    while (!s2.empty())
-    {
-        s.push(s2.top());
-        s2.pop();
-    }
+    return 0;
 }
 
 int main()
@@ -28,22 +50,9 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    stack<int> s;
+    string s = "(a+b+(c))";
 
-    s.push(10);
-    s.push(20);
-    s.push(30);
-    s.push(40);
-    // s.push(50);
-
-    deleteMid(s, s.size());
-
-    while (!s.empty())
-    {
-        cout << s.top() << " ";
-        s.pop();
-    }
-    cout << endl;
+    cout << checkRedundancy(s) << endl;
 
     return 0;
 }
