@@ -1,47 +1,44 @@
 // @author Soumya
 #include <iostream>
+#include <vector>
 #include <stack>
 using namespace std;
 
-int checkRedundancy(string s)
+int celebrity(vector<vector<int>> &M, int n)
 {
-    stack<char> st;
-    int cntbraces = 0;
-    int cntvars = 0;
+    stack<int> st;
 
-    for (int i = 0; i < s.size(); i++)
+    for (int i = 0; i < n; i++)
+        st.push(i);
+
+    while (st.size() > 1)
     {
-        if (s[i] != ')' && s[i] != '}' && s[i] != ']')
-            st.push(s[i]);
-        else
-        {
-            while (st.top() != '(' && st.top() != '{' && st.top() != '[')
-            {
-                // cout << "test" << endl;
-                st.pop();
+        int u = st.top();
+        st.pop();
+        int v = st.top();
+        st.pop();
 
-                cntbraces = 0;
-                cntvars++;
+        if (M[u][v] == 0)
+            st.push(u);
 
-                // cntbraces--;
-            }
-
-            if ((s[i] == ')' && st.top() == '(') || (s[i] == '}' && st.top() == '{') || (s[i] == ']' && st.top() == '['))
-            {
-                if (cntvars == 1)
-                    return 1;
-
-                st.pop();
-                cntbraces++;
-                cntvars = 0;
-
-                if (cntbraces > 1)
-                    return 1;
-            }
-        }
+        if (M[v][u] == 0)
+            st.push(v);
     }
 
-    return 0;
+    if (st.size() == 0)
+        return -1;
+
+    int rem = st.top();
+
+    for (auto i : M[rem])
+        if (i == 1)
+            return -1;
+
+    for (int i = 0; i < n; i++)
+        if (i != rem && M[i][rem] == 0)
+            return -1;
+
+    return rem;
 }
 
 int main()
@@ -50,9 +47,13 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    string s = "(a+b+(c))";
+    vector<vector<int>> M{{0, 1, 0},
+                          {0, 0, 0},
+                          {0, 1, 0}};
 
-    cout << checkRedundancy(s) << endl;
+    int n = M.size();
+
+    cout << celebrity(M, n);
 
     return 0;
 }

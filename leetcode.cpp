@@ -4,29 +4,65 @@
 #include <stack>
 using namespace std;
 
-void insert(stack<int> &st, int x)
+vector<int> prevSmaller(vector<int> &heights)
 {
-	if (st.empty() || st.top() <= x)
+	stack<int> st;
+	st.push(-1);
+
+	int n = heights.size();
+	vector<int> ans(n, -1);
+
+	for (int i = 0; i < n; i++)
 	{
-		st.push(x);
-		return;
+		while (st.top() != -1 && heights[st.top()] >= heights[i])
+			st.pop();
+		ans[i] = st.top();
+		st.push(i);
 	}
 
-	int temp = st.top();
-	st.pop();
-	insert(st, x);
-	st.push(temp);
+	return ans;
 }
 
-void sort(stack<int> &st)
+vector<int> nextSmaller(vector<int> &heights)
 {
-	if (st.size() == 1)
-		return;
+	stack<int> st;
+	st.push(-1);
 
-	int temp = st.top();
-	st.pop();
-	sort(st);
-	insert(st, temp);
+	int n = heights.size();
+	vector<int> ans(n, -1);
+
+	for (int i = n - 1; i >= 0; i--)
+	{
+		while (st.top() != -1 && heights[st.top()] >= heights[i])
+			st.pop();
+		ans[i] = st.top();
+		st.push(i);
+	}
+
+	return ans;
+}
+
+int largestRectangleArea(vector<int> &heights)
+{
+	vector<int> prev = prevSmaller(heights);
+	vector<int> next = nextSmaller(heights);
+
+	int ans = 0;
+	int n = heights.size();
+
+	for (int i = 0; i < n; i++)
+	{
+		int l = heights[i];
+		if (next[i] == -1)
+			next[i] = n;
+		int b = next[i] - prev[i] - 1;
+		int area = l * b;
+
+		if (area > ans)
+			ans = area;
+	}
+
+	return ans;
 }
 
 int main()
@@ -36,22 +72,9 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	stack<int> st;
+	vector<int> heights{6, 2, 5, 4, 5, 1, 6};
 
-	st.push(12);
-	st.push(8);
-	st.push(3);
-	st.push(2);
-	st.push(1);
-
-	sort(st);
-	// insert(st, 6);
-
-	while (!st.empty())
-	{
-		cout << st.top() << endl;
-		st.pop();
-	}
+	cout << largestRectangleArea(heights) << endl;
 
 	return 0;
 }
