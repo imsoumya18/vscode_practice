@@ -65,6 +65,25 @@ int largestRectangleArea(vector<int> &heights)
 	return ans;
 }
 
+int maximalRectangle(vector<vector<char>> &matrix)
+{
+	int ans = 0;
+	vector<int> heights(matrix[0].size(), 0);
+
+	for (auto row : matrix)
+	{
+		for (int i = 0; i < matrix[0].size(); i++)
+			if (row[i] == '0')
+				heights[i] = 0;
+			else
+				heights[i]++;
+
+		ans = max(ans, largestRectangleArea(heights));
+	}
+
+	return ans;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -72,9 +91,13 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int> heights{6, 2, 5, 4, 5, 1, 6};
+	vector<vector<char>> matrix{
+		{'1', '0', '1', '0', '0'},
+		{'1', '0', '1', '1', '1'},
+		{'1', '1', '1', '1', '1'},
+		{'1', '0', '0', '1', '0'}};
 
-	cout << largestRectangleArea(heights) << endl;
+	cout << maximalRectangle(matrix) << endl;
 
 	return 0;
 }
