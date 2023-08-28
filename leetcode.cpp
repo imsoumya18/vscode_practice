@@ -4,22 +4,21 @@
 #include <set>
 using namespace std;
 
-long long minimumPossibleSum(int n, int target)
+vector<string> buildArray(vector<int> &target, int n)
 {
-	set<int> st;
+	vector<string> ans;
 
-	st.insert(1);
+	int i = 0, it = 1;
 
-	long long ans = 1;
-	int it = 2;
-
-	while (st.size() != n)
+	while (i < target.size())
 	{
-		if (st.find(target - it) == st.end())
-		{
-			st.insert(it);
-			ans += it;
-		}
+		ans.push_back("Push");
+
+		if (target[i] == it)
+			i++;
+		else
+			ans.push_back("Pop");
+
 		it++;
 	}
 
@@ -33,9 +32,11 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int n = 2, target = 3;
+	vector<int> target{1, 2, 3};
+	int n = 3;
 
-	cout << minimumPossibleSum(n, target) << endl;
+	for (auto i : buildArray(target, n))
+		cout << i << " ";
 
 	return 0;
 }
