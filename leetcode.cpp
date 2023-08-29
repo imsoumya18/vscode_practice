@@ -4,25 +4,46 @@
 #include <set>
 using namespace std;
 
-vector<string> buildArray(vector<int> &target, int n)
+int bestClosingTime(string customers)
 {
-	vector<string> ans;
+	vector<int> y, n;
+	int curry = 0, currn = 0;
+	int val = INT32_MAX, idx = 0;
 
-	int i = 0, it = 1;
-
-	while (i < target.size())
+	for (int i = 0; i < customers.size(); i++)
 	{
-		ans.push_back("Push");
+		y.push_back(curry);
+		n.push_back(currn);
 
-		if (target[i] == it)
-			i++;
+		if (customers[i] == 'Y')
+			curry++;
 		else
-			ans.push_back("Pop");
-
-		it++;
+			currn++;
 	}
 
-	return ans;
+	y.push_back(curry);
+	n.push_back(currn);
+
+	for (int i = 0; i <= customers.size(); i++)
+	{
+		int curr = n[i] + (curry - y[i]);
+
+		if (curr < val)
+		{
+			val = curr;
+			idx = i;
+		}
+	}
+
+	// for (auto i : y)
+	// 	cout << i << " ";
+	// cout << endl;
+
+	// for (auto i : n)
+	// 	cout << i << " ";
+	// cout << endl;
+
+	return idx;
 }
 
 int main()
@@ -32,11 +53,9 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int> target{1, 2, 3};
-	int n = 3;
+	string customers = "YYYY";
 
-	for (auto i : buildArray(target, n))
-		cout << i << " ";
+	cout << bestClosingTime(customers) << endl;
 
 	return 0;
 }
