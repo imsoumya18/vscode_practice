@@ -18,10 +18,13 @@ struct TreeNode
 	}
 };
 
-void printLevelOrder(TreeNode *root)
+vector<vector<int>> printLevelOrder(TreeNode *root)
 {
+	vector<vector<int>> vct;
+	vector<int> curr;
+
 	if (root == nullptr)
-		return;
+		return vct;
 
 	queue<TreeNode *> q;
 	q.push(root);
@@ -34,7 +37,7 @@ void printLevelOrder(TreeNode *root)
 
 		if (node != nullptr)
 		{
-			cout << node->val << " ";
+			curr.push_back(node->val);
 
 			if (node->left)
 				q.push(node->left);
@@ -44,10 +47,15 @@ void printLevelOrder(TreeNode *root)
 		}
 		else if (!q.empty())
 		{
-			cout << endl;
+			vct.push_back(curr);
+			curr.clear();
 			q.push(nullptr);
 		}
 	}
+
+	vct.push_back(curr);
+
+	return vct;
 }
 
 int main()
@@ -62,7 +70,12 @@ int main()
 	root->right = new TreeNode(3);
 	root->left->right = new TreeNode(4);
 
-	printLevelOrder(root);
+	for (auto i : printLevelOrder(root))
+	{
+		for (auto j : i)
+			cout << j << " ";
+		cout << endl;
+	}
 
 	return 0;
 }
