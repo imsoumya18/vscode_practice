@@ -1,49 +1,53 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <set>
+#include <queue>
 using namespace std;
 
-int bestClosingTime(string customers)
+struct TreeNode
 {
-	vector<int> y, n;
-	int curry = 0, currn = 0;
-	int val = INT32_MAX, idx = 0;
+	int val;
+	TreeNode *left;
+	TreeNode *right;
 
-	for (int i = 0; i < customers.size(); i++)
+	TreeNode(int data)
 	{
-		y.push_back(curry);
-		n.push_back(currn);
-
-		if (customers[i] == 'Y')
-			curry++;
-		else
-			currn++;
+		val = data;
+		left = nullptr;
+		right = nullptr;
 	}
+};
 
-	y.push_back(curry);
-	n.push_back(currn);
+void printLevelOrder(TreeNode *root)
+{
+	if (root == nullptr)
+		return;
 
-	for (int i = 0; i <= customers.size(); i++)
+	queue<TreeNode *> q;
+	q.push(root);
+	q.push(nullptr);
+
+	while (!q.empty())
 	{
-		int curr = n[i] + (curry - y[i]);
+		TreeNode *node = q.front();
+		q.pop();
 
-		if (curr < val)
+		if (node != nullptr)
 		{
-			val = curr;
-			idx = i;
+			cout << node->val << " ";
+
+			if (node->left)
+				q.push(node->left);
+
+			if (node->right)
+				q.push(node->right);
+		}
+		else if (!q.empty())
+		{
+			cout << endl;
+			q.push(nullptr);
 		}
 	}
-
-	// for (auto i : y)
-	// 	cout << i << " ";
-	// cout << endl;
-
-	// for (auto i : n)
-	// 	cout << i << " ";
-	// cout << endl;
-
-	return idx;
 }
 
 int main()
@@ -53,9 +57,12 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	string customers = "YYYY";
+	struct TreeNode *root = new TreeNode(1);
+	root->left = new TreeNode(2);
+	root->right = new TreeNode(3);
+	root->left->right = new TreeNode(4);
 
-	cout << bestClosingTime(customers) << endl;
+	printLevelOrder(root);
 
 	return 0;
 }
