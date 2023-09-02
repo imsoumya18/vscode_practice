@@ -1,19 +1,48 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
-vector<int> countBits(int n)
+int solve(int idx, string s, map<string, bool> &mp, vector<int> &dp)
 {
-	vector<int> vct(n + 1, 0);
+	if (idx >= s.size())
+		return 0;
 
-	for (int i = 1; i <= n; i++)
-		if (i % 2 == 0)
-			vct[i] = vct[i / 2];
-		else
-			vct[i] = vct[i / 2] + 1;
+	if (dp[idx] != -1)
+		return dp[idx];
 
-	return vct;
+	string curr = "";
+	int res = s.size();
+
+	for (int i = idx; i < s.size(); i++)
+	{
+		curr.push_back(s[i]);
+		int extra = curr.size();
+
+		if (mp[curr])
+			extra = 0;
+
+		extra += solve(i + 1, s, mp, dp);
+
+		res = min(res, extra);
+	}
+
+	dp[idx] = res;
+
+	return res;
+}
+
+int minExtraChar(string s, vector<string> &dictionary)
+{
+	map<string, bool> mp;
+
+	for (auto i : dictionary)
+		mp[i] = true;
+
+	vector<int> dp(s.size(), -1);
+
+	return solve(0, s, mp, dp);
 }
 
 int main()
@@ -23,10 +52,10 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int n = 5;
+	string s = "leetscode";
+	vector<string> dictionary{"leet", "code", "leetcode"};
 
-	for (auto i : countBits(n))
-		cout << i << endl;
+	cout << minExtraChar(s, dictionary) << endl;
 
 	return 0;
 }
