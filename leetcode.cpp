@@ -4,45 +4,38 @@
 #include <map>
 using namespace std;
 
-int solve(int idx, string s, map<string, bool> &mp, vector<int> &dp)
+int minimumOperations(string num)
 {
-	if (idx >= s.size())
-		return 0;
+	int n = num.size();
 
-	if (dp[idx] != -1)
-		return dp[idx];
+	int it = n - 1, cnt = 0;
 
-	string curr = "";
-	int res = s.size();
-
-	for (int i = idx; i < s.size(); i++)
+	while (it >= 0 && num[it] != '0' && num[it] != '5')
 	{
-		curr.push_back(s[i]);
-		int extra = curr.size();
+		it--;
+		cnt++;
+	}
+	cnt--;
 
-		if (mp[curr])
-			extra = 0;
-
-		extra += solve(i + 1, s, mp, dp);
-
-		res = min(res, extra);
+	if (num[it] == '0')
+	{
+		num[it] = 'X';
+		while (it >= 0 && num[it] != '0' && num[it] != '5')
+		{
+			it--;
+			cnt++;
+		}
+	}
+	else if (num[it] == '5')
+	{
+		while (it >= 0 && num[it] != '2' && num[it] != '7')
+		{
+			it--;
+			cnt++;
+		}
 	}
 
-	dp[idx] = res;
-
-	return res;
-}
-
-int minExtraChar(string s, vector<string> &dictionary)
-{
-	map<string, bool> mp;
-
-	for (auto i : dictionary)
-		mp[i] = true;
-
-	vector<int> dp(s.size(), -1);
-
-	return solve(0, s, mp, dp);
+	return cnt;
 }
 
 int main()
@@ -52,10 +45,9 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	string s = "leetscode";
-	vector<string> dictionary{"leet", "code", "leetcode"};
+	string num = "2908305";
 
-	cout << minExtraChar(s, dictionary) << endl;
+	cout << minimumOperations(num) << endl;
 
 	return 0;
 }
