@@ -1,41 +1,107 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <map>
 using namespace std;
 
-int minimumOperations(string num)
+// linked list implementation
+class ListNode
 {
-	int n = num.size();
+public:
+	int val;
+	ListNode *next;
 
-	int it = n - 1, cnt = 0;
-
-	while (it >= 0 && num[it] != '0' && num[it] != '5')
+	ListNode(int x)
 	{
-		it--;
+		val = x;
+		next = nullptr;
+	}
+};
+
+// insert node at head
+void insertAtHead(ListNode *&head, int val)
+{
+	ListNode *temp = head;
+
+	head = new ListNode(val);
+	head->next = temp;
+}
+
+// insert node at end
+void insertAtEnd(ListNode *&head, int val)
+{
+	ListNode *n = new ListNode(val);
+
+	if (head == nullptr)
+	{
+		head = n;
+		return;
+	}
+
+	ListNode *temp = head;
+
+	while (temp->next != nullptr)
+		temp = temp->next;
+
+	temp->next = n;
+}
+
+// print elements of linked list
+void display(ListNode *&head)
+{
+	ListNode *temp = head;
+
+	while (temp != nullptr)
+	{
+		cout << temp->val << "-->";
+		temp = temp->next;
+	}
+
+	cout << "NULL" << endl;
+}
+
+vector<ListNode *> splitListToParts(ListNode *head, int k)
+{
+	vector<ListNode *> vct(k, nullptr);
+
+	ListNode *it = head;
+	int cnt = 0;
+
+	while (it != nullptr)
+	{
+		it = it->next;
 		cnt++;
 	}
-	cnt--;
 
-	if (num[it] == '0')
+	vector<int> cnt_list(k, cnt / k);
+
+	int rem = cnt % k;
+
+	for (int i = 0; i < rem; i++)
+		cnt_list[i]++;
+
+	it = head;
+
+	for (int i = 0; i < k; i++)
 	{
-		num[it] = 'X';
-		while (it >= 0 && num[it] != '0' && num[it] != '5')
+		if (it == nullptr)
+			break;
+
+		cnt = 0;
+
+		vct[i] = it;
+
+		while (cnt != cnt_list[i] - 1)
 		{
-			it--;
+			it = it->next;
 			cnt++;
 		}
-	}
-	else if (num[it] == '5')
-	{
-		while (it >= 0 && num[it] != '2' && num[it] != '7')
-		{
-			it--;
-			cnt++;
-		}
+
+		ListNode *prev = it;
+		it = it->next;
+		prev->next = nullptr;
 	}
 
-	return cnt;
+	return vct;
 }
 
 int main()
@@ -45,9 +111,23 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	string num = "2908305";
+	ListNode *head = new ListNode(1);
+	insertAtEnd(head, 2);
+	insertAtEnd(head, 3);
+	// insertAtEnd(head, 4);
+	// insertAtEnd(head, 5);
+	// insertAtEnd(head, 6);
+	// insertAtEnd(head, 7);
+	// insertAtEnd(head, 8);
+	// insertAtEnd(head, 9);
+	// insertAtEnd(head, 10);
 
-	cout << minimumOperations(num) << endl;
+	display(head);
+
+	int k = 5;
+
+	for (auto i : splitListToParts(head, k))
+		display(i);
 
 	return 0;
 }
