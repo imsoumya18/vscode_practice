@@ -28,7 +28,7 @@ vector<vector<int>> generate(int numRows)
 		cnt++;
 	}
 
-	return vct;
+	return vc;
 }
 
 int main()
