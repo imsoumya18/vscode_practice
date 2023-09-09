@@ -1,34 +1,26 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-vector<vector<int>> generate(int numRows)
+int combinationSum4(vector<int> &nums, int target)
 {
-	vector<vector<int>> vct;
+	vector<unsigned int> dp(target + 1, 0);
+	dp[0] = 1;
 
-	vct.push_back(vector<int>{1});
-
-	if (numRows == 1)
-		return vct;
-
-	int cnt = 1;
-
-	while (cnt != numRows)
+	for (int i = 1; i <= target; ++i)
 	{
-		vector<int> last = vct.back();
-		vector<int> newRow{1};
-
-		for (int i = 0; i < last.size() - 1; i++)
-			newRow.push_back(last[i] + last[i + 1]);
-
-		newRow.push_back(1);
-
-		vct.push_back(newRow);
-		cnt++;
+		for (int num : nums)
+		{
+			if (i - num >= 0)
+			{
+				dp[i] += dp[i - num];
+			}
+		}
 	}
 
-	return vct;
+	return dp[target];
 }
 
 int main()
@@ -38,14 +30,10 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int numRows = 5;
+	vector<int> nums{1, 2, 3};
+	int target = 4;
 
-	for (auto i : generate(numRows))
-	{
-		for (auto j : i)
-			cout << j << " ";
-		cout << endl;
-	}
+	cout << combinationSum4(nums, target) << endl;
 
 	return 0;
 }
