@@ -1,26 +1,20 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <set>
 using namespace std;
 
-int combinationSum4(vector<int> &nums, int target)
+bool isReachableAtTime(int sx, int sy, int fx, int fy, int t)
 {
-	vector<unsigned int> dp(target + 1, 0);
-	dp[0] = 1;
+	if (sx == fx && sy == fy && t == 1)
+		return false;
 
-	for (int i = 1; i <= target; ++i)
-	{
-		for (int num : nums)
-		{
-			if (i - num >= 0)
-			{
-				dp[i] += dp[i - num];
-			}
-		}
-	}
+	int mindis = max(abs(fx - sx), abs(fy - sy));
 
-	return dp[target];
+	if (mindis > t)
+		return false;
+
+	return true;
 }
 
 int main()
@@ -30,10 +24,9 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int> nums{1, 2, 3};
-	int target = 4;
+	int sx = 3, sy = 1, fx = 7, fy = 3, t = 3;
 
-	cout << combinationSum4(nums, target) << endl;
+	cout << isReachableAtTime(sx, sy, fx, fy, t) << endl;
 
 	return 0;
 }
