@@ -4,17 +4,36 @@
 #include <set>
 using namespace std;
 
-bool isReachableAtTime(int sx, int sy, int fx, int fy, int t)
+vector<vector<int>> groupThePeople(vector<int> &groupSizes)
 {
-	if (sx == fx && sy == fy && t == 1)
-		return false;
+	vector<vector<int>> ans;
 
-	int mindis = max(abs(fx - sx), abs(fy - sy));
+	for (int i = 0; i < groupSizes.size(); i++)
+	{
+		int ele = i;
+		int grpsize = groupSizes[i];
+		int flag = 0;
 
-	if (mindis > t)
-		return false;
+		for (auto j : ans)
+			if (j.size() == grpsize && j.back() == -1)
+			{
+				flag = 1;
+				int k = 0;
+				while (j[k] != -1)
+					k++;
+				j[k] = ele;
+				break;
+			}
 
-	return true;
+		if (flag == 0 || ans.size() == 0)
+		{
+			vector<int> temp(grpsize, -1);
+			temp[0] = ele;
+			ans.push_back(temp);
+		}
+	}
+
+	return ans;
 }
 
 int main()
@@ -24,9 +43,14 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int sx = 3, sy = 1, fx = 7, fy = 3, t = 3;
+	vector<int> groupSizes{3, 3, 3, 3, 3, 1, 3};
 
-	cout << isReachableAtTime(sx, sy, fx, fy, t) << endl;
+	for (auto i : groupThePeople(groupSizes))
+	{
+		for (auto j : i)
+			cout << j << " ";
+		cout << endl;
+	}
 
 	return 0;
 }
