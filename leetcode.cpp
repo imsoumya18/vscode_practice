@@ -1,37 +1,55 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <set>
+#include <map>
+#include <string>
 using namespace std;
 
-vector<vector<int>> groupThePeople(vector<int> &groupSizes)
+int myAtoi(string s)
 {
-	vector<vector<int>> ans;
+	int it = 0;
 
-	for (int i = 0; i < groupSizes.size(); i++)
+	while (s[it] == ' ')
+		it++;
+
+	while (s[it] != '-' && !(s[it] >= '0' && s[it] <= '9'))
+		it++;
+
+	int start = it;
+
+	if (s[it] == '-')
+		it++;
+
+	while (s[it] >= '0' && s[it] <= '9' && it < s.size())
+		it++;
+
+	int end = it;
+
+	s = s.substr(start, end - start);
+
+	int mult = 1;
+
+	if (s[0] == '-')
 	{
-		int ele = i;
-		int grpsize = groupSizes[i];
-		int flag = 0;
-
-		for (auto j : ans)
-			if (j.size() == grpsize && j.back() == -1)
-			{
-				flag = 1;
-				int k = 0;
-				while (j[k] != -1)
-					k++;
-				j[k] = ele;
-				break;
-			}
-
-		if (flag == 0 || ans.size() == 0)
-		{
-			vector<int> temp(grpsize, -1);
-			temp[0] = ele;
-			ans.push_back(temp);
-		}
+		mult = -1;
+		s = s.substr(1);
 	}
+	else if (s[0] == '+')
+	{
+		mult = 1;
+		s = s.substr(1);
+	}
+
+	int ans = 0;
+
+	for (auto i : s)
+	{
+		int dig = i - '0';
+		ans = ans * 10;
+		ans = ans + dig;
+	}
+
+	ans = ans * mult;
 
 	return ans;
 }
@@ -43,14 +61,9 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int> groupSizes{3, 3, 3, 3, 3, 1, 3};
+	string s = "    csahsahsabc +123456789    ubudnjdcnj";
 
-	for (auto i : groupThePeople(groupSizes))
-	{
-		for (auto j : i)
-			cout << j << " ";
-		cout << endl;
-	}
+	cout << myAtoi(s) << endl;
 
 	return 0;
 }
