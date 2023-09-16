@@ -1,55 +1,66 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <map>
+#include <set>
 #include <string>
 using namespace std;
 
-int myAtoi(string s)
+vector<string> findItinerary(vector<vector<string>> &tickets)
 {
-	int it = 0;
+	vector<string> ans;
+	// set<string> src, dest;
 
-	while (s[it] == ' ')
-		it++;
+	// for (auto i : tickets)
+	// {
+	// 	src.insert(i[0]);
+	// 	dest.insert(i[1]);
+	// }
 
-	while (s[it] != '-' && !(s[it] >= '0' && s[it] <= '9'))
-		it++;
+	// for (auto i : src)
+	// {
+	// 	int flag = 0;
+	// 	for (auto j : dest)
+	// 		if (i == j)
+	// 		{
+	// 			flag = 1;
+	// 			break;
+	// 		}
 
-	int start = it;
+	// 	if (flag == 0)
+	// 	{
+	// 		ans.push_back(i);
+	// 		break;
+	// 	}
+	// }
 
-	if (s[it] == '-')
-		it++;
+	// if (ans.empty())
+	// 	ans.push_back(tickets[0][0]);
 
-	while (s[it] >= '0' && s[it] <= '9' && it < s.size())
-		it++;
+	ans.push_back("JFK");
 
-	int end = it;
+	// for (auto i : ans)
+	// 	cout << i << " ";
 
-	s = s.substr(start, end - start);
+	// cout << "test" << endl;
 
-	int mult = 1;
-
-	if (s[0] == '-')
+	while (!tickets.empty())
 	{
-		mult = -1;
-		s = s.substr(1);
-	}
-	else if (s[0] == '+')
-	{
-		mult = 1;
-		s = s.substr(1);
-	}
+		int min_idx = -1;
+		string start = ans.back();
 
-	int ans = 0;
+		for (int i = 0; i < tickets.size(); i++)
+			if (tickets[i][0] == start)
+			{
+				if (min_idx == -1)
+					min_idx = i;
 
-	for (auto i : s)
-	{
-		int dig = i - '0';
-		ans = ans * 10;
-		ans = ans + dig;
+				if (tickets[i][1] < tickets[min_idx][1])
+					min_idx = i;
+			}
+
+		ans.push_back(tickets[min_idx][1]);
+		tickets.erase(tickets.begin() + min_idx);
 	}
-
-	ans = ans * mult;
 
 	return ans;
 }
@@ -61,9 +72,13 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	string s = "    csahsahsabc +123456789    ubudnjdcnj";
+	vector<vector<string>> tickets{
+		{"JFK", "KUL"},
+		{"JFK", "NRT"},
+		{"NRT", "JFK"}};
 
-	cout << myAtoi(s) << endl;
+	for (auto i : findItinerary(tickets))
+		cout << i << " ";
 
 	return 0;
 }

@@ -1,132 +1,80 @@
 // @author Soumya
 #include <iostream>
+#include <vector>
 using namespace std;
 
-// linked list implementation
-class ListNode
+struct TreeNode
 {
-public:
     int val;
-    ListNode *next;
-    ListNode *bottom;
+    TreeNode *left;
+    TreeNode *right;
 
-    ListNode(int x)
+    TreeNode(int data)
     {
-        val = x;
-        next = nullptr;
-        bottom = nullptr;
+        val = data;
+        left = nullptr;
+        right = nullptr;
     }
 };
 
-// insert node at head
-void insertAtHead(ListNode *&head, int val)
+void preorder(struct TreeNode *root)
 {
-    ListNode *temp = head;
-
-    head = new ListNode(val);
-    head->next = temp;
-}
-
-// insert node at end
-void insertAtEnd(ListNode *&head, int val)
-{
-    ListNode *n = new ListNode(val);
-
-    if (head == nullptr)
-    {
-        head = n;
+    if (root == nullptr)
         return;
-    }
 
-    ListNode *temp = head;
-
-    while (temp->next != nullptr)
-        temp = temp->next;
-
-    temp->next = n;
+    cout << root->val << " ";
+    preorder(root->left);
+    preorder(root->right);
 }
 
-// print elements of linked list
-void display(ListNode *&head)
+void postorder(struct TreeNode *root)
 {
-    ListNode *temp = head;
+    if (root == nullptr)
+        return;
 
-    while (temp != nullptr)
-    {
-        cout << temp->val << "-->";
-        temp = temp->next;
-    }
-
-    cout << "NULL" << endl;
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->val << " ";
 }
 
-void display2(ListNode *&head)
+void inorder(struct TreeNode *root)
 {
-    ListNode *temp = head;
+    if (root == nullptr)
+        return;
 
-    while (temp != nullptr)
-    {
-        cout << temp->val << "-->";
-        temp = temp->bottom;
-    }
-
-    cout << "NULL" << endl;
+    inorder(root->left);
+    cout << root->val << " ";
+    inorder(root->right);
 }
 
-ListNode *merge(ListNode *l1, ListNode *l2)
+int search(int in[], int curr, int start, int end)
 {
-    if (l1 == nullptr)
-        return l2;
+    for (int i = start; i <= end; i++)
+        if (in[i] == curr)
+            return i;
 
-    if (l2 == nullptr)
-        return l1;
-
-    ListNode *ans = new ListNode(-1), *temp = ans;
-
-    while (l1 != nullptr && l2 != nullptr)
-    {
-        if (l1->val < l2->val)
-        {
-            temp->bottom = l1;
-            temp = l1;
-            l1 = l1->bottom;
-        }
-        else
-        {
-            temp->bottom = l2;
-            temp = l2;
-            l2 = l2->bottom;
-        }
-    }
-
-    while (l1 != nullptr)
-    {
-        temp->bottom = l1;
-        temp = l1;
-        l1 = l1->bottom;
-    }
-
-    while (l2 != nullptr)
-    {
-        temp->bottom = l2;
-        temp = l2;
-        l2 = l2->bottom;
-    }
-
-    return ans->bottom;
+    return -1;
 }
 
-ListNode *flatten(ListNode *root)
+TreeNode *buildTree(int pre[], int in[], int start, int end)
 {
-    if (root->next == nullptr)
-        return root;
+    static int idx = 0;
 
-    ListNode *right = flatten(root->next);
-    root->next = nullptr;
+    if (start > end)
+        return nullptr;
 
-    ListNode *ans = merge(root, right);
+    int curr = pre[idx];
+    idx++;
+    TreeNode *node = new TreeNode(curr);
 
-    return ans;
+    if (start == end)
+        return node;
+
+    int pos = search(in, curr, start, end);
+    node->left = buildTree(pre, in, start, pos - 1);
+    node->right = buildTree(pre, in, pos + 1, end);
+
+    return node;
 }
 
 int main()
@@ -136,38 +84,37 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *head = new ListNode(5);
-    insertAtEnd(head, 10);
-    insertAtEnd(head, 19);
-    insertAtEnd(head, 28);
+    struct TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->left->right->left = new TreeNode(6);
+    root->left->right->right = new TreeNode(7);
 
-    head->bottom = new ListNode(7);
-    head->bottom->bottom = new ListNode(8);
-    head->bottom->bottom->bottom = new ListNode(30);
+    // cout << "Preorder:" << endl;
+    // preorder(root);
+    // cout << endl;
 
-    head->next->bottom = new ListNode(20);
+    // cout << "Postorder:" << endl;
+    // postorder(root);
+    // cout << endl;
 
-    head->next->next->bottom = new ListNode(22);
-    head->next->next->bottom->bottom = new ListNode(50);
+    // cout << "Inorder:" << endl;
+    // inorder(root);
+    // cout << endl;
 
-    head->next->next->next->bottom = new ListNode(35);
-    head->next->next->next->bottom->bottom = new ListNode(40);
-    head->next->next->next->bottom->bottom->bottom = new ListNode(45);
+    int pre[] = {1, 2, 4, 5, 6, 7, 3}, in[] = {4, 2, 6, 5, 7, 1, 3};
 
-    display(head);
-    cout << endl
-         << endl;
+    TreeNode *n = buildTree(pre, in, 0, 6);
 
-    display2(head);
-    display2(head->next);
-    display2(head->next->next);
-    display2(head->next->next->next);
-    cout << endl
-         << endl;
+    cout << "Preorder:" << endl;
+    preorder(n);
+    cout << endl;
 
-    ListNode *ans = flatten(head);
-
-    display2(ans);
+    cout << "Inorder:" << endl;
+    inorder(n);
+    cout << endl;
 
     return 0;
 }
