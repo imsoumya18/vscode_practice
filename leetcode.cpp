@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-void tst(int x)
+void test(int x)
 {
 	cout << x << endl;
 }
