@@ -1,4 +1,0 @@
-Preorder:
-1 2 4 5 6 7 3 
-Inorder:
-4 2 6 5 7 1 3 
