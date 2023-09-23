@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-void test(int x)
+void up(int x)
 {
 	cout << x << endl;
 }
@@ -17,17 +17,9 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<vector<string>> tickets{
-		{"JFK", "KUL"},
-		{"JFK", "NRT"},
-		{"NRT", "JFK"}};
+	int x = 4;
 
-	for (auto i : tickets)
-	{
-		for (auto j : i)
-			cout << j << " ";
-		cout << endl;
-	}
+	up(x);
 
 	return 0;
 }
