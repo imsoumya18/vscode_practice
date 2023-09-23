@@ -1,0 +1,3 @@
+JFK KUL 
+JFK NRT 
+NRT JFK 
