@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-void down(int x)
+void test(int x)
 {
 	cout << x << endl;
 }
@@ -19,7 +19,7 @@ int main()
 
 	int x = 4;
 
-	down(x);
+	test(x);
 
 	return 0;
 }
