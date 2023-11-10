@@ -17,7 +17,7 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int x = 4;
+	int x = 40;
 
 	test(x);
 
