@@ -5,99 +5,40 @@
 #include <string>
 using namespace std;
 
-void selection_sort(vector<int> &vct)
+void setZeroes(vector<vector<int>> &matrix)
 {
-	int n = vct.size();
+	int m = matrix.size();
+	int n = matrix[0].size();
+	int col0 = 1;
 
-	for (int i = 0; i < n - 1; i++)
-		for (int j = i; j < n; j++)
-			if (vct[j] < vct[i])
-				swap(vct[i], vct[j]);
-}
-
-void bubble_sort(vector<int> &vct)
-{
-	int n = vct.size();
-
-	for (int i = 0; i < n - 1; i++)
-		for (int j = 0; j < n - i - 1; j++)
-			if (vct[j + 1] < vct[j])
-				swap(vct[j], vct[j + 1]);
-}
-
-void insertion_sort(vector<int> &vct)
-{
-	int n = vct.size();
-
-	for (int i = 1; i < n; i++)
-	{
-		int temp = vct[i];
-		int j = i - 1;
-
-		while (j >= 0 && vct[j] > temp)
+	for (int i = 0; i < m; i++)
+		for (int j = 0; j < n; j++)
 		{
-			vct[j + 1] = vct[j];
-			j--;
+			if (matrix[i][j] == 0)
+			{
+				matrix[i][0] = 0;
+
+				if (j == 0)
+					col0 = 0;
+				else
+					matrix[0][j] = 0;
+			}
 		}
 
-		vct[j + 1] = temp;
-	}
-}
-
-void merge(vector<int> &vct, int l, int mid, int r)
-{
-	vector<int> arr1, arr2;
-
-	for (int i = l; i <= mid; i++)
-		arr1.push_back(vct[i]);
-
-	for (int i = mid + 1; i <= r; i++)
-		arr2.push_back(vct[i]);
-
-	int i = l, j = 0, k = 0;
-
-	while (j < arr1.size() && k < arr2.size())
-	{
-		if (arr1[j] < arr2[k])
+	for (int i = 1; i < m; i++)
+		for (int j = 1; j < n; j++)
 		{
-			vct[i] = arr1[j];
-			i++;
-			j++;
+			if (matrix[i][0] == 0 || matrix[0][j] == 0)
+				matrix[i][j] = 0;
 		}
-		else
-		{
-			vct[i] = arr2[k];
-			i++;
-			k++;
-		}
-	}
 
-	while (j < arr1.size())
-	{
-		vct[i] = arr1[j];
-		i++;
-		j++;
-	}
+	if (matrix[0][0] == 0)
+		for (int j = 0; j < n; j++)
+			matrix[0][j] = 0;
 
-	while (k < arr2.size())
-	{
-		vct[i] = arr2[k];
-		i++;
-		k++;
-	}
-}
-
-void merge_sort(vector<int> &vct, int l, int r)
-{
-	if (l < r)
-	{
-		int mid = l + (r - l) / 2;
-
-		merge_sort(vct, l, mid);
-		merge_sort(vct, mid + 1, r);
-
-		merge(vct, l, mid, r);
-	}
+	if (col0 == 0)
+		for (int i = 0; i < m; i++)
+			matrix[i][0] = 0;
 }
 
 int main()
@@ -107,17 +48,26 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int> vct{5, 4, 3, 2, 1};
+	vector<vector<int>> matrix{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}, ans;
 
-	for (auto i : vct)
-		cout << i << " ";
-	cout << endl;
+	for (int i = 0; i < matrix.size(); i++)
+	{
+		for (int j = 0; j < matrix[0].size(); j++)
+			cout << matrix[i][j] << " ";
+		cout << endl;
+	}
 
-	merge_sort(vct, 0, 4);
+	cout << endl
+		 << endl;
 
-	for (auto i : vct)
-		cout << i << " ";
-	cout << endl;
+	setZeroes(matrix);
+
+	for (int i = 0; i < matrix.size(); i++)
+	{
+		for (int j = 0; j < matrix[0].size(); j++)
+			cout << matrix[i][j] << " ";
+		cout << endl;
+	}
 
 	return 0;
 }
