@@ -3,32 +3,125 @@
 #include <vector>
 using namespace std;
 
-int lin_search(vector<int> vct, int k)
+void selection_sort(vector<int> &vct)
 {
-    for (int i = 0; i < vct.size(); i++)
-        if (vct[i] == k)
-            return i;
+    int n = vct.size();
 
-    return -1;
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i + 1; j < n; j++)
+            if (vct[j] < vct[i])
+                swap(vct[i], vct[j]);
 }
 
-int bin_search(vector<int> vct, int k, int l, int r)
+void bubble_sort(vector<int> &vct)
 {
-    int mid = l + (r - l) / 2;
+    int n = vct.size();
 
-    while (l < r)
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (vct[j + 1] < vct[j])
+                swap(vct[j], vct[j + 1]);
+}
+
+void insertion_sort(vector<int> &vct)
+{
+    int n = vct.size();
+
+    for (int i = 1; i < n; i++)
     {
-        if (vct[mid] == k)
-            return mid;
-        else if (vct[mid] > k)
-            r = mid - 1;
-        else
-            l = mid + 1;
+        int temp = vct[i], j = i - 1;
 
-        mid = l + (r - l) / 2;
+        while (j >= 0 && vct[j] > temp)
+        {
+            vct[j + 1] = vct[j];
+            j--;
+        }
+
+        vct[j + 1] = temp;
+    }
+}
+
+void merge(vector<int> &vct, int l, int mid, int r)
+{
+    vector<int> vct1, vct2;
+
+    for (int i = l; i <= mid; i++)
+        vct1.push_back(vct[i]);
+
+    for (int i = mid + 1; i <= r; i++)
+        vct2.push_back(vct[i]);
+
+    int i = l, j = 0, k = 0;
+
+    while (j < vct1.size() && k < vct2.size())
+    {
+        if (vct1[j] < vct2[k])
+        {
+            vct[i] = vct1[j];
+            i++;
+            j++;
+        }
+        else
+        {
+            vct[i] = vct2[k];
+            i++;
+            k++;
+        }
     }
 
-    return -1;
+    while (j < vct1.size())
+    {
+        vct[i] = vct1[j];
+        i++;
+        j++;
+    }
+
+    while (k < vct2.size())
+    {
+        vct[i] = vct2[k];
+        i++;
+        k++;
+    }
+}
+
+void merge_sort(vector<int> &vct, int l, int r)
+{
+    if (l < r)
+    {
+        int mid = l + (r - l) / 2;
+
+        merge_sort(vct, l, mid);
+        merge_sort(vct, mid + 1, r);
+
+        merge(vct, l, mid, r);
+    }
+}
+
+int partition(vector<int> &vct, int l, int r)
+{
+    int pivot = vct[r];
+    int i = l - 1;
+
+    for (int j = l; j <= r; j++)
+        if (vct[j] < pivot)
+        {
+            i++;
+            swap(vct[i], vct[j]);
+        }
+
+    swap(vct[i + 1], vct[r]);
+    return i + 1;
+}
+
+void quick_sort(vector<int> &vct, int l, int r)
+{
+    if (l < r)
+    {
+        int pi = partition(vct, l, r);
+
+        quick_sort(vct, l, pi - 1);
+        quick_sort(vct, pi + 1, r);
+    }
 }
 
 int main()
@@ -38,10 +131,18 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> vct{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> vct{9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
     int k = 60;
 
-    cout << bin_search(vct, k, 0, vct.size() - 1) << endl;
+    for (auto i : vct)
+        cout << i << " ";
+    cout << endl;
+
+    quick_sort(vct, 0, vct.size() - 1);
+
+    for (auto i : vct)
+        cout << i << " ";
+    cout << endl;
 
     return 0;
 }
