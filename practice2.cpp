@@ -3,13 +3,13 @@
 using namespace std;
 
 // linked list implementation
-class ListNode
+class node
 {
 public:
     int val;
-    ListNode *next;
+    node *next;
 
-    ListNode(int x)
+    node(int x)
     {
         val = x;
         next = nullptr;
@@ -17,18 +17,18 @@ public:
 };
 
 // insert node at head
-void insertAtHead(ListNode *&head, int val)
+void insertAtHead(node *&head, int val)
 {
-    ListNode *temp = head;
+    node *temp = head;
 
-    head = new ListNode(val);
+    head = new node(val);
     head->next = temp;
 }
 
 // insert node at end
-void insertAtEnd(ListNode *&head, int val)
+void insertAtEnd(node *&head, int val)
 {
-    ListNode *n = new ListNode(val);
+    node *n = new node(val);
 
     if (head == nullptr)
     {
@@ -36,7 +36,7 @@ void insertAtEnd(ListNode *&head, int val)
         return;
     }
 
-    ListNode *temp = head;
+    node *temp = head;
 
     while (temp->next != nullptr)
         temp = temp->next;
@@ -45,9 +45,9 @@ void insertAtEnd(ListNode *&head, int val)
 }
 
 // print elements of linked list
-void display(ListNode *&head)
+void display(node *&head)
 {
-    ListNode *temp = head;
+    node *temp = head;
 
     while (temp != nullptr)
     {
@@ -65,7 +65,7 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *head = new ListNode(2);
+    node *head = new node(2);
     insertAtEnd(head, 4);
     insertAtEnd(head, 6);
     insertAtEnd(head, 8);
