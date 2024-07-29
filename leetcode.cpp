@@ -3,56 +3,64 @@
 #include <vector>
 #include <set>
 #include <string>
+#include <stack>
+#include <algorithm>
 using namespace std;
 
 void print1d(vector<int> vct)
 {
-	for (auto i : vct)
-		cout << i << " ";
+    for (auto i : vct)
+        cout << i << " ";
 
-	cout << endl;
+    cout << endl;
 }
 
 void print2d(vector<vector<int>> vct)
 {
-	for (auto i : vct)
-	{
-		for (auto j : i)
-			cout << j << " ";
-		cout << endl;
-	}
+    for (auto i : vct)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
+    }
 }
 
-void help(vector<int> &nums, int l, int r)
+int maxFrequency(vector<int> &nums, int k)
 {
-	while (l < r)
-	{
-		swap(nums[l], nums[r]);
-		l++;
-		r--;
-	}
-}
+    sort(nums.begin(), nums.end());
 
-void rotate(vector<int> &nums, int k)
-{
-	help(nums, 0, nums.size() - k - 1);
-	help(nums, nums.size() - k, nums.size() - 1);
-	help(nums, 0, nums.size() - 1);
+    int l = 0, r = 0, n = nums.size();
+
+    int total = 0, maxlen = 0;
+
+    while (r < n)
+    {
+        total += nums[r];
+
+        while ((r - l + 1) * nums[r] > total + k)
+        {
+            total -= nums[l];
+            l += 1;
+        }
+
+        maxlen = max(maxlen, r - l + 1);
+        r++;
+    }
+
+    return maxlen;
 }
 
 int main()
 {
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int> vct{1, 2, 3, 4, 5, 6, 7};
-	int k = 3;
+    vector<int> nums{3, 9, 6};
+    int k = 2;
 
-	print1d(vct);
-	rotate(vct, k);
-	print1d(vct);
+    cout << maxFrequency(nums, k) << endl;
 
-	return 0;
+    return 0;
 }

@@ -14,45 +14,73 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n;
-        cin >> n;
-        long long arr1[n], arr2[n];
+        int n, m;
+        vector<int> a, b, d;
 
-        for (long long i = 0; i < n; i++)
+        cin >> n;
+
+        for (int i = 0; i < n; i++)
         {
-            cin >> arr1[i];
-            arr2[i] = arr1[i];
+            int x;
+            cin >> x;
+            a.push_back(x);
         }
 
-        sort(arr2, arr2 + n);
-
-        bool tf = false;
-
-        for (long long i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
-            if (arr1[i] != arr2[i])
+            int x;
+            cin >> x;
+            b.push_back(x);
+        }
+
+        cin >> m;
+
+        for (int i = 0; i < m; i++)
+        {
+            int x;
+            cin >> x;
+            d.push_back(x);
+        }
+
+        bool flag = false;
+
+        for (auto i : b)
+            if (d[m - 1] == i)
             {
-                cout << 0 << endl;
-                tf = 1;
+                flag = true;
                 break;
             }
-        }
 
-        if (tf == false)
+        if (flag == false)
+            cout << "NO" << endl;
+        else
         {
-            long long minn = INT64_MAX;
-            long long ind;
+            unordered_map<int, int> freq;
 
-            for (long long i = 0; i < n - 1; i++)
-                if (arr1[i + 1] - arr1[i] < minn)
+            for (auto i : d)
+                freq[i]++;
+
+            bool flag = true;
+
+            for (int i = 0; i < n; i++)
+                if (a[i] != b[i])
                 {
-                    minn = arr1[i + 1] - arr1[i];
-                    ind = i;
+                    if (freq.find(b[i]) == freq.end())
+                    {
+                        cout << "NO" << endl;
+                        flag = false;
+                        break;
+                    }
+                    else
+                    {
+                        freq[b[i]]--;
+                        if (freq[b[i]] == 0)
+                            freq.erase(b[i]);
+                    }
                 }
 
-            long long ans;
-            ans = (arr1[ind + 1] - arr1[ind]) / 2 + 1;
-            cout << ans << endl;
+            if (flag == true)
+                cout << "YES" << endl;
         }
     }
 
