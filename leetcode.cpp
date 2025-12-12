@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <map>
 #include <string>
 #include <stack>
 #include <algorithm>
@@ -25,29 +26,30 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-int maxFrequency(vector<int> &nums, int k)
+static bool comp(vector<int> v1, vector<int> v2)
 {
-    sort(nums.begin(), nums.end());
+    return v1[0] < v2[0];
+}
 
-    int l = 0, r = 0, n = nums.size();
+vector<vector<int>> merge(vector<vector<int>> &intervals)
+{
+    sort(intervals.begin(), intervals.end(), comp);
+    vector<vector<int>> vct;
 
-    int total = 0, maxlen = 0;
+    vector<int> last = intervals[0];
 
-    while (r < n)
-    {
-        total += nums[r];
-
-        while ((r - l + 1) * nums[r] > total + k)
+    for (int i = 1; i < intervals.size(); i++)
+        if (intervals[i][0] <= last[1])
+            last[1] = max(last[1], intervals[i][1]);
+        else
         {
-            total -= nums[l];
-            l += 1;
+            vct.push_back(last);
+            last = intervals[i];
         }
 
-        maxlen = max(maxlen, r - l + 1);
-        r++;
-    }
+    vct.push_back(last);
 
-    return maxlen;
+    return vct;
 }
 
 int main()
@@ -57,10 +59,11 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{3, 9, 6};
-    int k = 2;
+    vector<vector<int>> matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-    cout << maxFrequency(nums, k) << endl;
+    vector<int> spiral = spiralOrder(matrix);
+
+    print1d(spiral);
 
     return 0;
 }
