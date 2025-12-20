@@ -26,30 +26,14 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-static bool comp(vector<int> v1, vector<int> v2)
+void recur(int curr, int n)
 {
-    return v1[0] < v2[0];
-}
+    if (curr > n)
+        return;
 
-vector<vector<int>> merge(vector<vector<int>> &intervals)
-{
-    sort(intervals.begin(), intervals.end(), comp);
-    vector<vector<int>> vct;
+    cout << curr << " ";
 
-    vector<int> last = intervals[0];
-
-    for (int i = 1; i < intervals.size(); i++)
-        if (intervals[i][0] <= last[1])
-            last[1] = max(last[1], intervals[i][1]);
-        else
-        {
-            vct.push_back(last);
-            last = intervals[i];
-        }
-
-    vct.push_back(last);
-
-    return vct;
+    recur(curr + 1, n);
 }
 
 int main()
@@ -59,11 +43,7 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-
-    vector<int> spiral = spiralOrder(matrix);
-
-    print1d(spiral);
+    recur(1, 5);
 
     return 0;
 }

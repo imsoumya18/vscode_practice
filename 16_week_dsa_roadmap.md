@@ -75,19 +75,19 @@
 | `1.1.1.8` | Functions (Pass by Reference and Value) | 🟢 | ✅ | |
 | `1.1.1.9` | Time Complexity [Learn Basics] | 🟢 | ✅ | |
 | `1.2.1.1` | Patterns | 🟢 | ✅ | |
-| `1.4.1.1` | Count Digits | 🟢 | | |
-| `1.4.1.2` | Reverse a Number | 🟢 | | |
-| `1.4.1.3` | Check Palindrome | 🟢 | | |
-| `1.4.1.4` | GCD Or HCF | 🟢 | | |
-| `1.4.1.5` | Armstrong Numbers | 🟢 | | |
-| `1.4.1.6` | Print all Divisors | 🟢 | | |
-| `1.4.1.7` | Check for Prime | 🟢 | | |
-| `1.5.1.1` | Understand recursion by print something N times | 🟢 | | |
-| `1.5.1.2` | Print name N times using recursion | 🟢 | | |
-| `1.5.1.3` | Print 1 to N using recursion | 🟢 | | |
-| `1.5.1.4` | Print N to 1 using recursion | 🟢 | | |
-| `1.5.1.5` | Sum of first N numbers | 🟢 | | |
-| `1.5.1.6` | Factorial of N numbers | 🟢 | | |
+| `1.4.1.1` | Count Digits | 🟢 | ✅ | |
+| `1.4.1.2` | Reverse a Number | 🟢 | ✅ | |
+| `1.4.1.3` | Check Palindrome | 🟢 | ✅ | |
+| `1.4.1.4` | GCD Or HCF | 🟢 | ✅ | |
+| `1.4.1.5` | Armstrong Numbers | 🟢 | ✅ | |
+| `1.4.1.6` | Print all Divisors | 🟢 | ✅ | |
+| `1.4.1.7` | Check for Prime | 🟢 | ✅ | |
+| `1.5.1.1` | Understand recursion by print something N times | 🟢 | ✅ | |
+| `1.5.1.2` | Print name N times using recursion | 🟢 | ✅ | |
+| `1.5.1.3` | Print 1 to N using recursion | 🟢 | ✅ | |
+| `1.5.1.4` | Print N to 1 using recursion | 🟢 | ✅ | |
+| `1.5.1.5` | Sum of first N numbers | 🟢 | ✅ | |
+| `1.5.1.6` | Factorial of N numbers | 🟢 | ✅ | |
 | `1.5.1.7` | Reverse an array | 🟢 | | |
 | `1.5.1.8` | Check if a string is palindrome or not | 🟡 | | |
 | `1.5.1.9` | Fibonacci Number | 🟢 | | |
