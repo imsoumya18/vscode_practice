@@ -88,14 +88,14 @@
 | `1.5.1.4` | Print N to 1 using recursion | 🟢 | ✅ | |
 | `1.5.1.5` | Sum of first N numbers | 🟢 | ✅ | |
 | `1.5.1.6` | Factorial of N numbers | 🟢 | ✅ | |
-| `1.5.1.7` | Reverse an array | 🟢 | | |
-| `1.5.1.8` | Check if a string is palindrome or not | 🟡 | | |
-| `1.5.1.9` | Fibonacci Number | 🟢 | | |
-| `1.6.1.1` | Hashing Theory | 🟡 | | |
-| `1.6.1.2` | Counting frequencies of array elements | 🟢 | | |
-| `1.6.1.3` | Find the highest/lowest frequency element | 🟢 | | |
-| `2.1.1.1` | Selection Sort | 🟢 | | |
-| `2.1.1.2` | Bubble Sort | 🟢 | | |
+| `1.5.1.7` | Reverse an array | 🟢 | ✅ | |
+| `1.5.1.8` | Check if a string is palindrome or not | 🟡 | ✅ | |
+| `1.5.1.9` | Fibonacci Number | 🟢 | ✅ | |
+| `1.6.1.1` | Hashing Theory | 🟡 | ✅ | |
+| `1.6.1.2` | Counting frequencies of array elements | 🟢 | ✅ | |
+| `1.6.1.3` | Find the highest/lowest frequency element | 🟢 | ✅ | |
+| `2.1.1.1` | Selection Sort | 🟢 | ✅ | |
+| `2.1.1.2` | Bubble Sort | 🟢 | ✅ | |
 | `2.1.1.3` | Insertion Sort | 🟢 | | |
 | `2.2.1.1` | Merge Sort | 🟡 | | |
 | `2.2.1.4` | Quick Sort | 🟢 | | |

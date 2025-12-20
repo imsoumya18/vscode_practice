@@ -26,14 +26,24 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-void recur(int curr, int n)
+void selection_sort(vector<int> &vct)
 {
-    if (curr > n)
-        return;
+    int n = vct.size();
 
-    cout << curr << " ";
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i + 1; j < n; j++)
+            if (vct[j] < vct[i])
+                swap(vct[i], vct[j]);
+}
 
-    recur(curr + 1, n);
+void bubble_sort(vector<int> &vct)
+{
+    int n = vct.size();
+
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (vct[j + 1] < vct[j])
+                swap(vct[j], vct[j + 1]);
 }
 
 int main()
@@ -43,7 +53,13 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    recur(1, 5);
+    vector<int> vct{5, 4, 3, 2, 1};
+
+    print1d(vct);
+
+    bubble_sort(vct);
+
+    print1d(vct);
 
     return 0;
 }
