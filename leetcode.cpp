@@ -26,23 +26,20 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-bool check(vector<int> &nums)
+int maxSubArray(vector<int> &nums)
 {
-    int n = nums.size(), cnt = 0;
+    int sum = 0, maxsum = 0;
 
-    for (int i = 0; i < n - 1; i++)
+    for (auto it : nums)
     {
-        if (nums[i] > nums[i + 1])
-            cnt++;
+        sum += it;
+        maxsum = max(maxsum, sum);
 
-        if (cnt > 1)
-            return false;
+        if (sum < 0)
+            sum = 0;
     }
 
-    if (cnt == 1 && nums[0] > nums[n - 1])
-        return true;
-
-    return false;
+    return maxsum;
 }
 
 int main()
@@ -51,14 +48,6 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-
-    vector<int> vct{5, 4, 3, 2, 1};
-
-    print1d(vct);
-
-    quick_sort(vct, 0, vct.size() - 1);
-
-    print1d(vct);
 
     return 0;
 }

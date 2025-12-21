@@ -141,10 +141,10 @@
 | `3.1.1.12` | Find the number that appears once, and other numbers twice | 🟡 | | |
 | `3.1.1.13` | Longest subarray with given sum K(positives) | 🟡 | | |
 | `3.1.1.14` | Longest subarray with sum K (Positives + Negatives) | 🟡 | | |
-| `3.2.1.1` | 2Sum Problem | 🟡 | | |
-| `3.2.1.2` | Sort an array of 0's 1's and 2's | 🟡 | | |
-| `3.2.1.3` | Majority Element (>n/2 times) | 🟢 | | |
-| `3.2.1.4` | Kadane's Algorithm, maximum subarray sum | 🟢 | | |
+| `3.2.1.1` | 2Sum Problem | 🟡 | ✅ | |
+| `3.2.1.2` | Sort an array of 0's 1's and 2's | 🟡 | ✅ | ✅ |
+| `3.2.1.3` | Majority Element (>n/2 times) | 🟢 | ✅ | |
+| `3.2.1.4` | Kadane's Algorithm, maximum subarray sum | 🟢 | ✅ | |
 | `3.2.1.6` | Stock Buy and Sell | 🟢 | | |
 | `3.2.1.7` | Rearrange the array in alternating positive and negative items | 🟡 | | |
 | `3.2.1.8` | Next Permutation | 🟡 | | |
