@@ -26,24 +26,23 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-void selection_sort(vector<int> &vct)
+bool check(vector<int> &nums)
 {
-    int n = vct.size();
+    int n = nums.size(), cnt = 0;
 
     for (int i = 0; i < n - 1; i++)
-        for (int j = i + 1; j < n; j++)
-            if (vct[j] < vct[i])
-                swap(vct[i], vct[j]);
-}
+    {
+        if (nums[i] > nums[i + 1])
+            cnt++;
 
-void bubble_sort(vector<int> &vct)
-{
-    int n = vct.size();
+        if (cnt > 1)
+            return false;
+    }
 
-    for (int i = 0; i < n - 1; i++)
-        for (int j = 0; j < n - i - 1; j++)
-            if (vct[j + 1] < vct[j])
-                swap(vct[j], vct[j + 1]);
+    if (cnt == 1 && nums[0] > nums[n - 1])
+        return true;
+
+    return false;
 }
 
 int main()
@@ -57,7 +56,7 @@ int main()
 
     print1d(vct);
 
-    bubble_sort(vct);
+    quick_sort(vct, 0, vct.size() - 1);
 
     print1d(vct);
 

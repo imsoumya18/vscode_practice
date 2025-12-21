@@ -96,12 +96,12 @@
 | `1.6.1.3` | Find the highest/lowest frequency element | 🟢 | ✅ | |
 | `2.1.1.1` | Selection Sort | 🟢 | ✅ | |
 | `2.1.1.2` | Bubble Sort | 🟢 | ✅ | |
-| `2.1.1.3` | Insertion Sort | 🟢 | | |
-| `2.2.1.1` | Merge Sort | 🟡 | | |
-| `2.2.1.4` | Quick Sort | 🟢 | | |
-| `3.1.1.1` | Largest Element in an Array | 🟢 | | |
-| `3.1.1.2` | Second Largest Element in an Array without sorting | 🟢 | | |
-| `3.1.1.3` | Check if the array is sorted | 🟢 | | |
+| `2.1.1.3` | Insertion Sort | 🟢 | ✅ | |
+| `2.2.1.1` | Merge Sort | 🟡 | ✅ | |
+| `2.2.1.4` | Quick Sort | 🟢 | ✅ | ✅ |
+| `3.1.1.1` | Largest Element in an Array | 🟢 | ✅ | |
+| `3.1.1.2` | Second Largest Element in an Array without sorting | 🟢 | ✅ | |
+| `3.1.1.3` | Check if the array is sorted | 🟢 | ✅ | ✅ |
 
 ---
 
