@@ -48,7 +48,7 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `3.2.1.5` | Print subarray with maximum subarray sum | 🟡 | | |
+| `3.2.1.5` | Print subarray with maximum subarray sum | 🟡 | ✅ | ✅ |
 | `3.2.1.9` | Leaders in an Array problem | 🟢 | | |
 | `3.2.1.10` | Longest Consecutive Sequence in an Array | 🟢 | | |
 | `6.2.1.4` | Reverse a DLL | 🟡 | | |
