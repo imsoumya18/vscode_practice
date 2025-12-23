@@ -26,20 +26,40 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-int maxSubArray(vector<int> &nums)
+void rev(vector<int> &nums, int l, int r)
 {
-    int sum = 0, maxsum = 0;
-
-    for (auto it : nums)
+    while (l <= r)
     {
-        sum += it;
-        maxsum = max(maxsum, sum);
+        swap(nums[l], nums[r]);
+        l++;
+        r--;
+    }
+}
 
-        if (sum < 0)
-            sum = 0;
+void nextPermutation(vector<int> &nums)
+{
+    int n = nums.size();
+    int l = n - 2, r = n - 1;
+
+    while (l >= 0 && nums[l] >= nums[l + 1])
+        l--;
+
+    if (l >= 0)
+    {
+        while (r > l && nums[r] <= nums[l])
+            r--;
+
+        swap(nums[l], nums[r]);
     }
 
-    return maxsum;
+    l++;
+
+    while (l < r)
+    {
+        swap(nums[l], nums[r]);
+        l++;
+        r--;
+    }
 }
 
 int main()

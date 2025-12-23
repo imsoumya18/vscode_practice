@@ -145,9 +145,9 @@
 | `3.2.2` | Sort an array of 0's 1's and 2's | 🟡 | ✅ | ✅ |
 | `3.2.3` | Majority Element (>n/2 times) | 🟢 | ✅ | |
 | `3.2.4` | Kadane's Algorithm, maximum subarray sum | 🟢 | ✅ | |
-| `3.2.6` | Stock Buy and Sell | 🟢 | | |
-| `3.2.7` | Rearrange the array in alternating positive and negative items | 🟡 | | |
-| `3.2.8` | Next Permutation | 🟡 | | |
+| `3.2.6` | Stock Buy and Sell | 🟢 | ✅ | |
+| `3.2.7` | Rearrange the array in alternating positive and negative items | 🟡 | ✅ | |
+| `3.2.8` | Next Permutation | 🟡 | ✅ | ✅ |
 | `3.2.13` | Print the matrix in spiral manner | 🟡 | | |
 | `3.2.14` | Count subarrays with given sum | 🟢 | | |
 | `3.3.1` | Pascal's Triangle | 🟡 | | |
