@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <unordered_set>
 #include <map>
 #include <string>
 #include <stack>
@@ -36,30 +37,32 @@ void rev(vector<int> &nums, int l, int r)
     }
 }
 
-void nextPermutation(vector<int> &nums)
+int longestConsecutive(vector<int> &nums)
 {
-    int n = nums.size();
-    int l = n - 2, r = n - 1;
+    if (nums.empty())
+        return 0;
 
-    while (l >= 0 && nums[l] >= nums[l + 1])
-        l--;
+    unordered_set<int> st;
+    int mxlen = 1;
 
-    if (l >= 0)
-    {
-        while (r > l && nums[r] <= nums[l])
-            r--;
+    for (auto it : nums)
+        st.insert(it);
 
-        swap(nums[l], nums[r]);
-    }
+    for (auto it : st)
+        if (st.find(it - 1) == st.end())
+        {
+            int currlen = 0, curr = it;
 
-    l++;
+            while (st.find(curr) != st.end())
+            {
+                curr++;
+                currlen++;
+            }
 
-    while (l < r)
-    {
-        swap(nums[l], nums[r]);
-        l++;
-        r--;
-    }
+            mxlen = max(mxlen, currlen);
+        }
+
+    return mxlen;
 }
 
 int main()

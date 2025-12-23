@@ -48,9 +48,9 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `3.2.5` | Print subarray with maximum subarray sum | 🟡 | ✅ | ✅ |
-| `3.2.9` | Leaders in an Array problem | 🟢 | | |
-| `3.2.10` | Longest Consecutive Sequence in an Array | 🟢 | | |
+| `3.2.5` | Print subarray with maximum subarray sum | 🟡 | ✅ | |
+| `3.2.9` | Leaders in an Array problem | 🟢 | ✅ | |
+| `3.2.10` | Longest Consecutive Sequence in an Array | 🟢 | ✅ | |
 | `6.2.4` | Reverse a DLL | 🟡 | | |
 | `6.4.1` | Delete all occurrences of a key in DLL | 🟡 | | |
 | `6.4.2` | Find pairs with given sum in DLL | 🟡 | | |
