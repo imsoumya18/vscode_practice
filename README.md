@@ -211,11 +211,11 @@
 | `5.2.2` | Maximum Nesting Depth of Paranthesis | 🟢 | | |
 | `5.2.3` | Roman Number to Integer and vice versa | 🟢 | | |
 | `5.2.8` | Reverse Every Word in A String | 🟢 | | |
-| `6.1.1` | Introduction to LinkedList | 🟢 | | |
-| `6.1.2` | Inserting a node in LinkedList | 🟢 | | |
-| `6.1.3` | Deleting a node in LinkedList | 🟡 | | |
-| `6.1.4` | Find the length of the linkedlist | 🟢 | | |
-| `6.1.5` | Search an element in the LL | 🟢 | | |
+| `6.1.1` | Introduction to LinkedList | 🟢 | ✅ | |
+| `6.1.2` | Inserting a node in LinkedList | 🟢 | ✅ | |
+| `6.1.3` | Deleting a node in LinkedList | 🟡 | ✅ | ✅ |
+| `6.1.4` | Find the length of the linkedlist | 🟢 | ✅ | |
+| `6.1.5` | Search an element in the LL | 🟢 | ✅ | |
 | `6.2.1` | Introduction to DLL | 🟢 | | |
 | `6.2.2` | Insert a node in DLL | 🟢 | | |
 | `6.2.3` | Delete a node in DLL | 🟡 | | |

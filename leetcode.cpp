@@ -27,42 +27,55 @@ void print2d(vector<vector<int>> vct)
     }
 }
 
-void rev(vector<int> &nums, int l, int r)
+class node
 {
-    while (l <= r)
+public:
+    int val;
+    node *next;
+
+    node(int x)
     {
-        swap(nums[l], nums[r]);
-        l++;
-        r--;
+        val = x;
+        next = nullptr;
     }
+};
+
+void insertAtEnd(node *&head, int x)
+{
+    if (head == nullptr)
+    {
+        head = new node(x);
+        return;
+    }
+
+    node *curr = head;
+
+    while (curr->next)
+        curr = curr->next;
+
+    curr->next = new node(x);
 }
 
-int longestConsecutive(vector<int> &nums)
+void printList(node *head)
 {
-    if (nums.empty())
+    node *curr = head;
+
+    while (curr)
+    {
+        cout << curr->val << "-->";
+        curr = curr->next;
+    }
+
+    cout << "NULL" << endl;
+}
+
+int getCount(node *head)
+{
+    // Code here
+    if (head == nullptr)
         return 0;
 
-    unordered_set<int> st;
-    int mxlen = 1;
-
-    for (auto it : nums)
-        st.insert(it);
-
-    for (auto it : st)
-        if (st.find(it - 1) == st.end())
-        {
-            int currlen = 0, curr = it;
-
-            while (st.find(curr) != st.end())
-            {
-                curr++;
-                currlen++;
-            }
-
-            mxlen = max(mxlen, currlen);
-        }
-
-    return mxlen;
+    return 1 + getCount(head->next);
 }
 
 int main()
@@ -71,6 +84,18 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    node *head = nullptr;
+    insertAtEnd(head, 1);
+    insertAtEnd(head, 2);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 5);
+    insertAtEnd(head, 6);
+
+    printList(head);
+
+    cout << getCount(head) << endl;
 
     return 0;
 }
