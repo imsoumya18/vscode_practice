@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-Week DSA Roadmap</title>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-weight: bold;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            width: 210mm;
+            height: 297mm;
+            padding: 10mm 12mm;
+            /* Slightly reduced top/bottom padding */
+            background: white;
+            color: black;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3mm;
+            /* Reduced from 6mm */
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 2mm;
+        }
+
+        h1 {
+            font-size: 28pt;
+            letter-spacing: 1px;
+            color: #b71c1c;
+            /* Strong Crimson Red for high impact */
+            text-decoration: underline;
+            text-underline-offset: 3mm;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10mm;
+            row-gap: 0;
+        }
+
+        .week-card {
+            border-bottom: 1px dashed #ccc;
+            padding: 4mm 2mm;
+            height: 31.5mm;
+            /* Measured to perfectly fill the A4 vertical space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .week-card:nth-child(even) {
+            border-left: 0;
+        }
+
+        .week-card:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .week-header {
+            font-size: 11pt;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5mm;
+            color: black;
+        }
+
+        .week-stats {
+            font-size: 8.5pt;
+            color: black;
+            margin-bottom: 2.5mm;
+        }
+
+        .progress-row {
+            display: flex;
+            align-items: flex-end;
+            /* Align to the bottom of the text */
+            margin-bottom: 1.5mm;
+        }
+
+        .progress-label {
+            font-size: 9pt;
+            font-weight: bold;
+            white-space: nowrap;
+            margin-right: 2mm;
+            color: black;
+        }
+
+        .target-val {
+            color: #1565c0;
+            /* Strong blue for high contrast on white paper */
+            font-style: italic;
+            font-size: 8.5pt;
+            font-weight: bold;
+            margin-left: 1mm;
+        }
+
+        .progress-line {
+            flex: 1;
+            border-bottom: 1.5px dotted #333;
+            height: 1px;
+            margin-bottom: 1.2mm;
+            /* Perfectly sits on the text baseline */
+        }
+
+        footer {
+            margin-top: auto;
+            /* Anchors the box to the very bottom of the page margin */
+            margin-bottom: 2mm;
+            background: #f8f9fa;
+            border: 2px solid #3498db;
+            padding: 2mm;
+            /* Tightened inner margin */
+            text-align: center;
+            border-radius: 4px;
+            color: black;
+        }
+
+        .summary-text {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 32pt;
+            color: #4a148c;
+            /* Deep Purple for power and vision */
+            letter-spacing: -0.5px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 6mm;
+            font-size: 9pt;
+            color: black;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 1mm;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🎯 16-Week DSA Roadmap</h1>
+    </header>
+
+    <div class="main-container">
+        <!-- FIRST ROW -->
+        <div class="week-card">
+            <div class="week-header"><span>Week 1</span> <span>Total: 49</span></div>
+            <div class="week-stats">🟢 36 Easy | 🟡 9 Medium | 🔴 4 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        12)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        37)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 2</span> <span>Total: 47</span></div>
+            <div class="week-stats">🟢 22 Easy | 🟡 22 Medium | 🔴 3 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        10)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        37)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 3</span> <span>Total: 50</span></div>
+            <div class="week-stats">🟢 25 Easy | 🟡 22 Medium | 🔴 3 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        7)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        43)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 4</span> <span>Total: 48</span></div>
+            <div class="week-stats">🟢 16 Easy | 🟡 24 Medium | 🔴 8 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        6)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        42)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 5</span> <span>Total: 58</span></div>
+            <div class="week-stats">🟢 6 Easy | 🟡 37 Medium | 🔴 15 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        12)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        46)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 6</span> <span>Total: 60</span></div>
+            <div class="week-stats">🟢 26 Easy | 🟡 23 Medium | 🔴 11 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        15)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        45)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 7</span> <span>Total: 61</span></div>
+            <div class="week-stats">🟢 5 Easy | 🟡 25 Medium | 🔴 31 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        14)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        47)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 8</span> <span>Total: 61</span></div>
+            <div class="week-stats">🟢 4 Easy | 🟡 20 Medium | 🔴 37 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        7)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        54)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 9</span> <span>Total: 20</span></div>
+            <div class="week-stats">🟢 0 Easy | 🟡 5 Medium | 🔴 15 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        7)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        13)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 10</span> <span>Total: 20</span></div>
+            <div class="week-stats">🟢 2 Easy | 🟡 10 Medium | 🔴 8 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        9)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        11)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 11</span> <span>Total: 21</span></div>
+            <div class="week-stats">🟢 1 Easy | 🟡 13 Medium | 🔴 7 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        11)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        10)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 12</span> <span>Total: 14</span></div>
+            <div class="week-stats">🟢 1 Easy | 🟡 3 Medium | 🔴 10 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        6)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        8)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 13</span> <span>Total: 15</span></div>
+            <div class="week-stats">🟢 1 Easy | 🟡 6 Medium | 🔴 8 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        6)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        9)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 14</span> <span>Total: 20</span></div>
+            <div class="week-stats">🟢 2 Easy | 🟡 8 Medium | 🔴 10 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        12)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        8)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-header"><span>Week 15</span> <span>Total: 21</span></div>
+            <div class="week-stats">🟢 1 Easy | 🟡 9 Medium | 🔴 10 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        12)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        9)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+        <div class="week-card">
+            <div class="week-header"><span>Week 16</span> <span>Total: 15</span></div>
+            <div class="week-stats">🟢 0 Easy | 🟡 3 Medium | 🔴 12 Hard</div>
+            <div class="progress-row"><span class="progress-label">🆕 New <span class="target-val">(Target:
+                        6)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-row"><span class="progress-label">🔄 Rev <span class="target-val">(Target:
+                        9)</span>:</span>
+                <div class="progress-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="summary-text">🏆 2026: The Ultimate Switch 📈</div>
+    </footer>
+</body>
+
+</html>

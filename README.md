@@ -216,12 +216,12 @@
 | `6.1.3` | Deleting a node in LinkedList | 🟡 | ✅ | ✅ |
 | `6.1.4` | Find the length of the linkedlist | 🟢 | ✅ | |
 | `6.1.5` | Search an element in the LL | 🟢 | ✅ | |
-| `6.2.1` | Introduction to DLL | 🟢 | | |
-| `6.2.2` | Insert a node in DLL | 🟢 | | |
-| `6.2.3` | Delete a node in DLL | 🟡 | | |
-| `6.3.1` | Middle of a LinkedList [TortoiseHare Method] | 🟢 | | |
-| `6.3.2` | Reverse a LinkedList [Iterative] | 🟢 | | |
-| `6.3.3` | Reverse a LL [Recursive] | 🟢 | | |
+| `6.2.1` | Introduction to DLL | 🟢 | ✅ | |
+| `6.2.2` | Insert a node in DLL | 🟢 | ✅ | |
+| `6.2.3` | Delete a node in DLL | 🟡 | ✅ | |
+| `6.3.1` | Middle of a LinkedList [TortoiseHare Method] | 🟢 | ✅ | |
+| `6.3.2` | Reverse a LinkedList [Iterative] | 🟢 | ✅ | ✅ |
+| `6.3.3` | Reverse a LL [Recursive] | 🟢 | ✅ | ✅ |
 | `6.3.4` | Detect a loop in LL | 🟡 | | |
 | `6.3.5` | Find the starting point in LL | 🟡 | | |
 | `6.3.6` | Length of Loop in LL | 🟢 | | |
