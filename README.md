@@ -51,7 +51,7 @@
 | `3.2.5` | Print subarray with maximum subarray sum | 🟡 | ✅ | |
 | `3.2.9` | Leaders in an Array problem | 🟢 | ✅ | |
 | `3.2.10` | Longest Consecutive Sequence in an Array | 🟢 | ✅ | |
-| `6.2.4` | Reverse a DLL | 🟡 | | |
+| `6.2.4` | Reverse a DLL | 🟡 | ✅ | |
 | `6.4.1` | Delete all occurrences of a key in DLL | 🟡 | | |
 | `6.4.2` | Find pairs with given sum in DLL | 🟡 | | |
 | `5.2.4` | Implement Atoi | 🟡 | | |
@@ -222,13 +222,13 @@
 | `6.3.1` | Middle of a LinkedList [TortoiseHare Method] | 🟢 | ✅ | |
 | `6.3.2` | Reverse a LinkedList [Iterative] | 🟢 | ✅ | ✅ |
 | `6.3.3` | Reverse a LL [Recursive] | 🟢 | ✅ | ✅ |
-| `6.3.4` | Detect a loop in LL | 🟡 | | |
-| `6.3.5` | Find the starting point in LL | 🟡 | | |
-| `6.3.6` | Length of Loop in LL | 🟢 | | |
-| `6.3.7` | Check if LL is palindrome or not | 🟡 | | |
-| `6.3.8` | Segregate odd and even nodes in LL | 🟡 | | |
-| `6.3.9` | Remove Nth node from the back of the LL | 🟡 | | |
-| `6.3.10` | Delete the middle node of LL | 🟡 | | |
+| `6.3.4` | Detect a loop in LL | 🟡 | ✅ | |
+| `6.3.5` | Find the starting point in LL | 🟡 | ✅ | |
+| `6.3.6` | Length of Loop in LL | 🟢 | ✅ | |
+| `6.3.7` | Check if LL is palindrome or not | 🟡 | ✅ | ✅ |
+| `6.3.8` | Segregate odd and even nodes in LL | 🟡 | ✅ | ✅ |
+| `6.3.9` | Remove Nth node from the back of the LL | 🟡 | ✅ | |
+| `6.3.10` | Delete the middle node of LL | 🟡 | ✅ | ✅ |
 | `3.2.5` | Print subarray with maximum subarray sum | 🟡 | | |
 | `3.2.9` | Leaders in an Array problem | 🟢 | | |
 | `3.2.10` | Longest Consecutive Sequence in an Array | 🟢 | | |
