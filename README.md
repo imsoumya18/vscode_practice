@@ -192,24 +192,24 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `4.1.12` | Single element in a Sorted Array | 🟢 | | |
-| `4.1.13` | Find peak element | 🔴 | | |
-| `4.2.1` | Find square root of a number in log n | 🟡 | | |
-| `4.2.2` | Find the Nth root of a number using binary search | 🟡 | | |
-| `4.2.3` | Koko Eating Bananas | 🔴 | | |
-| `4.2.5` | Find the smallest Divisor | 🟢 | | |
-| `4.3.1` | Find the row with maximum number of 1's | 🟢 | | |
-| `4.3.2` | Search in a 2 D matrix | 🟡 | | |
-| `5.1.1` | Remove outermost Paranthesis | 🟢 | | |
-| `5.1.2` | Reverse words in a given string / Palindrome Check | 🟢 | | |
-| `5.1.3` | Largest odd number in a string | 🟢 | | |
-| `5.1.4` | Longest Common Prefix | 🟢 | | |
-| `5.1.5` | Isomorphic String | 🟢 | | |
-| `5.1.6` | check whether one string is a rotation of another | 🟡 | | |
-| `5.1.7` | Check if two strings are anagrams of each other | 🟡 | | |
+| `4.1.12` | Single element in a Sorted Array | 🟢 | ✅ | |
+| `4.1.13` | Find peak element | 🔴 | ✅ | |
+| `4.2.1` | Find square root of a number in log n | 🟡 | ✅ | |
+| `4.2.2` | Find the Nth root of a number using binary search | 🟡 | ✅ | |
+| `4.2.3` | Koko Eating Bananas | 🔴 | ✅ | |
+| `4.2.5` | Find the smallest Divisor | 🟢 | ✅ | |
+| `4.3.1` | Find the row with maximum number of 1's | 🟢 | ✅ | |
+| `4.3.2` | Search in a 2 D matrix | 🟡 | ✅ | |
+| `5.1.1` | Remove outermost Paranthesis | 🟢 | ✅ | ✅ |
+| `5.1.2` | Reverse words in a given string / Palindrome Check | 🟢 | ✅ | ✅ |
+| `5.1.3` | Largest odd number in a string | 🟢 | ✅ | |
+| `5.1.4` | Longest Common Prefix | 🟢 | ✅ | ✅ |
+| `5.1.5` | Isomorphic String | 🟢 | ✅ | ✅ |
+| `5.1.6` | check whether one string is a rotation of another | 🟡 | ✅ | |
+| `5.1.7` | Check if two strings are anagrams of each other | 🟡 | ✅ | |
 | `5.2.1` | Sort Characters by frequency | 🟢 | | |
-| `5.2.2` | Maximum Nesting Depth of Paranthesis | 🟢 | | |
-| `5.2.3` | Roman Number to Integer and vice versa | 🟢 | | |
+| `5.2.2` | Maximum Nesting Depth of Paranthesis | 🟢 | ✅ | |
+| `5.2.3` | Roman Number to Integer and vice versa | 🟢 | ✅ | |
 | `5.2.8` | Reverse Every Word in A String | 🟢 | | |
 | `6.1.1` | Introduction to LinkedList | 🟢 | ✅ | |
 | `6.1.2` | Inserting a node in LinkedList | 🟢 | ✅ | |
