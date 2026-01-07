@@ -69,13 +69,42 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-int getCount(node *head)
+vector<int> spiralOrder(vector<vector<int>> &matrix)
 {
-    // Code here
-    if (head == nullptr)
-        return 0;
+    int left = 0, right = matrix[0].size() - 1, top = 0, bottom = matrix.size() - 1;
 
-    return 1 + getCount(head->next);
+    vector<int> vct;
+
+    while (left <= right && top <= bottom)
+    {
+        for (int i = left; i <= right; i++)
+            vct.push_back(matrix[top][i]);
+
+        top++;
+
+        for (int i = top; i <= bottom; i++)
+            vct.push_back(matrix[i][right]);
+
+        right--;
+
+        if (top <= bottom)
+        {
+            for (int i = right; i >= left; i--)
+                vct.push_back(matrix[bottom][i]);
+
+            bottom--;
+        }
+
+        if (left <= right)
+        {
+            for (int i = bottom; i >= top; i--)
+                vct.push_back(matrix[i][left]);
+
+            left++;
+        }
+    }
+
+    return vct;
 }
 
 int main()

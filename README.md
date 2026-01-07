@@ -130,17 +130,17 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `3.1.4` | Remove duplicates from Sorted array | 🟢 | | |
-| `3.1.5` | Left Rotate an array by one place | 🟢 | | |
-| `3.1.6` | Left rotate an array by D places | 🟢 | | |
-| `3.1.7` | Move Zeros to end | 🟢 | | |
-| `3.1.8` | Linear Search | 🟢 | | |
-| `3.1.9` | Find the Union | 🟡 | | |
-| `3.1.10` | Find missing number in an array | 🟢 | | |
-| `3.1.11` | Maximum Consecutive Ones | 🟢 | | |
-| `3.1.12` | Find the number that appears once, and other numbers twice | 🟡 | | |
-| `3.1.13` | Longest subarray with given sum K(positives) | 🟡 | | |
-| `3.1.14` | Longest subarray with sum K (Positives + Negatives) | 🟡 | | |
+| `3.1.4` | Remove duplicates from Sorted array | 🟢 | ✅ | |
+| `3.1.5` | Left Rotate an array by one place | 🟢 | ✅ | |
+| `3.1.6` | Left rotate an array by D places | 🟢 | ✅ | |
+| `3.1.7` | Move Zeros to end | 🟢 | ✅ | |
+| `3.1.8` | Linear Search | 🟢 | ✅ | |
+| `3.1.9` | Find the Union | 🟡 | ✅ | ✅ |
+| `3.1.10` | Find missing number in an array | 🟢 | ✅ | |
+| `3.1.11` | Maximum Consecutive Ones | 🟢 | ✅ | |
+| `3.1.12` | Find the number that appears once, and other numbers twice | 🟡 | ✅ | |
+| `3.1.13` | Longest subarray with given sum K(positives) | 🟡 | ✅ | ✅ |
+| `3.1.14` | Longest subarray with sum K (Positives + Negatives) | 🟡 | ✅ | ✅ |
 | `3.2.1` | 2Sum Problem | 🟡 | ✅ | |
 | `3.2.2` | Sort an array of 0's 1's and 2's | 🟡 | ✅ | ✅ |
 | `3.2.3` | Majority Element (>n/2 times) | 🟢 | ✅ | |
@@ -148,25 +148,25 @@
 | `3.2.6` | Stock Buy and Sell | 🟢 | ✅ | |
 | `3.2.7` | Rearrange the array in alternating positive and negative items | 🟡 | ✅ | |
 | `3.2.8` | Next Permutation | 🟡 | ✅ | ✅ |
-| `3.2.13` | Print the matrix in spiral manner | 🟡 | | |
-| `3.2.14` | Count subarrays with given sum | 🟢 | | |
-| `3.3.1` | Pascal's Triangle | 🟡 | | |
-| `3.3.2` | Majority Element (n/3 times) | 🟡 | | |
-| `3.3.3` | 3-Sum Problem | 🟡 | | |
-| `3.3.7` | Merge Overlapping Subintervals | 🟡 | | |
-| `3.3.8` | Merge two sorted arrays without extra space | 🟡 | | |
-| `3.3.12` | Maximum Product Subarray | 🟢 | | |
-| `4.1.1` | Binary Search to find X in sorted array | 🟢 | | |
-| `4.1.2` | Implement Lower Bound | 🟢 | | |
-| `4.1.3` | Implement Upper Bound | 🟢 | | |
-| `4.1.4` | Search Insert Position | 🟢 | | |
-| `4.1.5` | Floor/Ceil in Sorted Array | 🟡 | | |
-| `4.1.6` | Find the first or last occurrence of a given number in a sorted array | 🟢 | | |
-| `4.1.7` | Count occurrences of a number in a sorted array with duplicates | 🟢 | | |
-| `4.1.8` | Search in Rotated Sorted Array I | 🟡 | | |
-| `4.1.9` | Search in Rotated Sorted Array II | 🟡 | | |
-| `4.1.10` | Find minimum in Rotated Sorted Array | 🟡 | | |
-| `4.1.11` | Find out how many times has an array been rotated | 🟢 | | |
+| `3.2.13` | Print the matrix in spiral manner | 🟡 | ✅ | |
+| `3.2.14` | Count subarrays with given sum | 🟢 | ✅ | |
+| `3.3.1` | Pascal's Triangle | 🟡 | ✅ | |
+| `3.3.2` | Majority Element (n/3 times) | 🟡 | ✅ | |
+| `3.3.3` | 3-Sum Problem | 🟡 | ✅ | |
+| `3.3.7` | Merge Overlapping Subintervals | 🟡 | ✅ | |
+| `3.3.8` | Merge two sorted arrays without extra space | 🟡 | ✅ | |
+| `3.3.12` | Maximum Product Subarray | 🟢 | ✅ | ✅ |
+| `4.1.1` | Binary Search to find X in sorted array | 🟢 | ✅ | |
+| `4.1.2` | Implement Lower Bound | 🟢 | ✅ | |
+| `4.1.3` | Implement Upper Bound | 🟢 | ✅ | |
+| `4.1.4` | Search Insert Position | 🟢 | ✅ | |
+| `4.1.5` | Floor/Ceil in Sorted Array | 🟡 | ✅ | |
+| `4.1.6` | Find the first or last occurrence of a given number in a sorted array | 🟢 | ✅ | |
+| `4.1.7` | Count occurrences of a number in a sorted array with duplicates | 🟢 | ✅ | |
+| `4.1.8` | Search in Rotated Sorted Array I | 🟡 | ✅ | |
+| `4.1.9` | Search in Rotated Sorted Array II | 🟡 | ✅ | |
+| `4.1.10` | Find minimum in Rotated Sorted Array | 🟡 | ✅ | |
+| `4.1.11` | Find out how many times has an array been rotated | 🟢 | ✅ | |
 
 ---
 
@@ -259,11 +259,11 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `6.3.11` | Sort LL | 🟡 | | |
-| `6.3.12` | Sort a LL of 0's 1's and 2's by changing links | 🟡 | | |
-| `6.3.13` | Find the intersection point of Y LL | 🟡 | | |
-| `6.3.14` | Add 1 to a number represented by LL | 🟡 | | |
-| `6.3.15` | Add 2 numbers in LL | 🟡 | | |
+| `6.3.11` | Sort LL | 🟡 | ✅ | |
+| `6.3.12` | Sort a LL of 0's 1's and 2's by changing links | 🟡 | ✅ | |
+| `6.3.13` | Find the intersection point of Y LL | 🟡 | ✅ | |
+| `6.3.14` | Add 1 to a number represented by LL | 🟡 | ✅ | |
+| `6.3.15` | Add 2 numbers in LL | 🟡 | ✅ | |
 | `7.1.1` | Recursive Implementation of atoi() | 🔴 | | |
 | `7.1.2` | Pow(x, n) | 🟡 | | |
 | `7.1.3` | Count Good numbers | 🟢 | | |
