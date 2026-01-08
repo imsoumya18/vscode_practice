@@ -69,40 +69,29 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-vector<int> spiralOrder(vector<vector<int>> &matrix)
+vector<int> count_NGE(vector<int> &arr, vector<int> &indices)
 {
-    int left = 0, right = matrix[0].size() - 1, top = 0, bottom = matrix.size() - 1;
+    // code here
+    stack<int> st;
+    unordered_map<int, int> mp;
+
+    for (int i = arr.size() - 1; i >= 0; i--)
+    {
+        while (!st.empty() && st.top() <= arr[i])
+            st.pop();
+
+        if (st.empty())
+            mp[i] = 0;
+        else
+            mp[i] = st.size();
+
+        st.push(arr[i]);
+    }
 
     vector<int> vct;
 
-    while (left <= right && top <= bottom)
-    {
-        for (int i = left; i <= right; i++)
-            vct.push_back(matrix[top][i]);
-
-        top++;
-
-        for (int i = top; i <= bottom; i++)
-            vct.push_back(matrix[i][right]);
-
-        right--;
-
-        if (top <= bottom)
-        {
-            for (int i = right; i >= left; i--)
-                vct.push_back(matrix[bottom][i]);
-
-            bottom--;
-        }
-
-        if (left <= right)
-        {
-            for (int i = bottom; i >= top; i--)
-                vct.push_back(matrix[i][left]);
-
-            left++;
-        }
-    }
+    for (auto idx : indices)
+        vct.push_back(mp[idx]);
 
     return vct;
 }
