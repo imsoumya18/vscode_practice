@@ -52,8 +52,8 @@
 | `3.2.9` | Leaders in an Array problem | 🟢 | ✅ | |
 | `3.2.10` | Longest Consecutive Sequence in an Array | 🟢 | ✅ | |
 | `6.2.4` | Reverse a DLL | 🟡 | ✅ | |
-| `6.4.1` | Delete all occurrences of a key in DLL | 🟡 | | |
-| `6.4.2` | Find pairs with given sum in DLL | 🟡 | | |
+| `6.4.1` | Delete all occurrences of a key in DLL | 🟡 | ✅ | |
+| `6.4.2` | Find pairs with given sum in DLL | 🟡 | ✅ | |
 | `5.2.4` | Implement Atoi | 🟡 | | |
 | `5.2.5` | Count Number of Substrings | 🟡 | | |
 | `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | | |
@@ -207,10 +207,10 @@
 | `5.1.5` | Isomorphic String | 🟢 | ✅ | ✅ |
 | `5.1.6` | check whether one string is a rotation of another | 🟡 | ✅ | |
 | `5.1.7` | Check if two strings are anagrams of each other | 🟡 | ✅ | |
-| `5.2.1` | Sort Characters by frequency | 🟢 | | |
+| `5.2.1` | Sort Characters by frequency | 🟢 | ✅ | |
 | `5.2.2` | Maximum Nesting Depth of Paranthesis | 🟢 | ✅ | |
 | `5.2.3` | Roman Number to Integer and vice versa | 🟢 | ✅ | |
-| `5.2.8` | Reverse Every Word in A String | 🟢 | | |
+| `5.2.8` | Reverse Every Word in A String | 🟢 | ✅ | |
 | `6.1.1` | Introduction to LinkedList | 🟢 | ✅ | |
 | `6.1.2` | Inserting a node in LinkedList | 🟢 | ✅ | |
 | `6.1.3` | Deleting a node in LinkedList | 🟡 | ✅ | ✅ |
@@ -229,7 +229,7 @@
 | `6.3.8` | Segregate odd and even nodes in LL | 🟡 | ✅ | ✅ |
 | `6.3.9` | Remove Nth node from the back of the LL | 🟡 | ✅ | |
 | `6.3.10` | Delete the middle node of LL | 🟡 | ✅ | ✅ |
-| `3.2.5` | Print subarray with maximum subarray sum | 🟡 | | |
+| `3.2.5` | Print subarray with maximum subarray sum | 🟡 | ✅ | ✅ |
 | `3.2.9` | Leaders in an Array problem | 🟢 | | |
 | `3.2.10` | Longest Consecutive Sequence in an Array | 🟢 | | |
 | `6.2.4` | Reverse a DLL | 🟡 | | |

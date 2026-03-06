@@ -69,31 +69,25 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-vector<int> count_NGE(vector<int> &arr, vector<int> &indices)
+string reverseWords(string s)
 {
-    // code here
-    stack<int> st;
-    unordered_map<int, int> mp;
+    int n = s.size(), readIdx = 0, writeIdx = 0;
 
-    for (int i = arr.size() - 1; i >= 0; i--)
-    {
-        while (!st.empty() && st.top() <= arr[i])
-            st.pop();
+    while (readIdx < n && s[readIdx] == ' ')
+        readIdx++;
 
-        if (st.empty())
-            mp[i] = 0;
+    while (readIdx < n)
+        if (s[readIdx] != ' ')
+            s[writeIdx++] = s[readIdx++];
+        else if (writeIdx > 0 && s[readIdx - 1] != ' ')
+        {
+            s[writeIdx++] = ' ';
+            readIdx++;
+        }
         else
-            mp[i] = st.size();
-
-        st.push(arr[i]);
-    }
-
-    vector<int> vct;
-
-    for (auto idx : indices)
-        vct.push_back(mp[idx]);
-
-    return vct;
+            readIdx++;
+    
+    
 }
 
 int main()
