@@ -69,25 +69,31 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-string reverseWords(string s)
+int longestConsecutive(vector<int> &arr)
 {
-    int n = s.size(), readIdx = 0, writeIdx = 0;
+    // Your code here
+    int n = arr.size(), mxlen = 1;
+    unordered_set<int> st;
 
-    while (readIdx < n && s[readIdx] == ' ')
-        readIdx++;
+    for (auto it : arr)
+        st.insert(it);
 
-    while (readIdx < n)
-        if (s[readIdx] != ' ')
-            s[writeIdx++] = s[readIdx++];
-        else if (writeIdx > 0 && s[readIdx - 1] != ' ')
+    for (auto it : st)
+        if (st.find(it - 1) == st.end())
         {
-            s[writeIdx++] = ' ';
-            readIdx++;
+            // it is the start
+            int num = it, ln = 0;
+
+            while (st.find(num) != st.end())
+            {
+                ln++;
+                num++;
+            }
+
+            mxlen = max(mxlen, ln);
         }
-        else
-            readIdx++;
-    
-    
+
+    return mxlen;
 }
 
 int main()
@@ -97,17 +103,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    node *head = nullptr;
-    insertAtEnd(head, 1);
-    insertAtEnd(head, 2);
-    insertAtEnd(head, 3);
-    insertAtEnd(head, 4);
-    insertAtEnd(head, 5);
-    insertAtEnd(head, 6);
+    vector<int> arr{1, 9, 3, 10, 4, 20, 2};
 
-    printList(head);
-
-    cout << getCount(head) << endl;
+    cout << longestConsecutive(arr) << endl;
 
     return 0;
 }
