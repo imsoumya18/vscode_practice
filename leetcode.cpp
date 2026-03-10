@@ -69,31 +69,25 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-int longestConsecutive(vector<int> &arr)
+int countSubstring(string s)
 {
-    // Your code here
-    int n = arr.size(), mxlen = 1;
-    unordered_set<int> st;
+    // Code here
+    int n = s.size(), lastA = -1, lastB = -1, lastC = -1, ans = 0;
 
-    for (auto it : arr)
-        st.insert(it);
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == 'a')
+            lastA = i;
+        else if (s[i] == 'b')
+            lastB = i;
+        else
+            lastC = i;
 
-    for (auto it : st)
-        if (st.find(it - 1) == st.end())
-        {
-            // it is the start
-            int num = it, ln = 0;
+        if (lastA != -1 && lastB != -1 && lastC != -1)
+            ans += (min({lastA, lastB, lastC}) + 1);
+    }
 
-            while (st.find(num) != st.end())
-            {
-                ln++;
-                num++;
-            }
-
-            mxlen = max(mxlen, ln);
-        }
-
-    return mxlen;
+    return ans;
 }
 
 int main()
@@ -103,9 +97,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> arr{1, 9, 3, 10, 4, 20, 2};
+    string s = "abcabc";
 
-    cout << longestConsecutive(arr) << endl;
+    cout << countSubstring(s) << endl;
 
     return 0;
 }

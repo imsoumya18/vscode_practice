@@ -54,9 +54,9 @@
 | `6.2.4` | Reverse a DLL | 🟡 | ✅ | |
 | `6.4.1` | Delete all occurrences of a key in DLL | 🟡 | ✅ | |
 | `6.4.2` | Find pairs with given sum in DLL | 🟡 | ✅ | |
-| `5.2.4` | Implement Atoi | 🟡 | | |
-| `5.2.5` | Count Number of Substrings | 🟡 | | |
-| `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | | |
+| `5.2.4` | Implement Atoi | 🟡 | ✅ | |
+| `5.2.5` | Count Number of Substrings | 🟡 | ✅ | |
+| `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | ✅ | |
 | `3.3.11` | Reverse Pairs | 🔴 | | |
 | `15.5.5` | Kruskal's Algorithm | 🔴 | | |
 | `16.8.6` | Palindrome Partitioning - II (DP-53) | 🔴 | | |
