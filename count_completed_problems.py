@@ -119,8 +119,25 @@ def display_results(week_data):
         total_revision_solved += rev_solved
         
         print(f"\nWeek {week_num}:")
-        print(f"  New:      total: {new_total:3d}, solved: {new_solved:3d}")
-        print(f"  Revision: total: {rev_total:3d}, solved: {rev_solved:3d}")
+        
+        # Determine status emoji for New section
+        if new_total > 0 and new_solved == new_total:
+            new_status = "☑️  "
+        elif new_solved > 0:
+            new_status = "🔄 "
+        else:
+            new_status = "   "
+        
+        # Determine status emoji for Revision section
+        if rev_total > 0 and rev_solved == rev_total:
+            rev_status = "☑️  "
+        elif rev_solved > 0:
+            rev_status = "🔄 "
+        else:
+            rev_status = "   "
+        
+        print(f"  {new_status}New:      total: {new_total:3d}, solved: {new_solved:3d}")
+        print(f"  {rev_status}Revision: total: {rev_total:3d}, solved: {rev_solved:3d}")
     
     print("\n" + "=" * 60)
     print("OVERALL SUMMARY:")
