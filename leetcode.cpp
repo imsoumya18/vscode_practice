@@ -69,25 +69,50 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-int countSubstring(string s)
+int cnt = 0;
+
+void merge(vector<int> &vct, int l, int mid, int r)
 {
-    // Code here
-    int n = s.size(), lastA = -1, lastB = -1, lastC = -1, ans = 0;
+    vector<int> temp;
+    int left = l, right = mid + 1;
 
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == 'a')
-            lastA = i;
-        else if (s[i] == 'b')
-            lastB = i;
+    while (left <= mid && right <= r)
+        if (vct[left] <= vct[right])
+            temp.push_back(vct[left++]);
         else
-            lastC = i;
+        {
+            cnt += (mid - left + 1);
+            temp.push_back(vct[right++]);
+        }
+    while (left <= mid)
+        temp.push_back(vct[left++]);
 
-        if (lastA != -1 && lastB != -1 && lastC != -1)
-            ans += (min({lastA, lastB, lastC}) + 1);
+    while (right <= r)
+        temp.push_back(vct[right++]);
+
+    for (int i = l; i <= r; i++)
+        vct[i] = temp[i - l];
+}
+
+void mergeSort(vector<int> &vct, int l, int r)
+{
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+
+        mergeSort(vct, l, mid);
+        mergeSort(vct, mid + 1, r);
+
+        merge(vct, l, mid, r);
     }
+}
 
-    return ans;
+int inversionCount(vector<int> &arr)
+{
+    // Code Here
+    mergeSort(arr, 0, arr.size() - 1);
+
+    return cnt;
 }
 
 int main()
@@ -97,9 +122,9 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string s = "abcabc";
+    vector<int> arr{2, 3, 4, 5, 6};
 
-    cout << countSubstring(s) << endl;
+    cout << inversionCount(arr) << endl;
 
     return 0;
 }

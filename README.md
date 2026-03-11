@@ -744,7 +744,7 @@
 | `13.1.3` | Binary Tree Representation in Java | 🟢 | | |
 | `13.1.12` | Post-order Traversal of Binary Tree using 1 stack | 🟡 | | |
 | `3.3.9` | Find the repeating and missing number | 🔴 | | |
-| `3.3.10` | Count Inversions | 🔴 | | |
+| `3.3.10` | Count Inversions | 🔴 | ✅ | |
 | `15.3.7` | Alien dictionary | 🔴 | | |
 | `16.5.3` | Longest Common Substring (DP-27) | 🔴 | | |
 
