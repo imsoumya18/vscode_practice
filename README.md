@@ -57,7 +57,7 @@
 | `5.2.4` | Implement Atoi | 🟡 | ✅ | |
 | `5.2.5` | Count Number of Substrings | 🟡 | ✅ | |
 | `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | ✅ | |
-| `3.3.11` | Reverse Pairs | 🔴 | | |
+| `3.3.11` | Reverse Pairs | 🔴 | ✅ | |
 | `15.5.5` | Kruskal's Algorithm | 🔴 | | |
 | `16.8.6` | Palindrome Partitioning - II (DP-53) | 🔴 | | |
 
@@ -115,9 +115,9 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `6.4.3` | Remove duplicates from sorted DLL | 🟡 | | |
-| `6.5.1` | Reverse LL in group of given size K | 🔴 | | |
-| `6.5.2` | Rotate a LL | 🟡 | | |
+| `6.4.3` | Remove duplicates from sorted DLL | 🟡 | ✅ | |
+| `6.5.1` | Reverse LL in group of given size K | 🔴 | ✅ | |
+| `6.5.2` | Rotate a LL | 🟡 | ✅ | |
 | `1.3.1` | C++ STL | 🟡 | | |
 | `1.3.2` | Java Collections | 🟢 | | |
 | `2.2.2` | Recursive Bubble Sort | 🟢 | | |

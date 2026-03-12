@@ -69,50 +69,64 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-int cnt = 0;
-
-void merge(vector<int> &vct, int l, int mid, int r)
+ListNode *findKthNode(ListNode *head, int k)
 {
-    vector<int> temp;
-    int left = l, right = mid + 1;
+    int cnt = 1;
 
-    while (left <= mid && right <= r)
-        if (vct[left] <= vct[right])
-            temp.push_back(vct[left++]);
-        else
-        {
-            cnt += (mid - left + 1);
-            temp.push_back(vct[right++]);
-        }
-    while (left <= mid)
-        temp.push_back(vct[left++]);
-
-    while (right <= r)
-        temp.push_back(vct[right++]);
-
-    for (int i = l; i <= r; i++)
-        vct[i] = temp[i - l];
-}
-
-void mergeSort(vector<int> &vct, int l, int r)
-{
-    if (l < r)
+    while (head && cnt < k)
     {
-        int mid = (l + r) / 2;
-
-        mergeSort(vct, l, mid);
-        mergeSort(vct, mid + 1, r);
-
-        merge(vct, l, mid, r);
+        head = head->next;
+        cnt++;
     }
+
+    return head;
 }
 
-int inversionCount(vector<int> &arr)
+ListNode *reverseLL(ListNode *head)
 {
-    // Code Here
-    mergeSort(arr, 0, arr.size() - 1);
+    if (!head || !head->next)
+        return head;
 
-    return cnt;
+    ListNode *newHead = reverseLL(head->next);
+    ListNode *nextHead = head->next;
+
+    nextHead->next = head;
+    head->next = nullptr;
+
+    return newHead;
+}
+
+ListNode *reverseKGroup(ListNode *head, int k)
+{
+    ListNode *temp = head, *prevNode = nullptr;
+
+    while (temp)
+    {
+        ListNode *kthNode = findKthNode(temp, k);
+
+        if (kthNode == nullptr)
+        {
+            if (prevNode)
+                prevNode->next = temp;
+
+            break;
+        }
+
+        ListNode *nextNode = kthNode->next;
+        kthNode->next = nullptr;
+
+        reverseLL(temp);
+
+        if (temp == head)
+            head = kthNode;
+        else
+            prevNode = kthNode;
+
+        prevNode = temp;
+        temp = nextNode;
+    }
+
+    return head;
 }
 
 int main()
