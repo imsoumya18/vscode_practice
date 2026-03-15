@@ -69,64 +69,24 @@ void printList(node *head)
     cout << "NULL" << endl;
 }
 
-ListNode *findKthNode(ListNode *head, int k)
+void rotate(vector<vector<int>> &matrix)
 {
-    int cnt = 1;
+    int rows = matrix.size(), cols = matrix[0].size();
 
-    while (head && cnt < k)
-    {
-        head = head->next;
-        cnt++;
-    }
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < i; j++)
+            if (i != j)
+                swap(matrix[i][j], matrix[j][i]);
 
-    return head;
-}
+    for (int i = 0; i < rows; i++) {
+        int l = 0, r = cols - 1;
 
-ListNode *reverseLL(ListNode *head)
-{
-    if (!head || !head->next)
-        return head;
-
-    ListNode *newHead = reverseLL(head->next);
-    ListNode *nextHead = head->next;
-
-    nextHead->next = head;
-    head->next = nullptr;
-
-    return newHead;
-}
-
-ListNode *reverseKGroup(ListNode *head, int k)
-{
-    ListNode *temp = head, *prevNode = nullptr;
-
-    while (temp)
-    {
-        ListNode *kthNode = findKthNode(temp, k);
-
-        if (kthNode == nullptr)
-        {
-            if (prevNode)
-                prevNode->next = temp;
-
-            break;
+        while (l < r) {
+            swap(matrix[i][l], matrix[i][r]);
+            l++;
+            r--;
         }
-
-        ListNode *nextNode = kthNode->next;
-        kthNode->next = nullptr;
-
-        reverseLL(temp);
-
-        if (temp == head)
-            head = kthNode;
-        else
-            prevNode = kthNode;
-
-        prevNode = temp;
-        temp = nextNode;
     }
-
-    return head;
 }
 
 int main()
@@ -136,9 +96,13 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> arr{2, 3, 4, 5, 6};
+    vector<vector<int>> matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-    cout << inversionCount(arr) << endl;
+    print2d(matrix);
+
+    rotate(matrix);
+
+    print2d(matrix);
 
     return 0;
 }

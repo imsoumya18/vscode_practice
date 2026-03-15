@@ -118,10 +118,10 @@
 | `6.4.3` | Remove duplicates from sorted DLL | 🟡 | ✅ | |
 | `6.5.1` | Reverse LL in group of given size K | 🔴 | ✅ | |
 | `6.5.2` | Rotate a LL | 🟡 | ✅ | |
-| `1.3.1` | C++ STL | 🟡 | | |
+| `1.3.1` | C++ STL | 🟡 | ✅ | |
 | `1.3.2` | Java Collections | 🟢 | | |
-| `2.2.2` | Recursive Bubble Sort | 🟢 | | |
-| `2.2.3` | Recursive Insertion Sort | 🟢 | | |
+| `2.2.2` | Recursive Bubble Sort | 🟢 | ✅ | |
+| `2.2.3` | Recursive Insertion Sort | 🟢 | ✅ | |
 | `13.3.6` | Minimum time taken to BURN the Binary Tree from a Node | 🔴 | | |
 | `15.5.6` | Number of operations to make network connected | 🟡 | | |
 | `16.8.7` | Partition Array for Maximum Sum (DP-54) | 🔴 | | |
@@ -180,8 +180,8 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `3.2.11` | Set Matrix Zeros | 🟡 | | |
-| `3.2.12` | Rotate Matrix by 90 degrees | 🟡 | | |
+| `3.2.11` | Set Matrix Zeros | 🟡 | ✅ | |
+| `3.2.12` | Rotate Matrix by 90 degrees | 🟡 | ✅ | |
 | `3.3.4` | 4-Sum Problem | 🔴 | | |
 | `5.2.7` | Sum of Beauty of all substring | 🟡 | | |
 | `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | | |
