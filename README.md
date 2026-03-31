@@ -182,8 +182,8 @@
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `3.2.11` | Set Matrix Zeros | 🟡 | ✅ | |
 | `3.2.12` | Rotate Matrix by 90 degrees | 🟡 | ✅ | |
-| `3.3.4` | 4-Sum Problem | 🔴 | | |
-| `5.2.7` | Sum of Beauty of all substring | 🟡 | | |
+| `3.3.4` | 4-Sum Problem | 🔴 | ✅ | |
+| `5.2.7` | Sum of Beauty of all substring | 🟡 | ✅ | |
 | `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | | |
 | `15.5.7` | Most stones removed with same rows or columns | 🟡 | | |
 | `18.1.5` | Z-Function | 🟢 | | |
@@ -274,7 +274,7 @@
 | `7.2.7` | Combination Sum | 🟡 | ✅ | |
 | `7.2.8` | Combination Sum-II | 🟡 | ✅ | ✅ |
 | `7.2.9` | Subset Sum-I | 🟡 | ✅ | ✅ |
-| `7.2.10` | Subset Sum-II | 🟡 | | |
+| `7.2.10` | Subset Sum-II | 🟡 | ✅ | |
 | `7.2.11` | Combination Sum - III | 🔴 | ✅ | ✅ |
 | `7.2.12` | Letter Combinations of a Phone number | 🟡 | ✅ | |
 | `7.3.2` | Word Search | 🟡 | ✅ | ✅ |
@@ -294,12 +294,12 @@
 | `8.2.5` | Find the two numbers appearing odd number of times | 🟢 | ✅ | |
 | `9.1.1` | Implement Stack using Arrays | 🟢 | ✅ | |
 | `9.1.2` | Implement Queue using Arrays | 🟢 | ✅ | |
-| `9.1.3` | Implement Stack using Queue | 🟡 | | |
-| `9.1.4` | Implement Queue using Stack | 🟡 | | |
-| `6.4.3` | Remove duplicates from sorted DLL | 🟡 | | |
-| `6.5.1` | Reverse LL in group of given size K | 🔴 | | |
-| `6.5.2` | Rotate a LL | 🟡 | | |
-| `1.3.1` | C++ STL | 🟡 | | |
+| `9.1.3` | Implement Stack using Queue | 🟡 | ✅ | |
+| `9.1.4` | Implement Queue using Stack | 🟡 | ✅ | |
+| `6.4.3` | Remove duplicates from sorted DLL | 🟡 | ✅ | |
+| `6.5.1` | Reverse LL in group of given size K | 🔴 | ✅ | |
+| `6.5.2` | Rotate a LL | 🟡 | ✅ | |
+| `1.3.1` | C++ STL | 🟡 | ✅ | |
 | `1.3.2` | Java Collections | 🟢 | | |
 
 ---

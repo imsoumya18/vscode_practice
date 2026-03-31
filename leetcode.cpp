@@ -1,92 +1,96 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <set>
-#include <unordered_set>
-#include <map>
-#include <string>
 #include <stack>
+#include <queue>
 #include <algorithm>
+#include <climits>
 using namespace std;
 
-void print1d(vector<int> vct)
-{
-    for (auto i : vct)
-        cout << i << " ";
-
-    cout << endl;
-}
-
-void print2d(vector<vector<int>> vct)
-{
-    for (auto i : vct)
-    {
-        for (auto j : i)
-            cout << j << " ";
-        cout << endl;
-    }
-}
-
-class node
+// linked list implementation
+class ListNode
 {
 public:
     int val;
-    node *next;
+    ListNode *next;
 
-    node(int x)
+    ListNode(int x)
     {
         val = x;
         next = nullptr;
     }
 };
 
-void insertAtEnd(node *&head, int x)
+// insert node at head
+void insertAtHead(ListNode *head, int val)
 {
+    ListNode *temp = head;
+
+    head = new ListNode(val);
+    head->next = temp;
+}
+
+// insert node at end
+void insertAtEnd(ListNode *head, int val)
+{
+    ListNode *n = new ListNode(val);
+
     if (head == nullptr)
     {
-        head = new node(x);
+        head = n;
         return;
     }
 
-    node *curr = head;
+    ListNode *temp = head;
 
-    while (curr->next)
-        curr = curr->next;
+    while (temp->next != nullptr)
+        temp = temp->next;
 
-    curr->next = new node(x);
+    temp->next = n;
 }
 
-void printList(node *head)
+// print elements of linked list
+void display(ListNode *head)
 {
-    node *curr = head;
+    ListNode *temp = head;
 
-    while (curr)
+    while (temp != nullptr)
     {
-        cout << curr->val << "-->";
-        curr = curr->next;
+        cout << temp->val << "-->";
+        temp = temp->next;
     }
 
     cout << "NULL" << endl;
 }
 
-void rotate(vector<vector<int>> &matrix)
+ListNode *rotateRight(ListNode *head, int k)
 {
-    int rows = matrix.size(), cols = matrix[0].size();
+    if (!head || !head->next)
+        return head;
 
-    for (int i = 0; i < rows; i++)
-        for (int j = 0; j < i; j++)
-            if (i != j)
-                swap(matrix[i][j], matrix[j][i]);
+    int length = 1;
+    ListNode *tail = head;
 
-    for (int i = 0; i < rows; i++) {
-        int l = 0, r = cols - 1;
-
-        while (l < r) {
-            swap(matrix[i][l], matrix[i][r]);
-            l++;
-            r--;
-        }
+    while (tail->next)
+    {
+        tail = tail->next;
+        length++;
     }
+
+    ListNode *newTail = head;
+    k = k % length;
+
+    if (k == 0)
+        return head;
+
+    for (int i = 0; i < length - k - 1; i++)
+        newTail = newTail->next;
+
+    ListNode *newHead = newTail->next;
+    tail->next = head;
+    newTail->next = nullptr;
+
+    return newHead;
 }
 
 int main()
@@ -96,13 +100,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<vector<int>> matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    ListNode *head = new ListNode(1);
+    insertAtEnd(head, 2);
 
-    print2d(matrix);
-
-    rotate(matrix);
-
-    print2d(matrix);
+    display(head);
 
     return 0;
 }
