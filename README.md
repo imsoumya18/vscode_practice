@@ -248,9 +248,9 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `4.2.4` | Minimum days to make M bouquets | 🔴 | | |
-| `4.2.6` | Capacity to Ship Packages within D Days | 🔴 | | |
-| `4.2.7` | Kth Missing Positive Number | 🟢 | | |
+| `4.2.4` | Minimum days to make M bouquets | 🔴 | ✅ | |
+| `4.2.6` | Capacity to Ship Packages within D Days | 🔴 | ✅ | |
+| `4.2.7` | Kth Missing Positive Number | 🟢 | ✅ | |
 | `13.3.8` | Requirements needed to construct a Unique Binary Tree Theory | 🟡 | | |
 | `15.5.8` | Accounts merge | 🔴 | | |
 | `18.1.6` | KMP Algorithm / LPS Array | 🔴 | | |

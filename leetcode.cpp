@@ -7,90 +7,69 @@
 #include <climits>
 using namespace std;
 
-// linked list implementation
-class ListNode
+void print(vector<int> vct)
 {
-public:
-    int val;
-    ListNode *next;
-
-    ListNode(int x)
-    {
-        val = x;
-        next = nullptr;
-    }
-};
-
-// insert node at head
-void insertAtHead(ListNode *head, int val)
-{
-    ListNode *temp = head;
-
-    head = new ListNode(val);
-    head->next = temp;
+    for (auto i : vct)
+        cout << i << " ";
+    cout << endl;
 }
 
-// insert node at end
-void insertAtEnd(ListNode *head, int val)
+void print(vector<vector<int>> vct)
 {
-    ListNode *n = new ListNode(val);
-
-    if (head == nullptr)
+    for (auto i : vct)
     {
-        head = n;
-        return;
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
     }
-
-    ListNode *temp = head;
-
-    while (temp->next != nullptr)
-        temp = temp->next;
-
-    temp->next = n;
 }
 
-// print elements of linked list
-void display(ListNode *head)
+bool possible(vector<int> weights, int capacity, int days)
 {
-    ListNode *temp = head;
+    int req_days = 0, weight = 0;
 
-    while (temp != nullptr)
+    for (auto w : weights)
     {
-        cout << temp->val << "-->";
-        temp = temp->next;
-    }
+        if (w > capacity)
+            return false;
 
-    cout << "NULL" << endl;
+        if (weight + w > capacity)
+        {
+            req_days++;
+            weight = w;
+        }
+        else
+            weight += w;
+    }
+    req_days++;
+
+    return req_days <= days;
 }
 
-ListNode *rotateRight(ListNode *head, int k)
+int shipWithinDays(vector<int> &weights, int days)
 {
-    if (!head || !head->next)
-        return head;
+    int lo = INT_MAX, hi = 0, ans = -1;
 
-    int length = 1;
-    ListNode *tail = head;
-
-    while (tail->next)
+    for (auto w : weights)
     {
-        tail = tail->next;
-        length++;
+        lo = min(lo, w);
+        hi += w;
     }
 
-    ListNode *newTail = head;
-    k = k % length;
+    while (lo <= hi)
+    {
+        int mid = lo + (hi - lo) / 2;
 
-    if (k == 0)
-        return head;
+        if (possible(weights, mid, days))
+        {
+            ans = mid;
+            hi = mid - 1;
+        }
+        else
+            lo = mid + 1;
+    }
 
-    for (int i = 0; i < length - k - 1; i++)
-        newTail = newTail->next;
-
-    ListNode *newHead = newTail->next;
-    tail->next = head;
-    newTail->next = nullptr;
-
-    return newHead;
+    return ans;
 }
 
 int main()
@@ -100,10 +79,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ListNode *head = new ListNode(1);
-    insertAtEnd(head, 2);
+    vector<int> weights{1, 2, 3, 1, 1};
+    int days = 4;
 
-    display(head);
+    cout << shipWithinDays(weights, days) << endl;
 
     return 0;
 }
