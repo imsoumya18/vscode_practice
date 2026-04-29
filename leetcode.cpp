@@ -24,50 +24,83 @@ void print(vector<vector<int>> vct)
     }
 }
 
-bool possible(vector<int> weights, int capacity, int days)
+string preToInfix(string pre_exp)
 {
-    int req_days = 0, weight = 0;
+    // Write your code here
+    stack<string> st;
 
-    for (auto w : weights)
+    for (int i = pre_exp.size() - 1; i >= 0; i--)
     {
-        if (w > capacity)
-            return false;
+        char c = pre_exp[i];
 
-        if (weight + w > capacity)
+        if (c == '^' || c == '*' || c == '/' || c == '+' || c == '-')
         {
-            req_days++;
-            weight = w;
+            string l = st.top();
+            st.pop();
+            string r = st.top();
+            st.pop();
+
+            st.push("(" + l + c + r + ")");
         }
         else
-            weight += w;
+            st.push(string(1, c));
     }
-    req_days++;
 
-    return req_days <= days;
+    return st.top();
 }
 
-int shipWithinDays(vector<int> &weights, int days)
+string infixToPostfix(string &s)
 {
-    int lo = INT_MAX, hi = 0, ans = -1;
+    // code here
+    unordered_map<char, int> priority;
+    stack<char> st;
+    string ans;
 
-    for (auto w : weights)
-    {
-        lo = min(lo, w);
-        hi += w;
-    }
+    priority['^'] = 3;
+    priority['*'] = 2;
+    priority['/'] = 2;
+    priority['+'] = 1;
+    priority['-'] = 1;
 
-    while (lo <= hi)
-    {
-        int mid = lo + (hi - lo) / 2;
-
-        if (possible(weights, mid, days))
+    for (auto c : s)
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
+            ans += c;
+        else if (c == '(')
+            st.push(c);
+        else if (c == ')')
         {
-            ans = mid;
-            hi = mid - 1;
+            while (st.top() != '(')
+            {
+                ans += st.top();
+                st.pop();
+            }
+
+            st.pop();
         }
         else
-            lo = mid + 1;
+        {
+            while (!st.empty() && (priority[st.top()] > priority[c] || (priority[st.top()] == priority[c] && c != '^')))
+            {
+                ans += st.top();
+                st.pop();
+            }
+
+            st.push(c);
+        }
+
+    while (!st.empty())
+    {
+        ans += st.top();
+        st.pop();
     }
+
+    return ans;
+}
+
+string preToPost(string pre_exp)
+{
+    string ans = preToInfix(pre_exp);
+    ans = infixToPostfix(ans);
 
     return ans;
 }
@@ -78,11 +111,6 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-
-    vector<int> weights{1, 2, 3, 1, 1};
-    int days = 4;
-
-    cout << shipWithinDays(weights, days) << endl;
 
     return 0;
 }

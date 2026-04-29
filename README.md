@@ -278,7 +278,7 @@
 | `7.2.11` | Combination Sum - III | 🔴 | ✅ | ✅ |
 | `7.2.12` | Letter Combinations of a Phone number | 🟡 | ✅ | |
 | `7.3.2` | Word Search | 🟡 | ✅ | ✅ |
-| `7.3.3` | N Queen | 🔴 | | |
+| `7.3.3` | N Queen | 🔴 | ✅ | ✅ |
 | `8.1.1` | Introduction to Bit Manipulation [Theory] | 🟢 | ✅ | |
 | `8.1.2` | Check if the i-th bit is set or not | 🟢 | ✅ | |
 | `8.1.3` | Check if a number is odd or not | 🟢 | ✅ | |
@@ -286,11 +286,11 @@
 | `8.1.5` | Count the number of set bits | 🟢 | ✅ | |
 | `8.1.6` | Set/Unset the rightmost unset bit | 🟢 | ✅ | |
 | `8.1.7` | Swap two numbers | 🟢 | ✅ | |
-| `8.1.8` | Divide two integers without multiplication, division and mod | 🟡 | | |
+| `8.1.8` | Divide two integers without multiplication, division and mod | 🟡 | ✅ | ✅ |
 | `8.2.1` | Count number of bits to be flipped to convert A to B | 🟡 | ✅ | |
 | `8.2.2` | Find the number that appears odd number of times | 🟢 | ✅ | |
 | `8.2.3` | Power Set | 🟡 | ✅ | |
-| `8.2.4` | Find xor of numbers from L to R | 🟢 | | |
+| `8.2.4` | Find xor of numbers from L to R | 🟢 | ✅ | ✅ |
 | `8.2.5` | Find the two numbers appearing odd number of times | 🟢 | ✅ | |
 | `9.1.1` | Implement Stack using Arrays | 🟢 | ✅ | |
 | `9.1.2` | Implement Queue using Arrays | 🟢 | ✅ | |
@@ -335,12 +335,12 @@
 | `9.1.6` | Implement queue using Linkedlist | 🟡 | ✅ | |
 | `9.1.7` | Check for balanced paranthesis | 🟡 | ✅ | |
 | `9.1.8` | Implement Min Stack | 🟡 | ✅ | |
-| `9.2.1` | Infix to Postfix Conversion using Stack | 🟡 | | |
-| `9.2.2` | Prefix to Infix Conversion | 🟡 | | |
-| `9.2.3` | Prefix to Postfix Conversion | 🟡 | | |
-| `9.2.4` | Postfix to Prefix Conversion | 🟡 | | |
-| `9.2.5` | Postfix to Infix | 🟡 | | |
-| `9.2.6` | Convert Infix To Prefix Notation | 🟡 | | |
+| `9.2.1` | Infix to Postfix Conversion using Stack | 🟡 | ✅ | ✅ |
+| `9.2.2` | Prefix to Infix Conversion | 🟡 | ✅ | ✅ |
+| `9.2.3` | Prefix to Postfix Conversion | 🟡 | ✅ | ✅ |
+| `9.2.4` | Postfix to Prefix Conversion | 🟡 | ✅ | ✅ |
+| `9.2.5` | Postfix to Infix | 🟡 | ✅ | ✅ |
+| `9.2.6` | Convert Infix To Prefix Notation | 🟡 | ✅ | ✅ |
 | `9.3.1` | Next Greater Element | 🟢 | ✅ | |
 | `9.3.2` | Next Greater Element 2 | 🟡 | ✅ | |
 | `9.3.3` | Next Smaller Element | 🟢 | ✅ | |
