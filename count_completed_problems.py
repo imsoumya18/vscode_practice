@@ -235,15 +235,12 @@ def main():
     """Main function to run the script."""
     file_path = '/Users/soumya/VS Code Projects/vscode_practice/README.md'
 
-    print("🔍 Analyzing README.md file...")
-
     try:
         week_data = count_completed_problems(file_path)
-        display_results(week_data)
         update_readme_progress(week_data, file_path)
 
     except FileNotFoundError:
-        print(f"❌ Error: File not found at {file_path}")
+        print(f"❌ File not found: {file_path}")
     except Exception as e:
         print(f"❌ Error: {e}")
 
