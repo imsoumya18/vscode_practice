@@ -24,85 +24,50 @@ void print(vector<vector<int>> vct)
     }
 }
 
-string preToInfix(string pre_exp)
+int largestRectangleArea(vector<int> &heights)
 {
-    // Write your code here
-    stack<string> st;
+    int n = heights.size();
+    stack<int> st;
+    int maxi = 0;
 
-    for (int i = pre_exp.size() - 1; i >= 0; i--)
+    for (int i = 0; i <= n; i++)
     {
-        char c = pre_exp[i];
-
-        if (c == '^' || c == '*' || c == '/' || c == '+' || c == '-')
+        while (!st.empty() && (i == n || heights[st.top()] > heights[i]))
         {
-            string l = st.top();
-            st.pop();
-            string r = st.top();
+            int j = st.top();
             st.pop();
 
-            st.push("(" + l + c + r + ")");
+            int left = st.empty() ? -1 : st.top();
+            int right = i;
+            int area = (right - left - 1) * heights[j];
+            maxi = max(maxi, area);
         }
-        else
-            st.push(string(1, c));
+
+        st.push(i);
     }
 
-    return st.top();
+    return maxi;
 }
 
-string infixToPostfix(string &s)
+int maximalRectangle(vector<vector<char>> &matrix)
 {
-    // code here
-    unordered_map<char, int> priority;
-    stack<char> st;
-    string ans;
+    int rows = matrix.size(), cols = matrix[0].size();
+    int maxA = 0;
+    vector<vector<int>> matrix2(rows, vector<int>(cols, 0));
 
-    priority['^'] = 3;
-    priority['*'] = 2;
-    priority['/'] = 2;
-    priority['+'] = 1;
-    priority['-'] = 1;
-
-    for (auto c : s)
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
-            ans += c;
-        else if (c == '(')
-            st.push(c);
-        else if (c == ')')
-        {
-            while (st.top() != '(')
-            {
-                ans += st.top();
-                st.pop();
-            }
-
-            st.pop();
-        }
-        else
-        {
-            while (!st.empty() && (priority[st.top()] > priority[c] || (priority[st.top()] == priority[c] && c != '^')))
-            {
-                ans += st.top();
-                st.pop();
-            }
-
-            st.push(c);
-        }
-
-    while (!st.empty())
+    for (int i = 0; i < rows; i++)
     {
-        ans += st.top();
-        st.pop();
+        if (i == 0)
+            for (int j = 0; j < cols; j++)
+                matrix2[i][j] = matrix[i][j] - '0';
+        else
+            for (int j = 0; j < cols; j++)
+                matrix2[i][j] = matrix[i][j] == '0' ? 0 : matrix2[i - 1][j] + 1;
+
+        maxA = max(maxA, largestRectangleArea(matrix2[i]));
     }
 
-    return ans;
-}
-
-string preToPost(string pre_exp)
-{
-    string ans = preToInfix(pre_exp);
-    ans = infixToPostfix(ans);
-
-    return ans;
+    return maxA;
 }
 
 int main()

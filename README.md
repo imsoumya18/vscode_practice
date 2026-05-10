@@ -346,12 +346,12 @@
 | `9.3.3` | Next Smaller Element | 🟢 | ✅ | |
 | `9.3.4` | Number of NGEs to the right | 🟡 | ✅ | |
 | `9.3.5` | Trapping Rainwater | 🔴 | ✅ | ✅ |
-| `9.3.6` | Sum of subarray minimum | 🟡 | | |
-| `9.3.7` | Asteroid Collision | 🟡 | | |
-| `9.3.8` | Sum of subarray ranges | 🟡 | | |
-| `9.3.9` | Remove k Digits | 🟡 | | |
-| `9.3.10` | Largest rectangle in a histogram | 🟡 | | |
-| `9.3.11` | Maximal Rectangles | 🔴 | | |
+| `9.3.6` | Sum of subarray minimum | 🟡 | ✅ | ✅ |
+| `9.3.7` | Asteroid Collision | 🟡 | ✅ | ✅ |
+| `9.3.8` | Sum of subarray ranges | 🟡 | ✅ | ✅ |
+| `9.3.9` | Remove k Digits | 🟡 | ✅ | ✅ |
+| `9.3.10` | Largest rectangle in a histogram | 🟡 | ✅ | ✅ |
+| `9.3.11` | Maximal Rectangles | 🔴 | ✅ | ✅ |
 | `10.1.1` | Longest Substring Without Repeating Characters | 🟡 | | |
 | `10.1.2` | Max Consecutive Ones III | 🟡 | | |
 | `10.1.8` | Maximum point you can obtain from cards | 🟡 | | |
