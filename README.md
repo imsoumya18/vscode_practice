@@ -2,6 +2,33 @@
 
 **📚 Total:** 455 problems | **⏱️ Duration:** 16 weeks | **🎓 Goal:** Master DSA
 
+<!-- PROGRESS_START -->
+## 📈 Current Progress
+
+| &nbsp; Week &nbsp; | &nbsp;&nbsp;&nbsp; 🆕 New Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 🔄 Revision Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 📊 Total Problems &nbsp;&nbsp;&nbsp; |
+|:------:|:---------------------:|:------------------------:|:---------------------:|
+| 🔄 **1** | 🔄 &nbsp; 10 / 12 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 47 / 49 |
+| 🔄 **2** | 🔄 &nbsp; 6 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 43 / 47 |
+| 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
+| 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
+| 🔄 **5** | 0 / 12 | 🔄 &nbsp; 21 / 46 | 🔄 &nbsp; 21 / 58 |
+| **6** | 0 / 15 | 0 / 45 | 0 / 60 |
+| **7** | 0 / 14 | 0 / 47 | 0 / 61 |
+| **8** | 0 / 7 | 0 / 54 | 0 / 61 |
+| **9** | 0 / 7 | 0 / 13 | 0 / 20 |
+| **10** | 0 / 9 | 0 / 11 | 0 / 20 |
+| **11** | 0 / 11 | 0 / 10 | 0 / 21 |
+| 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
+| **13** | 0 / 6 | 0 / 9 | 0 / 15 |
+| **14** | 0 / 12 | 0 / 8 | 0 / 20 |
+| **15** | 0 / 12 | 0 / 9 | 0 / 21 |
+| **16** | 0 / 6 | 0 / 9 | 0 / 15 |
+| **Total** | 🔄 &nbsp; 24 / 152 | 🔄 &nbsp; 179 / 428 | 🔄 &nbsp; 203 / 580 |
+
+*Last updated: 2026-05-10*
+
+<!-- PROGRESS_END -->
+
 ## 📊 Overview
 
 **🧠 Smart Learning System:**
@@ -15,32 +42,9 @@
 - 🟡 = Medium
 - 🔴 = Hard
 
-### 📅 Weekly Overview
-
-| Week | Total | 🆕 New | 🔄 Revision | 🟢 | 🟡 | 🔴 |
-|:----:|:-----:|:------:|:-----------:|:-------:|:---------:|:-------:|
-| **1** | 49 | 12 | 37 | 36 | 9 | 4 |
-| **2** | 47 | 10 | 37 | 22 | 22 | 3 |
-| **3** | 50 | 7 | 43 | 25 | 22 | 3 |
-| **4** | 48 | 6 | 42 | 16 | 24 | 8 |
-| **5** | 58 | 12 | 46 | 6 | 37 | 15 |
-| **6** | 60 | 15 | 45 | 26 | 23 | 11 |
-| **7** | 61 | 14 | 47 | 5 | 25 | 31 |
-| **8** | 61 | 7 | 54 | 4 | 20 | 37 |
-| **9** | 20 | 7 | 13 | 0 | 5 | 15 |
-| **10** | 20 | 9 | 11 | 2 | 10 | 8 |
-| **11** | 21 | 11 | 10 | 1 | 13 | 7 |
-| **12** | 14 | 6 | 8 | 1 | 3 | 10 |
-| **13** | 15 | 6 | 9 | 1 | 6 | 8 |
-| **14** | 20 | 12 | 8 | 2 | 8 | 10 |
-| **15** | 21 | 12 | 9 | 1 | 9 | 10 |
-| **16** | 15 | 6 | 9 | 0 | 3 | 12 |
-
----
 
 ## 📆 Week 1
 
-**📅 Start Date:** Dec 15, 2025 | **📅 End Date:** Dec 21, 2025  
 **Total:** 49 problems | **🆕 New:** 12 | **🔄 Revision:** 37  
 **📚 Topics:** Step 3, Step 5, Step 6, Step 15, Step 16
 
@@ -107,7 +111,6 @@
 
 ## 📆 Week 2
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 47 problems | **🆕 New:** 10 | **🔄 Revision:** 37  
 **📚 Topics:** Step 1, Step 2, Step 6, Step 13, Step 15, Step 16
 
@@ -172,7 +175,6 @@
 
 ## 📆 Week 3
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 50 problems | **🆕 New:** 7 | **🔄 Revision:** 43  
 **📚 Topics:** Step 3, Step 5, Step 13, Step 15, Step 18
 
@@ -240,7 +242,6 @@
 
 ## 📆 Week 4
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 48 problems | **🆕 New:** 6 | **🔄 Revision:** 42  
 **📚 Topics:** Step 4, Step 13, Step 15, Step 18
 
@@ -306,7 +307,6 @@
 
 ## 📆 Week 5
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 58 problems | **🆕 New:** 12 | **🔄 Revision:** 46  
 **📚 Topics:** Step 4, Step 9, Step 10, Step 13, Step 15, Step 18
 
@@ -382,7 +382,6 @@
 
 ## 📆 Week 6
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 60 problems | **🆕 New:** 15 | **🔄 Revision:** 45  
 **📚 Topics:** Step 7, Step 8, Step 11, Step 12, Step 13, Step 15, Step 18
 
@@ -460,7 +459,6 @@
 
 ## 📆 Week 7
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 61 problems | **🆕 New:** 14 | **🔄 Revision:** 47  
 **📚 Topics:** Step 4, Step 8, Step 11, Step 12, Step 13, Step 15, Step 18
 
@@ -539,7 +537,6 @@
 
 ## 📆 Week 8
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 61 problems | **🆕 New:** 7 | **🔄 Revision:** 54  
 **📚 Topics:** Step 4, Step 9, Step 14, Step 15
 
@@ -618,7 +615,6 @@
 
 ## 📆 Week 9
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 20 problems | **🆕 New:** 7 | **🔄 Revision:** 13  
 **📚 Topics:** Step 6, Step 11, Step 14, Step 15
 
@@ -656,7 +652,6 @@
 
 ## 📆 Week 10
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 20 problems | **🆕 New:** 9 | **🔄 Revision:** 11  
 **📚 Topics:** Step 4, Step 7, Step 11, Step 15
 
@@ -694,7 +689,6 @@
 
 ## 📆 Week 11
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 21 problems | **🆕 New:** 11 | **🔄 Revision:** 10  
 **📚 Topics:** Step 3, Step 11, Step 15, Step 16, Step 17, Step 18
 
@@ -733,7 +727,6 @@
 
 ## 📆 Week 12
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 14 problems | **🆕 New:** 6 | **🔄 Revision:** 8  
 **📚 Topics:** Step 3, Step 13, Step 15, Step 16
 
@@ -765,7 +758,6 @@
 
 ## 📆 Week 13
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 15 problems | **🆕 New:** 6 | **🔄 Revision:** 9  
 **📚 Topics:** Step 10, Step 15, Step 16
 
@@ -798,7 +790,6 @@
 
 ## 📆 Week 14
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 20 problems | **🆕 New:** 12 | **🔄 Revision:** 8  
 **📚 Topics:** Step 13, Step 14, Step 15, Step 16, Step 17, Step 18
 
@@ -836,7 +827,6 @@
 
 ## 📆 Week 15
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 21 problems | **🆕 New:** 12 | **🔄 Revision:** 9  
 **📚 Topics:** Step 7, Step 10, Step 13, Step 14, Step 15, Step 16, Step 17
 
@@ -875,7 +865,6 @@
 
 ## 📆 Week 16
 
-**📅 Start Date:** __________ | **📅 End Date:** __________  
 **Total:** 15 problems | **🆕 New:** 6 | **🔄 Revision:** 9  
 **📚 Topics:** Step 7, Step 10, Step 15, Step 16
 

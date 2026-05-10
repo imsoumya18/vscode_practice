@@ -5,27 +5,22 @@ Separates new and revision problems with total and solved counts
 """
 
 import re
+from datetime import date
 
 
 def count_problems_by_section(section_content):
     """
-    Count total and solved problems in a section.
-    
-    Args:
-        section_content (str): Content of the section (New or Revision)
-    
+    Count total, solved, and difficulty breakdown in a section.
+
     Returns:
-        tuple: (total_count, solved_count)
+        tuple: (total_count, solved_count, easy, medium, hard)
     """
-    # Count total problems (lines that start with | and have problem data)
-    # Pattern: | `X.X.X` | Problem name | Difficulty | ...
-    # The problem IDs can have 1-2 digits for each part
     total_problems = len(re.findall(r'\|\s*`\d+\.\d+\.\d+`\s*\|', section_content))
-    
-    # Count solved problems (lines with ✅ in the Solved column)
     solved_problems = len(re.findall(r'\|\s*✅\s*\|', section_content))
-    
-    return total_problems, solved_problems
+    easy   = len(re.findall(r'\|\s*🟢\s*\|', section_content))
+    medium = len(re.findall(r'\|\s*🟡\s*\|', section_content))
+    hard   = len(re.findall(r'\|\s*🔴\s*\|', section_content))
+    return total_problems, solved_problems, easy, medium, hard
 
 
 
@@ -71,18 +66,21 @@ def count_completed_problems(file_path):
             revision_match = re.search(r'### 🔄 Revision(.*?)(?:\n---|\Z)', 
                                       week_content, re.DOTALL)
             
-            new_total, new_solved = 0, 0
-            revision_total, revision_solved = 0, 0
-            
+            new_total, new_solved, new_easy, new_medium, new_hard = 0, 0, 0, 0, 0
+            revision_total, revision_solved, rev_easy, rev_medium, rev_hard = 0, 0, 0, 0, 0
+
             if new_match:
-                new_total, new_solved = count_problems_by_section(new_match.group(1))
-            
+                new_total, new_solved, new_easy, new_medium, new_hard = count_problems_by_section(new_match.group(1))
+
             if revision_match:
-                revision_total, revision_solved = count_problems_by_section(revision_match.group(1))
-            
+                revision_total, revision_solved, rev_easy, rev_medium, rev_hard = count_problems_by_section(revision_match.group(1))
+
             week_data[week_num] = {
                 'new': {'total': new_total, 'solved': new_solved},
-                'revision': {'total': revision_total, 'solved': revision_solved}
+                'revision': {'total': revision_total, 'solved': revision_solved},
+                'easy': new_easy + rev_easy,
+                'medium': new_medium + rev_medium,
+                'hard': new_hard + rev_hard,
             }
     
     return week_data
@@ -148,16 +146,102 @@ def display_results(week_data):
     print()
 
 
+def _cell(solved, total):
+    """Format a solved/total cell with status emoji."""
+    if total == 0:
+        return "—"
+    if solved == total:
+        return f"✅ &nbsp; **{solved} / {total}**"
+    if solved > 0:
+        return f"🔄 &nbsp; {solved} / {total}"
+    return f"0 / {total}"
+
+
+def _week_label(week_num, ns, nt, rs, rt):
+    """Format the week label with a status indicator."""
+    if ns == nt and rs == rt and nt > 0 and rt > 0:
+        return f"✅ **{week_num}**"
+    if ns > 0 or rs > 0:
+        return f"🔄 **{week_num}**"
+    return f"**{week_num}**"
+
+
+def generate_progress_table(week_data):
+    """Generate a markdown progress table string."""
+    lines = [
+        "<!-- PROGRESS_START -->",
+        "## 📈 Current Progress",
+        "",
+        "| &nbsp; Week &nbsp; | &nbsp;&nbsp;&nbsp; 🆕 New Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 🔄 Revision Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 📊 Total Problems &nbsp;&nbsp;&nbsp; |",
+        "|:------:|:---------------------:|:------------------------:|:---------------------:|",
+    ]
+
+    total_new_solved = total_new_total = 0
+    total_rev_solved = total_rev_total = 0
+
+    for week_num in sorted(week_data.keys()):
+        data = week_data[week_num]
+        ns, nt = data['new']['solved'], data['new']['total']
+        rs, rt = data['revision']['solved'], data['revision']['total']
+
+        total_new_solved += ns
+        total_new_total += nt
+        total_rev_solved += rs
+        total_rev_total += rt
+
+        week_col = _week_label(week_num, ns, nt, rs, rt)
+        lines.append(f"| {week_col} | {_cell(ns, nt)} | {_cell(rs, rt)} | {_cell(ns + rs, nt + rt)} |")
+
+    grand_solved = total_new_solved + total_rev_solved
+    grand_total = total_new_total + total_rev_total
+    lines.append(
+        f"| **Total** | {_cell(total_new_solved, total_new_total)} "
+        f"| {_cell(total_rev_solved, total_rev_total)} "
+        f"| {_cell(grand_solved, grand_total)} |"
+    )
+    lines += ["", f"*Last updated: {date.today().strftime('%Y-%m-%d')}*", "", "<!-- PROGRESS_END -->"]
+    return "\n".join(lines)
+
+
+def update_readme_progress(week_data, readme_path):
+    """Insert or replace the progress table in README.md."""
+    with open(readme_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    table = generate_progress_table(week_data)
+
+    if '<!-- PROGRESS_START -->' in content and '<!-- PROGRESS_END -->' in content:
+        new_content = re.sub(
+            r'<!-- PROGRESS_START -->.*?<!-- PROGRESS_END -->',
+            table,
+            content,
+            flags=re.DOTALL,
+        )
+    else:
+        # Insert after the subtitle line on first run
+        subtitle = '**📚 Total:** 455 problems | **⏱️ Duration:** 16 weeks | **🎓 Goal:** Master DSA\n'
+        if subtitle in content:
+            new_content = content.replace(subtitle, subtitle + '\n' + table + '\n')
+        else:
+            new_content = content + '\n' + table + '\n'
+
+    with open(readme_path, 'w', encoding='utf-8') as f:
+        f.write(new_content)
+
+    print("✅ README.md progress table updated!")
+
+
 def main():
     """Main function to run the script."""
     file_path = '/Users/soumya/VS Code Projects/vscode_practice/README.md'
-    
+
     print("🔍 Analyzing README.md file...")
-    
+
     try:
         week_data = count_completed_problems(file_path)
         display_results(week_data)
-        
+        update_readme_progress(week_data, file_path)
+
     except FileNotFoundError:
         print(f"❌ Error: File not found at {file_path}")
     except Exception as e:
