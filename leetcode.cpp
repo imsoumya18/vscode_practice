@@ -5,6 +5,7 @@
 #include <queue>
 #include <algorithm>
 #include <climits>
+#include <set>
 using namespace std;
 
 void print(vector<int> vct)
@@ -24,50 +25,26 @@ void print(vector<vector<int>> vct)
     }
 }
 
-int largestRectangleArea(vector<int> &heights)
+int characterReplacement(string s, int k)
 {
-    int n = heights.size();
-    stack<int> st;
-    int maxi = 0;
+    int n = s.size(), l = 0, maxlen = 0, maxfreq = 0;
+    int freq[26];
 
-    for (int i = 0; i <= n; i++)
+    for (int r = 0; r < n; r++)
     {
-        while (!st.empty() && (i == n || heights[st.top()] > heights[i]))
-        {
-            int j = st.top();
-            st.pop();
+        freq[s[r] - 'A']++;
+        maxfreq = max(maxfreq, freq[s[r] - 'A']);
 
-            int left = st.empty() ? -1 : st.top();
-            int right = i;
-            int area = (right - left - 1) * heights[j];
-            maxi = max(maxi, area);
+        while (r - l + 1 - maxfreq > k)
+        {
+            freq[s[l] - 'A']--;
+            l++;
         }
 
-        st.push(i);
+        maxlen = max(maxlen, r - l + 1);
     }
 
-    return maxi;
-}
-
-int maximalRectangle(vector<vector<char>> &matrix)
-{
-    int rows = matrix.size(), cols = matrix[0].size();
-    int maxA = 0;
-    vector<vector<int>> matrix2(rows, vector<int>(cols, 0));
-
-    for (int i = 0; i < rows; i++)
-    {
-        if (i == 0)
-            for (int j = 0; j < cols; j++)
-                matrix2[i][j] = matrix[i][j] - '0';
-        else
-            for (int j = 0; j < cols; j++)
-                matrix2[i][j] = matrix[i][j] == '0' ? 0 : matrix2[i - 1][j] + 1;
-
-        maxA = max(maxA, largestRectangleArea(matrix2[i]));
-    }
-
-    return maxA;
+    return maxlen;
 }
 
 int main()
