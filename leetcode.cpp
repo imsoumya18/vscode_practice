@@ -25,26 +25,19 @@ void print(vector<vector<int>> vct)
     }
 }
 
-int characterReplacement(string s, int k)
+bool canJump(vector<int> &nums)
 {
-    int n = s.size(), l = 0, maxlen = 0, maxfreq = 0;
-    int freq[26];
+    int maxi = 0;
 
-    for (int r = 0; r < n; r++)
+    for (int i = 0; i < nums.size(); i++)
     {
-        freq[s[r] - 'A']++;
-        maxfreq = max(maxfreq, freq[s[r] - 'A']);
+        if (maxi < i)
+            return false;
 
-        while (r - l + 1 - maxfreq > k)
-        {
-            freq[s[l] - 'A']--;
-            l++;
-        }
-
-        maxlen = max(maxlen, r - l + 1);
+        maxi = max(maxi, i + nums[i]);
     }
 
-    return maxlen;
+    return true;
 }
 
 int main()

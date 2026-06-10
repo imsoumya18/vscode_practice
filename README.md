@@ -11,7 +11,7 @@
 | 🔄 **2** | 🔄 &nbsp; 6 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 43 / 47 |
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
-| 🔄 **5** | 🔄 &nbsp; 2 / 12 | 🔄 &nbsp; 24 / 46 | 🔄 &nbsp; 26 / 58 |
+| 🔄 **5** | 🔄 &nbsp; 4 / 12 | 🔄 &nbsp; 32 / 46 | 🔄 &nbsp; 36 / 58 |
 | **6** | 0 / 15 | 0 / 45 | 0 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 26 / 152 | 🔄 &nbsp; 182 / 428 | 🔄 &nbsp; 208 / 580 |
+| **Total** | 🔄 &nbsp; 28 / 152 | 🔄 &nbsp; 190 / 428 | 🔄 &nbsp; 218 / 580 |
 
-*Last updated: 2026-05-18*
+*Last updated: 2026-06-10*
 
 <!-- PROGRESS_END -->
 
@@ -316,8 +316,8 @@
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `10.1.3` | Fruit Into Baskets | 🟡 | ✅ | ✅ |
 | `10.1.4` | longest repeating character replacement | 🟡 | ✅ | ✅ |
-| `10.1.5` | Binary subarray with sum | 🟢 | | |
-| `9.4.1` | Sliding Window maximum | 🔴 | | |
+| `10.1.5` | Binary subarray with sum | 🟢 | ✅ | ✅ |
+| `9.4.1` | Sliding Window maximum | 🔴 | ✅ | ✅ |
 | `9.4.2` | Stock span problem | 🟡 | | |
 | `9.4.3` | The Celebrity Problem | 🔴 | | |
 | `4.2.8` | Aggressive Cows | 🔴 | | |
@@ -355,14 +355,14 @@
 | `10.1.1` | Longest Substring Without Repeating Characters | 🟡 | ✅ | ✅ |
 | `10.1.2` | Max Consecutive Ones III | 🟡 | ✅ | ✅ |
 | `10.1.8` | Maximum point you can obtain from cards | 🟡 | ✅ | ✅ |
-| `11.1.1` | Introduction to Priority Queues using Binary Heaps | 🟡 | | |
-| `11.1.2` | Min Heap and Max Heap Implementation | 🟡 | | |
-| `11.1.3` | Check if an array represents a min-heap or not | 🟡 | | |
-| `11.1.4` | Convert min Heap to max Heap | 🟡 | | |
-| `12.1.1` | Assign Cookies | 🟢 | | |
-| `12.1.4` | Lemonade Change | 🟢 | | |
-| `12.2.1` | N meetings in one room | 🟡 | | |
-| `12.2.2` | Jump Game | 🟡 | | |
+| `11.1.1` | Introduction to Priority Queues using Binary Heaps | 🟡 | ✅ | ✅ |
+| `11.1.2` | Min Heap and Max Heap Implementation | 🟡 | ✅ | ✅ |
+| `11.1.3` | Check if an array represents a min-heap or not | 🟡 | ✅ | ✅ |
+| `11.1.4` | Convert min Heap to max Heap | 🟡 | ✅ | ✅ |
+| `12.1.1` | Assign Cookies | 🟢 | ✅ | ✅ |
+| `12.1.4` | Lemonade Change | 🟢 | ✅ | ✅ |
+| `12.2.1` | N meetings in one room | 🟡 | ✅ | |
+| `12.2.2` | Jump Game | 🟡 | ✅ | |
 | `12.2.3` | Jump Game 2 | 🟡 | | |
 | `12.2.5` | Job sequencing Problem | 🟡 | | |
 | `12.2.7` | Program for Shortest Job First (or SJF) CPU Scheduling | 🟡 | | |
