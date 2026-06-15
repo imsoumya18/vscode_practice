@@ -25,19 +25,28 @@ void print(vector<vector<int>> vct)
     }
 }
 
-bool canJump(vector<int> &nums)
+static bool comp(vector<int> v1, vector<int> v2)
 {
-    int maxi = 0;
+    return v1[0] < v2[0];
+}
 
-    for (int i = 0; i < nums.size(); i++)
+vector<vector<int>> merge(vector<vector<int>> &intervals)
+{
+    sort(intervals.begin(), intervals.end(), comp);
+
+    vector<vector<int>> result{intervals[0]};
+
+    for (int i = 1; i < intervals.size(); i++)
     {
-        if (maxi < i)
-            return false;
+        vector<int> last = result.back();
 
-        maxi = max(maxi, i + nums[i]);
+        if (intervals[i][0] <= last[1])
+            last[1] = max(last[1], intervals[i][1]);
+        else
+            result.push_back(intervals[i]);
     }
 
-    return true;
+    return result;
 }
 
 int main()
@@ -46,6 +55,10 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    vector<int> bt{4, 3, 7, 1, 2};
+
+    cout << solve(bt) << endl;
 
     return 0;
 }

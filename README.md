@@ -11,7 +11,7 @@
 | 🔄 **2** | 🔄 &nbsp; 6 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 43 / 47 |
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
-| 🔄 **5** | 🔄 &nbsp; 4 / 12 | 🔄 &nbsp; 32 / 46 | 🔄 &nbsp; 36 / 58 |
+| 🔄 **5** | 🔄 &nbsp; 4 / 12 | 🔄 &nbsp; 36 / 46 | 🔄 &nbsp; 40 / 58 |
 | **6** | 0 / 15 | 0 / 45 | 0 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 28 / 152 | 🔄 &nbsp; 190 / 428 | 🔄 &nbsp; 218 / 580 |
+| **Total** | 🔄 &nbsp; 28 / 152 | 🔄 &nbsp; 194 / 428 | 🔄 &nbsp; 222 / 580 |
 
-*Last updated: 2026-06-10*
+*Last updated: 2026-06-15*
 
 <!-- PROGRESS_END -->
 
@@ -363,11 +363,11 @@
 | `12.1.4` | Lemonade Change | 🟢 | ✅ | ✅ |
 | `12.2.1` | N meetings in one room | 🟡 | ✅ | |
 | `12.2.2` | Jump Game | 🟡 | ✅ | |
-| `12.2.3` | Jump Game 2 | 🟡 | | |
+| `12.2.3` | Jump Game 2 | 🟡 | ✅ | ✅ |
 | `12.2.5` | Job sequencing Problem | 🟡 | | |
-| `12.2.7` | Program for Shortest Job First (or SJF) CPU Scheduling | 🟡 | | |
-| `12.2.9` | Insert Interval | 🟡 | | |
-| `12.2.10` | Merge Intervals | 🟡 | | |
+| `12.2.7` | Program for Shortest Job First (or SJF) CPU Scheduling | 🟡 | ✅ | |
+| `12.2.9` | Insert Interval | 🟡 | ✅ | |
+| `12.2.10` | Merge Intervals | 🟡 | ✅ | ✅ |
 | `5.2.4` | Implement Atoi | 🟡 | | |
 | `5.2.5` | Count Number of Substrings | 🟡 | | |
 | `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | | |
