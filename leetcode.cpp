@@ -25,28 +25,53 @@ void print(vector<vector<int>> vct)
     }
 }
 
-static bool comp(vector<int> v1, vector<int> v2)
+bool possible(vector<int> &nums, int max_sum, int k)
 {
-    return v1[0] < v2[0];
+    int no_of_divs = 1, curr_sum = 0;
+
+    for (int i = 0; i < nums.size(); i++)
+        if (curr_sum + nums[i] > max_sum)
+        {
+            no_of_divs++;
+            curr_sum = nums[i];
+        }
+        else
+            curr_sum += nums[i];
+
+    if (no_of_divs > k)
+        return false;
+
+    return true;
 }
 
-vector<vector<int>> merge(vector<vector<int>> &intervals)
+int splitArray(vector<int> &nums, int k)
 {
-    sort(intervals.begin(), intervals.end(), comp);
+    // code here
+    int n = nums.size();
+    int lo = INT_MIN, hi = 0;
 
-    vector<vector<int>> result{intervals[0]};
-
-    for (int i = 1; i < intervals.size(); i++)
+    for (auto page : nums)
     {
-        vector<int> last = result.back();
-
-        if (intervals[i][0] <= last[1])
-            last[1] = max(last[1], intervals[i][1]);
-        else
-            result.push_back(intervals[i]);
+        lo = max(lo, page);
+        hi += page;
     }
 
-    return result;
+    int ans = -1;
+
+    while (lo <= hi)
+    {
+        int mid = lo + (hi - lo) / 2;
+
+        if (possible(nums, mid, k))
+        {
+            ans = mid;
+            hi = mid - 1;
+        }
+        else
+            lo = mid + 1;
+    }
+
+    return ans;
 }
 
 int main()
@@ -55,10 +80,6 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-
-    vector<int> bt{4, 3, 7, 1, 2};
-
-    cout << solve(bt) << endl;
 
     return 0;
 }

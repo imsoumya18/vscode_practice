@@ -11,7 +11,7 @@
 | 🔄 **2** | 🔄 &nbsp; 6 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 43 / 47 |
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
-| 🔄 **5** | 🔄 &nbsp; 4 / 12 | 🔄 &nbsp; 36 / 46 | 🔄 &nbsp; 40 / 58 |
+| 🔄 **5** | 🔄 &nbsp; 9 / 12 | 🔄 &nbsp; 36 / 46 | 🔄 &nbsp; 45 / 58 |
 | **6** | 0 / 15 | 0 / 45 | 0 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 28 / 152 | 🔄 &nbsp; 194 / 428 | 🔄 &nbsp; 222 / 580 |
+| **Total** | 🔄 &nbsp; 33 / 152 | 🔄 &nbsp; 194 / 428 | 🔄 &nbsp; 227 / 580 |
 
-*Last updated: 2026-06-15*
+*Last updated: 2026-06-17*
 
 <!-- PROGRESS_END -->
 
@@ -318,11 +318,11 @@
 | `10.1.4` | longest repeating character replacement | 🟡 | ✅ | ✅ |
 | `10.1.5` | Binary subarray with sum | 🟢 | ✅ | ✅ |
 | `9.4.1` | Sliding Window maximum | 🔴 | ✅ | ✅ |
-| `9.4.2` | Stock span problem | 🟡 | | |
-| `9.4.3` | The Celebrity Problem | 🔴 | | |
-| `4.2.8` | Aggressive Cows | 🔴 | | |
-| `4.2.9` | Book Allocation Problem | 🔴 | | |
-| `4.2.10` | Split array - Largest Sum | 🔴 | | |
+| `9.4.2` | Stock span problem | 🟡 | ✅ | ✅ |
+| `9.4.3` | The Celebrity Problem | 🔴 | ✅ | ✅ |
+| `4.2.8` | Aggressive Cows | 🔴 | ✅ | ✅ |
+| `4.2.9` | Book Allocation Problem | 🔴 | ✅ | ✅ |
+| `4.2.10` | Split array - Largest Sum | 🔴 | ✅ | ✅ |
 | `13.3.11` | Serialize and deserialize Binary Tree | 🔴 | | |
 | `15.5.9` | Number of island II | 🔴 | | |
 | `18.1.7` | Shortest Palindrome | 🔴 | | |
