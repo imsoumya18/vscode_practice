@@ -5,6 +5,7 @@
 #include <queue>
 #include <algorithm>
 #include <climits>
+#include <sstream>
 #include <set>
 using namespace std;
 
@@ -25,53 +26,24 @@ void print(vector<vector<int>> vct)
     }
 }
 
-bool possible(vector<int> &nums, int max_sum, int k)
+static bool comp(vector<int> v1, vector<int> v2)
 {
-    int no_of_divs = 1, curr_sum = 0;
-
-    for (int i = 0; i < nums.size(); i++)
-        if (curr_sum + nums[i] > max_sum)
-        {
-            no_of_divs++;
-            curr_sum = nums[i];
-        }
-        else
-            curr_sum += nums[i];
-
-    if (no_of_divs > k)
-        return false;
-
-    return true;
+    return v1[1] < v2[1];
 }
 
-int splitArray(vector<int> &nums, int k)
+int eraseOverlapIntervals(vector<vector<int>> &intervals)
 {
-    // code here
-    int n = nums.size();
-    int lo = INT_MIN, hi = 0;
+    sort(intervals.begin(), intervals.end(), comp);
 
-    for (auto page : nums)
-    {
-        lo = max(lo, page);
-        hi += page;
-    }
+    int blockTill = intervals[0][1], skip = 0;
 
-    int ans = -1;
-
-    while (lo <= hi)
-    {
-        int mid = lo + (hi - lo) / 2;
-
-        if (possible(nums, mid, k))
-        {
-            ans = mid;
-            hi = mid - 1;
-        }
+    for (int i = 1; i < intervals.size(); i++)
+        if (intervals[i][0] >= blockTill)
+            blockTill = intervals[i][1];
         else
-            lo = mid + 1;
-    }
+            skip++;
 
-    return ans;
+    return skip;
 }
 
 int main()

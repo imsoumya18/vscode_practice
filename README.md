@@ -11,8 +11,8 @@
 | 🔄 **2** | 🔄 &nbsp; 6 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 43 / 47 |
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
-| 🔄 **5** | 🔄 &nbsp; 9 / 12 | 🔄 &nbsp; 36 / 46 | 🔄 &nbsp; 45 / 58 |
-| **6** | 0 / 15 | 0 / 45 | 0 / 60 |
+| 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
+| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 1 / 45 | 🔄 &nbsp; 1 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 33 / 152 | 🔄 &nbsp; 194 / 428 | 🔄 &nbsp; 227 / 580 |
+| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 202 / 428 | 🔄 &nbsp; 236 / 580 |
 
-*Last updated: 2026-06-17*
+*Last updated: 2026-06-22*
 
 <!-- PROGRESS_END -->
 
@@ -323,7 +323,7 @@
 | `4.2.8` | Aggressive Cows | 🔴 | ✅ | ✅ |
 | `4.2.9` | Book Allocation Problem | 🔴 | ✅ | ✅ |
 | `4.2.10` | Split array - Largest Sum | 🔴 | ✅ | ✅ |
-| `13.3.11` | Serialize and deserialize Binary Tree | 🔴 | | |
+| `13.3.11` | Serialize and deserialize Binary Tree | 🔴 | ✅ | ✅ |
 | `15.5.9` | Number of island II | 🔴 | | |
 | `18.1.7` | Shortest Palindrome | 🔴 | | |
 
@@ -368,15 +368,15 @@
 | `12.2.7` | Program for Shortest Job First (or SJF) CPU Scheduling | 🟡 | ✅ | |
 | `12.2.9` | Insert Interval | 🟡 | ✅ | |
 | `12.2.10` | Merge Intervals | 🟡 | ✅ | ✅ |
-| `5.2.4` | Implement Atoi | 🟡 | | |
-| `5.2.5` | Count Number of Substrings | 🟡 | | |
-| `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | | |
-| `3.3.11` | Reverse Pairs | 🔴 | | |
+| `5.2.4` | Implement Atoi | 🟡 | ✅ | |
+| `5.2.5` | Count Number of Substrings | 🟡 | ✅ | ✅ |
+| `5.2.6` | Longest Palindromic Substring [Do it without DP] | 🔴 | ✅ | |
+| `3.3.11` | Reverse Pairs | 🔴 | ✅ | ✅ |
 | `15.5.5` | Kruskal's Algorithm | 🔴 | | |
 | `16.8.6` | Palindrome Partitioning - II (DP-53) | 🔴 | | |
-| `3.2.11` | Set Matrix Zeros | 🟡 | | |
-| `3.2.12` | Rotate Matrix by 90 degrees | 🟡 | | |
-| `3.3.4` | 4-Sum Problem | 🔴 | | |
+| `3.2.11` | Set Matrix Zeros | 🟡 | ✅ | |
+| `3.2.12` | Rotate Matrix by 90 degrees | 🟡 | ✅ | |
+| `3.3.4` | 4-Sum Problem | 🔴 | ✅ | ✅ |
 
 ---
 
@@ -409,7 +409,7 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `12.2.11` | Non-overlapping Intervals | 🟡 | | |
+| `12.2.11` | Non-overlapping Intervals | 🟡 | ✅ | ✅ |
 | `13.1.1` | Introduction to Trees | 🟢 | | |
 | `13.1.2` | Binary Tree Representation in C++ | 🟢 | | |
 | `13.1.4` | Binary Tree Traversals in Binary Tree | 🟢 | | |

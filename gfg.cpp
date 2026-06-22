@@ -1,29 +1,27 @@
 // @author Soumya
 #include <iostream>
 #include <vector>
-#include <set>
+#include <stack>
+#include <queue>
+#include <algorithm>
+#include <climits>
 using namespace std;
 
-int maxConsecutiveOnes(int n)
+void print(vector<int> vct)
 {
-    int curr = 0, mx = 0;
+    for (auto i : vct)
+        cout << i << " ";
+    cout << endl;
+}
 
-    while (n != 0)
+void print(vector<vector<int>> vct)
+{
+    for (auto i : vct)
     {
-        if (n % 2 == 1)
-            curr += 1;
-        else
-        {
-            mx = max(curr, mx);
-            curr = 0;
-        }
-
-        n = n / 2;
+        for (auto j : i)
+            cout << j << " ";
+        cout << endl;
     }
-
-    mx = max(curr, mx);
-
-    return mx;
 }
 
 int main()
@@ -32,9 +30,19 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int N = 222;
 
-    cout << maxConsecutiveOnes(N) << endl;
+    unordered_map<char, vector<int>> mp;
+
+    mp['a'].push_back(3);
+    mp['a'].push_back(4);
+
+    print(mp['a']);
+    print(mp['b']);
+
+    cout << mp.size() << endl;
+
+    mp.erase('a');
+    cout << mp.size() << endl;
 
     return 0;
 }
