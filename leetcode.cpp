@@ -26,24 +26,35 @@ void print(vector<vector<int>> vct)
     }
 }
 
-static bool comp(vector<int> v1, vector<int> v2)
+struct TreeNode
 {
-    return v1[1] < v2[1];
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr){} * TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+int maxdiam(TreeNode *root, int &d)
+{
+    if (root == nullptr)
+        return 0;
+
+    int ldiam = maxdiam(root->left, d);
+    int rdiam = maxdiam(root->right, d);
+
+    d = max(d, ldiam + rdiam);
+
+    return max(ldiam, rdiam) + 1;
 }
 
-int eraseOverlapIntervals(vector<vector<int>> &intervals)
+int diameterOfBinaryTree(TreeNode *root)
 {
-    sort(intervals.begin(), intervals.end(), comp);
+    int d = 0;
 
-    int blockTill = intervals[0][1], skip = 0;
+    maxdiam(root, d);
 
-    for (int i = 1; i < intervals.size(); i++)
-        if (intervals[i][0] >= blockTill)
-            blockTill = intervals[i][1];
-        else
-            skip++;
-
-    return skip;
+    return d;
 }
 
 int main()

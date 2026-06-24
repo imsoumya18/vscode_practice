@@ -12,7 +12,7 @@
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
-| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 1 / 45 | 🔄 &nbsp; 1 / 60 |
+| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 14 / 45 | 🔄 &nbsp; 14 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 202 / 428 | 🔄 &nbsp; 236 / 580 |
+| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 215 / 428 | 🔄 &nbsp; 249 / 580 |
 
-*Last updated: 2026-06-22*
+*Last updated: 2026-06-25*
 
 <!-- PROGRESS_END -->
 
@@ -410,19 +410,19 @@
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `12.2.11` | Non-overlapping Intervals | 🟡 | ✅ | ✅ |
-| `13.1.1` | Introduction to Trees | 🟢 | | |
-| `13.1.2` | Binary Tree Representation in C++ | 🟢 | | |
-| `13.1.4` | Binary Tree Traversals in Binary Tree | 🟢 | | |
-| `13.1.5` | Preorder Traversal of Binary Tree | 🟢 | | |
-| `13.1.6` | Inorder Traversal of Binary Tree | 🟢 | | |
-| `13.1.7` | Post-order Traversal of Binary Tree | 🟢 | | |
-| `13.1.8` | Level order Traversal / Level order traversal in spiral form | 🟢 | | |
-| `13.1.9` | Iterative Preorder Traversal of Binary Tree | 🟢 | | |
-| `13.1.10` | Iterative Inorder Traversal of Binary Tree | 🟢 | | |
-| `13.1.11` | Post-order Traversal of Binary Tree using 2 stack | 🟢 | | |
-| `13.2.1` | Height of a Binary Tree | 🟡 | | |
-| `13.2.2` | Check if the Binary tree is height-balanced or not | 🟡 | | |
-| `13.2.3` | Diameter of Binary Tree | 🟡 | | |
+| `13.1.1` | Introduction to Trees | 🟢 | ✅ | |
+| `13.1.2` | Binary Tree Representation in C++ | 🟢 | ✅ | |
+| `13.1.4` | Binary Tree Traversals in Binary Tree | 🟢 | ✅ | |
+| `13.1.5` | Preorder Traversal of Binary Tree | 🟢 | ✅ | |
+| `13.1.6` | Inorder Traversal of Binary Tree | 🟢 | ✅ | |
+| `13.1.7` | Post-order Traversal of Binary Tree | 🟢 | ✅ | |
+| `13.1.8` | Level order Traversal / Level order traversal in spiral form | 🟢 | ✅ | |
+| `13.1.9` | Iterative Preorder Traversal of Binary Tree | 🟢 | ✅ | ✅ |
+| `13.1.10` | Iterative Inorder Traversal of Binary Tree | 🟢 | ✅ | ✅ |
+| `13.1.11` | Post-order Traversal of Binary Tree using 2 stack | 🟢 | ✅ | ✅ |
+| `13.2.1` | Height of a Binary Tree | 🟡 | ✅ | |
+| `13.2.2` | Check if the Binary tree is height-balanced or not | 🟡 | ✅ | |
+| `13.2.3` | Diameter of Binary Tree | 🟡 | ✅ | ✅ |
 | `13.2.4` | Maximum path sum | 🔴 | | |
 | `13.2.5` | Check if two trees are identical or not | 🟡 | | |
 | `13.2.6` | Zig Zag Traversal of Binary Tree | 🟢 | | |
