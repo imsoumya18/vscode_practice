@@ -35,26 +35,45 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr){} * TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int maxdiam(TreeNode *root, int &d)
+vector<vector<int>> zigzagLevelOrder(TreeNode *root)
 {
-    if (root == nullptr)
-        return 0;
+    queue<TreeNode *> q;
+    q.push(root);
+    q.push(nullptr);
+    int flag = 0;
+    vector<vector<int>> vct;
+    vector<int> line;
 
-    int ldiam = maxdiam(root->left, d);
-    int rdiam = maxdiam(root->right, d);
+    while (!q.empty())
+    {
+        TreeNode *node = q.front();
+        q.pop();
 
-    d = max(d, ldiam + rdiam);
+        if (node)
+        {
+            if (flag % 2 == 0)
+                line.push_back(node->val);
+            else
+                line.insert(line.begin(), node->val);
 
-    return max(ldiam, rdiam) + 1;
-}
+            if (node->left)
+                q.push(node->left);
 
-int diameterOfBinaryTree(TreeNode *root)
-{
-    int d = 0;
+            if (node->right)
+                q.push(node->right);
+        }
+        else
+        {
+            flag++;
+            vct.push_back(line);
+            line.clear();
 
-    maxdiam(root, d);
+            if (!q.empty())
+                q.push(nullptr);
+        }
+    }
 
-    return d;
+    return vct;
 }
 
 int main()
