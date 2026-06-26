@@ -5,6 +5,7 @@
 #include <queue>
 #include <algorithm>
 #include <climits>
+#include <map>
 using namespace std;
 
 void print(vector<int> vct)
@@ -38,78 +39,33 @@ public:
     }
 };
 
-bool isLeaf(Node *root)
+void help(Node *root, int r, int c, map<int, pair<int, int>> &mp)
 {
-    return root && !root->left && !root->right;
-}
-
-void leftTraversal(Node *root, vector<int> &vct)
-{
-    Node *curr = root->left;
-
-    while (curr)
-    {
-        if (!isLeaf(curr))
-            vct.push_back(curr->data);
-
-        if (curr->left)
-            curr = curr->left;
-        else
-            curr = curr->right;
-    }
-}
-
-void leafTraversal(Node *root, vector<int> &vct)
-{
-    if (isLeaf(root))
-    {
-        vct.push_back(root->data);
+    if (!root)
         return;
+
+    if (mp.find(c) == mp.end() || r >= mp[c].first)
+    {
+        mp[c].first = r;
+        mp[c].second = root->data;
     }
 
-    if (root->left)
-        leafTraversal(root->left, vct);
-    if (root->right)
-        leafTraversal(root->right, vct);
+    help(root->left, r + 1, c - 1, mp);
+    help(root->right, r + 1, c + 1, mp);
 }
 
-void rightTraversal(Node *root, vector<int> &vct)
-{
-    stack<int> st;
-    Node *curr = root->right;
-
-    while (curr)
-    {
-        if (!isLeaf(curr))
-            st.push(curr->data);
-
-        if (curr->right)
-            curr = curr->right;
-        else
-            curr = curr->left;
-    }
-
-    while (!st.empty())
-    {
-        vct.push_back(st.top());
-        st.pop();
-    }
-}
-
-vector<int> boundaryTraversal(Node *root)
+vector<int> bottomView(Node *root)
 {
     // code here
+    map<int, pair<int, int>> mp;
+    int r = 0, c = 0;
+
+    help(root, r, c, mp);
+
     vector<int> vct;
 
-    if (!root)
-        return vct;
-
-    if (!isLeaf(root))
-        vct.push_back(root->data);
-
-    leftTraversal(root, vct);
-    leafTraversal(root, vct);
-    rightTraversal(root, vct);
+    for (const auto &col : mp)
+        vct.push_back(col.second.second);
 
     return vct;
 }
@@ -131,7 +87,12 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    print(boundaryTraversal(root));
+    map<int, map<int, multiset<int>>> mp;
+    mp[1] = -1;
+    mp[2] = -2;
+
+    for (auto it : mp)
+        cout << it.first << it.second << endl;
 
     return 0;
 }

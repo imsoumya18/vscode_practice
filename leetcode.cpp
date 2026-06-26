@@ -32,48 +32,27 @@ struct TreeNode
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr){} * TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-vector<vector<int>> zigzagLevelOrder(TreeNode *root)
+bool check(TreeNode *p, TreeNode *q)
 {
-    queue<TreeNode *> q;
-    q.push(root);
-    q.push(nullptr);
-    int flag = 0;
-    vector<vector<int>> vct;
-    vector<int> line;
+    if (!p && !q)
+        return true;
 
-    while (!q.empty())
-    {
-        TreeNode *node = q.front();
-        q.pop();
+    if ((p && !q) || (!p && q))
+        return false;
 
-        if (node)
-        {
-            if (flag % 2 == 0)
-                line.push_back(node->val);
-            else
-                line.insert(line.begin(), node->val);
+    return (p->val == q->val) && check(p->left, q->right) && check(p->right, q->left);
+}
 
-            if (node->left)
-                q.push(node->left);
+bool isSymmetric(TreeNode *root)
+{
+    if (!root)
+        return true;
 
-            if (node->right)
-                q.push(node->right);
-        }
-        else
-        {
-            flag++;
-            vct.push_back(line);
-            line.clear();
-
-            if (!q.empty())
-                q.push(nullptr);
-        }
-    }
-
-    return vct;
+    return check(root->left, root->right);
 }
 
 int main()
