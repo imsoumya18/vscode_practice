@@ -5,6 +5,7 @@ Separates new and revision problems with total and solved counts
 """
 
 import re
+import subprocess
 from datetime import date
 
 
@@ -231,6 +232,43 @@ def update_readme_progress(week_data, readme_path):
     print("✅ README.md progress table updated!")
 
 
+def count_problems_from_string(content):
+    """Run count_completed_problems logic on an in-memory string."""
+    week_data = {}
+    for week_num in range(1, 17):
+        if week_num < 16:
+            pattern = rf'## 📆 Week {week_num}\n(.*?)## 📆 Week {week_num + 1}'
+        else:
+            pattern = rf'## 📆 Week {week_num}\n(.*?)## 💡 Tips'
+
+        week_match = re.search(pattern, content, re.DOTALL)
+        if not week_match:
+            pattern = rf'## 📆 Week {week_num}\n(.*?)(?:---\n\n## |$)'
+            week_match = re.search(pattern, content, re.DOTALL)
+
+        if week_match:
+            week_content = week_match.group(1)
+            new_match = re.search(r'### 🆕 New Problems(.*?)### 🔄 Revision',
+                                  week_content, re.DOTALL)
+            revision_match = re.search(r'### 🔄 Revision(.*?)(?:\n---|\Z)',
+                                       week_content, re.DOTALL)
+
+            nt, ns, *_ = count_problems_by_section(new_match.group(1)) if new_match else (0, 0, 0, 0, 0)
+            rt, rs, *_ = count_problems_by_section(revision_match.group(1)) if revision_match else (0, 0, 0, 0, 0)
+
+            week_data[week_num] = {
+                'new':      {'total': nt, 'solved': ns},
+                'revision': {'total': rt, 'solved': rs},
+            }
+    return week_data
+
+
+def _sum_solved(week_data):
+    new_s = sum(d['new']['solved']      for d in week_data.values())
+    rev_s = sum(d['revision']['solved'] for d in week_data.values())
+    return new_s, rev_s
+
+
 def main():
     """Main function to run the script."""
     file_path = '/Users/soumya/VS Code Projects/vscode_practice/README.md'
@@ -238,6 +276,28 @@ def main():
     try:
         week_data = count_completed_problems(file_path)
         update_readme_progress(week_data, file_path)
+
+        # Delta since last commit
+        try:
+            prev_content = subprocess.check_output(
+                ['git', 'show', 'HEAD:README.md'],
+                cwd='/Users/soumya/VS Code Projects/vscode_practice',
+                stderr=subprocess.DEVNULL,
+            ).decode('utf-8')
+            prev_data = count_problems_from_string(prev_content)
+            prev_new_s, prev_rev_s = _sum_solved(prev_data)
+        except subprocess.CalledProcessError:
+            # No previous commit (initial commit)
+            prev_new_s, prev_rev_s = 0, 0
+
+        cur_new_s, cur_rev_s = _sum_solved(week_data)
+        delta_new = cur_new_s - prev_new_s
+        delta_rev = cur_rev_s - prev_rev_s
+        delta_total = delta_new + delta_rev
+
+        print(f"   🆕 New solved this session:      {delta_new:+d}")
+        print(f"   🔄 Revisions solved this session: {delta_rev:+d}")
+        print(f"   📊 Total solved this session:     {delta_total:+d}")
 
     except FileNotFoundError:
         print(f"❌ File not found: {file_path}")
