@@ -12,7 +12,7 @@
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
-| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 23 / 45 | 🔄 &nbsp; 23 / 60 |
+| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 25 / 45 | 🔄 &nbsp; 25 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
@@ -23,7 +23,7 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 224 / 428 | 🔄 &nbsp; 258 / 580 |
+| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 226 / 428 | 🔄 &nbsp; 260 / 580 |
 
 *Last updated: 2026-06-27*
 
@@ -432,8 +432,8 @@
 | `13.2.10` | Bottom View of Binary Tree | 🟡 | ✅ | ✅ |
 | `13.2.11` | Right/Left View of Binary Tree | 🟡 | ✅ | ✅ |
 | `13.2.12` | Symmetric Binary Tree | 🟡 | ✅ | ✅ |
-| `13.3.2` | LCA in Binary Tree | 🟡 | | |
-| `13.3.5` | Print all the Nodes at a distance of K in a Binary Tree | 🟡 | | |
+| `13.3.2` | LCA in Binary Tree | 🟡 | ✅ | ✅ |
+| `13.3.5` | Print all the Nodes at a distance of K in a Binary Tree | 🟡 | ✅ | ✅ |
 | `13.3.9` | Construct Binary Tree from inorder and preorder | 🔴 | | |
 | `13.3.10` | Construct the Binary Tree from Postorder and Inorder Traversal | 🔴 | | |
 | `13.3.14` | Flatten Binary Tree to LinkedList | 🔴 | | |

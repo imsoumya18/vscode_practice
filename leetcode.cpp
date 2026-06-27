@@ -36,23 +36,82 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-bool check(TreeNode *p, TreeNode *q)
+vector<int> distanceK(TreeNode *root, TreeNode *target, int k)
 {
-    if (!p && !q)
-        return true;
+    map<TreeNode *, TreeNode *> parent;
+    queue<TreeNode *> q;
+    q.push(root);
 
-    if ((p && !q) || (!p && q))
-        return false;
+    while (!q.empty())
+    {
+        TreeNode *node = q.front();
+        q.pop();
 
-    return (p->val == q->val) && check(p->left, q->right) && check(p->right, q->left);
-}
+        if (node->left)
+        {
+            parent[node->left] = node;
+            q.push(node->left);
+        }
 
-bool isSymmetric(TreeNode *root)
-{
-    if (!root)
-        return true;
+        if (node->right)
+        {
+            parent[node->right] = node;
+            q.push(node->right);
+        }
+    }
 
-    return check(root->left, root->right);
+    queue<TreeNode *> bfs;
+    set<TreeNode *> visited;
+    bfs.push(target);
+    visited.insert(target);
+
+    int dist = 0;
+
+    while (!bfs.empty())
+    {
+        int sz = bfs.size();
+
+        if (dist == k)
+            break;
+
+        while (sz)
+        {
+            TreeNode *node = bfs.front();
+            bfs.pop();
+
+            if (node->left && !visited.count(node->left))
+            {
+                bfs.push(node->left);
+                visited.insert(node->left);
+            }
+
+            if (node->right && !visited.count(node->right))
+            {
+                bfs.push(node->right);
+                visited.insert(node->right);
+            }
+
+            if (!visited.count(parent[node]) && parent[node])
+            {
+                bfs.push(parent[node]);
+                visited.insert(parent[node]);
+            }
+
+            sz--;
+        }
+
+        dist++;
+    }
+
+    vector<int> vct;
+
+    while (!bfs.empty())
+    {
+        vct.push_back(bfs.front()->val);
+        bfs.pop();
+    }
+
+    return vct;
 }
 
 int main()
