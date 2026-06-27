@@ -36,82 +36,35 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-vector<int> distanceK(TreeNode *root, TreeNode *target, int k)
+int search(vector<int> &inorder, int start, int end, int target)
 {
-    map<TreeNode *, TreeNode *> parent;
-    queue<TreeNode *> q;
-    q.push(root);
+    for (int i = 0; i < inorder.size(); i++)
+        if (inorder[i] == target)
+            return i;
+}
 
-    while (!q.empty())
-    {
-        TreeNode *node = q.front();
-        q.pop();
+TreeNode *realBuildTree(vector<int> &preorder, vector<int> &inorder, int start, int end)
+{
+    if (start > end)
+        return nullptr;
 
-        if (node->left)
-        {
-            parent[node->left] = node;
-            q.push(node->left);
-        }
+    int idx = 0;
+    int curr = preorder[idx];
+    idx++;
+    TreeNode *node = new TreeNode(curr);
 
-        if (node->right)
-        {
-            parent[node->right] = node;
-            q.push(node->right);
-        }
-    }
+    int pos = search(inorder, start, end, curr);
+    node->left = realBuildTree(preorder, inorder, start, pos - 1);
+    node->right = realBuildTree(preorder, inorder, pos + 1, end);
 
-    queue<TreeNode *> bfs;
-    set<TreeNode *> visited;
-    bfs.push(target);
-    visited.insert(target);
+    return node;
+}
 
-    int dist = 0;
+TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
+{
+    int start = 0, end = preorder.size();
 
-    while (!bfs.empty())
-    {
-        int sz = bfs.size();
-
-        if (dist == k)
-            break;
-
-        while (sz)
-        {
-            TreeNode *node = bfs.front();
-            bfs.pop();
-
-            if (node->left && !visited.count(node->left))
-            {
-                bfs.push(node->left);
-                visited.insert(node->left);
-            }
-
-            if (node->right && !visited.count(node->right))
-            {
-                bfs.push(node->right);
-                visited.insert(node->right);
-            }
-
-            if (!visited.count(parent[node]) && parent[node])
-            {
-                bfs.push(parent[node]);
-                visited.insert(parent[node]);
-            }
-
-            sz--;
-        }
-
-        dist++;
-    }
-
-    vector<int> vct;
-
-    while (!bfs.empty())
-    {
-        vct.push_back(bfs.front()->val);
-        bfs.pop();
-    }
-
-    return vct;
+    return realBuildTree(preorder, inorder, start, end);
 }
 
 int main()
