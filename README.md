@@ -12,7 +12,7 @@
 | 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
-| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 27 / 45 | 🔄 &nbsp; 27 / 60 |
+| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 35 / 45 | 🔄 &nbsp; 35 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 228 / 428 | 🔄 &nbsp; 262 / 580 |
+| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 236 / 428 | 🔄 &nbsp; 270 / 580 |
 
-*Last updated: 2026-06-27*
+*Last updated: 2026-06-29*
 
 <!-- PROGRESS_END -->
 
@@ -436,14 +436,14 @@
 | `13.3.5` | Print all the Nodes at a distance of K in a Binary Tree | 🟡 | ✅ | ✅ |
 | `13.3.9` | Construct Binary Tree from inorder and preorder | 🔴 | ✅ | ✅ |
 | `13.3.10` | Construct the Binary Tree from Postorder and Inorder Traversal | 🔴 | ✅ | ✅ |
-| `13.3.14` | Flatten Binary Tree to LinkedList | 🔴 | | |
-| `14.1.1` | Introduction to Binary Search Tree | 🟢 | | |
-| `14.1.2` | Search in a Binary Search Tree | 🟢 | | |
-| `14.1.3` | Find Min/Max in BST | 🟡 | | |
-| `14.2.1` | Ceil in a Binary Search Tree | 🟢 | | |
-| `14.2.2` | Floor in a Binary Search Tree | 🟢 | | |
-| `14.2.3` | Insert a given Node in Binary Search Tree | 🟢 | | |
-| `14.2.4` | Delete a Node in Binary Search Tree | 🟡 | | |
+| `13.3.14` | Flatten Binary Tree to LinkedList | 🔴 | ✅ | ✅ |
+| `14.1.1` | Introduction to Binary Search Tree | 🟢 | ✅ | |
+| `14.1.2` | Search in a Binary Search Tree | 🟢 | ✅ | |
+| `14.1.3` | Find Min/Max in BST | 🟡 | ✅ | |
+| `14.2.1` | Ceil in a Binary Search Tree | 🟢 | ✅ | |
+| `14.2.2` | Floor in a Binary Search Tree | 🟢 | ✅ | |
+| `14.2.3` | Insert a given Node in Binary Search Tree | 🟢 | ✅ | ✅ |
+| `14.2.4` | Delete a Node in Binary Search Tree | 🟡 | ✅ | ✅ |
 | `14.2.6` | Check if a tree is a BST or BT | 🟡 | | |
 | `14.2.7` | LCA in Binary Search Tree | 🟡 | | |
 | `2.2.2` | Recursive Bubble Sort | 🟢 | | |

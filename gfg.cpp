@@ -39,35 +39,23 @@ public:
     }
 };
 
-void help(Node *root, int r, int c, map<int, pair<int, int>> &mp)
-{
-    if (!root)
-        return;
-
-    if (mp.find(c) == mp.end() || r >= mp[c].first)
-    {
-        mp[c].first = r;
-        mp[c].second = root->data;
-    }
-
-    help(root->left, r + 1, c - 1, mp);
-    help(root->right, r + 1, c + 1, mp);
-}
-
-vector<int> bottomView(Node *root)
+int findMaxFork(Node *root, int k)
 {
     // code here
-    map<int, pair<int, int>> mp;
-    int r = 0, c = 0;
+    int ans = INT_MIN;
 
-    help(root, r, c, mp);
+    while (root)
+    {
+        if (root->data <= k)
+        {
+            ans = max(ans, root->data);
+            root = root->right;
+        }
+        else
+            root = root->left;
+    }
 
-    vector<int> vct;
-
-    for (const auto &col : mp)
-        vct.push_back(col.second.second);
-
-    return vct;
+    return ans;
 }
 
 int main()
@@ -86,13 +74,6 @@ int main()
     root->left->right->right = new Node(9);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
-
-    map<int, map<int, multiset<int>>> mp;
-    mp[1] = -1;
-    mp[2] = -2;
-
-    for (auto it : mp)
-        cout << it.first << it.second << endl;
 
     return 0;
 }

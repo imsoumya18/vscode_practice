@@ -36,35 +36,58 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int search(vector<int> &inorder, int start, int end, int target)
+TreeNode *helper(TreeNode *root)
 {
-    for (int i = 0; i < inorder.size(); i++)
-        if (inorder[i] == target)
-            return i;
+    if (!root->left)
+        return root->right;
+
+    if (!root->right)
+        return root->left;
+
+    TreeNode *lNode = root->left;
+    TreeNode *rNode = root->right;
+
+    while (lNode->right)
+        lNode = lNode->right;
+
+    lNode->right = rNode;
+
+    return root->left;
 }
 
-TreeNode *realBuildTree(vector<int> &preorder, vector<int> &inorder, int start, int end)
+TreeNode *deleteNode(TreeNode *root, int key)
 {
-    if (start > end)
-        return nullptr;
+    if (!root)
+        return root;
 
-    int idx = 0;
-    int curr = preorder[idx];
-    idx++;
-    TreeNode *node = new TreeNode(curr);
+    if (root->val == key)
+        return helper(root);
 
-    int pos = search(inorder, start, end, curr);
-    node->left = realBuildTree(preorder, inorder, start, pos - 1);
-    node->right = realBuildTree(preorder, inorder, pos + 1, end);
+    TreeNode *curr = root;
 
-    return node;
-}
+    while (curr)
+        if (key < curr->val)
+        {
+            if (curr->left && curr->left->val == key)
+            {
+                curr->left = helper(curr->left);
+                break;
+            }
+            else
+                curr = curr->left;
+        }
+        else
+        {
+            if (curr->right && curr->right->val == key)
+            {
+                curr->right = helper(curr->right);
+                break;
+            }
+            else
+                curr = curr->right;
+        }
 
-TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
-{
-    int start = 0, end = preorder.size();
-
-    return realBuildTree(preorder, inorder, start, end);
+    return root;
 }
 
 int main()
