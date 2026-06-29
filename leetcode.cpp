@@ -36,74 +36,53 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-void selectin_sort(vector<int> &vct)
+bool possible(vector<int> &weights, int max_days, int capacity)
 {
-    int n = vct.size();
+    int days_cnt = 1, curr_capacity = 0;
 
-    for (int i = 0; i < n - 1; i++)
-        for (int j = i + 1; j < n; j++)
-            if (vct[i] > vct[j])
-                swap(vct[i], vct[j]);
-}
-
-void bubble_sort(vector<int> &vct)
-{
-    int n = vct.size();
-
-    for (int i = 0; i < n - 1; i++)
-        for (int j = 0; j < n - i - 1; j++)
-            if (vct[j + 1] < vct[j])
-                swap(vct[j], vct[j + 1]);
-}
-
-void insertion_sort(vector<int> &vct)
-{
-    int n = vct.size();
-
-    for (int i = 1; i < n; i++)
+    for (auto w : weights)
     {
-        int tmp = vct[i];
-        int j = i - 1;
-
-        while (j >= 0 && vct[j] > tmp)
+        if (curr_capacity + w > capacity)
         {
-            vct[j + 1] = vct[j];
-            j--;
+            days_cnt++;
+            curr_capacity = w;
         }
+        else
+            curr_capacity += w;
 
-        vct[j + 1] = tmp;
+        if (days_cnt > max_days)
+            return false;
     }
+
+    return true;
 }
 
-void recursive_bubble_sort(vector<int> &vct, int n)
+int shipWithinDays(vector<int> &weights, int days)
 {
-    if (n <= 1)
-        return;
+    int l = INT_MIN, r = 0;
 
-    for (int i = 0; i < n - 1; i++)
-        if (vct[i] > vct[i + 1])
-            swap(vct[i], vct[i + 1]);
-
-    recursive_bubble_sort(vct, n - 1);
-}
-
-void recursive_insertion_sort(vector<int> &vct, int n)
-{
-    if (n == 1)
-        return;
-
-    recursive_insertion_sort(vct, n - 1);
-
-    int tmp = vct[n - 1];
-    int i = n - 2;
-
-    while (i >= 0 && vct[i] > tmp)
+    for (auto w : weights)
     {
-        vct[i + 1] = vct[i];
-        i--;
+        l = max(l, w);
+        r += w;
     }
 
-    vct[i + 1] = tmp;
+    int ans = -1;
+
+    while (l <= r)
+    {
+        int mid = l + (r - l) / 2;
+
+        if (possible(weights, days, mid))
+        {
+            ans = mid;
+            r = mid - 1;
+        }
+        else
+            l = mid + 1;
+    }
+
+    return ans;
 }
 
 int main()

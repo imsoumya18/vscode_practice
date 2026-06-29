@@ -39,23 +39,74 @@ public:
     }
 };
 
-int findMaxFork(Node *root, int k)
+int minTime(Node *root, int target)
 {
     // code here
-    int ans = INT_MIN;
+    map<Node *, Node *> parent;
+    queue<Node *> q;
+    q.push(root);
+    Node *targetNode;
 
-    while (root)
+    while (!q.empty())
     {
-        if (root->data <= k)
+        Node *n = q.front();
+        q.pop();
+
+        if (n->data == target)
+            targetNode = n;
+
+        if (n->left)
         {
-            ans = max(ans, root->data);
-            root = root->right;
+            parent[n->left] = n;
+            q.push(n->left);
         }
-        else
-            root = root->left;
+
+        if (n->right)
+        {
+            parent[n->right] = n;
+            q.push(n->right);
+        }
     }
 
-    return ans;
+    int t = 0;
+    queue<Node *> bfs;
+    set<Node *> vis;
+    bfs.push(targetNode);
+    vis.insert(targetNode);
+
+    while (!bfs.empty())
+    {
+        int sz = bfs.size();
+
+        while (sz--)
+        {
+            Node *n = bfs.front();
+            bfs.pop();
+
+            if (n->left && !vis.count(n->left))
+            {
+                bfs.push(n->left);
+                vis.insert(n->left);
+            }
+
+            if (n->right && !vis.count(n->right))
+            {
+                bfs.push(n->right);
+                vis.insert(n->right);
+            }
+
+            if (parent[n] && !vis.count(parent[n]))
+            {
+                bfs.push(parent[n]);
+                vis.insert(parent[n]);
+            }
+        }
+
+        if (!bfs.empty())
+            t++;
+    }
+
+    return t;
 }
 
 int main()

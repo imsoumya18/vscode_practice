@@ -8,11 +8,11 @@
 | &nbsp; Week &nbsp; | &nbsp;&nbsp;&nbsp; 🆕 New Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 🔄 Revision Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 📊 Total Problems &nbsp;&nbsp;&nbsp; |
 |:------:|:---------------------:|:------------------------:|:---------------------:|
 | 🔄 **1** | 🔄 &nbsp; 10 / 12 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 47 / 49 |
-| 🔄 **2** | 🔄 &nbsp; 6 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 43 / 47 |
-| 🔄 **3** | 🔄 &nbsp; 4 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 47 / 50 |
-| 🔄 **4** | 🔄 &nbsp; 3 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 44 / 48 |
+| 🔄 **2** | 🔄 &nbsp; 7 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 44 / 47 |
+| 🔄 **3** | 🔄 &nbsp; 5 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 48 / 50 |
+| 🔄 **4** | 🔄 &nbsp; 4 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 45 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
-| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 39 / 45 | 🔄 &nbsp; 39 / 60 |
+| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 43 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 34 / 152 | 🔄 &nbsp; 240 / 428 | 🔄 &nbsp; 274 / 580 |
+| **Total** | 🔄 &nbsp; 37 / 152 | 🔄 &nbsp; 244 / 428 | 🔄 &nbsp; 281 / 580 |
 
-*Last updated: 2026-06-29*
+*Last updated: 2026-06-30*
 
 <!-- PROGRESS_END -->
 
@@ -125,7 +125,7 @@
 | `1.3.2` | Java Collections | 🟢 | | |
 | `2.2.2` | Recursive Bubble Sort | 🟢 | ✅ | |
 | `2.2.3` | Recursive Insertion Sort | 🟢 | ✅ | |
-| `13.3.6` | Minimum time taken to BURN the Binary Tree from a Node | 🔴 | | |
+| `13.3.6` | Minimum time taken to BURN the Binary Tree from a Node | 🔴 | ✅ | ✅ |
 | `15.5.6` | Number of operations to make network connected | 🟡 | | |
 | `16.8.7` | Partition Array for Maximum Sum (DP-54) | 🔴 | | |
 
@@ -186,7 +186,7 @@
 | `3.2.12` | Rotate Matrix by 90 degrees | 🟡 | ✅ | |
 | `3.3.4` | 4-Sum Problem | 🔴 | ✅ | |
 | `5.2.7` | Sum of Beauty of all substring | 🟡 | ✅ | |
-| `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | | |
+| `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | ✅ | |
 | `15.5.7` | Most stones removed with same rows or columns | 🟡 | | |
 | `18.1.5` | Z-Function | 🟢 | | |
 
@@ -252,7 +252,7 @@
 | `4.2.4` | Minimum days to make M bouquets | 🔴 | ✅ | |
 | `4.2.6` | Capacity to Ship Packages within D Days | 🔴 | ✅ | |
 | `4.2.7` | Kth Missing Positive Number | 🟢 | ✅ | |
-| `13.3.8` | Requirements needed to construct a Unique Binary Tree Theory | 🟡 | | |
+| `13.3.8` | Requirements needed to construct a Unique Binary Tree Theory | 🟡 | ✅ | |
 | `15.5.8` | Accounts merge | 🔴 | | |
 | `18.1.6` | KMP Algorithm / LPS Array | 🔴 | | |
 
@@ -448,12 +448,12 @@
 | `14.2.7` | LCA in Binary Search Tree | 🟡 | ✅ | ✅ |
 | `2.2.2` | Recursive Bubble Sort | 🟢 | ✅ | ✅ |
 | `2.2.3` | Recursive Insertion Sort | 🟢 | ✅ | ✅ |
-| `13.3.6` | Minimum time taken to BURN the Binary Tree from a Node | 🔴 | | |
+| `13.3.6` | Minimum time taken to BURN the Binary Tree from a Node | 🔴 | ✅ | ✅ |
 | `15.5.6` | Number of operations to make network connected | 🟡 | | |
 | `16.8.7` | Partition Array for Maximum Sum (DP-54) | 🔴 | | |
-| `4.2.4` | Minimum days to make M bouquets | 🔴 | | |
-| `4.2.6` | Capacity to Ship Packages within D Days | 🔴 | | |
-| `4.2.7` | Kth Missing Positive Number | 🟢 | | |
+| `4.2.4` | Minimum days to make M bouquets | 🔴 | ✅ | |
+| `4.2.6` | Capacity to Ship Packages within D Days | 🔴 | ✅ | |
+| `4.2.7` | Kth Missing Positive Number | 🟢 | ✅ | ✅ |
 
 ---
 
