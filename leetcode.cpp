@@ -36,58 +36,74 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode *helper(TreeNode *root)
+void selectin_sort(vector<int> &vct)
 {
-    if (!root->left)
-        return root->right;
+    int n = vct.size();
 
-    if (!root->right)
-        return root->left;
-
-    TreeNode *lNode = root->left;
-    TreeNode *rNode = root->right;
-
-    while (lNode->right)
-        lNode = lNode->right;
-
-    lNode->right = rNode;
-
-    return root->left;
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i + 1; j < n; j++)
+            if (vct[i] > vct[j])
+                swap(vct[i], vct[j]);
 }
 
-TreeNode *deleteNode(TreeNode *root, int key)
+void bubble_sort(vector<int> &vct)
 {
-    if (!root)
-        return root;
+    int n = vct.size();
 
-    if (root->val == key)
-        return helper(root);
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (vct[j + 1] < vct[j])
+                swap(vct[j], vct[j + 1]);
+}
 
-    TreeNode *curr = root;
+void insertion_sort(vector<int> &vct)
+{
+    int n = vct.size();
 
-    while (curr)
-        if (key < curr->val)
+    for (int i = 1; i < n; i++)
+    {
+        int tmp = vct[i];
+        int j = i - 1;
+
+        while (j >= 0 && vct[j] > tmp)
         {
-            if (curr->left && curr->left->val == key)
-            {
-                curr->left = helper(curr->left);
-                break;
-            }
-            else
-                curr = curr->left;
-        }
-        else
-        {
-            if (curr->right && curr->right->val == key)
-            {
-                curr->right = helper(curr->right);
-                break;
-            }
-            else
-                curr = curr->right;
+            vct[j + 1] = vct[j];
+            j--;
         }
 
-    return root;
+        vct[j + 1] = tmp;
+    }
+}
+
+void recursive_bubble_sort(vector<int> &vct, int n)
+{
+    if (n <= 1)
+        return;
+
+    for (int i = 0; i < n - 1; i++)
+        if (vct[i] > vct[i + 1])
+            swap(vct[i], vct[i + 1]);
+
+    recursive_bubble_sort(vct, n - 1);
+}
+
+void recursive_insertion_sort(vector<int> &vct, int n)
+{
+    if (n == 1)
+        return;
+
+    recursive_insertion_sort(vct, n - 1);
+
+    int tmp = vct[n - 1];
+    int i = n - 2;
+
+    while (i >= 0 && vct[i] > tmp)
+    {
+        vct[i + 1] = vct[i];
+        i--;
+    }
+
+    vct[i + 1] = tmp;
 }
 
 int main()
@@ -96,6 +112,14 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    vector<int> vct{9, 8, 7, 6, 5, 4, 3, 2, 1};
+
+    print(vct);
+
+    recursive_insertion_sort(vct, vct.size());
+
+    print(vct);
 
     return 0;
 }
