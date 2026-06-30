@@ -39,74 +39,37 @@ public:
     }
 };
 
-int minTime(Node *root, int target)
+bool check(vector<int> &arr, int idx, int n, int sum, int k)
 {
-    // code here
-    map<Node *, Node *> parent;
-    queue<Node *> q;
-    q.push(root);
-    Node *targetNode;
+    if (sum < 0)
+        return false;
 
-    while (!q.empty())
+    if (idx == n)
     {
-        Node *n = q.front();
-        q.pop();
+        if (sum == 0)
+            return true;
 
-        if (n->data == target)
-            targetNode = n;
-
-        if (n->left)
-        {
-            parent[n->left] = n;
-            q.push(n->left);
-        }
-
-        if (n->right)
-        {
-            parent[n->right] = n;
-            q.push(n->right);
-        }
+        return false;
     }
 
-    int t = 0;
-    queue<Node *> bfs;
-    set<Node *> vis;
-    bfs.push(targetNode);
-    vis.insert(targetNode);
+    if (sum == 0)
+        return true;
 
-    while (!bfs.empty())
-    {
-        int sz = bfs.size();
+    if (check(arr, idx + 1, n, sum, k))
+        return true;
 
-        while (sz--)
-        {
-            Node *n = bfs.front();
-            bfs.pop();
+    if (check(arr, idx + 1, n, sum - arr[idx], k))
+        return true;
 
-            if (n->left && !vis.count(n->left))
-            {
-                bfs.push(n->left);
-                vis.insert(n->left);
-            }
+    return false;
+}
 
-            if (n->right && !vis.count(n->right))
-            {
-                bfs.push(n->right);
-                vis.insert(n->right);
-            }
+bool checkSubsequenceSum(vector<int> &arr, int k)
+{
+    // Code here
+    int idx = 0, n = arr.size(), sum = k;
 
-            if (parent[n] && !vis.count(parent[n]))
-            {
-                bfs.push(parent[n]);
-                vis.insert(parent[n]);
-            }
-        }
-
-        if (!bfs.empty())
-            t++;
-    }
-
-    return t;
+    return check(arr, idx, n, sum, k);
 }
 
 int main()
@@ -125,6 +88,11 @@ int main()
     root->left->right->right = new Node(9);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
+
+    vector<int> arr{2, 3, 5, 7, 9};
+    int k = 100;
+
+    cout << checkSubsequenceSum(arr, k) << endl;
 
     return 0;
 }

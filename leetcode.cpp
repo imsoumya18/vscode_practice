@@ -36,50 +36,28 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-bool possible(vector<int> &weights, int max_days, int capacity)
+int numSubseq(vector<int> &nums, int target)
 {
-    int days_cnt = 1, curr_capacity = 0;
+    sort(nums.begin(), nums.end());
+    int n = nums.size();
+    const int mod = 1e9 + 7;
+    vector<int> power(n + 1, 1);
 
-    for (auto w : weights)
-    {
-        if (curr_capacity + w > capacity)
-        {
-            days_cnt++;
-            curr_capacity = w;
-        }
-        else
-            curr_capacity += w;
+    for (int i = 1; i <= n; i++)
+        power[i] = (2LL * power[i - 1]) % mod;
 
-        if (days_cnt > max_days)
-            return false;
-    }
-
-    return true;
-}
-
-int shipWithinDays(vector<int> &weights, int days)
-{
-    int l = INT_MIN, r = 0;
-
-    for (auto w : weights)
-    {
-        l = max(l, w);
-        r += w;
-    }
-
-    int ans = -1;
+    int ans = 0;
+    int l = 0, r = n - 1;
 
     while (l <= r)
     {
-        int mid = l + (r - l) / 2;
-
-        if (possible(weights, days, mid))
+        if (nums[l] + nums[r] <= target)
         {
-            ans = mid;
-            r = mid - 1;
+            ans = (ans + power[r - l]) % mod;
+            l++;
         }
         else
-            l = mid + 1;
+            r--;
     }
 
     return ans;
@@ -92,13 +70,10 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> vct{9, 8, 7, 6, 5, 4, 3, 2, 1};
+    vector<int> nums{3, 3, 6, 8};
+    int target = 10;
 
-    print(vct);
-
-    recursive_insertion_sort(vct, vct.size());
-
-    print(vct);
+    cout << numSubseq(nums, target) << endl;
 
     return 0;
 }

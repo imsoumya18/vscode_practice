@@ -12,7 +12,7 @@
 | 🔄 **3** | 🔄 &nbsp; 5 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 48 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 45 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
-| 🔄 **6** | 0 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 43 / 60 |
+| 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
 | **7** | 0 / 14 | 0 / 47 | 0 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 37 / 152 | 🔄 &nbsp; 244 / 428 | 🔄 &nbsp; 281 / 580 |
+| **Total** | 🔄 &nbsp; 43 / 152 | 🔄 &nbsp; 244 / 428 | 🔄 &nbsp; 287 / 580 |
 
-*Last updated: 2026-06-30*
+*Last updated: 2026-07-01*
 
 <!-- PROGRESS_END -->
 
@@ -389,12 +389,12 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `11.2.1` | Kth largest element in an array [use priority queue] | 🟢 | | |
-| `11.2.2` | Kth smallest element in an array [use priority queue] | 🟢 | | |
-| `11.2.3` | Sort K sorted array | 🟢 | | |
-| `7.2.1` | Generate all binary strings | 🟡 | | |
-| `7.2.4` | Learn All Patterns of Subsequences (Theory) | 🟡 | | |
-| `7.2.5` | Count all subsequences with sum K | 🔴 | | |
+| `11.2.1` | Kth largest element in an array [use priority queue] | 🟢 | ✅ | ✅ |
+| `11.2.2` | Kth smallest element in an array [use priority queue] | 🟢 | ✅ | ✅ |
+| `11.2.3` | Sort K sorted array | 🟢 | ✅ | ✅ |
+| `7.2.1` | Generate all binary strings | 🟡 | ✅ | ✅ |
+| `7.2.4` | Learn All Patterns of Subsequences (Theory) | 🟡 | ✅ | ✅ |
+| `7.2.5` | Count all subsequences with sum K | 🔴 | ✅ | ✅ |
 | `8.3.1` | Print Prime Factors of a Number | 🟢 | | |
 | `8.3.2` | All Divisors of a Number | 🟢 | | |
 | `8.3.3` | Sieve of Eratosthenes | 🟡 | | |
