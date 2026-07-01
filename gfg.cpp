@@ -39,37 +39,41 @@ public:
     }
 };
 
-bool check(vector<int> &arr, int idx, int n, int sum, int k)
+bool dfs(int node, int parent, vector<vector<int>> &adj, vector<int> &vis)
 {
-    if (sum < 0)
-        return false;
+    vis[node] = 1;
 
-    if (idx == n)
-    {
-        if (sum == 0)
+    for (auto it : adj[node])
+        if (!vis[it])
+        {
+            if (dfs(it, node, adj, vis))
+                return true;
+        }
+        else if (it != parent)
             return true;
-
-        return false;
-    }
-
-    if (sum == 0)
-        return true;
-
-    if (check(arr, idx + 1, n, sum, k))
-        return true;
-
-    if (check(arr, idx + 1, n, sum - arr[idx], k))
-        return true;
 
     return false;
 }
 
-bool checkSubsequenceSum(vector<int> &arr, int k)
+bool isCycle(int V, vector<vector<int>> &edges)
 {
     // Code here
-    int idx = 0, n = arr.size(), sum = k;
+    vector<vector<int>> adj(V);
 
-    return check(arr, idx, n, sum, k);
+    for (auto e : edges)
+    {
+        adj[e[0]].push_back(e[1]);
+        adj[e[1]].push_back(e[0]);
+    }
+
+    vector<int> vis(V, 0);
+
+    for (int node = 0; node < V; node++)
+        if (!vis[node])
+            if (dfs(node, -1, adj, vis))
+                return true;
+
+    return false;
 }
 
 int main()

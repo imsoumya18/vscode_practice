@@ -36,31 +36,67 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int numSubseq(vector<int> &nums, int target)
+void solve(vector<vector<char>> &board)
 {
-    sort(nums.begin(), nums.end());
-    int n = nums.size();
-    const int mod = 1e9 + 7;
-    vector<int> power(n + 1, 1);
+    int m = board.size(), n = board[0].size();
+    queue<pair<int, int>> q;
 
-    for (int i = 1; i <= n; i++)
-        power[i] = (2LL * power[i - 1]) % mod;
-
-    int ans = 0;
-    int l = 0, r = n - 1;
-
-    while (l <= r)
+    for (int i = 0; i < m; i++)
     {
-        if (nums[l] + nums[r] <= target)
+        if (board[i][0] == 'O')
         {
-            ans = (ans + power[r - l]) % mod;
-            l++;
+            board[i][0] = '1';
+            q.push({i, 0});
         }
-        else
-            r--;
+
+        if (board[i][n - 1] == 'O')
+        {
+            board[i][n - 1] = '1';
+            q.push({i, n - 1});
+        }
     }
 
-    return ans;
+    for (int i = 1; i < n - 1; i++)
+    {
+        if (board[0][i] == 'O')
+        {
+            board[0][i] = '1';
+            q.push({0, i});
+        }
+
+        if (board[m - 1][i] == 'O')
+        {
+            board[m - 1][i] = '1';
+            q.push({m - 1, i});
+        }
+    }
+
+    vector<int> drow{-1, 0, 1, 0}, dcol{0, 1, 0, -1};
+
+    while (!q.empty())
+    {
+        int r = q.front().first;
+        int c = q.front().second;
+        q.pop();
+
+        for (int i = 0; i < 4; i++)
+        {
+            int nrow = r + drow[i], ncol = c + dcol[i];
+
+            if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && board[nrow][ncol] == 'O')
+            {
+                board[nrow][ncol] = '1';
+                q.push({nrow, ncol});
+            }
+        }
+    }
+
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            if (board[i][j] == '1')
+                board[i][j] = 'O';
+            else if (board[i][j] == 'O')
+                board[i][j] = 'X';
 }
 
 int main()
@@ -70,10 +106,14 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    vector<int> nums{3, 3, 6, 8};
-    int target = 10;
+    vector<vector<int>> image{{0, 0, 0}, {0, 0, 0}};
+    int sr = 0, sc = 0, color = 0;
 
-    cout << numSubseq(nums, target) << endl;
+    print(image);
+
+    cout << endl;
+
+    print(floodFill(image, sr, sc, color));
 
     return 0;
 }

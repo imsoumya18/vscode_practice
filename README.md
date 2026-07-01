@@ -13,7 +13,7 @@
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 45 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
-| **7** | 0 / 14 | 0 / 47 | 0 / 61 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 13 / 47 | 🔄 &nbsp; 13 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 43 / 152 | 🔄 &nbsp; 244 / 428 | 🔄 &nbsp; 287 / 580 |
+| **Total** | 🔄 &nbsp; 43 / 152 | 🔄 &nbsp; 257 / 428 | 🔄 &nbsp; 300 / 580 |
 
-*Last updated: 2026-07-01*
+*Last updated: 2026-07-02*
 
 <!-- PROGRESS_END -->
 
@@ -486,19 +486,19 @@
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `14.2.8` | Construct a BST from a preorder traversal | 🟡 | | |
-| `15.1.1` | Graph and Types | 🟢 | | |
-| `15.1.2` | Graph Representation - C++ | 🟢 | | |
-| `15.1.5` | BFS | 🟡 | | |
-| `15.1.6` | DFS | 🔴 | | |
-| `15.2.1` | Number of provinces (leetcode) | 🟡 | | |
-| `15.2.2` | Connected Components Problem in Matrix | 🔴 | | |
-| `15.2.3` | Rotten Oranges | 🟡 | | |
-| `15.2.4` | Flood fill | 🔴 | | |
-| `15.2.5` | Cycle Detection in Undirected Graph (bfs) | 🔴 | | |
-| `15.2.6` | Cycle Detection in Undirected Graph (dfs) | 🔴 | | |
-| `15.2.7` | 0/1 Matrix (Bfs Problem) | 🟡 | | |
-| `15.2.8` | Surrounded Regions (dfs) | 🔴 | | |
-| `15.2.9` | Number of Enclaves [flood fill implementation] | 🔴 | | |
+| `15.1.1` | Graph and Types | 🟢 | ✅ | |
+| `15.1.2` | Graph Representation - C++ | 🟢 | ✅ | |
+| `15.1.5` | BFS | 🟡 | ✅ | |
+| `15.1.6` | DFS | 🔴 | ✅ | |
+| `15.2.1` | Number of provinces (leetcode) | 🟡 | ✅ | |
+| `15.2.2` | Connected Components Problem in Matrix | 🔴 | ✅ | |
+| `15.2.3` | Rotten Oranges | 🟡 | ✅ | ✅ |
+| `15.2.4` | Flood fill | 🔴 | ✅ | |
+| `15.2.5` | Cycle Detection in Undirected Graph (bfs) | 🔴 | ✅ | ✅ |
+| `15.2.6` | Cycle Detection in Undirected Graph (dfs) | 🔴 | ✅ | ✅ |
+| `15.2.7` | 0/1 Matrix (Bfs Problem) | 🟡 | ✅ | ✅ |
+| `15.2.8` | Surrounded Regions (dfs) | 🔴 | ✅ | |
+| `15.2.9` | Number of Enclaves [flood fill implementation] | 🔴 | ✅ | |
 | `15.2.10` | Word ladder - 1 | 🔴 | | |
 | `15.2.11` | Word ladder - 2 | 🔴 | | |
 | `15.3.1` | Topo Sort | 🔴 | | |
