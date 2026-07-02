@@ -17,7 +17,7 @@ def count_problems_by_section(section_content):
         tuple: (total_count, solved_count, easy, medium, hard)
     """
     total_problems = len(re.findall(r'\|\s*`\d+\.\d+\.\d+`\s*\|', section_content))
-    solved_problems = len(re.findall(r'\|\s*✅\s*\|', section_content))
+    solved_problems = len(re.findall(r'\|\s*[✅❌]\s*\|', section_content))
     easy   = len(re.findall(r'\|\s*🟢\s*\|', section_content))
     medium = len(re.findall(r'\|\s*🟡\s*\|', section_content))
     hard   = len(re.findall(r'\|\s*🔴\s*\|', section_content))
