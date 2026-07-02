@@ -16,7 +16,7 @@ void print(vector<int> vct)
     cout << endl;
 }
 
-void print(vector<vector<int>> vct)
+void print(vector<vector<string>> vct)
 {
     for (auto i : vct)
     {
@@ -36,67 +36,115 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-void solve(vector<vector<char>> &board)
+int ladderLength(string beginWord, string endWord, vector<string> &wordList)
 {
-    int m = board.size(), n = board[0].size();
-    queue<pair<int, int>> q;
-
-    for (int i = 0; i < m; i++)
-    {
-        if (board[i][0] == 'O')
-        {
-            board[i][0] = '1';
-            q.push({i, 0});
-        }
-
-        if (board[i][n - 1] == 'O')
-        {
-            board[i][n - 1] = '1';
-            q.push({i, n - 1});
-        }
-    }
-
-    for (int i = 1; i < n - 1; i++)
-    {
-        if (board[0][i] == 'O')
-        {
-            board[0][i] = '1';
-            q.push({0, i});
-        }
-
-        if (board[m - 1][i] == 'O')
-        {
-            board[m - 1][i] = '1';
-            q.push({m - 1, i});
-        }
-    }
-
-    vector<int> drow{-1, 0, 1, 0}, dcol{0, 1, 0, -1};
+    int n = beginWord.size();
+    set<string> st(wordList.begin(), wordList.end());
+    queue<pair<string, int>> q;
+    q.push({beginWord, 1});
 
     while (!q.empty())
     {
-        int r = q.front().first;
-        int c = q.front().second;
+        string currWord = q.front().first;
+        int ladder = q.front().second;
         q.pop();
 
-        for (int i = 0; i < 4; i++)
-        {
-            int nrow = r + drow[i], ncol = c + dcol[i];
+        for (int pos = 0; pos < n; pos++)
+            for (char c = 'a'; c <= 'z'; c++)
+                if (c != currWord[pos])
+                {
+                    string nextWord = currWord;
+                    nextWord[pos] = c;
 
-            if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && board[nrow][ncol] == 'O')
-            {
-                board[nrow][ncol] = '1';
-                q.push({nrow, ncol});
-            }
+                    if (st.count(nextWord))
+                    {
+                        if (nextWord == endWord)
+                            return ladder + 1;
+
+                        q.push({nextWord, ladder + 1});
+                        st.erase(nextWord);
+                    }
+                }
+    }
+
+    return 0;
+}
+
+bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
+{
+    vector<vector<int>> adj(numCourses);
+    vector<int> indegree(numCourses, 0);
+
+    for (auto p : prerequisites)
+    {
+        adj[p[0]].push_back(p[1]);
+        indegree[p[1]]++;
+    }
+
+    queue<int> q;
+    vector<int> vct;
+
+    for (int i = 0; i < numCourses; i++)
+        if (indegree[i] == 0)
+            q.push(i);
+
+    while (!q.empty())
+    {
+        int node = q.front();
+        vct.push_back(node);
+        q.pop();
+
+        for (auto it : adj[node])
+        {
+            indegree[it]--;
+
+            if (indegree[it] == 0)
+                q.push(it);
         }
     }
 
-    for (int i = 0; i < m; i++)
-        for (int j = 0; j < n; j++)
-            if (board[i][j] == '1')
-                board[i][j] = 'O';
-            else if (board[i][j] == 'O')
-                board[i][j] = 'X';
+    return !(vct.size() == numCourses);
+}
+
+vector<int> eventualSafeNodes(vector<vector<int>> &graph)
+{
+    int n = graph.size();
+    vector<int> indegree(n, 0);
+    vector<vector<int>> adj(n);
+
+    for (int i = 0; i < n; i++)
+        for (auto it : graph[i])
+        {
+            adj[it].push_back(i);
+            indegree[i]++;
+        }
+
+    queue<int> q;
+
+    for (int i = 0; i < n; i++)
+        if (indegree[i] == 0)
+            q.push(i);
+
+    vector<int> vct;
+
+    while (!q.empty())
+    {
+        int node = q.front();
+        q.pop();
+        vct.push_back(node);
+
+        for (auto it : adj[node])
+        {
+            indegree[it]--;
+
+            if (indegree[it] == 0)
+                q.push(it);
+        }
+    }
+
+    sort(vct.begin(), vct.end());
+
+    return vct;
 }
 
 int main()
@@ -105,15 +153,10 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    vector<vector<int>> graph{{1, 2}, {2, 3}, {5}, {0}, {5}, {}, {}};
 
-    vector<vector<int>> image{{0, 0, 0}, {0, 0, 0}};
-    int sr = 0, sc = 0, color = 0;
-
-    print(image);
-
-    cout << endl;
-
-    print(floodFill(image, sr, sc, color));
+    for (auto it : eventualSafeNodes(graph))
+        cout << it << " ";
 
     return 0;
 }

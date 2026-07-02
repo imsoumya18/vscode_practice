@@ -13,19 +13,19 @@
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | 🔄 &nbsp; 41 / 42 | 🔄 &nbsp; 45 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
-| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 13 / 47 | 🔄 &nbsp; 13 / 61 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 22 / 47 | 🔄 &nbsp; 22 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
-| **11** | 0 / 11 | 0 / 10 | 0 / 21 |
+| 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
 | **13** | 0 / 6 | 0 / 9 | 0 / 15 |
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 43 / 152 | 🔄 &nbsp; 257 / 428 | 🔄 &nbsp; 300 / 580 |
+| **Total** | 🔄 &nbsp; 44 / 152 | 🔄 &nbsp; 266 / 428 | 🔄 &nbsp; 310 / 580 |
 
-*Last updated: 2026-07-02*
+*Last updated: 2026-07-03*
 
 <!-- PROGRESS_END -->
 
@@ -499,15 +499,15 @@
 | `15.2.7` | 0/1 Matrix (Bfs Problem) | 🟡 | ✅ | ✅ |
 | `15.2.8` | Surrounded Regions (dfs) | 🔴 | ✅ | |
 | `15.2.9` | Number of Enclaves [flood fill implementation] | 🔴 | ✅ | |
-| `15.2.10` | Word ladder - 1 | 🔴 | | |
-| `15.2.11` | Word ladder - 2 | 🔴 | | |
-| `15.3.1` | Topo Sort | 🔴 | | |
-| `15.3.2` | Kahn's Algorithm | 🔴 | | |
-| `15.3.3` | Cycle Detection in Directed Graph (BFS) | 🔴 | | |
-| `15.3.4` | Course Schedule - I | 🔴 | | |
-| `15.3.5` | Course Schedule - II | 🔴 | | |
-| `15.4.1` | Shortest Path in UG with unit weights | 🔴 | | |
-| `15.4.2` | Shortest Path in DAG | 🔴 | | |
+| `15.2.10` | Word ladder - 1 | 🔴 | ✅ | ✅ |
+| `15.2.11` | Word ladder - 2 | 🔴 | ✅ | ✅ |
+| `15.3.1` | Topo Sort | 🔴 | ✅ | ✅ |
+| `15.3.2` | Kahn's Algorithm | 🔴 | ✅ | ✅ |
+| `15.3.3` | Cycle Detection in Directed Graph (BFS) | 🔴 | ✅ | ✅ |
+| `15.3.4` | Course Schedule - I | 🔴 | ✅ | ✅ |
+| `15.3.5` | Course Schedule - II | 🔴 | ✅ | ✅ |
+| `15.4.1` | Shortest Path in UG with unit weights | 🔴 | ✅ | ✅ |
+| `15.4.2` | Shortest Path in DAG | 🔴 | ✅ | ✅ |
 | `15.4.3` | Dijkstra's Algorithm | 🔴 | | |
 | `15.4.4` | Why priority Queue is used in Dijkstra's Algorithm | 🟡 | | |
 | `15.4.5` | Shortest path in a binary maze | 🟡 | | |
@@ -705,7 +705,7 @@
 | `16.4.10` | Unbounded Knapsack (DP-23) | 🔴 | | |
 | `18.1.1` | Minimum bracket reversals to balance expression | 🟡 | | |
 | `18.1.2` | Count and Say (Look and Say Sequence) | 🟡 | | |
-| `15.3.6` | Find eventual safe states | 🔴 | | |
+| `15.3.6` | Find eventual safe states | 🔴 | ✅ | ✅ |
 | `16.4.11` | Rod Cutting Problem (DP-24) | 🔴 | | |
 
 ### 🔄 Revision

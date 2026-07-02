@@ -39,41 +39,55 @@ public:
     }
 };
 
-bool dfs(int node, int parent, vector<vector<int>> &adj, vector<int> &vis)
+void dfs(int node, vector<int> &vis, vector<vector<pair<int, int>>> &adj, stack<int> &st)
 {
     vis[node] = 1;
 
     for (auto it : adj[node])
-        if (!vis[it])
-        {
-            if (dfs(it, node, adj, vis))
-                return true;
-        }
-        else if (it != parent)
-            return true;
+        if (!vis[it.first])
+            dfs(it.first, vis, adj, st);
 
-    return false;
+    st.push(node);
 }
 
-bool isCycle(int V, vector<vector<int>> &edges)
+vector<int> shortestPath(int V, int E, vector<vector<int>> &edges)
 {
-    // Code here
-    vector<vector<int>> adj(V);
-
-    for (auto e : edges)
-    {
-        adj[e[0]].push_back(e[1]);
-        adj[e[1]].push_back(e[0]);
-    }
-
+    // code here
+    vector<vector<pair<int, int>>> adj(V);
     vector<int> vis(V, 0);
 
-    for (int node = 0; node < V; node++)
-        if (!vis[node])
-            if (dfs(node, -1, adj, vis))
-                return true;
+    for (auto e : edges)
+        adj[e[0]].push_back({e[1], e[2]});
 
-    return false;
+    stack<int> st;
+
+    for (int i = 0; i < V; i++)
+        if (!vis[i])
+            dfs(i, vis, adj, st);
+
+    vector<int> dist(V, INT_MAX);
+    dist[0] = 0;
+
+    while (!st.empty())
+    {
+        int node = st.top();
+        st.pop();
+
+        if (dist[node] != INT_MAX)
+            for (auto it : adj[node])
+            {
+                int nd = it.first;
+                int d = it.second;
+
+                dist[nd] = min(dist[nd], dist[node] + d);
+            }
+    }
+
+    for (int i = 0; i < V; i++)
+        if (dist[i] == INT_MAX)
+            dist[i] = -1;
+
+    return dist;
 }
 
 int main()
