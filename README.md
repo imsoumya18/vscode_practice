@@ -13,7 +13,7 @@
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | ✅ &nbsp; **42 / 42** | 🔄 &nbsp; 46 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
-| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 22 / 47 | 🔄 &nbsp; 22 / 61 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 24 / 47 | 🔄 &nbsp; 24 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
@@ -23,7 +23,7 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 44 / 152 | 🔄 &nbsp; 267 / 428 | 🔄 &nbsp; 311 / 580 |
+| **Total** | 🔄 &nbsp; 44 / 152 | 🔄 &nbsp; 269 / 428 | 🔄 &nbsp; 313 / 580 |
 
 *Last updated: 2026-07-03*
 
@@ -508,8 +508,8 @@
 | `15.3.5` | Course Schedule - II | 🔴 | ✅ | ✅ |
 | `15.4.1` | Shortest Path in UG with unit weights | 🔴 | ✅ | ✅ |
 | `15.4.2` | Shortest Path in DAG | 🔴 | ✅ | ✅ |
-| `15.4.3` | Dijkstra's Algorithm | 🔴 | | |
-| `15.4.4` | Why priority Queue is used in Dijkstra's Algorithm | 🟡 | | |
+| `15.4.3` | Dijkstra's Algorithm | 🔴 | ✅ | ✅ |
+| `15.4.4` | Why priority Queue is used in Dijkstra's Algorithm | 🟡 | ✅ | ✅ |
 | `15.4.5` | Shortest path in a binary maze | 🟡 | | |
 | `15.4.6` | Path with minimum effort | 🟡 | | |
 | `15.4.7` | Cheapest flights within k stops | 🔴 | | |

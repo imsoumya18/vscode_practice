@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <climits>
 #include <map>
+#include <set>
 using namespace std;
 
 void print(vector<int> vct)
@@ -39,48 +40,84 @@ public:
     }
 };
 
-void dfs(int node, vector<int> &vis, vector<vector<pair<int, int>>> &adj, stack<int> &st)
+vector<int> dijkstra_using_pq(int V, vector<vector<int>> &edges, int src)
 {
-    vis[node] = 1;
-
-    for (auto it : adj[node])
-        if (!vis[it.first])
-            dfs(it.first, vis, adj, st);
-
-    st.push(node);
-}
-
-vector<int> shortestPath(int V, int E, vector<vector<int>> &edges)
-{
-    // code here
+    // Code here
     vector<vector<pair<int, int>>> adj(V);
-    vector<int> vis(V, 0);
 
     for (auto e : edges)
+    {
         adj[e[0]].push_back({e[1], e[2]});
+        adj[e[1]].push_back({e[0], e[2]});
+    }
 
-    stack<int> st;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
+    vector<int> dist(V, INT_MAX);
+    dist[src] = 0;
+    minHeap.push({0, src});
+
+    while (!minHeap.empty())
+    {
+        int node = minHeap.top().second;
+        int dis = minHeap.top().first;
+        minHeap.pop();
+
+        for (auto it : adj[node])
+        {
+            int nd = it.first;
+            int d = it.second;
+
+            if (dis + d < dist[nd])
+            {
+                dist[nd] = dis + d;
+                minHeap.push({dist[nd], nd});
+            }
+        }
+    }
 
     for (int i = 0; i < V; i++)
-        if (!vis[i])
-            dfs(i, vis, adj, st);
+        if (dist[i] == INT_MAX)
+            dist[i] = -1;
 
+    return dist;
+}
+
+vector<int> dijkstra_using_set(int V, vector<vector<int>> &edges, int src)
+{
+    // Code here
+    vector<vector<pair<int, int>>> adj(V);
+
+    for (auto e : edges)
+    {
+        adj[e[0]].push_back({e[1], e[2]});
+        adj[e[1]].push_back({e[0], e[2]});
+    }
+
+    set<pair<int, int>> st;
     vector<int> dist(V, INT_MAX);
-    dist[0] = 0;
+    dist[src] = 0;
+    st.insert({0, src});
 
     while (!st.empty())
     {
-        int node = st.top();
-        st.pop();
+        int dis = st.begin()->first;
+        int node = st.begin()->second;
+        st.erase(st.begin());
 
-        if (dist[node] != INT_MAX)
-            for (auto it : adj[node])
+        for (auto it : adj[node])
+        {
+            int nd = it.first;
+            int d = it.second;
+
+            if (dist[node] + d < dist[nd])
             {
-                int nd = it.first;
-                int d = it.second;
+                if (dist[nd] != INT_MAX)
+                    st.erase({dist[nd], nd});
 
-                dist[nd] = min(dist[nd], dist[node] + d);
+                dist[nd] = dist[node] + d;
+                st.insert({dist[nd], nd});
             }
+        }
     }
 
     for (int i = 0; i < V; i++)
