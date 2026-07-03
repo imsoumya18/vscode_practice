@@ -8,12 +8,12 @@
 | &nbsp; Week &nbsp; | &nbsp;&nbsp;&nbsp; 🆕 New Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 🔄 Revision Problems &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 📊 Total Problems &nbsp;&nbsp;&nbsp; |
 |:------:|:---------------------:|:------------------------:|:---------------------:|
 | 🔄 **1** | 🔄 &nbsp; 10 / 12 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 47 / 49 |
-| 🔄 **2** | 🔄 &nbsp; 7 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 44 / 47 |
+| 🔄 **2** | 🔄 &nbsp; 8 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 45 / 47 |
 | 🔄 **3** | 🔄 &nbsp; 5 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 48 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | ✅ &nbsp; **42 / 42** | 🔄 &nbsp; 46 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
-| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 24 / 47 | 🔄 &nbsp; 24 / 61 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 29 / 47 | 🔄 &nbsp; 29 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 44 / 152 | 🔄 &nbsp; 269 / 428 | 🔄 &nbsp; 313 / 580 |
+| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 274 / 428 | 🔄 &nbsp; 319 / 580 |
 
-*Last updated: 2026-07-03*
+*Last updated: 2026-07-04*
 
 <!-- PROGRESS_END -->
 
@@ -122,7 +122,7 @@
 | `6.5.1` | Reverse LL in group of given size K | 🔴 | ✅ | |
 | `6.5.2` | Rotate a LL | 🟡 | ✅ | |
 | `1.3.1` | C++ STL | 🟡 | ✅ | |
-| `1.3.2` | Java Collections | 🟢 | | |
+| `1.3.2` | Java Collections | 🟢 | ❌ | |
 | `2.2.2` | Recursive Bubble Sort | 🟢 | ✅ | |
 | `2.2.3` | Recursive Insertion Sort | 🟢 | ✅ | |
 | `13.3.6` | Minimum time taken to BURN the Binary Tree from a Node | 🔴 | ✅ | ✅ |
@@ -510,11 +510,11 @@
 | `15.4.2` | Shortest Path in DAG | 🔴 | ✅ | ✅ |
 | `15.4.3` | Dijkstra's Algorithm | 🔴 | ✅ | ✅ |
 | `15.4.4` | Why priority Queue is used in Dijkstra's Algorithm | 🟡 | ✅ | ✅ |
-| `15.4.5` | Shortest path in a binary maze | 🟡 | | |
-| `15.4.6` | Path with minimum effort | 🟡 | | |
-| `15.4.7` | Cheapest flights within k stops | 🔴 | | |
-| `15.4.8` | Network Delay time | 🟡 | | |
-| `15.4.9` | Number of ways to arrive at destination | 🟡 | | |
+| `15.4.5` | Shortest path in a binary maze | 🟡 | ✅ | |
+| `15.4.6` | Path with minimum effort | 🟡 | ✅ | ✅ |
+| `15.4.7` | Cheapest flights within k stops | 🔴 | ✅ | ✅ |
+| `15.4.8` | Network Delay time | 🟡 | ✅ | |
+| `15.4.9` | Number of ways to arrive at destination | 🟡 | ✅ | ✅ |
 | `15.5.1` | Minimum Spanning Tree | 🔴 | | |
 | `15.5.2` | Prim's Algorithm | 🔴 | | |
 | `15.5.3` | Disjoint Set [Union by Rank] | 🔴 | | |
