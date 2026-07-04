@@ -13,7 +13,7 @@
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | ✅ &nbsp; **42 / 42** | 🔄 &nbsp; 46 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
-| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 29 / 47 | 🔄 &nbsp; 29 / 61 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 34 / 47 | 🔄 &nbsp; 34 / 61 |
 | **8** | 0 / 7 | 0 / 54 | 0 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 274 / 428 | 🔄 &nbsp; 319 / 580 |
+| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 279 / 428 | 🔄 &nbsp; 324 / 580 |
 
-*Last updated: 2026-07-04*
+*Last updated: 2026-07-05*
 
 <!-- PROGRESS_END -->
 
@@ -515,13 +515,13 @@
 | `15.4.7` | Cheapest flights within k stops | 🔴 | ✅ | ✅ |
 | `15.4.8` | Network Delay time | 🟡 | ✅ | |
 | `15.4.9` | Number of ways to arrive at destination | 🟡 | ✅ | ✅ |
-| `15.5.1` | Minimum Spanning Tree | 🔴 | | |
-| `15.5.2` | Prim's Algorithm | 🔴 | | |
+| `15.5.1` | Minimum Spanning Tree | 🔴 | ✅ | ✅ |
+| `15.5.2` | Prim's Algorithm | 🔴 | ✅ | ✅ |
 | `15.5.3` | Disjoint Set [Union by Rank] | 🔴 | | |
 | `15.5.4` | Disjoint Set [Union by Size] | 🔴 | | |
-| `16.1.1` | Dynamic Programming Introduction | 🟡 | | |
-| `16.2.1` | Climbing Stairs | 🟡 | | |
-| `16.2.2` | Frog Jump (DP-3) | 🟡 | | |
+| `16.1.1` | Dynamic Programming Introduction | 🟡 | ✅ | |
+| `16.2.1` | Climbing Stairs | 🟡 | ✅ | |
+| `16.2.2` | Frog Jump (DP-3) | 🟡 | ✅ | ✅ |
 | `5.2.7` | Sum of Beauty of all substring | 🟡 | | |
 | `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | | |
 | `15.5.7` | Most stones removed with same rows or columns | 🟡 | | |

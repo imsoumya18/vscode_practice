@@ -40,91 +40,52 @@ public:
     }
 };
 
-vector<int> dijkstra_using_pq(int V, vector<vector<int>> &edges, int src)
+int minCost(vector<int> &height)
 {
     // Code here
-    vector<vector<pair<int, int>>> adj(V);
+    int n = height.size();
 
-    for (auto e : edges)
+    int prev1 = 0;
+    int prev2 = abs(height[1] - height[0]);
+    int curr;
+
+    for (int i = 1; i < n; i++)
     {
-        adj[e[0]].push_back({e[1], e[2]});
-        adj[e[1]].push_back({e[0], e[2]});
+        int step1 = prev1 + abs(height[i] - height[i - 1]);
+        int step2 = INT_MAX;
+        if (i > 1)
+            step2 = prev2 + abs(height[i] - height[i - 2]);
+
+        curr = min(step1, step2);
+        prev2 = prev1;
+        prev1 = curr;
     }
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
-    vector<int> dist(V, INT_MAX);
-    dist[src] = 0;
-    minHeap.push({0, src});
-
-    while (!minHeap.empty())
-    {
-        int node = minHeap.top().second;
-        int dis = minHeap.top().first;
-        minHeap.pop();
-
-        for (auto it : adj[node])
-        {
-            int nd = it.first;
-            int d = it.second;
-
-            if (dis + d < dist[nd])
-            {
-                dist[nd] = dis + d;
-                minHeap.push({dist[nd], nd});
-            }
-        }
-    }
-
-    for (int i = 0; i < V; i++)
-        if (dist[i] == INT_MAX)
-            dist[i] = -1;
-
-    return dist;
+    return prev1;
 }
 
-vector<int> dijkstra_using_set(int V, vector<vector<int>> &edges, int src)
+int help(int idx, vector<int> &height, vector<int> &dp)
+{
+    if (dp[idx] != -1)
+        return dp[idx];
+
+    int step1 = dp[idx - 1] + abs(height[idx] - height[idx - 1]);
+    int step2 = INT_MAX;
+    if (idx > 1)
+        step2 = dp[idx - 2] + abs(height[idx] - height[idx - 2]);
+
+    return dp[idx] = min(step1, step2);
+}
+
+int minCost(vector<int> &height)
 {
     // Code here
-    vector<vector<pair<int, int>>> adj(V);
+    int n = height.size();
 
-    for (auto e : edges)
-    {
-        adj[e[0]].push_back({e[1], e[2]});
-        adj[e[1]].push_back({e[0], e[2]});
-    }
+    vector<int> dp(n, -1);
+    dp[0] = 0;
 
-    set<pair<int, int>> st;
-    vector<int> dist(V, INT_MAX);
-    dist[src] = 0;
-    st.insert({0, src});
-
-    while (!st.empty())
-    {
-        int dis = st.begin()->first;
-        int node = st.begin()->second;
-        st.erase(st.begin());
-
-        for (auto it : adj[node])
-        {
-            int nd = it.first;
-            int d = it.second;
-
-            if (dist[node] + d < dist[nd])
-            {
-                if (dist[nd] != INT_MAX)
-                    st.erase({dist[nd], nd});
-
-                dist[nd] = dist[node] + d;
-                st.insert({dist[nd], nd});
-            }
-        }
-    }
-
-    for (int i = 0; i < V; i++)
-        if (dist[i] == INT_MAX)
-            dist[i] = -1;
-
-    return dist;
+    return help(n - 1, height, dp);
 }
 
 int main()
