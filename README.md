@@ -13,8 +13,8 @@
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | ✅ &nbsp; **42 / 42** | 🔄 &nbsp; 46 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
-| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 34 / 47 | 🔄 &nbsp; 34 / 61 |
-| **8** | 0 / 7 | 0 / 54 | 0 / 61 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 42 / 47 | 🔄 &nbsp; 42 / 61 |
+| 🔄 **8** | 0 / 7 | 🔄 &nbsp; 3 / 54 | 🔄 &nbsp; 3 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 279 / 428 | 🔄 &nbsp; 324 / 580 |
+| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 290 / 428 | 🔄 &nbsp; 335 / 580 |
 
-*Last updated: 2026-07-05*
+*Last updated: 2026-07-06*
 
 <!-- PROGRESS_END -->
 
@@ -522,16 +522,16 @@
 | `16.1.1` | Dynamic Programming Introduction | 🟡 | ✅ | |
 | `16.2.1` | Climbing Stairs | 🟡 | ✅ | |
 | `16.2.2` | Frog Jump (DP-3) | 🟡 | ✅ | ✅ |
-| `5.2.7` | Sum of Beauty of all substring | 🟡 | | |
-| `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | | |
+| `5.2.7` | Sum of Beauty of all substring | 🟡 | ✅ | ✅ |
+| `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | ✅ | ✅ |
 | `15.5.7` | Most stones removed with same rows or columns | 🟡 | | |
 | `18.1.5` | Z-Function | 🟢 | | |
-| `10.1.3` | Fruit Into Baskets | 🟡 | | |
-| `10.1.4` | longest repeating character replacement | 🟡 | | |
-| `10.1.5` | Binary subarray with sum | 🟢 | | |
-| `9.4.1` | Sliding Window maximum | 🔴 | | |
-| `9.4.2` | Stock span problem | 🟡 | | |
-| `9.4.3` | The Celebrity Problem | 🔴 | | |
+| `10.1.3` | Fruit Into Baskets | 🟡 | ✅ | ✅ |
+| `10.1.4` | longest repeating character replacement | 🟡 | ✅ | ✅ |
+| `10.1.5` | Binary subarray with sum | 🟢 | ✅ | ✅ |
+| `9.4.1` | Sliding Window maximum | 🔴 | ✅ | ✅ |
+| `9.4.2` | Stock span problem | 🟡 | ✅ | |
+| `9.4.3` | The Celebrity Problem | 🔴 | ✅ | ✅ |
 
 ---
 
@@ -556,9 +556,9 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `16.2.3` | Frog Jump with K distances (DP-4) | 🟡 | | |
-| `16.2.4` | Maximum sum of non-adjacent elements (DP-5) | 🟡 | | |
-| `16.2.5` | House Robber (DP-6) | 🟡 | | |
+| `16.2.3` | Frog Jump with K distances (DP-4) | 🟡 | ✅ | |
+| `16.2.4` | Maximum sum of non-adjacent elements (DP-5) | 🟡 | ✅ | |
+| `16.2.5` | House Robber (DP-6) | 🟡 | ✅ | ✅ |
 | `16.3.1` | Ninja's Training (DP-7) | 🟡 | | |
 | `16.3.2` | Grid Unique Paths (DP-8) | 🟡 | | |
 | `16.3.3` | Grid Unique Paths 2 (DP-9) | 🟡 | | |

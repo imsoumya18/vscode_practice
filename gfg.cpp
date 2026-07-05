@@ -40,28 +40,32 @@ public:
     }
 };
 
-int minCost(vector<int> &height)
+int celebrity(vector<vector<int>> &mat)
 {
-    // Code here
-    int n = height.size();
+    // code here
+    int n = mat.size();
+    int top = 0, bottom = n - 1;
 
-    int prev1 = 0;
-    int prev2 = abs(height[1] - height[0]);
-    int curr;
-
-    for (int i = 1; i < n; i++)
+    while (top < bottom)
     {
-        int step1 = prev1 + abs(height[i] - height[i - 1]);
-        int step2 = INT_MAX;
-        if (i > 1)
-            step2 = prev2 + abs(height[i] - height[i - 2]);
-
-        curr = min(step1, step2);
-        prev2 = prev1;
-        prev1 = curr;
+        if (mat[top][bottom] == 1)
+            top++;
+        else
+            bottom--;
     }
 
-    return prev1;
+    int idx = top;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (i != idx && mat[idx][i] == 1)
+            return -1;
+
+        if (i != idx && mat[i][idx] == 0)
+            return -1;
+    }
+
+    return idx;
 }
 
 int help(int idx, vector<int> &height, vector<int> &dp)
