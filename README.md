@@ -14,7 +14,7 @@
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 6 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 49 / 60 |
 | 🔄 **7** | 0 / 14 | 🔄 &nbsp; 42 / 47 | 🔄 &nbsp; 42 / 61 |
-| 🔄 **8** | 0 / 7 | 🔄 &nbsp; 3 / 54 | 🔄 &nbsp; 3 / 61 |
+| 🔄 **8** | 0 / 7 | 🔄 &nbsp; 14 / 54 | 🔄 &nbsp; 14 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
@@ -23,9 +23,9 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 290 / 428 | 🔄 &nbsp; 335 / 580 |
+| **Total** | 🔄 &nbsp; 45 / 152 | 🔄 &nbsp; 301 / 428 | 🔄 &nbsp; 346 / 580 |
 
-*Last updated: 2026-07-06*
+*Last updated: 2026-07-07*
 
 <!-- PROGRESS_END -->
 
@@ -559,17 +559,17 @@
 | `16.2.3` | Frog Jump with K distances (DP-4) | 🟡 | ✅ | |
 | `16.2.4` | Maximum sum of non-adjacent elements (DP-5) | 🟡 | ✅ | |
 | `16.2.5` | House Robber (DP-6) | 🟡 | ✅ | ✅ |
-| `16.3.1` | Ninja's Training (DP-7) | 🟡 | | |
-| `16.3.2` | Grid Unique Paths (DP-8) | 🟡 | | |
-| `16.3.3` | Grid Unique Paths 2 (DP-9) | 🟡 | | |
-| `16.3.4` | Minimum path sum in Grid (DP-10) | 🟡 | | |
-| `16.3.5` | Minimum path sum in Triangular Grid (DP-11) | 🟡 | | |
-| `16.3.6` | Minimum/Maximum Falling Path Sum (DP-12) | 🟡 | | |
-| `16.3.7` | 3D DP: Ninja and his friends (DP-13) | 🟡 | | |
-| `16.4.1` | Subset sum equal to target (DP-14) | 🟡 | | |
-| `16.4.2` | Partition Equal Subset Sum (DP-15) | 🟡 | | |
-| `16.4.4` | Count Subsets with Sum K (DP-17) | 🟡 | | |
-| `16.4.5` | Count Partitions with Given Difference (DP-18) | 🟡 | | |
+| `16.3.1` | Ninja's Training (DP-7) | 🟡 | ✅ | ✅ |
+| `16.3.2` | Grid Unique Paths (DP-8) | 🟡 | ✅ | |
+| `16.3.3` | Grid Unique Paths 2 (DP-9) | 🟡 | ✅ | |
+| `16.3.4` | Minimum path sum in Grid (DP-10) | 🟡 | ✅ | |
+| `16.3.5` | Minimum path sum in Triangular Grid (DP-11) | 🟡 | ✅ | ✅ |
+| `16.3.6` | Minimum/Maximum Falling Path Sum (DP-12) | 🟡 | ✅ | ✅ |
+| `16.3.7` | 3D DP: Ninja and his friends (DP-13) | 🟡 | ✅ | ✅ |
+| `16.4.1` | Subset sum equal to target (DP-14) | 🟡 | ✅ | ✅ |
+| `16.4.2` | Partition Equal Subset Sum (DP-15) | 🟡 | ✅ | ✅ |
+| `16.4.4` | Count Subsets with Sum K (DP-17) | 🟡 | ✅ | ✅ |
+| `16.4.5` | Count Partitions with Given Difference (DP-18) | 🟡 | ✅ | ✅ |
 | `16.4.6` | Assign Cookies (Greedy DP variant) | 🔴 | | |
 | `16.4.7` | Minimum Coins (DP-20) | 🔴 | | |
 | `16.4.8` | Target Sum (DP-21) | 🟡 | | |

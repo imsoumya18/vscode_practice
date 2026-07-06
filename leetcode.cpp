@@ -36,40 +36,30 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int f(int idx, vector<int> &nums, vector<int> &dp)
+int isPossible(int idx, vector<int> &nums, int target,
+               vector<vector<int>> &dp)
 {
-    if (dp[idx] != -1)
-        return dp[idx];
+    if (target < 0)
+        return 0;
 
-    int opt1 = f(idx - 1, nums, dp);
-    int opt2 = f(idx - 2, nums, dp) + nums[idx];
+    if (idx == nums.size())
+        return target == 0;
 
-    return dp[idx] = max(opt1, opt2);
+    if (dp[idx][target] != -1)
+        return dp[idx][target];
+
+    int take = isPossible(idx + 1, nums, target - nums[idx], dp);
+    int notTake = isPossible(idx + 1, nums, target, dp);
+
+    return dp[idx][target] = (take + notTake) % (1e9 + 7);
 }
 
-int dp_rob(vector<int> &nums)
+int findWays(vector<int> &arr, int k)
 {
-    int n = nums.size();
-    int prev1 = nums[0], prev2 = 0, curr;
+    // Write your code here.
+    vector<vector<int>> dp(arr.size(), vector<int>(k + 1, -1));
 
-    for (int i = 1; i < n; i++)
-    {
-        curr = max(prev1, prev2 + nums[i]);
-        prev2 = prev1;
-        prev1 = curr;
-    }
-
-    return prev1;
-}
-
-int rob(vector<int> &nums)
-{
-    if (nums.size() == 1)
-        return nums[0];
-
-    vector<int> vct1(nums.begin(), nums.end() - 1), vct2(nums.begin() + 1, nums.end());
-
-    return max(dp_rob(vct1), dp_rob(vct2));
+    return isPossible(0, arr, k, dp);
 }
 
 int main()

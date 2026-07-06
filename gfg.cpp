@@ -40,56 +40,56 @@ public:
     }
 };
 
-int celebrity(vector<vector<int>> &mat)
+int f(int idx, int prev, vector<vector<int>> points, vector<vector<int>> &dp)
 {
-    // code here
-    int n = mat.size();
-    int top = 0, bottom = n - 1;
-
-    while (top < bottom)
+    if (idx == 0)
     {
-        if (mat[top][bottom] == 1)
-            top++;
-        else
-            bottom--;
+        int maxi = 0;
+
+        for (int i = 0; i < 3; i++)
+            if (i != prev)
+                maxi = max(maxi, points[0][i]);
+
+        return maxi;
     }
 
-    int idx = top;
+    if (dp[idx][prev] != -1)
+        return dp[idx][prev];
 
-    for (int i = 0; i < n; i++)
-    {
-        if (i != idx && mat[idx][i] == 1)
-            return -1;
+    int maxi = 0;
 
-        if (i != idx && mat[i][idx] == 0)
-            return -1;
-    }
+    for (int i = 0; i < 3; i++)
+        if (i != prev)
+            maxi = max(maxi, points[idx][i] + f(idx - 1, i, points, dp));
 
-    return idx;
+    return dp[idx][prev] = maxi;
 }
 
-int help(int idx, vector<int> &height, vector<int> &dp)
+int ninjaTraining(int n, vector<vector<int>> &points)
 {
-    if (dp[idx] != -1)
-        return dp[idx];
+    // Write your code here.
+    vector<vector<int>> dp(n, vector<int>(4, -1));
 
-    int step1 = dp[idx - 1] + abs(height[idx] - height[idx - 1]);
-    int step2 = INT_MAX;
-    if (idx > 1)
-        step2 = dp[idx - 2] + abs(height[idx] - height[idx - 2]);
-
-    return dp[idx] = min(step1, step2);
+    return f(n - 1, 3, points, dp);
 }
 
-int minCost(vector<int> &height)
+int ninjaTraining(int n, vector<vector<int>> &points)
 {
-    // Code here
-    int n = height.size();
+    // Write your code here.
+    vector<vector<int>> dp(n, vector<int>(4, 0));
 
-    vector<int> dp(n, -1);
-    dp[0] = 0;
+    dp[0][0] = max(points[0][1], points[0][2]);
+    dp[0][1] = max(points[0][0], points[0][2]);
+    dp[0][2] = max(points[0][0], points[0][1]);
+    dp[0][3] = max(points[0][0], max(points[0][1], points[0][2]));
 
-    return help(n - 1, height, dp);
+    for (int day = 1; day < n; day++)
+        for (int prev = 0; prev < 4; prev++)
+            for (int task = 0; task < 3; task++)
+                if (task != prev)
+                    dp[day][prev] = max(dp[day][prev], points[day][task] + dp[day - 1][task]);
+
+    return dp[n - 1][3];
 }
 
 int main()
@@ -109,10 +109,7 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    vector<int> arr{2, 3, 5, 7, 9};
-    int k = 100;
-
-    cout << checkSubsequenceSum(arr, k) << endl;
+    vector<int> points {}
 
     return 0;
 }
