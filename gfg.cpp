@@ -73,23 +73,49 @@ int ninjaTraining(int n, vector<vector<int>> &points)
     return f(n - 1, 3, points, dp);
 }
 
-int ninjaTraining(int n, vector<vector<int>> &points)
+void backtrack(int idx1, int idx2, string &s1, string &s2, vector<vector<int>> &dp, string curr, set<string> &results)
 {
-    // Write your code here.
-    vector<vector<int>> dp(n, vector<int>(4, 0));
+    if (idx1 == 0 || idx2 == 0)
+    {
+        results.insert(curr);
+        return;
+    }
 
-    dp[0][0] = max(points[0][1], points[0][2]);
-    dp[0][1] = max(points[0][0], points[0][2]);
-    dp[0][2] = max(points[0][0], points[0][1]);
-    dp[0][3] = max(points[0][0], max(points[0][1], points[0][2]));
+    if (s1[idx1 - 1] == s2[idx2 - 1])
+        backtrack(idx1 - 1, idx2 - 1, s1, s2, dp, s1[idx1 - 1] + curr, results);
+    else
+    {
+        if (dp[idx1 - 1][idx2] >= dp[idx1][idx2 - 1])
+            backtrack(idx1 - 1, idx2, s1, s2, dp, curr, results);
 
-    for (int day = 1; day < n; day++)
-        for (int prev = 0; prev < 4; prev++)
-            for (int task = 0; task < 3; task++)
-                if (task != prev)
-                    dp[day][prev] = max(dp[day][prev], points[day][task] + dp[day - 1][task]);
+        if (dp[idx1][idx2 - 1] >= dp[idx1 - 1][idx2])
+            backtrack(idx1, idx2 - 1, s1, s2, dp, curr, results);
+    }
+}
 
-    return dp[n - 1][3];
+vector<string> allLCS(string &s1, string &s2)
+{
+    int n1 = s1.size(), n2 = s2.size();
+    vector<vector<int>> dp(n1 + 1, vector<int>(n2 + 1, 0));
+
+    for (int i = 0; i <= n1; i++)
+        dp[i][0] = 0;
+
+    for (int i = 0; i <= n2; i++)
+        dp[0][i] = 0;
+
+    for (int i = 1; i <= n1; i++)
+        for (int j = 1; j <= n2; j++)
+            if (s1[i - 1] == s2[j - 1])
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            else
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+
+    set<string> results;
+
+    backtrack(n1, n2, s1, s2, dp, "", results);
+
+    return vector<string>(results.begin(), results.end());
 }
 
 int main()
