@@ -12,20 +12,20 @@
 | 🔄 **3** | 🔄 &nbsp; 5 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 48 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | ✅ &nbsp; **42 / 42** | 🔄 &nbsp; 46 / 48 |
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
-| 🔄 **6** | 🔄 &nbsp; 7 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 50 / 60 |
-| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 42 / 47 | 🔄 &nbsp; 42 / 61 |
+| 🔄 **6** | 🔄 &nbsp; 9 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 52 / 60 |
+| 🔄 **7** | 0 / 14 | 🔄 &nbsp; 44 / 47 | 🔄 &nbsp; 44 / 61 |
 | 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 28 / 54 | 🔄 &nbsp; 29 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
-| 🔄 **13** | 🔄 &nbsp; 1 / 6 | 0 / 9 | 🔄 &nbsp; 1 / 15 |
+| 🔄 **13** | 🔄 &nbsp; 3 / 6 | 0 / 9 | 🔄 &nbsp; 3 / 15 |
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 48 / 152 | 🔄 &nbsp; 315 / 428 | 🔄 &nbsp; 363 / 580 |
+| **Total** | 🔄 &nbsp; 52 / 152 | 🔄 &nbsp; 317 / 428 | 🔄 &nbsp; 369 / 580 |
 
-*Last updated: 2026-07-12*
+*Last updated: 2026-07-13*
 
 <!-- PROGRESS_END -->
 
@@ -395,8 +395,8 @@
 | `7.2.1` | Generate all binary strings | 🟡 | ✅ | ✅ |
 | `7.2.4` | Learn All Patterns of Subsequences (Theory) | 🟡 | ✅ | ✅ |
 | `7.2.5` | Count all subsequences with sum K | 🔴 | ✅ | ✅ |
-| `8.3.1` | Print Prime Factors of a Number | 🟢 | | |
-| `8.3.2` | All Divisors of a Number | 🟢 | | |
+| `8.3.1` | Print Prime Factors of a Number | 🟢 | ✅ | ✅ |
+| `8.3.2` | All Divisors of a Number | 🟢 | ✅ | |
 | `8.3.3` | Sieve of Eratosthenes | 🟡 | ✅ | ✅ |
 | `12.1.2` | Fractional Knapsack Problem | 🟡 | | |
 | `12.1.3` | Greedy algorithm to find minimum number of coins | 🟡 | | |
@@ -517,8 +517,8 @@
 | `15.4.9` | Number of ways to arrive at destination | 🟡 | ✅ | ✅ |
 | `15.5.1` | Minimum Spanning Tree | 🔴 | ✅ | ✅ |
 | `15.5.2` | Prim's Algorithm | 🔴 | ✅ | ✅ |
-| `15.5.3` | Disjoint Set [Union by Rank] | 🔴 | | |
-| `15.5.4` | Disjoint Set [Union by Size] | 🔴 | | |
+| `15.5.3` | Disjoint Set [Union by Rank] | 🔴 | ✅ | ✅ |
+| `15.5.4` | Disjoint Set [Union by Size] | 🔴 | ✅ | ✅ |
 | `16.1.1` | Dynamic Programming Introduction | 🟡 | ✅ | |
 | `16.2.1` | Climbing Stairs | 🟡 | ✅ | |
 | `16.2.2` | Frog Jump (DP-3) | 🟡 | ✅ | ✅ |
@@ -767,8 +767,8 @@
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `10.1.6` | Count number of nice subarrays | 🟡 | | |
 | `10.1.7` | Number of substring containing all three characters | 🟡 | | |
-| `15.1.3` | Graph Representation - Java | 🟢 | | |
-| `15.1.4` | Connected Components - Logic Explanation | 🔴 | | |
+| `15.1.3` | Graph Representation - Java | 🟢 | ❌ | |
+| `15.1.4` | Connected Components - Logic Explanation | 🔴 | ✅ | |
 | `15.4.10` | Minimum steps to reach end from start | 🔴 | | |
 | `16.5.10` | Wildcard Matching (DP-34) | 🟡 | ✅ | ✅ |
 

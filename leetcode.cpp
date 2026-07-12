@@ -46,43 +46,46 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int solve(int idx, int n, int canBuy, int canSell, vector<int> &prices,
-          vector<vector<int>> &dp)
+class DisJointSet
 {
-    if (idx == n || canBuy == 0)
-        return 0;
+    vector<int> rank, parent;
 
-    if (dp[idx][canBuy] != -1)
-        return dp[idx][canBuy];
-
-    int profit = 0;
-
-    if (canBuy == canSell)
+public:
+    DisJointSet(int n)
     {
-        int buy = -prices[idx] + solve(idx + 1, n, canBuy - 1, canSell, prices, dp);
-        int notBuy = solve(idx + 1, n, canBuy, canSell, prices, dp);
+        rank.resize(n + 1, 0);
+        parent.resize(n + 1);
 
-        profit = max(buy, notBuy);
-    }
-    else if (canBuy < canSell)
-    {
-
-        int sell = prices[idx] + solve(idx + 1, n, canBuy, canSell - 1, prices, dp);
-        int notSell = solve(idx + 1, n, canBuy, canSell, prices, dp);
-
-        profit = max(sell, notSell);
+        for (int i = 1; i <= n; i++)
+            parent[i] = i;
     }
 
-    return dp[idx][canBuy] = profit;
-}
+    int findUltParent(int node)
+    {
+        if (parent[node] == node)
+            return node;
 
-int maxProfit(vector<int> &prices)
-{
-    int n = prices.size();
-    vector<vector<int>> dp(n, vector<int>(3, -1));
+        return parent[node] = findUltParent(parent[node]);
+    }
 
-    return solve(0, n, 2, 2, prices, dp);
-}
+    void unionByRank(int u, int v)
+    {
+        int ulp_u = findUltParent(u);
+        int ulp_v = findUltParent(v);
+
+        if (ulp_u == ulp_v)
+            return;
+        else if (rank[ulp_u] < rank[ulp_v])
+            parent[ulp_u] = ulp_v;
+        else if (rank[ulp_u] > rank[ulp_v])
+            parent[ulp_v] = ulp_u;
+        else
+        {
+            parent[ulp_v] = ulp_u;
+            rank[ulp_u]++;
+        }
+    }
+};
 
 int main()
 {
