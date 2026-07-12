@@ -14,7 +14,7 @@
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 7 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 50 / 60 |
 | 🔄 **7** | 0 / 14 | 🔄 &nbsp; 42 / 47 | 🔄 &nbsp; 42 / 61 |
-| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 27 / 54 | 🔄 &nbsp; 28 / 61 |
+| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 28 / 54 | 🔄 &nbsp; 29 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
@@ -23,7 +23,7 @@
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 48 / 152 | 🔄 &nbsp; 314 / 428 | 🔄 &nbsp; 362 / 580 |
+| **Total** | 🔄 &nbsp; 48 / 152 | 🔄 &nbsp; 315 / 428 | 🔄 &nbsp; 363 / 580 |
 
 *Last updated: 2026-07-12*
 
@@ -583,7 +583,7 @@
 | `16.5.8` | Distinct Subsequences (DP-32) | 🔴 | ✅ | ✅ |
 | `16.5.9` | Edit Distance (DP-33) | 🔴 | ✅ | ✅ |
 | `16.6.1` | Best Time to Buy and Sell Stock (DP-35) | 🔴 | ✅ | |
-| `16.6.2` | Buy and Sell Stock - II (DP-36) | 🔴 | | |
+| `16.6.2` | Buy and Sell Stock - II (DP-36) | 🔴 | ✅ | ✅ |
 | `16.6.3` | Buy and Sell Stocks III (DP-37) | 🔴 | | |
 | `16.6.4` | Buy and Sell Stock IV (DP-38) | 🔴 | | |
 | `16.7.1` | Longest Increasing Subsequence (DP-41) | 🔴 | | |
