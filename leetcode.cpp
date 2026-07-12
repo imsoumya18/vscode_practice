@@ -46,69 +46,66 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int maximumSafenessFactor(vector<vector<int>> &grid)
+bool solve(int idx1, int idx2, string &s, string &p, vector<vector<int>> &dp)
 {
-    int n = grid.size();
-    vector<vector<int>> manhattan(n, vector<int>(n, INT_MAX));
-    queue<vector<int>> q; // {r, c, manhattan distance}
+    if (idx1 < 0 && idx2 < 0)
+        return true;
 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (grid[i][j] == 1)
-            {
-                manhattan[i][j] = 0;
-                q.push({i, j, 0});
-            }
+    if (idx2 < 0)
+        return false;
 
-    vector<int> drow{-1, 0, 1, 0}, dcol{0, 1, 0, -1};
-
-    while (!q.empty())
+    if (idx1 < 0)
     {
-        int r = q.front()[0];
-        int c = q.front()[1];
-        int d = q.front()[2];
-        q.pop();
+        for (int i = 0; i <= idx2; i++)
+            if (p[i] != '*')
+                return false;
 
-        for (int i = 0; i < 4; i++)
-        {
-            int nrow = r + drow[i];
-            int ncol = c + dcol[i];
-            int ndist = d + 1;
-
-            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < n && ndist < manhattan[nrow][ncol])
-            {
-                manhattan[nrow][ncol] = ndist;
-                q.push({nrow, ncol, ndist});
-            }
-        }
+        return true;
     }
 
-    priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, less<pair<int, pair<int, int>>>> maxHeap;
-    maxHeap.push({manhattan[0][0], {0, 0}});
-    vector<vector<int>> safeness(n, vector<int>(n, INT_MIN));
-    safeness[0][0] = manhattan[0][0];
+    if (dp[idx1][idx2] != -1)
+        return dp[idx1][idx2];
 
-    while (!maxHeap.empty())
+    if (s[idx1] == p[idx2] || p[idx2] == '?')
+        return dp[idx1][idx2] = solve(idx1 - 1, idx2 - 1, s, p, dp);
+
+    if (p[idx2] == '*')
+        return dp[idx1][idx2] = solve(idx1 - 1, idx2, s, p, dp) || solve(idx1, idx2 - 1, s, p, dp);
+
+    return false;
+}
+
+bool isMatch(string s, string p)
+{
+    int n1 = s.size(), n2 = p.size();
+    vector<bool> prev(n2 + 1, false), curr(n2 + 1, false);
+
+    prev[0] = true;
+
+    for (int i = 1; i <= n2; i++)
     {
-        int score = maxHeap.top().first;
-        int r = maxHeap.top().second.first;
-        int c = maxHeap.top().second.second;
-        maxHeap.pop();
+        if (p[i - 1] != '*')
+            break;
 
-        for (int i = 0; i < 4; i++)
-        {
-            int nrow = r + drow[i];
-            int ncol = c + dcol[i];
-
-            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < n && min(score, manhattan[nrow][ncol]) > safeness[nrow][ncol])
-            {
-                safeness[nrow][ncol] = min(score, manhattan[nrow][ncol]);
-                maxHeap.push({safeness[nrow][ncol], {nrow, ncol}});
-            }
-        }
+        prev[i] = true;
     }
 
-    return safeness[n - 1][n - 1];
+    for (int idx1 = 1; idx1 <= n1; idx1++)
+    {
+        curr[0] = false;
+
+        for (int idx2 = 1; idx2 <= n2; idx2++)
+            if (s[idx1 - 1] == p[idx2 - 1] || p[idx2 - 1] == '?')
+                curr[idx2] = prev[idx2 - 1];
+            else if (p[idx2 - 1] == '*')
+                curr[idx2] = prev[idx2] || curr[idx2 - 1];
+            else
+                curr[idx2] = false;
+
+        prev = curr;
+    }
+
+    return prev[n2];
 }
 
 int main()
@@ -117,10 +114,6 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-
-    vector<int> nums{10, 9, 2, 5, 3, 7, 101, 18};
-
-    cout << lengthOfLIS(nums) << endl;
 
     return 0;
 }

@@ -14,18 +14,18 @@
 | 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 7 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 50 / 60 |
 | 🔄 **7** | 0 / 14 | 🔄 &nbsp; 42 / 47 | 🔄 &nbsp; 42 / 61 |
-| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 20 / 54 | 🔄 &nbsp; 21 / 61 |
+| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 26 / 54 | 🔄 &nbsp; 27 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
-| **13** | 0 / 6 | 0 / 9 | 0 / 15 |
+| 🔄 **13** | 🔄 &nbsp; 1 / 6 | 0 / 9 | 🔄 &nbsp; 1 / 15 |
 | **14** | 0 / 12 | 0 / 8 | 0 / 20 |
 | **15** | 0 / 12 | 0 / 9 | 0 / 21 |
 | **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 47 / 152 | 🔄 &nbsp; 307 / 428 | 🔄 &nbsp; 354 / 580 |
+| **Total** | 🔄 &nbsp; 48 / 152 | 🔄 &nbsp; 313 / 428 | 🔄 &nbsp; 361 / 580 |
 
-*Last updated: 2026-07-09*
+*Last updated: 2026-07-12*
 
 <!-- PROGRESS_END -->
 
@@ -575,13 +575,13 @@
 | `16.4.8` | Target Sum (DP-21) | 🟡 | ✅ | ✅ |
 | `16.4.9` | Coin Change 2 (DP-22) | 🔴 | ✅ | ✅ |
 | `16.5.1` | Longest Common Subsequence (DP-25) | 🔴 | ✅ | ✅ |
-| `16.5.2` | Print Longest Common Subsequence (DP-26) | 🔴 | | |
+| `16.5.2` | Print Longest Common Subsequence (DP-26) | 🔴 | ✅ | ✅ |
 | `16.5.4` | Longest Palindromic Subsequence (DP-28) | 🔴 | ✅ | ✅ |
-| `16.5.5` | Minimum insertions to make string palindrome (DP-29) | 🔴 | | |
-| `16.5.6` | Minimum Insertions/Deletions to Convert String (DP-30) | 🔴 | | |
-| `16.5.7` | Shortest Common Supersequence (DP-31) | 🔴 | | |
-| `16.5.8` | Distinct Subsequences (DP-32) | 🔴 | | |
-| `16.5.9` | Edit Distance (DP-33) | 🔴 | | |
+| `16.5.5` | Minimum insertions to make string palindrome (DP-29) | 🔴 | ✅ | ✅ |
+| `16.5.6` | Minimum Insertions/Deletions to Convert String (DP-30) | 🔴 | ✅ | ✅ |
+| `16.5.7` | Shortest Common Supersequence (DP-31) | 🔴 | ✅ | ✅ |
+| `16.5.8` | Distinct Subsequences (DP-32) | 🔴 | ✅ | ✅ |
+| `16.5.9` | Edit Distance (DP-33) | 🔴 | ✅ | ✅ |
 | `16.6.1` | Best Time to Buy and Sell Stock (DP-35) | 🔴 | | |
 | `16.6.2` | Buy and Sell Stock - II (DP-36) | 🔴 | | |
 | `16.6.3` | Buy and Sell Stocks III (DP-37) | 🔴 | | |
@@ -770,7 +770,7 @@
 | `15.1.3` | Graph Representation - Java | 🟢 | | |
 | `15.1.4` | Connected Components - Logic Explanation | 🔴 | | |
 | `15.4.10` | Minimum steps to reach end from start | 🔴 | | |
-| `16.5.10` | Wildcard Matching (DP-34) | 🟡 | | |
+| `16.5.10` | Wildcard Matching (DP-34) | 🟡 | ✅ | ✅ |
 
 ### 🔄 Revision
 
