@@ -46,66 +46,42 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-bool solve(int idx1, int idx2, string &s, string &p, vector<vector<int>> &dp)
+int solve(int idx, int n, int canBuy, int canSell, vector<int> &prices,
+          vector<vector<int>> &dp)
 {
-    if (idx1 < 0 && idx2 < 0)
-        return true;
+    if (idx == n || canBuy == 0)
+        return 0;
 
-    if (idx2 < 0)
-        return false;
+    if (dp[idx][canBuy] != -1)
+        return dp[idx][canBuy];
 
-    if (idx1 < 0)
+    int profit = 0;
+
+    if (canBuy == canSell)
     {
-        for (int i = 0; i <= idx2; i++)
-            if (p[i] != '*')
-                return false;
+        int buy = -prices[idx] + solve(idx + 1, n, canBuy - 1, canSell, prices, dp);
+        int notBuy = solve(idx + 1, n, canBuy, canSell, prices, dp);
 
-        return true;
+        profit = max(buy, notBuy);
+    }
+    else if (canBuy < canSell)
+    {
+
+        int sell = prices[idx] + solve(idx + 1, n, canBuy, canSell - 1, prices, dp);
+        int notSell = solve(idx + 1, n, canBuy, canSell, prices, dp);
+
+        profit = max(sell, notSell);
     }
 
-    if (dp[idx1][idx2] != -1)
-        return dp[idx1][idx2];
-
-    if (s[idx1] == p[idx2] || p[idx2] == '?')
-        return dp[idx1][idx2] = solve(idx1 - 1, idx2 - 1, s, p, dp);
-
-    if (p[idx2] == '*')
-        return dp[idx1][idx2] = solve(idx1 - 1, idx2, s, p, dp) || solve(idx1, idx2 - 1, s, p, dp);
-
-    return false;
+    return dp[idx][canBuy] = profit;
 }
 
-bool isMatch(string s, string p)
+int maxProfit(vector<int> &prices)
 {
-    int n1 = s.size(), n2 = p.size();
-    vector<bool> prev(n2 + 1, false), curr(n2 + 1, false);
+    int n = prices.size();
+    vector<vector<int>> dp(n, vector<int>(3, -1));
 
-    prev[0] = true;
-
-    for (int i = 1; i <= n2; i++)
-    {
-        if (p[i - 1] != '*')
-            break;
-
-        prev[i] = true;
-    }
-
-    for (int idx1 = 1; idx1 <= n1; idx1++)
-    {
-        curr[0] = false;
-
-        for (int idx2 = 1; idx2 <= n2; idx2++)
-            if (s[idx1 - 1] == p[idx2 - 1] || p[idx2 - 1] == '?')
-                curr[idx2] = prev[idx2 - 1];
-            else if (p[idx2 - 1] == '*')
-                curr[idx2] = prev[idx2] || curr[idx2 - 1];
-            else
-                curr[idx2] = false;
-
-        prev = curr;
-    }
-
-    return prev[n2];
+    return solve(0, n, 2, 2, prices, dp);
 }
 
 int main()
