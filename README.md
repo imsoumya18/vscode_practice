@@ -19,13 +19,13 @@
 | **10** | 0 / 9 | 0 / 11 | 0 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
-| 🔄 **13** | 🔄 &nbsp; 3 / 6 | 0 / 9 | 🔄 &nbsp; 3 / 15 |
-| **14** | 0 / 12 | 0 / 8 | 0 / 20 |
-| **15** | 0 / 12 | 0 / 9 | 0 / 21 |
-| **16** | 0 / 6 | 0 / 9 | 0 / 15 |
-| **Total** | 🔄 &nbsp; 52 / 152 | 🔄 &nbsp; 317 / 428 | 🔄 &nbsp; 369 / 580 |
+| 🔄 **13** | 🔄 &nbsp; 4 / 6 | 0 / 9 | 🔄 &nbsp; 4 / 15 |
+| 🔄 **14** | 🔄 &nbsp; 1 / 12 | 0 / 8 | 🔄 &nbsp; 1 / 20 |
+| 🔄 **15** | 🔄 &nbsp; 1 / 12 | 0 / 9 | 🔄 &nbsp; 1 / 21 |
+| 🔄 **16** | 🔄 &nbsp; 1 / 6 | 0 / 9 | 🔄 &nbsp; 1 / 15 |
+| **Total** | 🔄 &nbsp; 56 / 152 | 🔄 &nbsp; 317 / 428 | 🔄 &nbsp; 373 / 580 |
 
-*Last updated: 2026-07-13*
+*Last updated: 2026-07-14*
 
 <!-- PROGRESS_END -->
 
@@ -769,7 +769,7 @@
 | `10.1.7` | Number of substring containing all three characters | 🟡 | | |
 | `15.1.3` | Graph Representation - Java | 🟢 | ❌ | |
 | `15.1.4` | Connected Components - Logic Explanation | 🔴 | ✅ | |
-| `15.4.10` | Minimum steps to reach end from start | 🔴 | | |
+| `15.4.10` | Minimum steps to reach end from start | 🔴 | ✅ | ✅ |
 | `16.5.10` | Wildcard Matching (DP-34) | 🟡 | ✅ | ✅ |
 
 ### 🔄 Revision
@@ -807,7 +807,7 @@
 | `14.2.9` | Inorder Successor/Predecessor in BST | 🟡 | | |
 | `18.1.3` | Hashing In Strings [Theory] | 🟡 | | |
 | `18.1.4` | Rabin Karp Algorithm | 🔴 | | |
-| `15.4.11` | Bellman Ford Algorithm | 🔴 | | |
+| `15.4.11` | Bellman Ford Algorithm | 🔴 | ✅ | ✅ |
 | `16.6.5` | Buy and Sell Stocks With Cooldown (DP-39) | 🔴 | | |
 
 ### 🔄 Revision
@@ -844,7 +844,7 @@
 | `17.2.6` | Maximum XOR With an Element From Array | 🔴 | | |
 | `10.2.1` | Longest Substring with At Most K Distinct Characters | 🟡 | | |
 | `10.2.2` | Subarray with k different integers | 🔴 | | |
-| `15.4.12` | Floyd Warshal Algorithm | 🔴 | | |
+| `15.4.12` | Floyd Warshal Algorithm | 🔴 | ✅ | ✅ |
 | `16.6.6` | Buy and Sell Stocks With Transaction Fee (DP-40) | 🔴 | | |
 
 ### 🔄 Revision
@@ -876,7 +876,7 @@
 | `10.2.4` | Minimum Window Subsequence | 🔴 | | |
 | `7.3.7` | Sudoko Solver | 🔴 | | |
 | `7.3.8` | Expression Add Operators | 🔴 | | |
-| `15.4.13` | Find the city with the smallest number of neighbors | 🔴 | | |
+| `15.4.13` | Find the city with the smallest number of neighbors | 🔴 | ✅ | ✅ |
 | `16.8.5` | Evaluate Boolean Expression to True (DP-52) | 🔴 | | |
 
 ### 🔄 Revision

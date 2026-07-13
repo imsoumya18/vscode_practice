@@ -40,23 +40,28 @@ public:
     }
 };
 
-vector<int> getDivisors(int n)
+void floydWarshall(vector<vector<int>> &dist)
 {
-    // code here
-    vector<int> vct;
+    // Code here
+    int n = dist.size();
 
-    for (int i = 1; i * i <= n; i++)
-        if (n % i == 0)
-        {
-            vct.push_back(i);
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            if (i == j)
+                dist[i][j] = 0;
+            else if (dist[i][j] == -1)
+                dist[i][j] = INT_MAX;
 
-            if (i * i != n)
-                vct.push_back(n / i);
-        }
+    for (int via = 0; via < n; via++)
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (dist[i][via] != INT_MAX && dist[via][j] != INT_MAX && dist[i][via] + dist[via][j] < dist[i][j])
+                    dist[i][j] = dist[i][via] + dist[via][j];
 
-    sort(vct.begin(), vct.end());
-
-    return vct;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            if (dist[i][j] == INT_MAX)
+                dist[i][j] = -1;
 }
 
 int main()

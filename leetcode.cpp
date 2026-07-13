@@ -46,46 +46,40 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class DisJointSet
+int findTheCity(int n, vector<vector<int>> &edges, int distanceThreshold)
 {
-    vector<int> rank, parent;
+    vector<vector<int>> dist(n, vector<int>(n, INT_MAX));
 
-public:
-    DisJointSet(int n)
+    for (int i = 0; i < n; i++)
+        dist[i][i] = 0;
+
+    for (auto e : edges)
     {
-        rank.resize(n + 1, 0);
-        parent.resize(n + 1);
-
-        for (int i = 1; i <= n; i++)
-            parent[i] = i;
+        dist[e[0]][e[1]] = e[2];
+        dist[e[1]][e[0]] = e[2];
     }
 
-    int findUltParent(int node)
-    {
-        if (parent[node] == node)
-            return node;
+    for (int via = 0; via < n; via++)
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (dist[i][via] != INT_MAX && dist[via][j] != INT_MAX && dist[i][via] + dist[via][j] < dist[i][j])
+                    dist[i][j] = dist[i][via] + dist[via][j];
 
-        return parent[node] = findUltParent(parent[node]);
+    vector<int> neighbour(n, 0);
+    int city_with_max_neighbour = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+            if (i != j && dist[i][j] <= distanceThreshold)
+                neighbour[i]++;
+
+        if (neighbour[i] <= neighbour[city_with_max_neighbour])
+            city_with_max_neighbour = i;
     }
 
-    void unionByRank(int u, int v)
-    {
-        int ulp_u = findUltParent(u);
-        int ulp_v = findUltParent(v);
-
-        if (ulp_u == ulp_v)
-            return;
-        else if (rank[ulp_u] < rank[ulp_v])
-            parent[ulp_u] = ulp_v;
-        else if (rank[ulp_u] > rank[ulp_v])
-            parent[ulp_v] = ulp_u;
-        else
-        {
-            parent[ulp_v] = ulp_u;
-            rank[ulp_u]++;
-        }
-    }
-};
+    return city_with_max_neighbour;
+}
 
 int main()
 {
