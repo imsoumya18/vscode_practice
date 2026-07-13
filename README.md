@@ -16,14 +16,14 @@
 | 🔄 **7** | 0 / 14 | 🔄 &nbsp; 44 / 47 | 🔄 &nbsp; 44 / 61 |
 | 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 28 / 54 | 🔄 &nbsp; 29 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
-| **10** | 0 / 9 | 0 / 11 | 0 / 20 |
+| 🔄 **10** | 🔄 &nbsp; 1 / 9 | 0 / 11 | 🔄 &nbsp; 1 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
 | 🔄 **13** | 🔄 &nbsp; 4 / 6 | 0 / 9 | 🔄 &nbsp; 4 / 15 |
-| 🔄 **14** | 🔄 &nbsp; 1 / 12 | 0 / 8 | 🔄 &nbsp; 1 / 20 |
+| 🔄 **14** | 🔄 &nbsp; 2 / 12 | 0 / 8 | 🔄 &nbsp; 2 / 20 |
 | 🔄 **15** | 🔄 &nbsp; 1 / 12 | 0 / 9 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **16** | 🔄 &nbsp; 1 / 6 | 0 / 9 | 🔄 &nbsp; 1 / 15 |
-| **Total** | 🔄 &nbsp; 56 / 152 | 🔄 &nbsp; 317 / 428 | 🔄 &nbsp; 373 / 580 |
+| **Total** | 🔄 &nbsp; 58 / 152 | 🔄 &nbsp; 317 / 428 | 🔄 &nbsp; 375 / 580 |
 
 *Last updated: 2026-07-14*
 
@@ -666,7 +666,7 @@
 | `11.3.3` | Kth largest element in a stream of running integers | 🟢 | | |
 | `11.3.4` | Maximum Sum Combination | 🟡 | | |
 | `11.3.5` | Find Median from Data Stream | 🔴 | | |
-| `15.2.14` | Cycle Detection in Directed Graph (DFS) | 🔴 | | |
+| `15.2.14` | Cycle Detection in Directed Graph (DFS) | 🔴 | ✅ | ✅ |
 | `15.6.3` | Kosaraju's Algorithm | 🔴 | | |
 
 ### 🔄 Revision
@@ -797,7 +797,7 @@
 
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
-| `15.2.12` | Number of Distinct Islands [dfs multisource] | 🔴 | | |
+| `15.2.12` | Number of Distinct Islands [dfs multisource] | 🔴 | ✅ | |
 | `15.2.13` | Bipartite Graph (DFS) | 🟡 | | |
 | `13.1.13` | Preorder, Inorder, and Postorder Traversal in one Traversal | 🟡 | | |
 | `13.3.1` | Root to Node Path in Binary Tree | 🟡 | | |
