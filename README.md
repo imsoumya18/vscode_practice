@@ -9,23 +9,23 @@
 |:------:|:---------------------:|:------------------------:|:---------------------:|
 | 🔄 **1** | 🔄 &nbsp; 10 / 12 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 47 / 49 |
 | 🔄 **2** | 🔄 &nbsp; 8 / 10 | ✅ &nbsp; **37 / 37** | 🔄 &nbsp; 45 / 47 |
-| 🔄 **3** | 🔄 &nbsp; 5 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 48 / 50 |
+| 🔄 **3** | 🔄 &nbsp; 6 / 7 | ✅ &nbsp; **43 / 43** | 🔄 &nbsp; 49 / 50 |
 | 🔄 **4** | 🔄 &nbsp; 4 / 6 | ✅ &nbsp; **42 / 42** | 🔄 &nbsp; 46 / 48 |
-| 🔄 **5** | 🔄 &nbsp; 10 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 53 / 58 |
+| 🔄 **5** | 🔄 &nbsp; 11 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 54 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 9 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 52 / 60 |
 | 🔄 **7** | 0 / 14 | 🔄 &nbsp; 44 / 47 | 🔄 &nbsp; 44 / 61 |
-| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 28 / 54 | 🔄 &nbsp; 29 / 61 |
+| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 29 / 54 | 🔄 &nbsp; 30 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | 🔄 **10** | 🔄 &nbsp; 1 / 9 | 0 / 11 | 🔄 &nbsp; 1 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
 | 🔄 **12** | 🔄 &nbsp; 1 / 6 | 0 / 8 | 🔄 &nbsp; 1 / 14 |
 | 🔄 **13** | 🔄 &nbsp; 4 / 6 | 0 / 9 | 🔄 &nbsp; 4 / 15 |
-| 🔄 **14** | 🔄 &nbsp; 2 / 12 | 0 / 8 | 🔄 &nbsp; 2 / 20 |
-| 🔄 **15** | 🔄 &nbsp; 1 / 12 | 0 / 9 | 🔄 &nbsp; 1 / 21 |
+| 🔄 **14** | 🔄 &nbsp; 3 / 12 | 0 / 8 | 🔄 &nbsp; 3 / 20 |
+| 🔄 **15** | 🔄 &nbsp; 2 / 12 | 0 / 9 | 🔄 &nbsp; 2 / 21 |
 | 🔄 **16** | 🔄 &nbsp; 1 / 6 | 0 / 9 | 🔄 &nbsp; 1 / 15 |
-| **Total** | 🔄 &nbsp; 58 / 152 | 🔄 &nbsp; 317 / 428 | 🔄 &nbsp; 375 / 580 |
+| **Total** | 🔄 &nbsp; 62 / 152 | 🔄 &nbsp; 318 / 428 | 🔄 &nbsp; 380 / 580 |
 
-*Last updated: 2026-07-14*
+*Last updated: 2026-07-22*
 
 <!-- PROGRESS_END -->
 
@@ -187,7 +187,7 @@
 | `3.3.4` | 4-Sum Problem | 🔴 | ✅ | |
 | `5.2.7` | Sum of Beauty of all substring | 🟡 | ✅ | |
 | `13.3.7` | Count total Nodes in a COMPLETE Binary Tree | 🟡 | ✅ | |
-| `15.5.7` | Most stones removed with same rows or columns | 🟡 | | |
+| `15.5.7` | Most stones removed with same rows or columns | 🟡 | ✅ | ✅ |
 | `18.1.5` | Z-Function | 🟢 | | |
 
 ### 🔄 Revision
@@ -324,7 +324,7 @@
 | `4.2.9` | Book Allocation Problem | 🔴 | ✅ | ✅ |
 | `4.2.10` | Split array - Largest Sum | 🔴 | ✅ | ✅ |
 | `13.3.11` | Serialize and deserialize Binary Tree | 🔴 | ✅ | ✅ |
-| `15.5.9` | Number of island II | 🔴 | | |
+| `15.5.9` | Number of island II | 🔴 | ✅ | ✅ |
 | `18.1.7` | Shortest Palindrome | 🔴 | | |
 
 ### 🔄 Revision
@@ -586,7 +586,7 @@
 | `16.6.2` | Buy and Sell Stock - II (DP-36) | 🔴 | ✅ | ✅ |
 | `16.6.3` | Buy and Sell Stocks III (DP-37) | 🔴 | | |
 | `16.6.4` | Buy and Sell Stock IV (DP-38) | 🔴 | | |
-| `16.7.1` | Longest Increasing Subsequence (DP-41) | 🔴 | | |
+| `16.7.1` | Longest Increasing Subsequence (DP-41) | 🔴 | ✅ | ✅ |
 | `16.7.2` | Printing Longest Increasing Subsequence (DP-42) | 🔴 | | |
 | `16.7.3` | Longest Increasing Subsequence with Binary Search (DP-43) | 🔴 | | |
 | `16.7.4` | Largest Divisible Subset (DP-44) | 🔴 | | |
@@ -798,7 +798,7 @@
 | # | Problem | Difficulty | ✅ Solved | 📌 Revision |
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `15.2.12` | Number of Distinct Islands [dfs multisource] | 🔴 | ✅ | |
-| `15.2.13` | Bipartite Graph (DFS) | 🟡 | | |
+| `15.2.13` | Bipartite Graph (DFS) | 🟡 | ✅ | ✅ |
 | `13.1.13` | Preorder, Inorder, and Postorder Traversal in one Traversal | 🟡 | | |
 | `13.3.1` | Root to Node Path in Binary Tree | 🟡 | | |
 | `17.2.3` | Number of Distinct Substrings in a String | 🔴 | | |
@@ -836,7 +836,7 @@
 |:---:|:--------|:----------:|:---------:|:-----------:|
 | `13.3.3` | Maximum width of a Binary Tree | 🟡 | | |
 | `13.3.4` | Check for Children Sum Property | 🔴 | | |
-| `7.3.5` | Word Break | ⚪ | | |
+| `7.3.5` | Word Break | 🟡 | ✅ | ✅ |
 | `7.3.6` | M Coloring Problem | 🔴 | | |
 | `14.2.10` | Merge 2 BST's | 🔴 | | |
 | `14.2.11` | Two Sum In BST - Check if there exists a pair with Sum K | 🟡 | | |

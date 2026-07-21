@@ -8,6 +8,7 @@
 #include <sstream>
 #include <set>
 #include <unordered_set>
+#include <map>
 using namespace std;
 
 void print(vector<int> vct)
@@ -46,39 +47,61 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-int findTheCity(int n, vector<vector<int>> &edges, int distanceThreshold)
+class Node
 {
-    vector<vector<int>> dist(n, vector<int>(n, INT_MAX));
-
-    for (int i = 0; i < n; i++)
-        dist[i][i] = 0;
-
-    for (auto e : edges)
+public:
+    int val;
+    vector<Node *> neighbors;
+    Node()
     {
-        dist[e[0]][e[1]] = e[2];
-        dist[e[1]][e[0]] = e[2];
+        val = 0;
+        neighbors = vector<Node *>();
+    }
+    Node(int _val)
+    {
+        val = _val;
+        neighbors = vector<Node *>();
+    }
+    Node(int _val, vector<Node *> _neighbors)
+    {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+
+void solve(int start, string &s, unordered_set<string> &dictionary, unordered_map<int, vector<string>> &dp, string curr, vector<string> &vct)
+{
+    if (start >= s.size())
+    {
+        vct.push_back(curr);
+        return;
     }
 
-    for (int via = 0; via < n; via++)
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (dist[i][via] != INT_MAX && dist[via][j] != INT_MAX && dist[i][via] + dist[via][j] < dist[i][j])
-                    dist[i][j] = dist[i][via] + dist[via][j];
+    if (dp.find(start)!=dp.end())
+        return;
 
-    vector<int> neighbour(n, 0);
-    int city_with_max_neighbour = 0;
+    for (int len = 1; len <= s.size() - start; len++)
+        if (dictionary.count(s.substr(start, len)))
+        {
+            string newCurr = curr;
+            if (newCurr != "")
+                newCurr += " ";
+            newCurr += s.substr(start, len);
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-            if (i != j && dist[i][j] <= distanceThreshold)
-                neighbour[i]++;
+            solve(start + len, s, dictionary, dp, newCurr, vct);
+        }
+}
 
-        if (neighbour[i] <= neighbour[city_with_max_neighbour])
-            city_with_max_neighbour = i;
-    }
+vector<string> wordBreak(string s, vector<string> &wordDict)
+{
+    unordered_set<string> dictionary(wordDict.begin(), wordDict.end());
+    vector<string> vct;
+    string curr = "";
+    unordered_map<int, vector<string>> dp;
 
-    return city_with_max_neighbour;
+    solve(0, s, dictionary, dp, curr, vct);
+
+    return vct;
 }
 
 int main()
@@ -87,6 +110,10 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    string x = "1234";
+
+    cout << x.substr(2) << endl;
 
     return 0;
 }
