@@ -40,28 +40,37 @@ public:
     }
 };
 
-void floydWarshall(vector<vector<int>> &dist)
+bool invite(int boy, vector<vector<int>> &grid, vector<int> &checked, vector<int> &girlInvitedBy)
 {
-    // Code here
-    int n = dist.size();
+    for (int i = 0; i < grid[boy].size(); i++)
+        if (grid[boy][i] && !checked[i])
+        {
+            checked[i] = 1;
 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (i == j)
-                dist[i][j] = 0;
-            else if (dist[i][j] == -1)
-                dist[i][j] = INT_MAX;
+            if (girlInvitedBy[i] == -1 || invite(girlInvitedBy[i], grid, checked, girlInvitedBy))
+            {
+                girlInvitedBy[i] = boy;
+                return true;
+            }
+        }
 
-    for (int via = 0; via < n; via++)
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (dist[i][via] != INT_MAX && dist[via][j] != INT_MAX && dist[i][via] + dist[via][j] < dist[i][j])
-                    dist[i][j] = dist[i][via] + dist[via][j];
+    return false;
+}
 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (dist[i][j] == INT_MAX)
-                dist[i][j] = -1;
+int maximumInvitations(vector<vector<int>> &grid)
+{
+    int m = grid.size(), n = grid[0].size();
+    int maxInvites = 0;
+    vector<int> girlInvitedBy(n, -1);
+
+    for (int i = 0; i < m; i++)
+    {
+        vector<int> checked(n, 0);
+        if (invite(i, grid, checked, girlInvitedBy))
+            maxInvites++;
+    }
+
+    return maxInvites;
 }
 
 int main()

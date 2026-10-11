@@ -8,6 +8,7 @@
 #include <sstream>
 #include <set>
 #include <unordered_set>
+#include <list>
 #include <map>
 using namespace std;
 
@@ -69,40 +70,47 @@ public:
     }
 };
 
-void solve(int start, string &s, unordered_set<string> &dictionary, unordered_map<int, vector<string>> &dp, string curr, vector<string> &vct)
+class Solution
 {
-    if (start >= s.size())
+private:
+    TreeNode *prev, *first, *middle, *last;
+
+    void inorder(TreeNode *root)
     {
-        vct.push_back(curr);
-        return;
+        if (!root)
+            return;
+
+        inorder(root->left);
+
+        if (prev && root->val < prev->val)
+        {
+            if (!first)
+            {
+                first = prev;
+                middle = root;
+            }
+            else
+                last = root;
+        }
+
+        prev = root;
+
+        inorder(root->right);
     }
 
-    if (dp.find(start)!=dp.end())
-        return;
+public:
+    void recoverTree(TreeNode *root)
+    {
+        prev = first = middle = last = nullptr;
 
-    for (int len = 1; len <= s.size() - start; len++)
-        if (dictionary.count(s.substr(start, len)))
-        {
-            string newCurr = curr;
-            if (newCurr != "")
-                newCurr += " ";
-            newCurr += s.substr(start, len);
+        inorder(root);
 
-            solve(start + len, s, dictionary, dp, newCurr, vct);
-        }
-}
-
-vector<string> wordBreak(string s, vector<string> &wordDict)
-{
-    unordered_set<string> dictionary(wordDict.begin(), wordDict.end());
-    vector<string> vct;
-    string curr = "";
-    unordered_map<int, vector<string>> dp;
-
-    solve(0, s, dictionary, dp, curr, vct);
-
-    return vct;
-}
+        if (first && last)
+            swap(first->val, last->val);
+        else
+            swap(first->val, middle->val);
+    }
+};
 
 int main()
 {

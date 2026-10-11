@@ -14,7 +14,7 @@
 | 🔄 **5** | 🔄 &nbsp; 11 / 12 | 🔄 &nbsp; 43 / 46 | 🔄 &nbsp; 54 / 58 |
 | 🔄 **6** | 🔄 &nbsp; 9 / 15 | 🔄 &nbsp; 43 / 45 | 🔄 &nbsp; 52 / 60 |
 | 🔄 **7** | 0 / 14 | 🔄 &nbsp; 44 / 47 | 🔄 &nbsp; 44 / 61 |
-| 🔄 **8** | 🔄 &nbsp; 1 / 7 | 🔄 &nbsp; 29 / 54 | 🔄 &nbsp; 30 / 61 |
+| 🔄 **8** | 🔄 &nbsp; 2 / 7 | 🔄 &nbsp; 29 / 54 | 🔄 &nbsp; 31 / 61 |
 | **9** | 0 / 7 | 0 / 13 | 0 / 20 |
 | 🔄 **10** | 🔄 &nbsp; 1 / 9 | 0 / 11 | 🔄 &nbsp; 1 / 20 |
 | 🔄 **11** | 🔄 &nbsp; 1 / 11 | 0 / 10 | 🔄 &nbsp; 1 / 21 |
@@ -23,9 +23,9 @@
 | 🔄 **14** | 🔄 &nbsp; 3 / 12 | 0 / 8 | 🔄 &nbsp; 3 / 20 |
 | 🔄 **15** | 🔄 &nbsp; 2 / 12 | 0 / 9 | 🔄 &nbsp; 2 / 21 |
 | 🔄 **16** | 🔄 &nbsp; 1 / 6 | 0 / 9 | 🔄 &nbsp; 1 / 15 |
-| **Total** | 🔄 &nbsp; 62 / 152 | 🔄 &nbsp; 318 / 428 | 🔄 &nbsp; 380 / 580 |
+| **Total** | 🔄 &nbsp; 63 / 152 | 🔄 &nbsp; 318 / 428 | 🔄 &nbsp; 381 / 580 |
 
-*Last updated: 2026-07-22*
+*Last updated: 2026-10-11*
 
 <!-- PROGRESS_END -->
 
@@ -548,7 +548,7 @@
 | `4.3.3` | Search in a row and column wise sorted matrix | 🟡 | | |
 | `4.3.4` | Find Peak Element (2D Matrix) | 🔴 | | |
 | `9.4.4` | LRU cache (IMPORTANT) | 🔴 | ✅ | ✅ |
-| `9.4.5` | LFU cache | 🔴 | | |
+| `9.4.5` | LFU cache | 🔴 | ✅ | ✅ |
 | `14.2.12` | Recover BST - Correct BST with two nodes swapped | 🔴 | | |
 | `15.6.1` | Bridges in Graph | 🔴 | | |
 
